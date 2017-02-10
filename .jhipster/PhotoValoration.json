@@ -1,0 +1,32 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "photo",
+            "otherEntityName": "photo",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "login"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "mark",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "time",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20170210163056",
+    "entityTableName": "photo_valoration",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

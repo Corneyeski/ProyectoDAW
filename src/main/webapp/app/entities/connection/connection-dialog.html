@@ -1,0 +1,54 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myConnectionLabel" data-translate="proyectoApp.connection.home.createOrEditLabel">Create or edit a Connection</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.connection.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.connection.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoApp.connection.acepted" for="field_acepted">Acepted</label>
+            <input type="checkbox" class="form-control" name="acepted" id="field_acepted"
+                    ng-model="vm.connection.acepted"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoApp.connection.text" for="field_text">Text</label>
+            <input type="text" class="form-control" name="text" id="field_text"
+                    ng-model="vm.connection.text"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoApp.connection.time" for="field_time">Time</label>
+                <div class="input-group">
+                    <input id="field_time" type="text" class="form-control" name="time" datetime-picker="{{dateformat}}" ng-model="vm.connection.time" is-open="vm.datePickerOpenStatus.time"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('time')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="proyectoApp.connection.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.connection.user" ng-options="user as user.login for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,25 @@
+{
+    "proyectoApp": {
+        "photoValoration" : {
+            "home": {
+                "title": "Photo Valorations",
+                "createLabel": "Create a new Photo Valoration",
+                "createOrEditLabel": "Create or edit a Photo Valoration",
+                "search": "Search for Photo Valoration"
+            },
+            "created": "A new Photo Valoration is created with identifier {{ param }}",
+            "updated": "A Photo Valoration is updated with identifier {{ param }}",
+            "deleted": "A Photo Valoration is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Photo Valoration {{ id }}?"
+            },
+            "detail": {
+                "title": "Photo Valoration"
+            },
+            "mark": "Mark",
+            "time": "Time",
+            "photo": "Photo",
+            "user": "User"
+        }
+    }
+}

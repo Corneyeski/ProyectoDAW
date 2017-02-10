@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="proyectoApp.photoValoration.detail.title">Photo Valoration</span> {{vm.photoValoration.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span data-translate="proyectoApp.photoValoration.mark">Mark</span></dt>
+        <dd>
+            <span>{{vm.photoValoration.mark}}</span>
+        </dd>
+        <dt><span data-translate="proyectoApp.photoValoration.time">Time</span></dt>
+        <dd>
+            <span>{{vm.photoValoration.time | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="proyectoApp.photoValoration.photo">Photo</span></dt>
+        <dd>
+            <a ui-sref="photo-detail({id:vm.photoValoration.photo.id})">{{vm.photoValoration.photo.name}}</a>
+        </dd>
+        <dt><span data-translate="proyectoApp.photoValoration.user">User</span></dt>
+        <dd>
+            {{vm.photoValoration.user.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="photo-valoration-detail.edit({id:vm.photoValoration.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

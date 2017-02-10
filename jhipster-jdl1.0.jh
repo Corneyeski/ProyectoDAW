@@ -1,0 +1,86 @@
+entity UserExt{
+birthdate LocalDate,
+phone Integer,
+kind Integer,
+tags String,
+address String,
+country String,
+city String,
+avg Double
+}
+entity Following{
+time ZonedDateTime
+}
+entity Offer{
+name String,
+description String,
+time ZonedDateTime
+}
+entity Photo{
+name String,
+image ImageBlob,
+url String,
+time ZonedDateTime
+}
+entity PhotoValoration{
+mark Double,
+time ZonedDateTime
+}
+entity Connection{
+acepted Boolean,
+text String,
+time ZonedDateTime
+}
+entity Conversation{
+name String
+}
+entity Message{
+text String,
+attached Blob,
+time ZonedDateTime
+}
+
+relationship OneToOne{
+	UserExt{user(login)} to User
+}
+
+relationship ManyToOne{
+    Following{follower(login)} to User,
+    Following{followed(login)} to User,
+
+    Conversation{user(login)} to User
+}
+relationship ManyToMany{
+    Offer{user(login)} to User
+}
+relationship ManyToOne{
+    Photo{user(login)} to User
+}
+relationship ManyToOne{
+    PhotoValoration{photo(name)} to Photo{}
+}
+relationship ManyToOne{
+    PhotoValoration{user(login)} to User
+}
+relationship ManyToOne{
+    Message{user(login)} to User
+}
+relationship ManyToOne{
+	Message{conversation()} to Conversation,
+    Conversation to Message
+}
+relationship ManyToOne{
+    Connection{user(login)} to User
+}
+
+
+
+
+
+
+
+
+
+
+
+

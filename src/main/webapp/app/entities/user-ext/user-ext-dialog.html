@@ -1,0 +1,96 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myUserExtLabel" data-translate="proyectoApp.userExt.home.createOrEditLabel">Create or edit a User Ext</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.userExt.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.userExt.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoApp.userExt.birthdate" for="field_birthdate">Birthdate</label>
+                <div class="input-group">
+                    <input id="field_birthdate" type="text" class="form-control" name="birthdate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.userExt.birthdate" is-open="vm.datePickerOpenStatus.birthdate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('birthdate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoApp.userExt.phone" for="field_phone">Phone</label>
+            <input type="number" class="form-control" name="phone" id="field_phone"
+                    ng-model="vm.userExt.phone"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoApp.userExt.kind" for="field_kind">Kind</label>
+            <input type="number" class="form-control" name="kind" id="field_kind"
+                    ng-model="vm.userExt.kind"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoApp.userExt.tags" for="field_tags">Tags</label>
+            <input type="text" class="form-control" name="tags" id="field_tags"
+                    ng-model="vm.userExt.tags"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoApp.userExt.address" for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                    ng-model="vm.userExt.address"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoApp.userExt.country" for="field_country">Country</label>
+            <input type="text" class="form-control" name="country" id="field_country"
+                    ng-model="vm.userExt.country"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoApp.userExt.city" for="field_city">City</label>
+            <input type="text" class="form-control" name="city" id="field_city"
+                    ng-model="vm.userExt.city"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoApp.userExt.popular" for="field_popular">Popular</label>
+            <input type="number" class="form-control" name="popular" id="field_popular"
+                    ng-model="vm.userExt.popular"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoApp.userExt.companyPoints" for="field_companyPoints">Company Points</label>
+            <input type="number" class="form-control" name="companyPoints" id="field_companyPoints"
+                    ng-model="vm.userExt.companyPoints"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoApp.userExt.validated" for="field_validated">Validated</label>
+            <input type="checkbox" class="form-control" name="validated" id="field_validated"
+                    ng-model="vm.userExt.validated"
+                    />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="proyectoApp.userExt.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.userExt.user" ng-options="user as user.login for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

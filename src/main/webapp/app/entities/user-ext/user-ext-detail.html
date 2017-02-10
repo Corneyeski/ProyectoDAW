@@ -1,0 +1,63 @@
+
+<div>
+    <h2><span data-translate="proyectoApp.userExt.detail.title">User Ext</span> {{vm.userExt.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span data-translate="proyectoApp.userExt.birthdate">Birthdate</span></dt>
+        <dd>
+            <span>{{vm.userExt.birthdate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="proyectoApp.userExt.phone">Phone</span></dt>
+        <dd>
+            <span>{{vm.userExt.phone}}</span>
+        </dd>
+        <dt><span data-translate="proyectoApp.userExt.kind">Kind</span></dt>
+        <dd>
+            <span>{{vm.userExt.kind}}</span>
+        </dd>
+        <dt><span data-translate="proyectoApp.userExt.tags">Tags</span></dt>
+        <dd>
+            <span>{{vm.userExt.tags}}</span>
+        </dd>
+        <dt><span data-translate="proyectoApp.userExt.address">Address</span></dt>
+        <dd>
+            <span>{{vm.userExt.address}}</span>
+        </dd>
+        <dt><span data-translate="proyectoApp.userExt.country">Country</span></dt>
+        <dd>
+            <span>{{vm.userExt.country}}</span>
+        </dd>
+        <dt><span data-translate="proyectoApp.userExt.city">City</span></dt>
+        <dd>
+            <span>{{vm.userExt.city}}</span>
+        </dd>
+        <dt><span data-translate="proyectoApp.userExt.popular">Popular</span></dt>
+        <dd>
+            <span>{{vm.userExt.popular}}</span>
+        </dd>
+        <dt><span data-translate="proyectoApp.userExt.companyPoints">Company Points</span></dt>
+        <dd>
+            <span>{{vm.userExt.companyPoints}}</span>
+        </dd>
+        <dt><span data-translate="proyectoApp.userExt.validated">Validated</span></dt>
+        <dd>
+            <span>{{vm.userExt.validated}}</span>
+        </dd>
+        <dt><span data-translate="proyectoApp.userExt.user">User</span></dt>
+        <dd>
+            {{vm.userExt.user.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="user-ext-detail.edit({id:vm.userExt.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

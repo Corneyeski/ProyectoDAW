@@ -1,0 +1,78 @@
+<div>
+    <h2 data-translate="proyectoApp.userExt.home.title">User Exts</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="user-ext.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="proyectoApp.userExt.home.createLabel">
+                        Create new User Ext
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span data-translate="global.field.id">ID</span></th>
+                    <th><span data-translate="proyectoApp.userExt.birthdate">Birthdate</span></th>
+                    <th><span data-translate="proyectoApp.userExt.phone">Phone</span></th>
+                    <th><span data-translate="proyectoApp.userExt.kind">Kind</span></th>
+                    <th><span data-translate="proyectoApp.userExt.tags">Tags</span></th>
+                    <th><span data-translate="proyectoApp.userExt.address">Address</span></th>
+                    <th><span data-translate="proyectoApp.userExt.country">Country</span></th>
+                    <th><span data-translate="proyectoApp.userExt.city">City</span></th>
+                    <th><span data-translate="proyectoApp.userExt.popular">Popular</span></th>
+                    <th><span data-translate="proyectoApp.userExt.companyPoints">Company Points</span></th>
+                    <th><span data-translate="proyectoApp.userExt.validated">Validated</span></th>
+                    <th><span data-translate="proyectoApp.userExt.user">User</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="userExt in vm.userExts track by userExt.id">
+                    <td><a ui-sref="user-ext-detail({id:userExt.id})">{{userExt.id}}</a></td>
+                        <td>{{userExt.birthdate | date:'mediumDate'}}</td>
+                    <td>{{userExt.phone}}</td>
+                    <td>{{userExt.kind}}</td>
+                    <td>{{userExt.tags}}</td>
+                    <td>{{userExt.address}}</td>
+                    <td>{{userExt.country}}</td>
+                    <td>{{userExt.city}}</td>
+                    <td>{{userExt.popular}}</td>
+                    <td>{{userExt.companyPoints}}</td>
+                    <td>{{userExt.validated}}</td>
+                    <td>
+                        {{userExt.user.login}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="user-ext-detail({id:userExt.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="user-ext.edit({id:userExt.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="user-ext.delete({id:userExt.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

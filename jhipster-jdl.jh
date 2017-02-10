@@ -1,0 +1,108 @@
+entity UserExt{
+birthdate LocalDate,
+phone Integer,
+kind Integer,
+tags String,
+address String,
+country String,
+city String,
+popular Double,
+companyPoints Double,
+validated Boolean
+}
+entity Following{
+time ZonedDateTime
+}
+entity Offer{
+name String,
+description String,
+time ZonedDateTime
+}
+entity Photo{
+name String,
+image ImageBlob,
+url String,
+time ZonedDateTime,
+tags String
+}
+entity PhotoValoration{
+mark Double,
+time ZonedDateTime
+}
+entity Connection{
+acepted Boolean,
+text String,
+time ZonedDateTime
+}
+entity Conversation{
+name String
+}
+entity Message{
+text String,
+attached Blob,
+time ZonedDateTime
+}
+entity UserProfileValoration{
+value Integer required,
+comments String,
+}
+entity Report{
+message String
+}
+entity Video{
+id String,
+title String
+}
+relationship ManyToOne{
+Video{user(login)} to User
+}
+relationship ManyToOne{
+Report{user(login)} to User,
+Report{Photo(login)} to User,
+Report{Offer(login)} to User
+}
+relationship ManyToOne{
+UserProfileValoration{valorador(login)} to User,
+UserProfileValoration{valorado(login)} to User
+}
+relationship OneToOne{
+	UserExt{user(login)} to User
+}
+relationship ManyToOne{
+    Following{follower(login)} to User,
+    Following{followed(login)} to User,
+    Conversation{user(login)} to User
+}
+relationship ManyToMany{
+    Offer{user(login)} to User
+}
+relationship ManyToOne{
+    Photo{user(login)} to User
+}
+relationship ManyToOne{
+    PhotoValoration{photo(name)} to Photo{}
+}
+relationship ManyToOne{
+    PhotoValoration{user(login)} to User
+}
+relationship ManyToOne{
+    Message{user(login)} to User
+}
+relationship ManyToOne{
+	Message{conversation(name)} to Conversation
+}
+relationship ManyToOne{
+    Connection{user(login)} to User
+}
+
+
+
+
+
+
+
+
+
+
+
+

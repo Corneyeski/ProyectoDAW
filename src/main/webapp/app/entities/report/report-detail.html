@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="proyectoApp.report.detail.title">Report</span> {{vm.report.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span data-translate="proyectoApp.report.message">Message</span></dt>
+        <dd>
+            <span>{{vm.report.message}}</span>
+        </dd>
+        <dt><span data-translate="proyectoApp.report.user">User</span></dt>
+        <dd>
+            {{vm.report.user.login}}
+        </dd>
+        <dt><span data-translate="proyectoApp.report.photo">Photo</span></dt>
+        <dd>
+            {{vm.report.photo.login}}
+        </dd>
+        <dt><span data-translate="proyectoApp.report.offer">Offer</span></dt>
+        <dd>
+            {{vm.report.offer.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="report-detail.edit({id:vm.report.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

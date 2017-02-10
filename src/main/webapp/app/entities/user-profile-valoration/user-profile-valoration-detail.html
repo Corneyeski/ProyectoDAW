@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="proyectoApp.userProfileValoration.detail.title">User Profile Valoration</span> {{vm.userProfileValoration.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span data-translate="proyectoApp.userProfileValoration.value">Value</span></dt>
+        <dd>
+            <span>{{vm.userProfileValoration.value}}</span>
+        </dd>
+        <dt><span data-translate="proyectoApp.userProfileValoration.comments">Comments</span></dt>
+        <dd>
+            <span>{{vm.userProfileValoration.comments}}</span>
+        </dd>
+        <dt><span data-translate="proyectoApp.userProfileValoration.valorador">Valorador</span></dt>
+        <dd>
+            {{vm.userProfileValoration.valorador.login}}
+        </dd>
+        <dt><span data-translate="proyectoApp.userProfileValoration.valorado">Valorado</span></dt>
+        <dd>
+            {{vm.userProfileValoration.valorado.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="user-profile-valoration-detail.edit({id:vm.userProfileValoration.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

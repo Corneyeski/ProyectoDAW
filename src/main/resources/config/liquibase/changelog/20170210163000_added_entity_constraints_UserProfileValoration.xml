@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity UserProfileValoration.
+    -->
+    <changeSet id="20170210163000-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="valorador_id"
+                                 baseTableName="user_profile_valoration"
+                                 constraintName="fk_user_profile_valoration_valorador_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="valorado_id"
+                                 baseTableName="user_profile_valoration"
+                                 constraintName="fk_user_profile_valoration_valorado_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,68 @@
+<div>
+    <h2 data-translate="proyectoApp.report.home.title">Reports</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="report.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="proyectoApp.report.home.createLabel">
+                        Create new Report
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span data-translate="global.field.id">ID</span></th>
+                    <th><span data-translate="proyectoApp.report.message">Message</span></th>
+                    <th><span data-translate="proyectoApp.report.user">User</span></th>
+                    <th><span data-translate="proyectoApp.report.photo">Photo</span></th>
+                    <th><span data-translate="proyectoApp.report.offer">Offer</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="report in vm.reports track by report.id">
+                    <td><a ui-sref="report-detail({id:report.id})">{{report.id}}</a></td>
+                    <td>{{report.message}}</td>
+                    <td>
+                        {{report.user.login}}
+                    </td>
+                    <td>
+                        {{report.photo.login}}
+                    </td>
+                    <td>
+                        {{report.offer.login}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="report-detail({id:report.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="report.edit({id:report.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="report.delete({id:report.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+
+<div>
+    <h2><span data-translate="proyectoApp.offer.detail.title">Offer</span> {{vm.offer.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span data-translate="proyectoApp.offer.name">Name</span></dt>
+        <dd>
+            <span>{{vm.offer.name}}</span>
+        </dd>
+        <dt><span data-translate="proyectoApp.offer.description">Description</span></dt>
+        <dd>
+            <span>{{vm.offer.description}}</span>
+        </dd>
+        <dt><span data-translate="proyectoApp.offer.time">Time</span></dt>
+        <dd>
+            <span>{{vm.offer.time | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="proyectoApp.offer.user">User</span></dt>
+        <dd>
+            <span ng-repeat="user in vm.offer.users">
+                {{user.login}}{{$last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="offer-detail.edit({id:vm.offer.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

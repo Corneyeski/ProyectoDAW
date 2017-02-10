@@ -1,0 +1,42 @@
+
+<div>
+    <h2><span data-translate="proyectoApp.message.detail.title">Message</span> {{vm.message.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span data-translate="proyectoApp.message.text">Text</span></dt>
+        <dd>
+            <span>{{vm.message.text}}</span>
+        </dd>
+        <dt><span data-translate="proyectoApp.message.attached">Attached</span></dt>
+        <dd>
+            <div ng-if="vm.message.attached">
+                <a ng-click="vm.openFile(vm.message.attachedContentType, vm.message.attached)" data-translate="entity.action.open">open</a>
+                {{vm.message.attachedContentType}}, {{vm.byteSize(vm.message.attached)}}
+            </div>
+        </dd>
+        <dt><span data-translate="proyectoApp.message.time">Time</span></dt>
+        <dd>
+            <span>{{vm.message.time | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="proyectoApp.message.user">User</span></dt>
+        <dd>
+            {{vm.message.user.login}}
+        </dd>
+        <dt><span data-translate="proyectoApp.message.conversation">Conversation</span></dt>
+        <dd>
+            <a ui-sref="conversation-detail({id:vm.message.conversation.id})">{{vm.message.conversation.name}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="message-detail.edit({id:vm.message.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>
