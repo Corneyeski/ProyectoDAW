@@ -15,4 +15,6 @@ public interface ConversationRepository extends JpaRepository<Conversation,Long>
     @Query("select conversation from Conversation conversation where conversation.user.login = ?#{principal.username}")
     List<Conversation> findByUserIsCurrentUser();
 
+
+
 }
