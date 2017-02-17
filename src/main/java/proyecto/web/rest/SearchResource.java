@@ -3,9 +3,8 @@ package proyecto.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 import proyecto.domain.User;
 import proyecto.repository.OfferRepository;
 import proyecto.repository.PhotoRepository;
@@ -29,13 +28,13 @@ public class SearchResource {
 
     private OfferRepository offerRepository;
 
-    @PostMapping("/search/users")
-    @Timed
-    public List<User> searchUsers() throws URISyntaxException {
-
-
-
-        return null;
-    }
+//    @PostMapping(value = "/search/users", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+//    @Timed
+//    public List<User> searchUsers(@RequestParam String algo) throws URISyntaxException {
+//
+//
+//
+//        return null;
+//    }
 
 }

@@ -2,8 +2,6 @@
 # Project Specific
 ######################
 /target/www/**
-/src/test/javascript/coverage/
-/src/test/javascript/PhantomJS*/
 
 ######################
 # Node
@@ -11,7 +9,6 @@
 node/
 node_tmp/
 node_modules/
-npm-debug.log.*
 
 ######################
 # SASS
@@ -34,7 +31,6 @@ local.properties
 .classpath
 .settings/
 .loadpath
-.factorypath
 /src/main/resources/rebel.xml
 
 # External tool builders
@@ -74,7 +70,6 @@ target/
 # Gradle
 ######################
 .gradle/
-build/
 
 ######################
 # Package Files
