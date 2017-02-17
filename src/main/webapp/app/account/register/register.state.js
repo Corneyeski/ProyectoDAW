@@ -29,5 +29,26 @@
                 }]
             }
         });
+        $stateProvider.state('register-2', {
+            parent: 'account',
+            url: '/register-2',
+            data: {
+                authorities: [],
+                pageTitle: 'register.title'
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/account/register/register2.html',
+                    controller: 'RegisterController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('register');
+                    return $translate.refresh();
+                }]
+            }
+        });
     }
 })();
