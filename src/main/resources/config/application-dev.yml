@@ -50,11 +50,11 @@ spring:
         username: proyectoDawStucom@gmail.com
         password: 3tucomalfredo
         protocol: smtp
-                tls: true
-                properties.mail.smtp:
-                    auth: true
-                    starttls.enable: true
-                    ssl.trust: smtp.gmail.com
+        tls: true
+        properties.mail.smtp:
+            auth: true
+            starttls.enable: true
+            ssl.trust: smtp.gmail.com
     messages:
         cache-seconds: 1
     thymeleaf:
