@@ -30,6 +30,7 @@
             }
         });
 
+
         $stateProvider.state('register-2', {
             url: '/register-2',
             data: {
