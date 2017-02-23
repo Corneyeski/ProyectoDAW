@@ -1,3 +1,23 @@
 #hola{
+height: 950px;
+    background-color: #5e5e5e;
+}
 
+.logo{
+    display: inline-table;
+    /*background-image: url("../../images/logo.png");*/
+    width: 10%;
+
+}
+.container{
+
+}
+.global{
+    width: 7px;
+    height: 12px;
+    margin-top: 14px;
+}
+
+.text{
+    display: inline-table;
 }
