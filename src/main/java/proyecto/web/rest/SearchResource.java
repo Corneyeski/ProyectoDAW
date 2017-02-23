@@ -3,21 +3,18 @@ package proyecto.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import proyecto.domain.User;
-import proyecto.repository.OfferRepository;
-import proyecto.repository.PhotoRepository;
-import proyecto.repository.UserRepository;
+import proyecto.domain.UserExt;
+import proyecto.repository.*;
 
 import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Alan on 17/02/2017.
- */
 @RestController
 @RequestMapping("/api")
 public class SearchResource {
@@ -25,6 +22,8 @@ public class SearchResource {
     private final Logger log = LoggerFactory.getLogger(PhotoResource.class);
 
     private UserRepository userRepository;
+
+    private UserExtCriteriaRepository userExtCriteriaRepository;
 
     private PhotoRepository photoRepository;
 
@@ -48,8 +47,29 @@ public class SearchResource {
             params.put("username", userName);
         }
         if(city != null){
+            params.put("city",city);
+        }
+        if(points != null && points > 0){
+            params.put("points",points);
+        }
+        if(tags != null){
 
         }
+        if(validated){
+            params.put("validated",validated);
+        }
+        if(ageMin > 0){
+            params.put("agemin",ageMin);
+        }
+        if(ageMax > 0){
+            params.put("agemax",ageMax);
+        }
+
+        /*List<UserExt> result = userExtCriteriaRepository.filterUserextDefinitions(params);
+
+        return new ResponseEntity<>(
+            result,
+            HttpStatus.OK);*/
         return null;
     }
 
