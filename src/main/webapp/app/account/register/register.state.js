@@ -29,8 +29,8 @@
                 }]
             }
         });
+
         $stateProvider.state('register-2', {
-            parent: 'account',
             url: '/register-2',
             data: {
                 authorities: [],
