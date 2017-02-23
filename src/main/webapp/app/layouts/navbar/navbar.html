@@ -20,6 +20,26 @@
                         <span class="hidden-sm" data-translate="global.menu.home">Home</span>
                     </a>
                 </li>
+
+                <!-- BOTON PRUEBA CAMBIO PLANTILLA A LA DEFAULT-------------------->
+
+                <li ui-sref-active="active">
+                    <a href="index.html" ng-click="vm.collapseNavbar()">
+
+                        <span class="hidden-sm">PLANTILLA DEFAULT</span>
+                    </a>
+                </li>
+
+                <!---------------------------------------------------->
+
+                <!-- CAMBIO PLANTILLA A LA CUSTOM------->
+                <li ui-sref-active="active">
+                    <a href="index6.html" ng-click="vm.collapseNavbar()">
+
+                        <span class="hidden-sm">PLANTILLA CUSTOM</span>
+                    </a>
+                </li>
+                <!--------------------------------------->
                 <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
                 <li ng-class="{active: vm.$state.includes('entity')}" ng-switch-when="true" uib-dropdown class="dropdown pointer">
                     <a class="dropdown-toggle" uib-dropdown-toggle href="" id="entity-menu">
@@ -142,6 +162,16 @@
                                 <span data-translate="global.menu.account.login">Sign in</span>
                             </a>
                         </li>
+                        <!-- ACCESO PAGINA LOGIN AÑADIDA -->
+                        <li ui-sref-active="active" ng-switch-when="false">
+                            <a ui-sref="login" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-log-in"></span>&nbsp;
+                                <span data-translate="">Login Preproduccion</span>
+                            </a>
+                        </li>
+
+
+                        <!------------------------------------>
                         <li ui-sref-active="active" ng-switch-when="false">
                             <a ui-sref="register" ng-click="vm.collapseNavbar()">
                                 <span class="glyphicon glyphicon-plus-sign"></span>&nbsp;
