@@ -6,9 +6,13 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import proyecto.domain.UserExt;
+import proyecto.domain.UserExt_;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 import java.util.Map;
 
@@ -24,12 +28,13 @@ public class UserExtCriteriaRepository {
 
     public List<UserExt> filterUserextDefinitions(Map<String, Object> parameters) {
 
-        Criteria userExtDefinitionCriteria = currentSession().createCriteria(UserExt.class);
-        userExtDefinitionCriteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        //Criteria userExtDefinitionCriteria = currentSession().createCriteria(UserExt.class);
+       // userExtDefinitionCriteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 
         //Criteria mottoCriteria = userExtDefinitionCriteria.createCriteria("userext");
 
-        filterByUserExt(parameters, userExtDefinitionCriteria);
+
+        filterByUserExt(parameters);
 
         /*filterByCategoria(parameters, userExtDefinitionCriteria);
 
@@ -39,16 +44,26 @@ public class UserExtCriteriaRepository {
 
         filterByRegistro(parameters, userExtDefinitionCriteria);*/
 
-        List<UserExt> results = userExtDefinitionCriteria.list();
+       //List<UserExt> results = userExtDefinitionCriteria.list();
 
-        return results;
+        return null;
     }
 
-    private void filterByUserExt(Map<String, Object> parameters, Criteria userExtCriteria) {
+    private void filterByUserExt(Map<String, Object> parameters) {
 
 
         String searchName = (String) parameters.get("city");
-        userExtCriteria.add(Restrictions.ilike("city", searchName, MatchMode.ANYWHERE));
+       // userExtCriteria.add(Restrictions.ilike("city", searchName, MatchMode.ANYWHERE));
+
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+
+        CriteriaQuery<UserExt> criteria = builder.createQuery( UserExt.class );
+
+        Root<UserExt> root = criteria.from( UserExt.class );
+        criteria.select( root );
+        criteria.where( builder.like( root.get( UserExt_.city ), "%"+searchName+"%" ) );
+
+        List<UserExt> persons = entityManager.createQuery( criteria ).getResultList();
 
         //TODO: Aquí es dónde se filtra el tipo de búsqueda ( Empieza por, acaba en, etc...) habría que añadir u case más para el default o poner en el front a default el 1 y que quite el restriction
 
