@@ -72,6 +72,8 @@ public class SearchResource {
             params.put("agemax",ageMax);
         }*/
 
+        userExtCriteriaRepository.initCriteria();
+
         List<UserExt> result = userExtCriteriaRepository.filterUserextDefinitions(params);
 
         return new ResponseEntity<>(

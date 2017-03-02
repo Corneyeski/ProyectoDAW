@@ -22,9 +22,20 @@ public class UserExtCriteriaRepository {
     @PersistenceContext
     EntityManager entityManager;
 
-    protected Session currentSession() {
-        return entityManager.unwrap(Session.class);
+    private CriteriaBuilder builder;
+
+    private CriteriaQuery<UserExt> userExtCriteriaQuery;
+
+    private Root<UserExt> userExtRoot;
+
+    public void initCriteria(){
+        builder = entityManager.getCriteriaBuilder();
+
+        userExtCriteriaQuery = builder.createQuery( UserExt.class );
+
+        userExtRoot = userExtCriteriaQuery.from( UserExt.class );
     }
+
 
     public List<UserExt> filterUserextDefinitions(Map<String, Object> parameters) {
 
@@ -46,24 +57,20 @@ public class UserExtCriteriaRepository {
 
        //List<UserExt> results = userExtDefinitionCriteria.list();
 
-        return null;
+        return entityManager.createQuery( userExtCriteriaQuery ).getResultList();
     }
 
-    private void filterByUserExt(Map<String, Object> parameters) {
+    private void filterByUserExt(Map<String, Object> parameters
+                                 ) {
 
 
         String searchName = (String) parameters.get("city");
        // userExtCriteria.add(Restrictions.ilike("city", searchName, MatchMode.ANYWHERE));
 
-        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        userExtCriteriaQuery.select( userExtRoot );
+        userExtCriteriaQuery.where( builder.like( userExtRoot.get( UserExt_.city ), "%"+searchName+"%" ) );
 
-        CriteriaQuery<UserExt> criteria = builder.createQuery( UserExt.class );
 
-        Root<UserExt> root = criteria.from( UserExt.class );
-        criteria.select( root );
-        criteria.where( builder.like( root.get( UserExt_.city ), "%"+searchName+"%" ) );
-
-        List<UserExt> persons = entityManager.createQuery( criteria ).getResultList();
 
         //TODO: Aquí es dónde se filtra el tipo de búsqueda ( Empieza por, acaba en, etc...) habría que añadir u case más para el default o poner en el front a default el 1 y que quite el restriction
 
