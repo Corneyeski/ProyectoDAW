@@ -39,13 +39,13 @@ public class SearchResource {
     @Timed
     @Transactional
     public ResponseEntity<List<UserExt>> searchUsers(
-        @RequestParam(value = "city", required = false) String city
-        /*@RequestParam(value = "City", required = false) String city
-        @RequestParam(value = "points", required = false) Double points,
+        @RequestParam(value = "city", required = false) String city,
+        @RequestParam(value = "minPoints", required = false) Double minPoints,
+        @RequestParam(value = "maxPoints", required = false) Double maxPoints,
         @RequestParam(value = "tags", required = false) String tags,
         @RequestParam(value = "validated", required = false) boolean validated,
         @RequestParam(value = "ageMin", required = false) int ageMin,
-        @RequestParam(value = "ageMax", required = false) int ageMax*/
+        @RequestParam(value = "ageMax", required = false) int ageMax
     ) throws URISyntaxException {
 
         Map<String, Object> params = new HashMap<>();
@@ -72,7 +72,6 @@ public class SearchResource {
             params.put("agemax",ageMax);
         }*/
 
-        userExtCriteriaRepository.initCriteria();
 
         List<UserExt> result = userExtCriteriaRepository.filterUserextDefinitions(params);
 

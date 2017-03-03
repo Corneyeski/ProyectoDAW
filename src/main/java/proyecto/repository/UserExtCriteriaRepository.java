@@ -5,9 +5,11 @@ import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+import proyecto.domain.User;
 import proyecto.domain.UserExt;
 import proyecto.domain.UserExt_;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -28,6 +30,7 @@ public class UserExtCriteriaRepository {
 
     private Root<UserExt> userExtRoot;
 
+    @PostConstruct
     public void initCriteria(){
         builder = entityManager.getCriteriaBuilder();
 
@@ -47,60 +50,75 @@ public class UserExtCriteriaRepository {
 
         filterByUserExt(parameters);
 
-        /*filterByCategoria(parameters, userExtDefinitionCriteria);
+        filterByValidated(parameters);
 
-        filterByMateria(parameters, userExtDefinitionCriteria);
+        filterByMateria(parameters);
 
-        filterByRegion(parameters, userExtDefinitionCriteria);
+        filterByRegion(parameters);
 
-        filterByRegistro(parameters, userExtDefinitionCriteria);*/
-
-       //List<UserExt> results = userExtDefinitionCriteria.list();
+        filterByRegistro(parameters);
 
         return entityManager.createQuery( userExtCriteriaQuery ).getResultList();
     }
 
-    private void filterByUserExt(Map<String, Object> parameters
-                                 ) {
+    private void filterByUserExt(Map<String, Object> parameters) {
+        if(parameters.containsKey("city")) {
+            String searchName = (String) parameters.get("city");
 
-
-        String searchName = (String) parameters.get("city");
-       // userExtCriteria.add(Restrictions.ilike("city", searchName, MatchMode.ANYWHERE));
-
-        userExtCriteriaQuery.select( userExtRoot );
-        userExtCriteriaQuery.where( builder.like( userExtRoot.get( UserExt_.city ), "%"+searchName+"%" ) );
-
-
-
-        //TODO: Aquí es dónde se filtra el tipo de búsqueda ( Empieza por, acaba en, etc...) habría que añadir u case más para el default o poner en el front a default el 1 y que quite el restriction
-
-    }
-
-    private void filterByCategoria(Map<String, Object> parameters, Criteria mottoDefinitionCriteria) {
-        if (parameters.containsKey("categorias")) {
-            String[] categorias = (String[]) parameters.get("categorias");
-            mottoDefinitionCriteria.add(Restrictions.in("categoria", categorias));
+            userExtCriteriaQuery.select(userExtRoot);
+            userExtCriteriaQuery.where(builder.like(userExtRoot.get(UserExt_.city), "%" + searchName + "%"));
         }
     }
 
-    private void filterByMateria(Map<String, Object> parameters, Criteria mottoDefinitionCriteria) {
-        if (parameters.containsKey("materias")) {
-            String[] materias = (String[]) parameters.get("materias");
-            mottoDefinitionCriteria.add(Restrictions.in("materia", materias));
+    private void filterByValidated(Map<String, Object> parameters) {
+        if (parameters.containsKey("validated")) {
+            boolean validated = (boolean) parameters.get("validated");
+
+            userExtCriteriaQuery.select(userExtRoot);
+            if (validated) {
+                userExtCriteriaQuery.where(builder.isTrue(userExtRoot.get(UserExt_.validated)));
+            }else{
+                userExtCriteriaQuery.where(builder.isFalse(userExtRoot.get(UserExt_.validated)));
+            }
         }
     }
 
-    private void filterByRegion(Map<String, Object> parameters, Criteria mottoDefinitionCriteria) {
+    private void filterByMateria(Map<String, Object> parameters) {
+        if (parameters.containsKey("minPopular") || parameters.containsKey("maxPopular")) {
+
+            userExtCriteriaQuery.select(userExtRoot);
+
+            if(parameters.containsKey("minPopular") && parameters.containsKey("maxPopular")){
+
+                Double minPopular = (Double) parameters.get("minPopular");
+                Double maxPopular = (Double) parameters.get("maxPopular");
+
+                userExtCriteriaQuery.where(builder.between(userExtRoot.get(UserExt_.popular), minPopular, maxPopular));
+            }
+            if(parameters.containsKey("minPopular") && !parameters.containsKey("maxPopular")){
+
+                Double minPopular = (Double) parameters.get("minPopular");
+
+                userExtCriteriaQuery.where(builder.greaterThanOrEqualTo(userExtRoot.get(UserExt_.popular), minPopular));
+            }
+            if(parameters.containsKey("maxPopular") && !parameters.containsKey("minPopular")){
+
+                Double maxPopular = (Double) parameters.get("maxPopular");
+
+                userExtCriteriaQuery.where(builder.lessThanOrEqualTo(userExtRoot.get(UserExt_.popular), maxPopular));
+            }
+        }
+    }
+
+    private void filterByRegion(Map<String, Object> parameters) {
         if (parameters.containsKey("regiones")) {
-            String[] regiones = (String[]) parameters.get("regiones");
-            mottoDefinitionCriteria.add(Restrictions.in("region", regiones));
+
         }
     }
 
-    private void filterByRegistro(Map<String, Object> parameters, Criteria mottoDefinitionCriteria) {
+    private void filterByRegistro(Map<String, Object> parameters) {
         if (parameters.containsKey("registros")) {
-            String[] registros = (String[]) parameters.get("registros");
-            mottoDefinitionCriteria.add(Restrictions.in("registro", registros));
+
         }
     }
 }
