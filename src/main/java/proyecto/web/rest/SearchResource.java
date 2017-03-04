@@ -1,6 +1,7 @@
 package proyecto.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import liquibase.util.NumberUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -40,38 +41,37 @@ public class SearchResource {
     @Transactional
     public ResponseEntity<List<UserExt>> searchUsers(
         @RequestParam(value = "city", required = false) String city,
-        @RequestParam(value = "minPoints", required = false) Double minPoints,
-        @RequestParam(value = "maxPoints", required = false) Double maxPoints,
+        @RequestParam(value = "minPoints", required = false) Double minPopular,
+        @RequestParam(value = "maxPoints", required = false) Double maxPopular,
         @RequestParam(value = "tags", required = false) String tags,
         @RequestParam(value = "validated", required = false) boolean validated,
-        @RequestParam(value = "ageMin", required = false) int ageMin,
-        @RequestParam(value = "ageMax", required = false) int ageMax
+        @RequestParam(value = "ageMin", required = false) Integer ageMin,
+        @RequestParam(value = "ageMax", required = false) Integer ageMax
     ) throws URISyntaxException {
 
         Map<String, Object> params = new HashMap<>();
 
-        if (city != null) {
+        if (city != null && !city.equalsIgnoreCase("")) {
             params.put("city",city);
         }
-        /*if(city != null){
-            params.put("city",city);
+        if(maxPopular != null && maxPopular > 0.0 && maxPopular > minPopular){
+            params.put("maxPopular",maxPopular);
         }
-        if(points != null && points > 0){
-            params.put("points",points);
+        if(minPopular != null && minPopular > 0.0){
+            params.put("minPopular",minPopular);
         }
-        if(tags != null){
-            //TODO bucle para sacar cada tag
+        if(tags != null && !tags.equals("")){
+            params.put("validated",validated);
         }
         if(validated){
             params.put("validated",validated);
         }
-        if(ageMin > 0){
+        if(ageMin != null && ageMin > 0){
             params.put("agemin",ageMin);
         }
-        if(ageMax > 0){
+        if(ageMax != null && ageMax > 0){
             params.put("agemax",ageMax);
-        }*/
-
+        }
 
         List<UserExt> result = userExtCriteriaRepository.filterUserextDefinitions(params);
 
