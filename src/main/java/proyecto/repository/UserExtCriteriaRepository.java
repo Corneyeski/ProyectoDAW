@@ -10,6 +10,7 @@ import proyecto.domain.UserExt;
 import proyecto.domain.UserExt_;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -23,6 +24,9 @@ public class UserExtCriteriaRepository {
 
     @PersistenceContext
     EntityManager entityManager;
+
+    @Inject
+    UserExtRepository userExtRepository;
 
     private CriteriaBuilder builder;
 
@@ -42,21 +46,15 @@ public class UserExtCriteriaRepository {
 
     public List<UserExt> filterUserextDefinitions(Map<String, Object> parameters) {
 
-        //Criteria userExtDefinitionCriteria = currentSession().createCriteria(UserExt.class);
-       // userExtDefinitionCriteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-
-        //Criteria mottoCriteria = userExtDefinitionCriteria.createCriteria("userext");
-
-
         filterByUserExt(parameters);
 
         filterByValidated(parameters);
 
-        filterByMateria(parameters);
+        filterByPopular(parameters);
 
-        filterByRegion(parameters);
+        filterByAge(parameters);
 
-        filterByRegistro(parameters);
+        filterByTags(parameters);
 
         return entityManager.createQuery( userExtCriteriaQuery ).getResultList();
     }
@@ -83,7 +81,7 @@ public class UserExtCriteriaRepository {
         }
     }
 
-    private void filterByMateria(Map<String, Object> parameters) {
+    private void filterByPopular(Map<String, Object> parameters) {
         if (parameters.containsKey("minPopular") || parameters.containsKey("maxPopular")) {
 
             userExtCriteriaQuery.select(userExtRoot);
@@ -110,15 +108,49 @@ public class UserExtCriteriaRepository {
         }
     }
 
-    private void filterByRegion(Map<String, Object> parameters) {
-        if (parameters.containsKey("regiones")) {
+    private void filterByAge(Map<String, Object> parameters) {
+        if (parameters.containsKey("minAge") || parameters.containsKey("maxAge")) {
 
+            userExtCriteriaQuery.select(userExtRoot);
+
+            if(parameters.containsKey("minAge") && parameters.containsKey("maxAge")){
+
+                Integer minPopular = (Integer) parameters.get("minAge");
+                Integer maxPopular = (Integer) parameters.get("maxAge");
+
+                //TODO añadir atributo de edad
+
+                //userExtCriteriaQuery.where(builder.between(userExtRoot.get(UserExt_.age), minPopular, maxPopular));
+            }
+            if(parameters.containsKey("minAge") && !parameters.containsKey("maxAge")){
+
+                Double minPopular = (Double) parameters.get("minAge");
+
+                //userExtCriteriaQuery.where(builder.between(userExtRoot.get(UserExt_.age), minPopular, maxPopular));
+            }
+            if(parameters.containsKey("maxAge") && !parameters.containsKey("minAge")){
+
+                Double maxPopular = (Double) parameters.get("maxAge");
+
+                //userExtCriteriaQuery.where(builder.between(userExtRoot.get(UserExt_.age), minPopular, maxPopular));
+            }
         }
     }
 
-    private void filterByRegistro(Map<String, Object> parameters) {
-        if (parameters.containsKey("registros")) {
+    private void filterByTags(Map<String, Object> parameters) {
+        if (parameters.containsKey("tags")) {
 
+            userExtCriteriaQuery.select(userExtRoot);
+
+            String tags = (String) parameters.get("tags");
+
+            String[] tag = tags.split("#");
+
+            System.out.println(tag);
+
+            for(int i = 1; i < tag.length-1; i++){
+                userExtCriteriaQuery.where(builder.like(userExtRoot.get(UserExt_.tags), "%" + tag[i] + "%"));
+            }
         }
     }
 }

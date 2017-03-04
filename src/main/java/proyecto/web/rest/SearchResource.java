@@ -61,7 +61,7 @@ public class SearchResource {
             params.put("minPopular",minPopular);
         }
         if(tags != null && !tags.equals("")){
-            params.put("validated",validated);
+            params.put("tags",tags);
         }
         if(validated){
             params.put("validated",validated);
