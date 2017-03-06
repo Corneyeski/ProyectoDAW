@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import proyecto.domain.Photo;
 import proyecto.domain.User;
 import proyecto.domain.UserExt;
 import proyecto.repository.*;
@@ -15,6 +16,7 @@ import proyecto.repository.*;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.net.URISyntaxException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,14 +27,11 @@ public class SearchResource {
 
     private final Logger log = LoggerFactory.getLogger(PhotoResource.class);
 
-    private UserRepository userRepository;
+    @Inject
+    private UserExtCriteriaRepository userExtCriteriaRepository;
 
     @Inject
-    UserExtCriteriaRepository userExtCriteriaRepository;
-
-    private PhotoRepository photoRepository;
-
-    private OfferRepository offerRepository;
+    private PhotoCriteriaRepository photoCriteriaRepository;
 
     @RequestMapping(value = "/search/users",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
@@ -81,21 +80,16 @@ public class SearchResource {
     @RequestMapping(value = "/search/photos",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional
-    public ResponseEntity<List<UserExt>> searchPhoto(
-        @RequestParam(value = "city", required = false) String city,
+    public ResponseEntity<List<Photo>> searchPhoto(
+        @RequestParam(value = "username", required = false) String username,
         @RequestParam(value = "minPoints", required = false) Double minPopular,
         @RequestParam(value = "maxPoints", required = false) Double maxPopular,
         @RequestParam(value = "tags", required = false) String tags,
-        @RequestParam(value = "validated", required = false) boolean validated,
-        @RequestParam(value = "ageMin", required = false) Integer ageMin,
-        @RequestParam(value = "ageMax", required = false) Integer ageMax
+        @RequestParam(value = "date", required = false) Date time
     ) throws URISyntaxException {
 
         Map<String, Object> params = new HashMap<>();
 
-        if (city != null && !city.equalsIgnoreCase("")) {
-            params.put("city",city);
-        }
         if(maxPopular != null && maxPopular > 0.0 && maxPopular > minPopular){
             params.put("maxPopular",maxPopular);
         }
@@ -105,17 +99,8 @@ public class SearchResource {
         if(tags != null && !tags.equals("")){
             params.put("tags",tags);
         }
-        if(validated){
-            params.put("validated",validated);
-        }
-        if(ageMin != null && ageMin > 0){
-            params.put("agemin",ageMin);
-        }
-        if(ageMax != null && ageMax > 0){
-            params.put("agemax",ageMax);
-        }
 
-        List<UserExt> result = userExtCriteriaRepository.filterUserextDefinitions(params);
+        List<Photo> result = photoCriteriaRepository.filterPhotoDefinitions(params);
 
         return new ResponseEntity<>(
             result,
