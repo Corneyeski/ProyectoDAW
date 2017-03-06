@@ -118,21 +118,19 @@ public class UserExtCriteriaRepository {
                 Integer minPopular = (Integer) parameters.get("minAge");
                 Integer maxPopular = (Integer) parameters.get("maxAge");
 
-                //TODO añadir atributo de edad
-
-                //userExtCriteriaQuery.where(builder.between(userExtRoot.get(UserExt_.age), minPopular, maxPopular));
+                userExtCriteriaQuery.where(builder.between(userExtRoot.get(UserExt_.age), minPopular, maxPopular));
             }
             if(parameters.containsKey("minAge") && !parameters.containsKey("maxAge")){
 
-                Double minPopular = (Double) parameters.get("minAge");
+                Integer minPopular = (Integer) parameters.get("minAge");
 
-                //userExtCriteriaQuery.where(builder.between(userExtRoot.get(UserExt_.age), minPopular, maxPopular));
+                userExtCriteriaQuery.where(builder.lessThanOrEqualTo(userExtRoot.get(UserExt_.age), minPopular));
             }
             if(parameters.containsKey("maxAge") && !parameters.containsKey("minAge")){
 
-                Double maxPopular = (Double) parameters.get("maxAge");
+                Integer maxPopular = (Integer) parameters.get("maxAge");
 
-                //userExtCriteriaQuery.where(builder.between(userExtRoot.get(UserExt_.age), minPopular, maxPopular));
+                userExtCriteriaQuery.where(builder.greaterThanOrEqualTo(userExtRoot.get(UserExt_.age), maxPopular));
             }
         }
     }

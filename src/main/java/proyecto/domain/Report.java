@@ -21,6 +21,9 @@ public class Report implements Serializable {
     @Column(name = "message")
     private String message;
 
+    @Column(name = "title")
+    private String title;
+
     @ManyToOne
     private User user;
 
@@ -49,6 +52,19 @@ public class Report implements Serializable {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Report title(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public User getUser() {
@@ -115,6 +131,7 @@ public class Report implements Serializable {
         return "Report{" +
             "id=" + id +
             ", message='" + message + "'" +
+            ", title='" + title + "'" +
             '}';
     }
 }

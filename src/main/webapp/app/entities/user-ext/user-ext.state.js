@@ -114,6 +114,7 @@
                                 popular: null,
                                 companyPoints: null,
                                 validated: null,
+                                age: null,
                                 id: null
                             };
                         }

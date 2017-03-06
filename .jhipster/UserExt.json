@@ -50,11 +50,15 @@
         {
             "fieldName": "validated",
             "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "age",
+            "fieldType": "Integer"
         }
     ],
     "changelogDate": "20170210163052",
-    "entityTableName": "user_ext",
     "dto": "no",
-    "pagination": "no",
-    "service": "no"
+    "service": "no",
+    "entityTableName": "user_ext",
+    "pagination": "no"
 }

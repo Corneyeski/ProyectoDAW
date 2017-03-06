@@ -20,6 +20,7 @@
                 <tr>
                     <th><span data-translate="global.field.id">ID</span></th>
                     <th><span data-translate="proyectoApp.report.message">Message</span></th>
+                    <th><span data-translate="proyectoApp.report.title">Title</span></th>
                     <th><span data-translate="proyectoApp.report.user">User</span></th>
                     <th><span data-translate="proyectoApp.report.photo">Photo</span></th>
                     <th><span data-translate="proyectoApp.report.offer">Offer</span></th>
@@ -30,6 +31,7 @@
                 <tr ng-repeat="report in vm.reports track by report.id">
                     <td><a ui-sref="report-detail({id:report.id})">{{report.id}}</a></td>
                     <td>{{report.message}}</td>
+                    <td>{{report.title}}</td>
                     <td>
                         {{report.user.login}}
                     </td>

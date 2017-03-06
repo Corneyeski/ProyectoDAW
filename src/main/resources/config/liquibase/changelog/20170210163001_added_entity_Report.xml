@@ -28,6 +28,10 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="title" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="user_id" type="bigint">
                 <constraints nullable="true" />
             </column>

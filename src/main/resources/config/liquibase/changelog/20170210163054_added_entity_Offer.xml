@@ -36,6 +36,18 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="salary" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="time_job" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="closed" type="bit">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="offer" columnName="time" columnDataType="datetime"/>

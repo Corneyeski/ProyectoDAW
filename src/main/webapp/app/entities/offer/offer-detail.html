@@ -16,6 +16,18 @@
         <dd>
             <span>{{vm.offer.time | date:'medium'}}</span>
         </dd>
+        <dt><span data-translate="proyectoApp.offer.salary">Salary</span></dt>
+        <dd>
+            <span>{{vm.offer.salary}}</span>
+        </dd>
+        <dt><span data-translate="proyectoApp.offer.timeJob">Time Job</span></dt>
+        <dd>
+            <span>{{vm.offer.timeJob}}</span>
+        </dd>
+        <dt><span data-translate="proyectoApp.offer.closed">Closed</span></dt>
+        <dd>
+            <span>{{vm.offer.closed}}</span>
+        </dd>
         <dt><span data-translate="proyectoApp.offer.user">User</span></dt>
         <dd>
             <span ng-repeat="user in vm.offer.users">

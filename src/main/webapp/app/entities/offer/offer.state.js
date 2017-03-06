@@ -107,6 +107,9 @@
                                 name: null,
                                 description: null,
                                 time: null,
+                                salary: null,
+                                timeJob: null,
+                                closed: null,
                                 id: null
                             };
                         }

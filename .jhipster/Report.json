@@ -24,11 +24,15 @@
         {
             "fieldName": "message",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20170210163001",
-    "entityTableName": "report",
     "dto": "no",
-    "pagination": "no",
-    "service": "no"
+    "service": "no",
+    "entityTableName": "report",
+    "pagination": "no"
 }

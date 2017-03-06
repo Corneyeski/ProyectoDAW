@@ -30,6 +30,15 @@ public class Offer implements Serializable {
     @Column(name = "time")
     private ZonedDateTime time;
 
+    @Column(name = "salary")
+    private Integer salary;
+
+    @Column(name = "time_job")
+    private Double timeJob;
+
+    @Column(name = "closed")
+    private Boolean closed;
+
     @ManyToMany
     @JoinTable(name = "offer_user",
                joinColumns = @JoinColumn(name="offers_id", referencedColumnName="id"),
@@ -83,6 +92,45 @@ public class Offer implements Serializable {
         this.time = time;
     }
 
+    public Integer getSalary() {
+        return salary;
+    }
+
+    public Offer salary(Integer salary) {
+        this.salary = salary;
+        return this;
+    }
+
+    public void setSalary(Integer salary) {
+        this.salary = salary;
+    }
+
+    public Double getTimeJob() {
+        return timeJob;
+    }
+
+    public Offer timeJob(Double timeJob) {
+        this.timeJob = timeJob;
+        return this;
+    }
+
+    public void setTimeJob(Double timeJob) {
+        this.timeJob = timeJob;
+    }
+
+    public Boolean isClosed() {
+        return closed;
+    }
+
+    public Offer closed(Boolean closed) {
+        this.closed = closed;
+        return this;
+    }
+
+    public void setClosed(Boolean closed) {
+        this.closed = closed;
+    }
+
     public Set<User> getUsers() {
         return users;
     }
@@ -133,6 +181,9 @@ public class Offer implements Serializable {
             ", name='" + name + "'" +
             ", description='" + description + "'" +
             ", time='" + time + "'" +
+            ", salary='" + salary + "'" +
+            ", timeJob='" + timeJob + "'" +
+            ", closed='" + closed + "'" +
             '}';
     }
 }

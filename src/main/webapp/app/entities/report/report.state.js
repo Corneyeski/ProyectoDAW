@@ -105,6 +105,7 @@
                         entity: function () {
                             return {
                                 message: null,
+                                title: null,
                                 id: null
                             };
                         }

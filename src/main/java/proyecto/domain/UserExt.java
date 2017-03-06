@@ -49,6 +49,9 @@ public class UserExt implements Serializable {
     @Column(name = "validated")
     private Boolean validated;
 
+    @Column(name = "age")
+    private Integer age;
+
     @OneToOne
     @JoinColumn(unique = true)
     private User user;
@@ -191,6 +194,19 @@ public class UserExt implements Serializable {
         this.validated = validated;
     }
 
+    public Integer getAge() {
+        return age;
+    }
+
+    public UserExt age(Integer age) {
+        this.age = age;
+        return this;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
     public User getUser() {
         return user;
     }
@@ -238,6 +254,7 @@ public class UserExt implements Serializable {
             ", popular='" + popular + "'" +
             ", companyPoints='" + companyPoints + "'" +
             ", validated='" + validated + "'" +
+            ", age='" + age + "'" +
             '}';
     }
 }

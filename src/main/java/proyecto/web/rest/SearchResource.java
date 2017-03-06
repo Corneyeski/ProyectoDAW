@@ -34,12 +34,54 @@ public class SearchResource {
 
     private OfferRepository offerRepository;
 
-    @RequestMapping(value = "/search/users",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/search/users",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional
     public ResponseEntity<List<UserExt>> searchUsers(
+        @RequestParam(value = "city", required = false) String city,
+        @RequestParam(value = "minPoints", required = false) Double minPopular,
+        @RequestParam(value = "maxPoints", required = false) Double maxPopular,
+        @RequestParam(value = "tags", required = false) String tags,
+        @RequestParam(value = "validated", required = false) boolean validated,
+        @RequestParam(value = "ageMin", required = false) Integer ageMin,
+        @RequestParam(value = "ageMax", required = false) Integer ageMax
+    ) throws URISyntaxException {
+
+        Map<String, Object> params = new HashMap<>();
+
+        if (city != null && !city.equalsIgnoreCase("")) {
+            params.put("city",city);
+        }
+        if(maxPopular != null && maxPopular > 0.0 && maxPopular > minPopular){
+            params.put("maxPopular",maxPopular);
+        }
+        if(minPopular != null && minPopular > 0.0){
+            params.put("minPopular",minPopular);
+        }
+        if(tags != null && !tags.equals("")){
+            params.put("tags",tags);
+        }
+        if(validated){
+            params.put("validated",validated);
+        }
+        if(ageMin != null && ageMin > 0){
+            params.put("agemin",ageMin);
+        }
+        if(ageMax != null && ageMax > 0){
+            params.put("agemax",ageMax);
+        }
+
+        List<UserExt> result = userExtCriteriaRepository.filterUserextDefinitions(params);
+
+        return new ResponseEntity<>(
+            result,
+            HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/search/photos",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    @Transactional
+    public ResponseEntity<List<UserExt>> searchPhoto(
         @RequestParam(value = "city", required = false) String city,
         @RequestParam(value = "minPoints", required = false) Double minPopular,
         @RequestParam(value = "maxPoints", required = false) Double maxPopular,

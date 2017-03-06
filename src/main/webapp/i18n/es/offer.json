@@ -19,6 +19,9 @@
             "name": "Name",
             "description": "Description",
             "time": "Time",
+            "salary": "Salary",
+            "timeJob": "Time Job",
+            "closed": "Closed",
             "user": "User"
         }
     }

@@ -63,6 +63,10 @@
             <column name="validated" type="bit">
                 <constraints nullable="true" />
             </column>
+
+            <column name="age" type="integer">
+                <constraints nullable="true" />
+            </column>
             <column name="user_id" type="bigint">
                 <constraints unique="true" nullable="true" />
             </column>

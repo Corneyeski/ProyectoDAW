@@ -17,6 +17,7 @@
                 "title": "Report"
             },
             "message": "Message",
+            "title": "Title",
             "user": "User",
             "photo": "Photo",
             "offer": "Offer"
