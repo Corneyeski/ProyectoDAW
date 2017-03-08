@@ -1,11 +1,6 @@
 package proyecto.repository;
 
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.criterion.MatchMode;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
-import proyecto.domain.User;
 import proyecto.domain.UserExt;
 import proyecto.domain.UserExt_;
 
