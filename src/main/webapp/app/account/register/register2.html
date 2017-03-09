@@ -1,3 +1,34 @@
+
+<script>
+    $(document).ready(function(){
+        $('a[href^="#"]').on('click',function (e) {
+            e.preventDefault();
+
+            var target = this.hash;
+            var $target = $(target);
+
+            $('html, body').stop().animate({
+                'scrollTop': $target.offset().top
+            }, 900, 'swing', function () {
+                window.location.hash = target;
+            });
+        });
+    });
+</script>
+
+<div class="inicio">
+    <h1>Inicia Sesión</h1>
+    <div class="divform">
+        <form method="post">
+            <div>
+                <input type="text" name="usuario" placeholder="Usuario" required="required"/>
+                <input type="password" name="pass" placeholder="Contraseña" required="required"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+
 <div class="login">
     <h1>Registro</h1>
     <div class="divform">
@@ -14,7 +45,7 @@
                 <input type="password" name="password" placeholder="Contraseña" required="required" />
                 <input type="password" name="password2" placeholder="Confirmar contraseña" required="required">
             </div>
-            <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
+            <button type="submit" class="btn btn-primary btn-block btn-large">Regístrate</button>
         </form>
     </div>
 
