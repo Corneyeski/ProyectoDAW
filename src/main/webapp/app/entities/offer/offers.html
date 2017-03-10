@@ -25,6 +25,8 @@
                     <th><span data-translate="proyectoApp.offer.salary">Salary</span></th>
                     <th><span data-translate="proyectoApp.offer.timeJob">Time Job</span></th>
                     <th><span data-translate="proyectoApp.offer.closed">Closed</span></th>
+                    <th><span data-translate="proyectoApp.offer.tags">Tags</span></th>
+                    <th><span data-translate="proyectoApp.offer.location">Location</span></th>
                     <th><span data-translate="proyectoApp.offer.user">User</span></th>
                     <th></th>
                 </tr>
@@ -38,6 +40,8 @@
                     <td>{{offer.salary}}</td>
                     <td>{{offer.timeJob}}</td>
                     <td>{{offer.closed}}</td>
+                    <td>{{offer.tags}}</td>
+                    <td>{{offer.location}}</td>
                     <td>
                         <span ng-repeat="user in offer.users">
                             {{user.login}}{{$last ? '' : ', '}}

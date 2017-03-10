@@ -39,6 +39,12 @@ public class Offer implements Serializable {
     @Column(name = "closed")
     private Boolean closed;
 
+    @Column(name = "tags")
+    private String tags;
+
+    @Column(name = "location")
+    private String location;
+
     @ManyToMany
     @JoinTable(name = "offer_user",
                joinColumns = @JoinColumn(name="offers_id", referencedColumnName="id"),
@@ -131,6 +137,32 @@ public class Offer implements Serializable {
         this.closed = closed;
     }
 
+    public String getTags() {
+        return tags;
+    }
+
+    public Offer tags(String tags) {
+        this.tags = tags;
+        return this;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public Offer location(String location) {
+        this.location = location;
+        return this;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     public Set<User> getUsers() {
         return users;
     }
@@ -184,6 +216,8 @@ public class Offer implements Serializable {
             ", salary='" + salary + "'" +
             ", timeJob='" + timeJob + "'" +
             ", closed='" + closed + "'" +
+            ", tags='" + tags + "'" +
+            ", location='" + location + "'" +
             '}';
     }
 }

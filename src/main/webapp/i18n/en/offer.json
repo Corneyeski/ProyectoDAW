@@ -22,6 +22,8 @@
             "salary": "Salary",
             "timeJob": "Time Job",
             "closed": "Closed",
+            "tags": "Tags",
+            "location": "Location",
             "user": "User"
         }
     }

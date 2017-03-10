@@ -110,6 +110,8 @@
                                 salary: null,
                                 timeJob: null,
                                 closed: null,
+                                tags: null,
+                                location: null,
                                 id: null
                             };
                         }

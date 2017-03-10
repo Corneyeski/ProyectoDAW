@@ -54,7 +54,7 @@ public class PhotoCriteriaRepository {
             String searchName = (String) parameters.get("username");
 
             photoCriteriaQuery.select(userExtRoot);
-            photoCriteriaQuery.where(builder.like(userExtRoot.get(Photo_.user.getName()), "%" + searchName + "%"));
+            //photoCriteriaQuery.where(builder.like(userExtRoot.get(Photo_.user.), "%" + searchName + "%"));
         }
     }
     private void filterByTags(Map<String, Object> parameters) {

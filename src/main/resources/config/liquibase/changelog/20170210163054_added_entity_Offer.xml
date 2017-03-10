@@ -48,6 +48,14 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="tags" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="location" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="offer" columnName="time" columnDataType="datetime"/>

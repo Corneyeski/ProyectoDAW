@@ -34,6 +34,14 @@
         {
             "fieldName": "closed",
             "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "tags",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "location",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20170210163054",
