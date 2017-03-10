@@ -1,6 +1,7 @@
 package proyecto.repository;
 
 import org.springframework.stereotype.Repository;
+import proyecto.domain.User;
 import proyecto.domain.UserExt;
 import proyecto.domain.UserExt_;
 
@@ -10,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Root;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +31,10 @@ public class UserExtCriteriaRepository {
 
     private Root<UserExt> userExtRoot;
 
+    private CriteriaQuery<User> userCriteriaQuery;
+
+    private Root<User> userRoot;
+
     @PostConstruct
     public void initCriteria(){
         builder = entityManager.getCriteriaBuilder();
@@ -36,6 +42,10 @@ public class UserExtCriteriaRepository {
         userExtCriteriaQuery = builder.createQuery( UserExt.class );
 
         userExtRoot = userExtCriteriaQuery.from( UserExt.class );
+
+        userCriteriaQuery = builder.createQuery( User.class );
+
+        userRoot = userCriteriaQuery.from(User.class);
     }
 
 
@@ -57,6 +67,13 @@ public class UserExtCriteriaRepository {
     private void filterByUserExt(Map<String, Object> parameters) {
         if(parameters.containsKey("city")) {
             String searchName = (String) parameters.get("city");
+
+            CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+            CriteriaQuery<User> query = cb.createQuery(User.class);
+            Root<UserExt> userExt = query.from(UserExt.class);
+            Join<UserExt, User> user = userExt.join("User");
+            query.select(user).where(cb.equal(userExt.get("firstName"), "prasad"));
+
 
             userExtCriteriaQuery.select(userExtRoot);
             userExtCriteriaQuery.where(builder.like(userExtRoot.get(UserExt_.city), "%" + searchName + "%"));

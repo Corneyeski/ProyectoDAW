@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import proyecto.domain.Offer;
 import proyecto.domain.Photo;
 import proyecto.domain.User;
 import proyecto.domain.UserExt;
@@ -16,6 +17,7 @@ import proyecto.repository.*;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.net.URISyntaxException;
+import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +34,9 @@ public class SearchResource {
 
     @Inject
     private PhotoCriteriaRepository photoCriteriaRepository;
+
+    @Inject
+    private OfferCriteriaRepository offerCriteriaRepository;
 
     @RequestMapping(value = "/search/users",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
@@ -101,6 +106,34 @@ public class SearchResource {
         }
 
         List<Photo> result = photoCriteriaRepository.filterPhotoDefinitions(params);
+
+        return new ResponseEntity<>(
+            result,
+            HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/search/offer",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    @Transactional
+    public ResponseEntity<List<Offer>> searchOffer(
+        @RequestParam(value = "search", required = false) String search,
+        @RequestParam(value = "tags", required = false) String tags,
+        @RequestParam(value = "date", required = false) ZonedDateTime time
+    ) throws URISyntaxException {
+
+        Map<String, Object> params = new HashMap<>();
+
+        if(search != null || !search.equals("")){
+            params.put("search",search);
+        }
+        if(tags != null || !tags.equals("")){
+            params.put("tags",tags);
+        }
+        if(time != null && !time.equals("")){
+            params.put("time",time);
+        }
+
+        List<Offer> result = offerCriteriaRepository.filterOfferDefinitions(params);
 
         return new ResponseEntity<>(
             result,
