@@ -11,6 +11,15 @@
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
+
+            'addValoration':{
+                method:'POST',
+                isArray: false,
+                //FALTA PONER URL
+                url: 'api/photo-valorations/:idPhoto/valoration/:valoration'
+
+
+            },
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {

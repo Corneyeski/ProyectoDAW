@@ -112,6 +112,121 @@
                     </div>
                 </div>
 
+
+
+                <div class="form-group">
+                <label class="control-label" for="address" >Address</label>
+                    <input type="text" class="form-control" id="address" name="address" placeholder="Address"
+                           ng-model="vm.registerAccount.address" ng-minlength=10 ng-maxlength=50 required>
+                    <div ng-show="form.address.$dirty && form.address.$invalid">
+                        <p class="help-block"
+                           ng-show="form.address.$error.required" data-translate="global.messages.validate.address.required">
+                            Your address is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.address.$error.minlength" data-translate="global.messages.validate.address.minlength">
+                            Your address is required to be at least 10 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.address.$error.maxlength" data-translate="global.messages.validate.address.maxlength">
+                            Your address cannot be longer than 50 characters.
+                        </p>
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group">
+                    <label class="control-label" for="phone" >Phone</label>
+                    <input type="number" class="form-control" id="phone" name="phone" placeholder="phone"
+                           ng-model="vm.registerAccount.phone" ng-minlength=6 ng-maxlength=10 required>
+                    <div ng-show="form.phone.$dirty && form.phone.$invalid">
+                        <p class="help-block"
+                           ng-show="form.phone.$error.required" data-translate="">
+                            Your phone is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.phone.$error.minlength" data-translate="">
+                            Your addrphoneess is required to be at least 10 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.phone.$error.maxlength" data-translate="">
+                            Your phone cannot be longer than 50 characters.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                <label class="control-label" for="country" >Country</label>
+                <input type="text" class="form-control" id="country" name="country" placeholder="country"
+                       ng-model="vm.registerAccount.country" ng-minlength=6 ng-maxlength=10 required>
+                <div ng-show="form.country.$dirty && form.country.$invalid">
+                    <p class="help-block"
+                       ng-show="form.country.$error.required" data-translate="">
+                        Your country is required.
+                    </p>
+                    <p class="help-block"
+                       ng-show="form.country.$error.minlength" data-translate="">
+                        Your country is required to be at least 10 characters.
+                    </p>
+                    <p class="help-block"
+                       ng-show="form.country.$error.maxlength" data-translate="">
+                        Your country cannot be longer than 50 characters.
+                    </p>
+                </div>
+            </div>
+
+
+                <div class="form-group">
+                    <label class="control-label" for="city" >City</label>
+                    <input type="text" class="form-control" id="city" name="city" placeholder="city"
+                           ng-model="vm.registerAccount.city" ng-minlength=6 ng-maxlength=10 required>
+                    <div ng-show="form.city.$dirty && form.city.$invalid">
+                        <p class="help-block"
+                           ng-show="form.city.$error.required" data-translate="">
+                            Your city is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.city.$error.minlength" data-translate="">
+                            Your city is required to be at least 10 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.city.$error.maxlength" data-translate="">
+                            Your city cannot be longer than 50 characters.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label" for="age" >Age</label>
+                    <input type="number" class="form-control" id="age" name="age" placeholder="age"
+                           ng-model="vm.registerAccount.age" ng-minlength=2 ng-maxlength=3 required>
+                    <div ng-show="form.age.$dirty && form.age.$invalid">
+                        <p class="help-block"
+                           ng-show="form.age.$error.required" data-translate="">
+                            Your age is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.age.$error.minlength" data-translate="">
+                            Your age is required to be at least 10 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.age.$error.maxlength" data-translate="">
+                            Your age cannot be longer than 3 characters.
+                        </p>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
                 <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" data-translate="register.form.button">Register</button>
             </form>
             <p></p>

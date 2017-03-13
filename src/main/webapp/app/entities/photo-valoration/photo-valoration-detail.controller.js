@@ -17,5 +17,14 @@
             vm.photoValoration = result;
         });
         $scope.$on('$destroy', unsubscribe);
+
+        vm.addValoration = function(){
+            PhotoValoration.addValoration({idPhoto: vm.photoValoration.id,valoration: vm.PhotoValoration.valoration},{},successLike);
+        };
+
+        var successLike = function(result){
+            console.log(result);
+        }
+
     }
 })();
