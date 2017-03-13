@@ -75,9 +75,19 @@ public class AccountResource {
                 .map(user -> new ResponseEntity<>("e-mail address already in use", textPlainHeaders, HttpStatus.BAD_REQUEST))
                 .orElseGet(() -> {
                     User user = userService
-                        .createUser(managedUserVM.getLogin(), managedUserVM.getPassword(),
-                            managedUserVM.getFirstName(), managedUserVM.getLastName(),
-                            managedUserVM.getEmail().toLowerCase(), managedUserVM.getImageUrl(), managedUserVM.getLangKey());
+                        .createUser(managedUserVM.getLogin(),
+                            managedUserVM.getPassword(),
+                            managedUserVM.getFirstName(),
+                            managedUserVM.getLastName(),
+                            managedUserVM.getEmail().toLowerCase(),
+                            managedUserVM.getImageUrl(),
+                            managedUserVM.getLangKey(),
+                            managedUserVM.getPhone(),
+                            managedUserVM.getCity(),
+                            managedUserVM.getAddress(),
+                            managedUserVM.getCountry(),
+                            managedUserVM.getKind(),
+                            managedUserVM.getBirthday());
 
                     mailService.sendActivationEmail(user);
                     return new ResponseEntity<>(HttpStatus.CREATED);

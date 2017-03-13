@@ -45,7 +45,15 @@ public class OfferCriteriaRepository {
         //TODO Añadir atributo Tags y localidad en Offer
         filterByName(parameters);
 
-        return null;
+        filterByTags(parameters);
+
+        filterByCity(parameters);
+
+        filterByDate(parameters);
+
+        filterBySalary(parameters);
+
+        return entityManager.createQuery( offerCriteriaQuery ).getResultList();
     }
 
     private void filterByName(Map<String, Object> parameters) {
@@ -59,10 +67,18 @@ public class OfferCriteriaRepository {
 
     private void filterByTags(Map<String, Object> parameters) {
         if(parameters.containsKey("tags")) {
-            String tags = (String) parameters.get("tags");
 
             offerCriteriaQuery.select(offerRoot);
-            //offerCriteriaQuery.where(builder.like(offerRoot.get(Offer_.name), "%" + searchName + "%"));
+
+            String tags = (String) parameters.get("tags");
+
+            String[] tag = tags.split("#");
+
+            System.out.println(tag);
+
+            for(int i = 1; i < tag.length-1; i++){
+                offerCriteriaQuery.where(builder.like(offerRoot.get(Offer_.tags), "%" + tag[i] + "%"));
+            }
         }
     }
 
@@ -71,7 +87,7 @@ public class OfferCriteriaRepository {
             String city = (String) parameters.get("city");
 
             offerCriteriaQuery.select(offerRoot);
-            //offerCriteriaQuery.where(builder.like(offerRoot.get(Offer_.city), "%" + city + "%"));
+            offerCriteriaQuery.where(builder.like(offerRoot.get(Offer_.location), "%" + city + "%"));
         }
     }
 
@@ -83,4 +99,31 @@ public class OfferCriteriaRepository {
             offerCriteriaQuery.where(builder.between(offerRoot.get(Offer_.time), date, ZonedDateTime.now()));
         }
     }
+    private void filterBySalary(Map<String, Object> parameters) {
+        if (parameters.containsKey("minSalary") || parameters.containsKey("maxSalary")) {
+
+            offerCriteriaQuery.select(offerRoot);
+
+            if(parameters.containsKey("minSalary") && parameters.containsKey("maxSalary")){
+
+                Integer minSalary = (Integer) parameters.get("minSalary");
+                Integer maxSalary = (Integer) parameters.get("maxSalary");
+
+                offerCriteriaQuery.where(builder.between(offerRoot.get(Offer_.salary), minSalary, maxSalary));
+            }
+            if(parameters.containsKey("minSalary") && !parameters.containsKey("maxSalary")){
+
+                Integer minSalary = (Integer) parameters.get("minSalary");
+
+                offerCriteriaQuery.where(builder.lessThanOrEqualTo(offerRoot.get(Offer_.salary), minSalary));
+            }
+            if(parameters.containsKey("maxSalary") && !parameters.containsKey("minSalary")){
+
+                Integer maxSalary = (Integer) parameters.get("maxSalary");
+
+                offerCriteriaQuery.where(builder.greaterThanOrEqualTo(offerRoot.get(Offer_.salary), maxSalary));
+            }
+        }
+    }
+
 }

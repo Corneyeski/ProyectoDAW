@@ -1,7 +1,9 @@
 package proyecto.service;
 
+import io.github.jhipster.domain.util.JSR310DateConverters;
 import proyecto.domain.Authority;
 import proyecto.domain.User;
+import proyecto.domain.UserExt;
 import proyecto.repository.AuthorityRepository;
 import proyecto.repository.PersistentTokenRepository;
 import proyecto.repository.UserRepository;
@@ -86,7 +88,8 @@ public class UserService {
     }
 
     public User createUser(String login, String password, String firstName, String lastName, String email,
-        String imageUrl, String langKey) {
+                            String imageUrl, String langKey,
+                           Integer phone, String city, String address,String country, Integer kind, ZonedDateTime birthday) {
 
         User newUser = new User();
         Authority authority = authorityRepository.findOne(AuthoritiesConstants.USER);
@@ -108,6 +111,19 @@ public class UserService {
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);
         log.debug("Created Information for User: {}", newUser);
+
+        //TODO Crear UserExt
+
+        UserExt userExt = new UserExt();
+
+        userExt.setAddress(address);
+        userExt.setBirthdate(birthday.toLocalDate());
+        userExt.setCountry(country);
+        userExt.setPhone(phone);
+        userExt.setCity(city);
+        userExt.setKind(kind);
+        userExt.setUser(newUser);
+
         return newUser;
     }
 
@@ -193,7 +209,7 @@ public class UserService {
         });
     }
 
-    @Transactional(readOnly = true)    
+    @Transactional(readOnly = true)
     public Page<UserDTO> getAllManagedUsers(Pageable pageable) {
         return userRepository.findAll(pageable).map(UserDTO::new);
     }

@@ -118,7 +118,10 @@ public class SearchResource {
     public ResponseEntity<List<Offer>> searchOffer(
         @RequestParam(value = "search", required = false) String search,
         @RequestParam(value = "tags", required = false) String tags,
-        @RequestParam(value = "date", required = false) ZonedDateTime time
+        @RequestParam(value = "date", required = false) ZonedDateTime time,
+        @RequestParam(value = "minSalary", required = false) Double minSalary,
+        @RequestParam(value = "maxSalary", required = false) Double maxSalary,
+        @RequestParam(value = "city", required = false) String city
     ) throws URISyntaxException {
 
         Map<String, Object> params = new HashMap<>();
@@ -129,8 +132,17 @@ public class SearchResource {
         if(tags != null || !tags.equals("")){
             params.put("tags",tags);
         }
+        if(city != null && !city.equals("")){
+            params.put("city",city);
+        }
         if(time != null && !time.equals("")){
             params.put("time",time);
+        }
+        if(maxSalary != null && maxSalary > 0.0 && maxSalary > minSalary){
+            params.put("maxSalary",maxSalary);
+        }
+        if(minSalary != null && minSalary > 0.0){
+            params.put("minSalary",minSalary);
         }
 
         List<Offer> result = offerCriteriaRepository.filterOfferDefinitions(params);
