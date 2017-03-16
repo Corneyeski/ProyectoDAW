@@ -43,13 +43,14 @@ public class UserService {
 
     private final AuthorityRepository authorityRepository;
 
-    private UserExtRepository userExtRepository;
+    private final UserExtRepository userExtRepository;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, PersistentTokenRepository persistentTokenRepository, AuthorityRepository authorityRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, PersistentTokenRepository persistentTokenRepository, AuthorityRepository authorityRepository, UserExtRepository userExtRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.persistentTokenRepository = persistentTokenRepository;
         this.authorityRepository = authorityRepository;
+        this.userExtRepository = userExtRepository;
     }
 
     public Optional<User> activateRegistration(String key) {
@@ -119,11 +120,19 @@ public class UserService {
         if(birthday != null) {
             userExt.setBirthdate(birthday.toLocalDate());
         }
+        //userExt.setId(Long.parseLong("6"));
         userExt.setCountry(country);
         userExt.setPhone(phone);
         userExt.setCity(city);
         userExt.setKind(kind);
         userExt.setUser(newUser);
+        /*userExt.setValidated(false);
+        userExt.setTags("");
+        userExt.setPopular(0.0);
+        userExt.setCompanyPoints(0.0);
+        userExt.setAge(18);*/
+
+        System.out.println(userExt);
 
         userExtRepository.save(userExt);
 
