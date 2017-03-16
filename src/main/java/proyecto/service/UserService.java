@@ -6,7 +6,6 @@ import proyecto.domain.User;
 import proyecto.domain.UserExt;
 import proyecto.repository.AuthorityRepository;
 import proyecto.repository.PersistentTokenRepository;
-import proyecto.repository.UserExtRepository;
 import proyecto.repository.UserRepository;
 import proyecto.security.AuthoritiesConstants;
 import proyecto.security.SecurityUtils;
@@ -42,8 +41,6 @@ public class UserService {
     private final PersistentTokenRepository persistentTokenRepository;
 
     private final AuthorityRepository authorityRepository;
-
-    private UserExtRepository userExtRepository;
 
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, PersistentTokenRepository persistentTokenRepository, AuthorityRepository authorityRepository) {
         this.userRepository = userRepository;
@@ -112,26 +109,25 @@ public class UserService {
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         authorities.add(authority);
         newUser.setAuthorities(authorities);
+        userRepository.save(newUser);
+        log.debug("Created Information for User: {}", newUser);
+
+        //TODO Crear UserExt
 
         UserExt userExt = new UserExt();
 
         userExt.setAddress(address);
         if(birthday != null) {
             userExt.setBirthdate(birthday.toLocalDate());
+            int año = ZonedDateTime.now().getYear();
+            int año2 = birthday.getYear();
+
         }
         userExt.setCountry(country);
         userExt.setPhone(phone);
         userExt.setCity(city);
         userExt.setKind(kind);
         userExt.setUser(newUser);
-
-        userExtRepository.save(userExt);
-
-        newUser.setUserExt(userExt);
-
-        userRepository.save(newUser);
-        log.debug("Created Information for User: {}", newUser);
-
 
         return newUser;
     }
