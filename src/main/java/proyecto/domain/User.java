@@ -91,6 +91,13 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
     private Set<PersistentToken> persistentTokens = new HashSet<>();
 
+
+    @OneToOne(optional = false, mappedBy = "user")
+    @NotNull
+    @JoinColumn(unique = true)
+    @JsonIgnore
+    private UserExt userExt;
+
     public Long getId() {
         return id;
     }
@@ -203,6 +210,10 @@ public class User extends AbstractAuditingEntity implements Serializable {
     public void setPersistentTokens(Set<PersistentToken> persistentTokens) {
         this.persistentTokens = persistentTokens;
     }
+
+    public UserExt getUserExt() {return userExt;}
+
+    public void setUserExt(UserExt userExt) {this.userExt = userExt;}
 
     @Override
     public boolean equals(Object o) {

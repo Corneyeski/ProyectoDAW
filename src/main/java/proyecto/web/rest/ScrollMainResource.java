@@ -1,6 +1,7 @@
 package proyecto.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +35,7 @@ public class ScrollMainResource {
     @RequestMapping(value = "/main/scroll",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional
-    public ResponseEntity<List<MainScrollDTO>> MainScroll(){
+    public ResponseEntity<List<Photo>> MainScroll(){
 
         //TODO obtener fotos donde la puntuacion del usuario sea mayor a 3
 
@@ -44,6 +45,8 @@ public class ScrollMainResource {
 
         //UserExt userExt = userExtRepository.findByUser(photos.get(1).getUser());
 
-        return null;
+        return new ResponseEntity<>(
+            photos,
+            HttpStatus.OK);
     }
 }

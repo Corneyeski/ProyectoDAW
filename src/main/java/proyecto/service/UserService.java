@@ -112,10 +112,6 @@ public class UserService {
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         authorities.add(authority);
         newUser.setAuthorities(authorities);
-        userRepository.save(newUser);
-        log.debug("Created Information for User: {}", newUser);
-
-        //TODO Crear UserExt
 
         UserExt userExt = new UserExt();
 
@@ -130,6 +126,12 @@ public class UserService {
         userExt.setUser(newUser);
 
         userExtRepository.save(userExt);
+
+        newUser.setUserExt(userExt);
+
+        userRepository.save(newUser);
+        log.debug("Created Information for User: {}", newUser);
+
 
         return newUser;
     }
