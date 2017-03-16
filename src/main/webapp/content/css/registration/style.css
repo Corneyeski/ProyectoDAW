@@ -1,0 +1,910 @@
+/* color:#322b80;*/
+@font-face {
+    src: url("../fonts/tradegothiceighteen.otf");
+    font-family: "tradegothiceighteen";
+}
+@font-face {
+    src: url("../fonts/TradeGothicBoldCondTwenty.otf");
+    font-family: "TradeGothicBoldCondTwenty";
+}
+html {
+    height: 100%;
+    min-height: 100%;
+    background-color: #fff;
+}
+body {
+    margin:0 auto;
+    height: 100%;
+    background-color: #fff;
+}
+p {
+    font-family: 'Merriweather',serif !important;
+    font-weight: lighter !important;
+}
+a {
+    text-decoration: none;
+}
+* {
+    margin:0px;
+    padding:0px;
+}
+h3 {
+    font-family: 'TradeGothicBoldCondTwenty';
+}
+h6 {
+    font-family: "tradegothiceighteen";
+}
+#fullpage iframe .i4ewOd-pzNkMb-haAclf{display:none !important}
+/********** BROWSER ERROR **********/
+.error {
+    position: relative;
+    width: 100%;
+    height: 50%;
+    margin-bottom: 50px;
+    background-image: url(../img/error.jpg);
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+.error img {
+    width: 20%;
+}
+.teclado{}
+/********** INDEX *********/
+.oculto {
+    display:none;
+}
+.textodisplay {
+    display: none;
+}
+.logo {
+    position: fixed;
+    top:17px;
+    left:17px;
+    width: 60px;
+    height: auto;
+    z-index: 9999999;
+}
+.logo img {
+    width: 100%;
+}
+.contenedor3{
+    position: absolute;
+    right:0px;
+    top: 100%;
+    height: auto;
+    transform: translate(-500%, -100%);
+    -webkit-transform: translate(-50%, -100%);
+}
+#slide1 .contenedor,
+#slide2 .contenedor,
+#slide3 .contenedor,
+#slide4 .contenedor,
+#slide5 .contenedor,
+#slide6 .contenedor,
+#slide7 .contenedor,
+#slide8 .contenedor,
+#slide9 .contenedor,
+#slide10 .contenedor,
+#section3 .contenedor{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 70%;
+    text-align: center;
+    height: auto;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+#slide1 .contenedor h4,
+#slide2 .contenedor h4,
+#slide3 .contenedor h4,
+#slide4 .contenedor h4,
+#slide5 .contenedor h4,
+#slide6 .contenedor h4,
+#slide7 .contenedor h4,
+#slide8 .contenedor h4,
+#slide9 .contenedor h4,
+#slide10 .contenedor h4,
+#section3 .contenedor h4{
+    font-size: 100%;
+    font-family: "tradegothiceighteen";
+    font-weight: lighter;
+    color:#fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: -5px;
+    font-size:27px;
+    margin-top:30px;
+}
+#slide1 .contenedor h3,
+#slide2 .contenedor h3,
+#slide3 .contenedor h3,
+#slide4 .contenedor h3,
+#slide5 .contenedor h3,
+#slide6 .contenedor h3,
+#slide7 .contenedor h3,
+#slide8 .contenedor h3,
+#slide9 .contenedor h3,
+#slide10 .contenedor h3,
+#section3 .contenedor h3 {
+    text-transform: uppercase;
+    color:#fff;
+    font-size: 6em;
+    text-align: center;
+    font-size: 105px;
+    margin-bottom: -15px;
+    font-family:'TradeGothicBoldCondTwenty';
+    font-weight:normal;
+}
+#slide1 .contenedor p,
+#slide2 .contenedor p,
+#slide3 .contenedor p,
+#slide4 .contenedor p,
+#slide5 .contenedor p,
+#slide6 .contenedor p,
+#slide7 .contenedor p,
+#slide8 .contenedor p,
+#slide9 .contenedor p,
+#slide10 .contenedor p {
+    color:#fff;
+    font-size:20px;
+    width:80%;
+    margin:0 auto;
+    font-family: 'Merriweather',serif !important;
+}
+#section3 .contenedor p {
+    color:#fff;
+    font-size:20px;
+    width:60%;
+    margin:0 auto;
+    font-family: 'Merriweather',serif !important;
+}
+.contenedormanifesto {
+    position: absolute;
+    background-color: red;
+    left: 50%;
+    top: 50%;
+    width: 80%;
+    height: auto;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+.contenedor {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 80%;
+    height: auto;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+.contenedor h4 {
+    font-size: 100%;
+    font-family: "tradegothiceighteen";
+    font-weight: lighter;
+    color:#fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: -5px;
+    font-size:27px;
+    font-weight: normal;
+    margin-top:30px;
+}
+.contenedor p {
+    color:#fff;
+    font-size:20px;
+    width:80%;
+    margin:0 auto;
+    font-family: 'Merriweather',serif !important;
+    font-weight: normal;
+}
+.contenedor .slogan {
+    width: 30%;
+}
+#section0 .contenedor {
+    width: 100%;
+}
+#section1 .contenedor {
+    width: 80%;
+}
+.column {
+    float: left;
+    position: relative;
+    width: 50%;
+    min-height: 100%;
+    margin:0 auto;
+    background-color: #fff;
+}
+.column img {
+    width: 100%;
+    margin:0 auto;
+}
+.column iframe {
+    width: 100%;
+    height: auto;
+    min-height: 400px;
+    padding:0px;
+}
+.contenedor h1 {
+    text-transform: uppercase;
+    color:#fff;
+    font-size: 6em;
+    text-align: center;
+    font-size: 105px;
+    margin-bottom: -15px;
+    font-family:'TradeGothicBoldCondTwenty';
+    font-weight:normal;
+}
+.contenedor h2 {
+    font-family: "tradegothiceighteen";
+    font-size: 3em;
+    margin:0;
+    padding:0;
+    color:#322b80;
+}
+.contenedor h5 {
+    text-transform: uppercase;
+    color:#fff;
+    font-size: 5em;
+    text-align: center;
+}
+.contenedor2 h6 {
+    font-size: 32px;
+    color:#fff !important;
+    font-family: 'tradegothiceighteen';
+    margin-top: 5px;
+    letter-spacing: 3px;
+    font-weight: normal;
+}
+.contenedor a{
+    color:#000;
+    font-size:15px;
+    color:#222221;
+}
+.italic {
+    font-style: italic;
+    line-height: .9em;
+    -ms-transform: rotate(-7deg); /* IE 9 */
+    -webkit-transform: rotate(-7deg); /* Chrome, Safari, Opera */
+    transform: rotate(-7deg);
+}
+.contenedor2 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100% !important;
+    height: auto;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+.contenedor2 p {
+    width: 550px;
+    color:#322b80;
+    margin:0 auto;
+    font-size: 17px;
+}
+#section1 .contenedor2 h6 {
+    font-size:30px;
+    color:#322b80;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-family:'tradegothiceighteen';
+}
+.contenedor2 h3 {
+    font-size: 100%;
+    font-family: "tradegothiceighteen";
+    font-weight: lighter;
+    color:#fff;
+    margin-bottom: 20px;
+    font-size:22px;
+    letter-spacing:2px;
+}
+.godeep {
+    display: block;
+    border:1px solid #fff;
+    width: auto;
+    padding:7px 17px 4px 20px !important;
+    color:#fff;
+    width: 100px;
+    margin:0 auto;
+    font-size: 17px;
+    font-weight: normal;
+    margin-top: 50px;
+    text-transform: uppercase;
+    transition:.35s;
+    letter-spacing: 3px;
+    font-family: "tradegothiceighteen";
+}
+.godeep:hover {
+    transition:.35s;
+    background-color: #fff;
+    color:#000;
+}
+.homemanifesto {
+    display: inline-table;
+    vertical-align: top;
+    color:#fff;
+    width: 300px;
+    max-width: 400px;
+    height: auto;
+    margin:40px;
+
+}
+.homemanifesto h1 {
+    font-size: 300%;
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 38px;
+    font-weight:normal;
+    font-family:'TradeGothicBoldCondTwenty';
+    letter-spacing:1px;
+}
+.homemanifesto p {
+    color:#fff;
+    letter-spacing: 1px;
+    text-align: center;
+    font-family: 'Merriweather', serif;
+    font-weight: lighter;
+    font-weight: 400;
+    width: auto;
+    line-height:16px;
+    font-size:16px;
+}
+.slide {
+    position: relative;
+    margin:0;
+    padding:0;
+    padding-left: 0px;
+    margin-left: 0px;
+}
+.slide p{
+    text-align: center;
+    width:100%; margin-top:20px;
+}
+.slide .contenedor {
+    width: 50%;
+    margin-left: 0%;
+    height: auto;
+    text-align: center;
+}
+.intro h2 {
+    text-transform: uppercase;
+    color:#fff;
+    text-align: center;
+}
+.intro h1 {
+    text-transform: uppercase;
+    color:#fff;
+    font-size: 122px;
+    text-align: center;
+}
+
+/********** WORKS ************/
+.textwork {
+    text-align: center;
+    width: auto;
+    margin:0 auto;
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.column .backimg {
+    width: 100%;
+    z-index: -1;
+}
+.column .halfimg {
+    position: absolute;
+    width: 50%;
+    top:0;
+    left:0;
+}
+.column .moved {
+    position: absolute;
+    left:-100%;
+    bottom:4px;
+}
+.zindex {
+    z-index: 99999999 !important;
+}
+.manifesto {
+    float: left;
+    clear: both;
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    text-align: center;
+    padding-bottom: 100px;
+    margin-top: 0px!important;
+    top:0px;
+}
+.smallmanifesto{
+    display: inline-table;
+    width: 300px;
+    height: 200px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 100px;
+    text-align: left;
+    vertical-align: top;
+    padding-top: 0px;
+    top:0px;
+}
+.smallmanifesto h3 {
+    text-transform: uppercase;
+    margin-top: 0px !important;
+    text-align: left;
+    font-size: 52px;
+    color:#000;
+}
+.manifestobutton {
+    color:#fff;
+    margin:0 auto;
+    text-transform: uppercase;
+    width: auto;
+    margin-top: 60px;
+    text-decoration: none;
+    font-size: 24px;
+    letter-spacing: 1px;
+    font-weight: lighter;
+    font-family:"tradegothiceighteen";
+}
+.escondido {
+    display: none;
+}
+#section0{
+    /*background-image: url(../img/portada.png);*/
+    padding: 00% 0 0 0;
+    background-position: center;
+    background-color: #000;
+}
+#section0 p {
+    width: 350px;
+    margin:0 auto;
+}
+#section0 video {
+    position: absolute;
+    min-width: 100%; min-height: 100%;
+    background-size: cover;
+    overflow: hidden;
+    background-position: center center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+.mas {
+    display: none;
+}
+.workbutton {
+    display: none;
+}
+#section4 .contenedor p{
+    width:350px;
+    margin:0 auto;
+}
+#section4 h4 {
+    color:black;
+}
+#section5 {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    clear: both;
+}
+.contenedor4 {
+    position: absolute;
+    width: 100%;
+    top:50px;
+    text-align: center;
+}
+.contenedor4 img{
+    width:600px;
+}
+#section5 {
+    color:#322b80;
+}
+#section5 p {
+    color:#322b80;
+    font-size: 16px;
+    width: 450px;
+    margin:0 auto;
+    font-weight: lighter !important;
+}
+#section5 a {
+    color:#322b80;
+    font-size: 16px;
+    font-family: 'Merriweather',serif;
+}
+.simple {
+    width: 60px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.center {
+    margin-top: 350px;
+    padding-bottom: 100px;
+}
+#section5 h6 {
+    font-size: 15px;
+    color: #b7b7b7;
+    margin-top: 30px;
+    font-weight: lighter;
+}
+.c25{
+    float:left;
+    width:25%;
+}
+.c50{
+    float:left;
+    width:50%;
+}
+.c60{
+    float:left;
+    width:60%;
+}
+.c75{
+    float:right;
+    width:75%;
+}
+.c100{
+    width:100%;
+}
+.c3{
+    display:inline-table;
+    width:20%;
+    margin:0 auto;
+    margin-top:50px;
+    margin-bottom: 50px;
+    margin-left:20px;
+    margin-right: 20px;
+}
+.blanco{
+    position:relative;
+    width:100%;
+    height:auto;
+    float:left;
+}
+.bottom{
+    position:relative;
+    width:50%;
+    bottom:0px;
+    left:0px;
+}
+#section3 .contenedor {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 80%;
+    height: auto;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+.homemanifesto h2 {
+    display: none;
+}
+.textooculto {
+    display: none;
+}
+@media (max-width: 1250px) {
+    body{
+        text-align:center;
+    }
+    .c3{
+        display:inline-table;
+        width:80% !important;
+        margin:0 auto;
+    }
+    video {
+        display: none;
+    }
+    .contenedor .slogan {
+        width: 30%;
+    }
+    #section0{
+        background-image: url(../img/portada.png);
+        padding: 00% 0 0 0;
+        background-position: center;
+    }
+    #section3{
+        background-image: url(../img/board.png);
+        padding: 00% 0 0 0;
+        background-position: center;
+    }
+    #section5 .slide {
+        margin-top: 0%;
+    }
+}
+.homemanifesto {
+    display: inline-table;
+    vertical-align: top;
+    color:#fff;
+    width: 25%;
+    max-width: 400px;
+    height: auto;
+    margin:20px;
+}
+.homemanifesto h1 {
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 45px;
+    font-weight:normal;
+    font-family:'TradeGothicBoldCondTwenty';
+    letter-spacing:1px;
+}
+.homemanifesto p {
+    color:#fff;
+    letter-spacing: 1px;
+    text-align: center;
+    font-family: 'Merriweather', serif;
+    font-weight: lighter;
+    font-weight: 400;
+    width: auto;
+    line-height:16px;
+    font-size:15px;
+}
+@media (max-width: 1050px) {
+    .teclado{display:none !important}
+}
+@media (max-width: 800px) {
+    .contenedor .slogan {
+        width: 50%;
+    }
+    .homemanifesto {
+        display: inline-table;
+        vertical-align: top;
+        color:#fff;
+        width: 70%;
+        max-width: 400px;
+        height: auto;
+        margin:30px;
+    }
+    .homemanifesto p {
+        font-size: 15px;
+    }
+    .homemanifesto h1 {
+        font-size: 40px;
+    }
+    .contenedor2 h3 {
+        font-size: 16px;
+        margin-top: 50px;
+    }
+    .contenedor h4 {
+        font-size: 22px;
+    }
+    #section3 .contenedor  {
+        width: 80%;
+    }
+    #section5 .slide {
+        margin-top: 30%;
+    }
+
+
+}
+@media (max-width: 480px) {
+    .mas {
+        display: none;
+    }
+    #fp-nav ul li, .fp-slidesNav ul li{margin:2px}
+    .slogan {
+        width: 60% !important;
+        margin-top: 10px;
+    }
+    #section5 .slide {
+        margin-top: 0px;
+    }
+    #section0 h1 {
+        font-size: 3em;
+    }
+    .mostrado {
+        display: none;
+    }
+    .escondido {
+        display: inline;
+        -ms-transform: rotate(-40deg); /* IE 9 */
+        -webkit-transform: rotate(-40deg); /* Chrome, Safari, Opera */
+        transform: rotate(-40deg);
+    }
+    .oculto {
+        display: inline;
+        width: 55%;
+        margin-top: 80px;
+    }
+    .simple {
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        width: 90px;
+        margin:0 auto;
+    }
+    .contenedor h1 {
+        font-size:8em;
+    }
+    .contenedor h2 {
+        font-family: "tradegothiceighteen";
+        font-size: 30px;
+        margin:0;
+        padding:0;
+        font-weight: lighter;
+        color:#322b80;
+    }
+    /******** MANIFESTO ********/
+    #section1 .fp-controlArrow.fp-prev {
+        display: none;
+    }
+    #section1 .fp-controlArrow.fp-next {
+        display: none;
+    }
+    /********* ABOUT **********/
+    .contenedor2 h3 {
+        margin:30px 30px 30px 30px;
+    }
+    .godeep {
+        display: block;
+        border:1px solid #fff;
+        width: auto;
+        padding:5px 10px 2px 10px !important;
+        color:#fff;
+        width: 100px;
+        margin:0 auto;
+        font-weight: bold;
+        margin-top: 30px;
+        text-transform: uppercase;
+        transition:.35s;
+        letter-spacing: 2px;
+        font-family: "tradegothiceighteen";
+    }
+    .homemanifesto {
+        margin:0px;
+        width: 90%;
+        font-size: 22px;
+        letter-spacing: 3px;
+    }
+    .homemanifesto h1 {
+        text-align: center;
+        font-size: 2em;
+        line-height: 30px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .homemanifesto p {
+        display: none;
+    }
+    #section1 .contenedor3, #section2 .contenedor3{
+        display: none;
+    }
+    /********* WORKS *********/
+    #section3 .contenedor {
+        width:100%;
+    }
+    #section3 .contenedor h3,#section3 .contenedor h5 {
+        font-size: 3em;
+    }
+    #section3 .contenedor h4 {
+        font-size: 1.4em;
+    }
+    #section3 .contenedor p {
+        width: auto;
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 14px;
+    }
+    #section3 .godeep {
+        margin-top: 50px;
+    }
+    #section3 a {
+        text-align: center;
+    }
+    #section3 .fp-controlArrow.fp-prev {
+        /*left: 5px;
+        width: 20px;
+        height: 20px;
+        background-image: url(../img/arroww1.png);
+        border:none;
+        -webkit-background-size: cover;
+        background-size: cover;*/
+        display: none;
+    }
+    #section3 .fp-controlArrow.fp-next {
+        /*right: 5px;
+        width: 20px;
+        height: 20px;
+        background-image: url(../img/arroww1.png);
+        border:none;
+        -webkit-background-size: cover;
+        background-size: cover;
+        -ms-transform: rotate(-180deg); IE 9
+        -webkit-transform: rotate(-180deg);  Chrome, Safari, Opera
+        transform: rotate(-180deg);*/
+        display: none;
+    }
+    #section4 h3 {
+        font-size: 3em;
+    }
+    #section4 .contenedor {
+        width: 100% !important;
+    }
+    #section4 .contenedor p {
+        width: auto;
+        font-size: 14px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    #section4 .godeep {
+        margin-top: 50px;
+    }
+    .contenedor4 {
+        padding-top: 300px !important;
+        padding-bottom: 75px;
+        width: 100%;
+    }
+    .contenedor4 h3{
+        font-size: 4em;
+        margin-bottom: 30px;
+    }
+    .contenedor h4 {
+        font-size: 1.4em;
+    }
+    .cnt {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        bottom:50px;
+        text-align:center;
+    }
+    .workbutton {
+        display: inline;
+        border:1px solid #fff;
+        color:#fff;
+        text-transform: uppercase;
+        padding-top: 10px;
+        padding-bottom: 7px;
+        padding-left: 15px;
+        padding-right: 15px;
+        bottom:30px;
+        margin:0 auto;
+        font-size: 14px;
+        letter-spacing: 3px;
+        transition:.35s;
+    }
+    .workbutton:hover {
+        transition:.35s;
+        background-color: #fff;
+        color:#000;
+    }
+    /*********** APPROACH *********/
+    #section0 p {
+        font-size: 14px;
+        width: 90%;
+    }
+    #section1 .contenedor2 h6 {
+        font-size: 16px !important;
+        margin-bottom: 10px;
+    }
+    /******** CONTACT ********/
+    #section5 .slide p {
+        width: 90%;
+    }
+}
+@media (max-width: 350px) {
+    .contenedor h2 {
+        font-size: 2em;
+    }
+    .contenedor2 h3 {
+        font-size: .8em;
+    }
+    .homemanifesto {
+        margin:0px;
+    }
+    .homemanifesto h1 {
+        font-size: 1.5em;
+    }
+}
+
+
+
+
+
+
+
+
