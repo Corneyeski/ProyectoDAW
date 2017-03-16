@@ -6,6 +6,7 @@ import proyecto.domain.User;
 import proyecto.domain.UserExt;
 import proyecto.repository.AuthorityRepository;
 import proyecto.repository.PersistentTokenRepository;
+import proyecto.repository.UserExtRepository;
 import proyecto.repository.UserRepository;
 import proyecto.security.AuthoritiesConstants;
 import proyecto.security.SecurityUtils;
@@ -41,6 +42,8 @@ public class UserService {
     private final PersistentTokenRepository persistentTokenRepository;
 
     private final AuthorityRepository authorityRepository;
+
+    private UserExtRepository userExtRepository;
 
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, PersistentTokenRepository persistentTokenRepository, AuthorityRepository authorityRepository) {
         this.userRepository = userRepository;
@@ -125,6 +128,8 @@ public class UserService {
         userExt.setCity(city);
         userExt.setKind(kind);
         userExt.setUser(newUser);
+
+        userExtRepository.save(userExt);
 
         return newUser;
     }
