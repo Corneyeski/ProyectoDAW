@@ -1,289 +1,1041 @@
-<div>
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <h1 data-translate="register.title">Registration</h1>
 
-            <div class="alert alert-success" ng-show="vm.success" data-translate="register.messages.success">
-                <strong>Registration saved!</strong> Please check your email for confirmation.
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Retro</title>
+    <link rel="shortcut icon" href="img/favicon.png" type="image/png" />
+    <meta name="author" content="" />
+    <meta name="description" content="GAS is a creative and strategy agency based in Barcelona. We love the power of advertising, branding, design, digital and social." />
+    <meta name="keywords"  content="GAS, GAS agency, agency, make it gas, publicity, advertising, ads, marketing, consulting, barcelona, ​​TV, spots, commercials, press, radio, print, graphic design, image, brand, branding, copywriting, social media, art direction, photography, strategy, creatives, creativity, positioning, internet, naming, identity, story, web, mobile, brand positioning, video, motion graphics, marketing consulting, branded content, digital, digital agency, on-line, strategists, thinkers, creative designers, brothers, free spirits, challenge lovers, coffee drinkers, obsessive doers, doers, business focused dreamers, dreamers, concept developers, line crossers, football, insight, understanding, shape, creative response, naming, identity, story, web, mobile, brand positioning, video, motion graphics, marketing Consulting, branded content, simple, powerful, meaningful projects, international campaign, global campaign, documentary," />
+    <meta name="Resource-type" content="Document" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+
+    <!--<link href='http://fonts.googleapis.com/css?family=Merriweather:300' rel='stylesheet' type='text/css'>-->
+    <style>
+        a{text-decoration:none !important; }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="es/css/flechita.css" />
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="css/loading-bar.css" rel="stylesheet" type="text/css"/>
+
+    <style>
+        @media screen and (-webkit-min-device-pixel-ratio:0) {
+            .contenedor4 img{
+                width:500px;
+            }
+        }
+        @media (min-width: 1900px) {
+            #section0,
+            #section1,
+            #section2,
+            #section3,
+            #section4{
+                background-size: cover;
+                -webkit-background-size: 160% !important;
+                background-size: 160% !important;
+                background-position: center;
+            }
+            .contenedor h2 {
+                font-size: 4.5em;
+                margin:0;
+                padding:0;
+                color:#322b80;
+            }
+        }
+        /* will be red only in google chrome */
+
+        /* Style for our header texts
+        * --------------------------------------- */
+        /* Centered texts in each section
+        * --------------------------------------- */
+        .section{
+            text-align:center;
+            -webkit-background-size: cover;
+            background-size: cover;
+        }
+        /* Backgrounds will cover all the section
+        * --------------------------------------- */
+        #section0,
+        #section1,
+        #section2,
+        #section3{
+            background-size: cover;
+        }
+        /* Defining each section background and styles
+        * --------------------------------------- */
+        #section1, #section2, #section3, #section4 {
+            height: 100% !important;
+        }
+        #section2{
+            background-color: coral;
+            padding: 0% 0 0 0;
+        }
+        #section3 h1{
+            color: #000;
+        }
+
+
+        /*Adding background for the slides
+       * --------------------------------------- */
+        #slide1, #slide2, #slide3, #slide4, #slide5, #slide6 {
+            text-align: center;
+            padding-top: 0px;
+            -webkit-background-size: cover;
+            background-size: cover;
+            background-position:center;
+            height:100%;
+            background-color: #fff;
+        }
+        .slide {
+            text-align: center;
+            padding-top: 0px;
+            -webkit-background-size: cover;
+            background-size: cover;
+            background-position:center;
+            height:100%;
+            background-color: #fff;
+        }
+        #slide1{
+            background-image: url(img/dewards.png);
+        }
+        #slide2{
+            background-image: url(works/imgdocus/docus1.jpg);
+        }
+        #slide3 {
+            background-position: left center;
+            background-image: url(works/imgwanted/wanted1.jpg);
+        }
+        #slide4 {
+            background-image: url(works/images/opinadors1.jpg);
+        }
+        #slide5 {
+            background-image: url(works/imggentdara/gentdara1.jpg);
+        }
+        #slide6 {
+            background-image: url(works/imgnarrativa/narrativa1.jpg);
+        }
+        #slide7 {
+            background-image: url(works/imgtous/tous.jpg);
+        }
+        #slide8 {
+            background-image: url(img/roca.jpg);
+        }
+        #slide9 {
+            background-image: url(img/triitme.jpg);
+        }
+        #slide10 {
+            background-image: url(img/MercatFlors_G001.jpg);
+        }
+        #slide11 {
+            background-image: url(img/ravalejar.jpg);
+        }
+        /* Bottom menu
+        * --------------------------------------- */
+        #infoMenu li a {
+            color: #fff;
+        }
+        @media (max-width: 800px) {
+            .homemanifesto p {
+                display: none;
+            }
+            .mas {
+                display: inline;
+                display: inline-table;
+                font-size: 20px;
+                width: 100%;
+                height: auto;
+                margin:0px;
+                margin-bottom: 5px;
+                color:#fff;
+                text-align: center;
+            }
+            .homemanifesto h1 {
+                display:none;
+            }
+            .homemanifesto h2 {
+                display:inline;
+                font-size: 30px;
+                text-align: center;
+                margin-bottom: 20px;
+                line-height: 35px;
+                font-weight:normal;
+                font-family:'TradeGothicBoldCondTwenty';
+                letter-spacing:1px;
+            }
+            #section3 .contenedor p {
+                color:#fff;
+                font-size:20px;
+                width:90%;
+                margin:0 auto;
+                font-family: 'Merriweather',serif !important;
+            }
+            #section3 .contenedor h4 {
+                font-size:17px;
+                margin-top: 50px;
+            }
+            #section3 .contenedor h3 {
+                font-size:3em;
+                margin-bottom: -25px;
+            }
+            .contenedor .textooculto {
+                display:inline;
+                width: 80% !important;
+                margin:0 auto;
+                line-height: 15px;
+                font-size:16px !important;
+                margin-left: 50px;
+                margin-right: 50px;
+            }
+            .textoprueba {
+                display: none;
+            }
+        }
+        @media (max-width: 480px) {
+            .logo {
+                position: fixed;
+                top:15px;
+                left:15px;
+                width: 60px;
+                height: auto;
+                z-index: 9999999;
+            }
+            .slide h3{
+                font-size:18px;
+            }
+            .slogan img {
+                margin-top: 10px;
+            }
+            .contenedor .slogan {
+                margin-top: 30px;
+            }
+            .contenedor .slogan img {
+                padding-top: 20px;
+            }
+            .manifestobutton {
+                color:#fff;
+                margin:0 auto;
+                text-transform: uppercase;
+                width: auto;
+                margin-top: 20px;
+                text-decoration: none;
+                font-size: 24px;
+                letter-spacing: 1px;
+                font-weight: lighter;
+                font-family:"tradegothiceighteen";
+            }
+            #section2 .contenedor2 h3 {
+                margin-top: 30px;
+            }
+            .contenedor .textooculto {
+                display:inline;
+                width: 80% !important;
+                margin:0 auto;
+                line-height: 15px;
+                font-size:18px !important;
+                margin-left: 50px;
+                margin-right: 50px;
+            }
+            .contenedor .textooculto p {
+                width: 80% !important;
+            }
+            #section0 {
+                background-image: url(img/portada.png) !important;
+            }
+            #section2 {
+                background-image: url(img/sinsights.png) !important;
+            }
+            #section3 {
+                background-image: url(img/sculture.png) !important;
+            }
+            #section3 .contenedor h4 {
+                font-size:17px;
+                margin-top: 50px;
+            }
+            #section3 .godeep {
+                margin-top: 100px;
+            }
+            .simple {
+                display: none;
+            }
+            #section5 iframe {
+                margin-bottom: 50px;
+            }
+            #section3 #slide1 {
+                background-color:brown;
+                background-repeat: no-repeat;
+                -webkit-background-size: cover;
+                background-size: cover;
+            }
+        }
+        @media (max-width: 320px) {
+            .logo {
+                position: fixed;
+                top:15px;
+                left:15px;
+                width: 55px;
+                height: auto;
+                z-index: 9999999;
+            }
+            .contenedor .textooculto {
+                display:inline;
+                width: 80% !important;
+                margin:0 auto;
+                line-height: 15px;
+                font-size:16px !important;
+                margin-left: 50px;
+                margin-right: 50px;
+            }
+            #section1 .contenedor h2 {
+                font-size: 25px;
+            }
+            #section2 .contenedor2 h3 {
+                margin-top: 60px;
+            }
+            #section3 .godeep {
+                margin-top: 60px;
+            }
+        }
+    </style>
+
+    <!--[if IE]>
+    <script type="text/javascript">
+        var console = { log: function() {} };
+    </script>
+    <![endif]-->
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+
+    <script type="text/javascript" src="js/jquery.fullPage.js"></script>
+    <script type="text/javascript" src="js/examples.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                verticalCentered: false,
+                onLeave:function(index, nextIndex, direction){
+                    //after leaving section 2
+                    if(nextIndex ==1 || nextIndex ==3 || nextIndex ==4 || nextIndex ==5){
+                        $('.menu-button').addClass('menu-blanco');
+                        $('.idiomas a').addClass('idiomablanco');
+                    }
+                    else{
+                        $('.menu-button').removeClass('menu-blanco');
+                        $('.idiomas a').removeClass('idiomablanco');
+                    }
+
+
+                },
+                afterRender: function(){
+                    $( ".nextsection:hidden" ).fadeIn( 3000 );
+                    $( ".teclado" ).fadeIn( 'fast' , function() {
+                        $( ".teclado" ).delay(3000).fadeOut(  4000  );
+                    });
+                }
+
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(function(){
+
+            $('a[href*=#]').click(function() {
+
+                if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+                    && location.hostname == this.hostname) {
+                    var $target = $(this.hash);
+                    var t = $(this);
+                    var $nav_a = $('.menu-wrap a');
+                    $nav_a
+                        .removeClass('active')
+                        .addClass('');
+
+                    t.addClass('active');
+
+                    $target = $target.length && $target || $('[name=' + this.hash.slice(1) +']');
+                    if ($target.length) {
+
+                        var targetOffset = $target.offset().top;
+
+                        $('html,body').animate({scrollTop: targetOffset}, 1000);
+
+                        return false;
+
+                    }
+
+                }
+            });
+
+
+
+        });
+    </script>
+    </script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript">
+        function initialize() {
+            var latlng = new google.maps.LatLng(41.388118, 2.173378);
+            var settings = {
+                zoom: 17,
+                center: latlng,
+                mapTypeControl: true,
+                mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+                navigationControl: true,
+                navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+                mapTypeId: google.maps.MapTypeId.ROADMAP};
+            var map = new google.maps.Map(document.getElementById("map_canvas"), settings);
+            var contentString = '<div id="content">'+
+                '<div id="siteNotice">'+
+                '</div>'+
+                '<h1 id="firstHeading" class="firstHeading">GAS & GIN</h1>'+
+                '<div id="bodyContent">'+
+                '<p>Via Laietana 64, 1-1, 08003 Barcelona<br/>Tel +34 93 328 53 19</p>'+
+                '</div>'+
+                '</div>';
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+
+            var companyShadow = new google.maps.MarkerImage('images/logo_shadow.png',
+                new google.maps.Size(130,50),
+                new google.maps.Point(0,0),
+                new google.maps.Point(65, 50));
+
+            var companyImage = new google.maps.MarkerImage('img/logo-mapa.png',
+                new google.maps.Size(130,50),
+                new google.maps.Point(0,0),
+                new google.maps.Point(30,60)
+            );
+
+
+            var companyPos = new google.maps.LatLng(41.388118, 2.173378);
+
+            var companyMarker = new google.maps.Marker({
+                position: companyPos,
+                map: map,
+                icon: companyImage,
+                shadow: companyShadow,
+                title:"Gas&Gin",
+                zIndex: 3});
+
+
+
+
+
+            google.maps.event.addListener(companyMarker, 'click', function() {
+                infowindow.open(map,companyMarker);
+            });
+        }
+    </script>
+</head>
+<body onload="initialize()">
+
+<div id="fullpage" style="margin:0 auto;">
+    <div class="section" id="section0" data-anchor="first-page" style=" margin: 0 auto; text-align: center;padding-top: 0px; padding:0px;background-color: brown;">
+
+        <div class="contenedor">
+
+            <div>
+                <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.register()" show-validation>
+                    <div class="row">
+                        <div class="col-md-12" style="margin-bottom:20px"><h3>Login</h3></div>
+                        <div class="col-md-4 col-md-offset-2">
+                            <div class="form-group">
+                                <label class="control-label" for="login" data-translate="global.form.username">Username</label>
+                                <input type="text" class="form-control" id="login" name="login" placeholder="{{'global.form.username.placeholder' | translate}}"
+                                       ng-model="vm.registerAccount.login" ng-minlength=1 ng-maxlength=50 ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>
+                                <!--<div ng-show="form.login.$dirty && form.login.$invalid">
+                                    <p class="help-block"
+                                           ng-show="form.login.$error.required" data-translate="register.messages.validate.login.required">
+                                        Your username is required.
+                                    </p>
+                                    <p class="help-block"
+                                           ng-show="form.login.$error.minlength" data-translate="register.messages.validate.login.minlength">
+                                        Your username is required to be at least 1 character.
+                                    </p>
+                                    <p class="help-block"
+                                           ng-show="form.login.$error.maxlength" data-translate="register.messages.validate.login.maxlength">
+                                        Your username cannot be longer than 50 characters.
+                                    </p>
+                                    <p class="help-block"
+                                           ng-show="form.login.$error.pattern" data-translate="register.messages.validate.login.pattern">
+                                        Your username can only contain lower-case letters and digits.
+                                </p>
+                                </div>-->
+                            </div>
+
+                            <!--Siguiente -->
+
+                            <!-- Siguiente -->
+
+                            <!-- Siguiente -->
+
+                            <!-- Siguiente -->
+
+                            <!-- Siguinete -->
+
+                            <!-- Acaba div -->
+                        </div>
+                        <p></p>
+                        <!--<div class="alert alert-warning" data-translate="global.messages.info.authenticated" translate-compile>
+                            If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
+                        </div>-->
+
+                        <div class="col-md-4 col-md-offset-2" style="margin-left:10px">
+                            <div class="form-group">
+                                <label class="control-label" for="password" data-translate="global.form.newpassword">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="{{'global.form.newpassword.placeholder' | translate}}"
+                                       ng-model="vm.registerAccount.password" ng-minlength=4 ng-maxlength=50 required>
+                                <!--<div ng-show="form.password.$dirty && form.password.$invalid">
+                                    <p class="help-block"
+                                       ng-show="form.password.$error.required" data-translate="global.messages.validate.newpassword.required">
+                                        Your password is required.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.password.$error.minlength" data-translate="global.messages.validate.newpassword.minlength">
+                                        Your password is required to be at least 4 characters.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.password.$error.maxlength" data-translate="global.messages.validate.newpassword.maxlength">
+                                        Your password cannot be longer than 50 characters.
+                                    </p>
+                                </div>-->
+                                <!--<password-strength-bar password-to-check="vm.registerAccount.password"></password-strength-bar>-->
+                            </div>
+                            <!-- Siguiente -->
+
+                            <!-- Siguiente -->
+
+                            <!-- Siguiente -->
+
+                            <!-- Siguiente -->
+
+                            <!-- Siguiente -->
+                        </div>
+                        <div class="col-md-12">
+                            <button style="width:7%;" type="submit" ng-disabled="form.$invalid" class="btn btn-primary" data-translate="register.form.button">Login</button>
+                        </div>
+
+
+
+
+                    </div><!--Cierra Row -->
+                </form>
             </div>
 
-            <div class="alert alert-danger" ng-show="vm.error" data-translate="register.messages.error.fail">
-                <strong>Registration failed!</strong> Please try again later.
-            </div>
+        </div>
+    </div>
+    <div class="section" id="section1" data-anchor="second-page" style="background-color: cadetblue; margin: 0 auto; text-align: center;padding-top: 0px; padding:0px;">
+        <div class="contenedor">
+            <div>
+                <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.register()" show-validation>
+                    <div class="row">
+                        <div class="col-md-12" style="margin-bottom:20px"><h3>Regístrate como usuario</h3></div>
+                        <div class="col-md-4 col-md-offset-2">
+                            <div class="form-group">
+                                <label class="control-label" for="login" data-translate="global.form.username">Username</label>
+                                <input type="text" class="form-control" id="login" name="login" placeholder="{{'global.form.username.placeholder' | translate}}"
+                                       ng-model="vm.registerAccount.login" ng-minlength=1 ng-maxlength=50 ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>
+                                <!--<div ng-show="form.login.$dirty && form.login.$invalid">
+                                    <p class="help-block"
+                                           ng-show="form.login.$error.required" data-translate="register.messages.validate.login.required">
+                                        Your username is required.
+                                    </p>
+                                    <p class="help-block"
+                                           ng-show="form.login.$error.minlength" data-translate="register.messages.validate.login.minlength">
+                                        Your username is required to be at least 1 character.
+                                    </p>
+                                    <p class="help-block"
+                                           ng-show="form.login.$error.maxlength" data-translate="register.messages.validate.login.maxlength">
+                                        Your username cannot be longer than 50 characters.
+                                    </p>
+                                    <p class="help-block"
+                                           ng-show="form.login.$error.pattern" data-translate="register.messages.validate.login.pattern">
+                                        Your username can only contain lower-case letters and digits.
+                                </p>
+                                </div>-->
+                            </div>
 
-            <div class="alert alert-danger" ng-show="vm.errorUserExists" data-translate="register.messages.error.userexists">
-                <strong>Login name already registered!</strong> Please choose another one.
-            </div>
+                            <!--Siguiente -->
+                            <div class="form-group">
+                                <label class="control-label" for="email" data-translate="global.form.email">E-mail</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="{{'global.form.email.placeholder' | translate}}"
+                                       ng-model="vm.registerAccount.email" ng-minlength=5 ng-maxlength=100 required>
+                                <!--<div ng-show="form.email.$dirty && form.email.$invalid">
+                                    <p class="help-block"
+                                       ng-show="form.email.$error.required" data-translate="global.messages.validate.email.required">
+                                        Your e-mail is required.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.email.$error.email" data-translate="global.messages.validate.email.invalid">
+                                        Your e-mail is invalid.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.email.$error.minlength" data-translate="global.messages.validate.email.minlength">
+                                        Your e-mail is required to be at least 5 characters.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.email.$error.maxlength" data-translate="global.messages.validate.email.maxlength">
+                                        Your e-mail cannot be longer than 100 characters.
+                                    </p>
+                                </div>-->
+                            </div>
+                            <!-- Siguiente -->
+                            <div class="form-group">
+                                <label class="control-label" for="password" data-translate="global.form.newpassword">New password</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="{{'global.form.newpassword.placeholder' | translate}}"
+                                       ng-model="vm.registerAccount.password" ng-minlength=4 ng-maxlength=50 required>
+                                <!--<div ng-show="form.password.$dirty && form.password.$invalid">
+                                    <p class="help-block"
+                                       ng-show="form.password.$error.required" data-translate="global.messages.validate.newpassword.required">
+                                        Your password is required.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.password.$error.minlength" data-translate="global.messages.validate.newpassword.minlength">
+                                        Your password is required to be at least 4 characters.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.password.$error.maxlength" data-translate="global.messages.validate.newpassword.maxlength">
+                                        Your password cannot be longer than 50 characters.
+                                    </p>
+                                </div>-->
+                                <password-strength-bar password-to-check="vm.registerAccount.password"></password-strength-bar>
+                            </div>
+                            <!-- Siguiente -->
+                            <div class="form-group">
+                                <label class="control-label" for="confirmPassword" data-translate="global.form.confirmpassword">New password confirmation</label>
+                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="{{'global.form.confirmpassword.placeholder' | translate}}"
+                                       ng-model="vm.confirmPassword" ng-minlength=4 ng-maxlength=50 required>
+                                <!--<div ng-show="form.confirmPassword.$dirty && form.confirmPassword.$invalid">
+                                    <p class="help-block"
+                                       ng-show="form.confirmPassword.$error.required" data-translate="global.messages.validate.confirmpassword.required">
+                                        Your confirmation password is required.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.confirmPassword.$error.minlength" data-translate="global.messages.validate.confirmpassword.minlength">
+                                        Your confirmation password is required to be at least 4 characters.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.confirmPassword.$error.maxlength" data-translate="global.messages.validate.confirmpassword.maxlength">
+                                        Your confirmation password cannot be longer than 50 characters.
+                                    </p>
+                                </div>-->
+                            </div>
+                            <!-- Siguiente -->
+                            <!--<div class="form-group">
+                                <label class="control-label" for="address" >Address</label>
+                                <input type="text" class="form-control" id="address" name="address" placeholder="Address"
+                                       ng-model="vm.registerAccount.address" ng-minlength=10 ng-maxlength=50 required>
+                                    <div ng-show="form.address.$dirty && form.address.$invalid">
+                                        <p class="help-block"
+                                           ng-show="form.address.$error.required" data-translate="global.messages.validate.address.required">
+                                            Your address is required.
+                                        </p>
+                                        <p class="help-block"
+                                           ng-show="form.address.$error.minlength" data-translate="global.messages.validate.address.minlength">
+                                            Your address is required to be at least 10 characters.
+                                        </p>
+                                        <p class="help-block"
+                                           ng-show="form.address.$error.maxlength" data-translate="global.messages.validate.address.maxlength">
+                                            Your address cannot be longer than 50 characters.
+                                        </p>
+                                    </div>
+                            </div>-->
+                            <!-- Siguinete -->
+                            <div class="form-group">
+                                <label class="control-label" for="phone" >Phone</label>
+                                <input type="number" class="form-control" id="phone" name="phone" placeholder="phone"
+                                       ng-model="vm.registerAccount.phone" ng-minlength=6 ng-maxlength=10 required>
+                                <!--<div ng-show="form.phone.$dirty && form.phone.$invalid">
+                                    <p class="help-block"
+                                       ng-show="form.phone.$error.required" data-translate="">
+                                        Your phone is required.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.phone.$error.minlength" data-translate="">
+                                        Your addrphoneess is required to be at least 10 characters.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.phone.$error.maxlength" data-translate="">
+                                        Your phone cannot be longer than 50 characters.
+                                    </p>
+                                </div>-->
+                            </div>
+                            <!-- Acaba div -->
+                        </div>
+                        <p></p>
+                        <!--<div class="alert alert-warning" data-translate="global.messages.info.authenticated" translate-compile>
+                            If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
+                        </div>-->
+                        <div class="col-md-4 col-md-offset-2" style="margin-left:10px">
+                            <div class="form-group" >
+                                <label class="control-label" for="firstName" >firstname</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="firstName"
+                                       ng-model="vm.registerAccount.firstName" ng-minlength=6 ng-maxlength=10 required>
+                                <div ng-show="form.firstName.$dirty && form.firstName.$invalid">
+                                    <!--<p class="help-block"-->
+                                    <!--ng-show="form.firstName.$error.required" data-translate="">-->
+                                    <!--Your phone is required.-->
+                                    <!--</p>-->
+                                    <!--<p class="help-block"-->
+                                    <!--ng-show="form.firstName.$error.minlength" data-translate="">-->
+                                    <!--Your addrphoneess is required to be at least 10 characters.-->
+                                    <!--</p>-->
+                                    <!--<p class="help-block"-->
+                                    <!--ng-show="form.firstName.$error.maxlength" data-translate="">-->
+                                    <!--Your phone cannot be longer than 50 characters.-->
+                                    <!--</p>-->
+                                </div>
+                            </div>
+                            <!-- Siguiente -->
+                            <div class="form-group">
+                                <label class="control-label" for="lastName" >lastName</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="lastName"
+                                       ng-model="vm.registerAccount.lastName" ng-minlength=6 ng-maxlength=10 required>
+                                <div ng-show="form.lastName.$dirty && form.lastName.$invalid">
+                                    <!--<p class="help-block"-->
+                                    <!--ng-show="form.firstName.$error.required" data-translate="">-->
+                                    <!--Your phone is required.-->
+                                    <!--</p>-->
+                                    <!--<p class="help-block"-->
+                                    <!--ng-show="form.firstName.$error.minlength" data-translate="">-->
+                                    <!--Your addrphoneess is required to be at least 10 characters.-->
+                                    <!--</p>-->
+                                    <!--<p class="help-block"-->
+                                    <!--ng-show="form.firstName.$error.maxlength" data-translate="">-->
+                                    <!--Your phone cannot be longer than 50 characters.-->
+                                    <!--</p>-->
+                                </div>
+                            </div>
+                            <!-- Siguiente -->
+                            <div class="form-group">
+                                <label class="control-label" for="country" >Country</label>
+                                <input type="text" class="form-control" id="country" name="country" placeholder="country"
+                                       ng-model="vm.registerAccount.country" ng-minlength=6 ng-maxlength=10 required>
+                                <!--<div ng-show="form.country.$dirty && form.country.$invalid">
+                                    <p class="help-block"
+                                       ng-show="form.country.$error.required" data-translate="">
+                                        Your country is required.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.country.$error.minlength" data-translate="">
+                                        Your country is required to be at least 10 characters.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.country.$error.maxlength" data-translate="">
+                                        Your country cannot be longer than 50 characters.
+                                    </p>
+                                </div>-->
+                            </div>
+                            <!-- Siguiente -->
+                            <div class="form-group">
+                                <label class="control-label" for="city" >City</label>
+                                <input type="text" class="form-control" id="city" name="city" placeholder="city"
+                                       ng-model="vm.registerAccount.city" ng-minlength=6 ng-maxlength=10 required>
+                                <!--<div ng-show="form.city.$dirty && form.city.$invalid">
+                                    <p class="help-block"
+                                       ng-show="form.city.$error.required" data-translate="">
+                                        Your city is required.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.city.$error.minlength" data-translate="">
+                                        Your city is required to be at least 10 characters.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.city.$error.maxlength" data-translate="">
+                                        Your city cannot be longer than 50 characters.
+                                    </p>
+                                </div>-->
+                            </div>
+                            <!-- Siguiente -->
+                            <div class="form-group">
+                                <label class="control-label" for="birthday" >Age</label>
+                                <input type="date" class="form-control" id="birthday" name="birthday" placeholder="birthday"
+                                       ng-model="vm.registerAccount.birthday"  required>
+                            </div>
+                            <!-- Siguiente -->
+                        </div>
+                        <div class="col-md-12">
+                            <button style="width:7%;" type="submit" ng-disabled="form.$invalid" class="btn btn-primary" data-translate="register.form.button">Register</button>
+                        </div>
 
-            <div class="alert alert-danger" ng-show="vm.errorEmailExists" data-translate="register.messages.error.emailexists">
-                <strong>E-mail is already in use!</strong> Please choose another one.
-            </div>
 
-            <div class="alert alert-danger" ng-show="vm.doNotMatch" data-translate="global.messages.error.dontmatch">
-                The password and its confirmation do not match!
+
+
+                    </div><!--Cierra Row -->
+                </form>
             </div>
         </div>
-        <div class="col-md-8 col-md-offset-2">
-            <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.register()" show-validation>
-
-                <div class="form-group">
-                    <label class="control-label" for="login" data-translate="global.form.username">Username</label>
-                    <input type="text" class="form-control" id="login" name="login" placeholder="{{'global.form.username.placeholder' | translate}}"
-                           ng-model="vm.registerAccount.login" ng-minlength=1 ng-maxlength=50 ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>
-                    <div ng-show="form.login.$dirty && form.login.$invalid">
-                        <p class="help-block"
-                               ng-show="form.login.$error.required" data-translate="register.messages.validate.login.required">
-                            Your username is required.
-                        </p>
-                        <p class="help-block"
-                               ng-show="form.login.$error.minlength" data-translate="register.messages.validate.login.minlength">
-                            Your username is required to be at least 1 character.
-                        </p>
-                        <p class="help-block"
-                               ng-show="form.login.$error.maxlength" data-translate="register.messages.validate.login.maxlength">
-                            Your username cannot be longer than 50 characters.
-                        </p>
-                        <p class="help-block"
-                               ng-show="form.login.$error.pattern" data-translate="register.messages.validate.login.pattern">
-                            Your username can only contain lower-case letters and digits.
-                    </p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="email" data-translate="global.form.email">E-mail</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="{{'global.form.email.placeholder' | translate}}"
-                           ng-model="vm.registerAccount.email" ng-minlength=5 ng-maxlength=100 required>
-                    <div ng-show="form.email.$dirty && form.email.$invalid">
-                        <p class="help-block"
-                               ng-show="form.email.$error.required" data-translate="global.messages.validate.email.required">
-                            Your e-mail is required.
-                        </p>
-                        <p class="help-block"
-                               ng-show="form.email.$error.email" data-translate="global.messages.validate.email.invalid">
-                            Your e-mail is invalid.
-                        </p>
-                        <p class="help-block"
-                               ng-show="form.email.$error.minlength" data-translate="global.messages.validate.email.minlength">
-                            Your e-mail is required to be at least 5 characters.
-                        </p>
-                        <p class="help-block"
-                               ng-show="form.email.$error.maxlength" data-translate="global.messages.validate.email.maxlength">
-                            Your e-mail cannot be longer than 100 characters.
-                        </p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="password" data-translate="global.form.newpassword">New password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="{{'global.form.newpassword.placeholder' | translate}}"
-                           ng-model="vm.registerAccount.password" ng-minlength=4 ng-maxlength=50 required>
-                    <div ng-show="form.password.$dirty && form.password.$invalid">
-                        <p class="help-block"
-                               ng-show="form.password.$error.required" data-translate="global.messages.validate.newpassword.required">
-                            Your password is required.
-                        </p>
-                        <p class="help-block"
-                               ng-show="form.password.$error.minlength" data-translate="global.messages.validate.newpassword.minlength">
-                            Your password is required to be at least 4 characters.
-                        </p>
-                        <p class="help-block"
-                               ng-show="form.password.$error.maxlength" data-translate="global.messages.validate.newpassword.maxlength">
-                            Your password cannot be longer than 50 characters.
-                        </p>
-                    </div>
-                    <password-strength-bar password-to-check="vm.registerAccount.password"></password-strength-bar>
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="confirmPassword" data-translate="global.form.confirmpassword">New password confirmation</label>
-                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="{{'global.form.confirmpassword.placeholder' | translate}}"
-                           ng-model="vm.confirmPassword" ng-minlength=4 ng-maxlength=50 required>
-                    <div ng-show="form.confirmPassword.$dirty && form.confirmPassword.$invalid">
-                        <p class="help-block"
-                               ng-show="form.confirmPassword.$error.required" data-translate="global.messages.validate.confirmpassword.required">
-                            Your confirmation password is required.
-                        </p>
-                        <p class="help-block"
-                               ng-show="form.confirmPassword.$error.minlength" data-translate="global.messages.validate.confirmpassword.minlength">
-                            Your confirmation password is required to be at least 4 characters.
-                        </p>
-                        <p class="help-block"
-                               ng-show="form.confirmPassword.$error.maxlength" data-translate="global.messages.validate.confirmpassword.maxlength">
-                            Your confirmation password cannot be longer than 50 characters.
-                        </p>
-                    </div>
-                </div>
 
 
 
-                <div class="form-group">
-                <label class="control-label" for="address" >Address</label>
-                    <input type="text" class="form-control" id="address" name="address" placeholder="Address"
-                           ng-model="vm.registerAccount.address" ng-minlength=10 ng-maxlength=50 required>
-                    <div ng-show="form.address.$dirty && form.address.$invalid">
-                        <p class="help-block"
-                           ng-show="form.address.$error.required" data-translate="global.messages.validate.address.required">
-                            Your address is required.
-                        </p>
-                        <p class="help-block"
-                           ng-show="form.address.$error.minlength" data-translate="global.messages.validate.address.minlength">
-                            Your address is required to be at least 10 characters.
-                        </p>
-                        <p class="help-block"
-                           ng-show="form.address.$error.maxlength" data-translate="global.messages.validate.address.maxlength">
-                            Your address cannot be longer than 50 characters.
-                        </p>
-                    </div>
-                </div>
+    </div>
+    <div class="section" id="section2" data-anchor="third-page">
+
+        <div class="contenedor">
+            <div>
+                <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.register()" show-validation>
+                    <div class="row">
+                        <div class="col-md-12" style="margin-bottom:20px"><h3>Regístrate como empresa</h3></div>
+                        <div class="col-md-4 col-md-offset-2">
+                            <div class="form-group">
+                                <label class="control-label" for="login" data-translate="global.form.username">Username</label>
+                                <input type="text" class="form-control" id="login" name="login" placeholder="{{'global.form.username.placeholder' | translate}}"
+                                       ng-model="vm.registerAccount.login" ng-minlength=1 ng-maxlength=50 ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>
+                                <!--<div ng-show="form.login.$dirty && form.login.$invalid">
+                                    <p class="help-block"
+                                           ng-show="form.login.$error.required" data-translate="register.messages.validate.login.required">
+                                        Your username is required.
+                                    </p>
+                                    <p class="help-block"
+                                           ng-show="form.login.$error.minlength" data-translate="register.messages.validate.login.minlength">
+                                        Your username is required to be at least 1 character.
+                                    </p>
+                                    <p class="help-block"
+                                           ng-show="form.login.$error.maxlength" data-translate="register.messages.validate.login.maxlength">
+                                        Your username cannot be longer than 50 characters.
+                                    </p>
+                                    <p class="help-block"
+                                           ng-show="form.login.$error.pattern" data-translate="register.messages.validate.login.pattern">
+                                        Your username can only contain lower-case letters and digits.
+                                </p>
+                                </div>-->
+                            </div>
+
+                            <!--Siguiente -->
+                            <div class="form-group">
+                                <label class="control-label" for="email" data-translate="global.form.email">E-mail</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="{{'global.form.email.placeholder' | translate}}"
+                                       ng-model="vm.registerAccount.email" ng-minlength=5 ng-maxlength=100 required>
+                                <!--<div ng-show="form.email.$dirty && form.email.$invalid">
+                                    <p class="help-block"
+                                       ng-show="form.email.$error.required" data-translate="global.messages.validate.email.required">
+                                        Your e-mail is required.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.email.$error.email" data-translate="global.messages.validate.email.invalid">
+                                        Your e-mail is invalid.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.email.$error.minlength" data-translate="global.messages.validate.email.minlength">
+                                        Your e-mail is required to be at least 5 characters.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.email.$error.maxlength" data-translate="global.messages.validate.email.maxlength">
+                                        Your e-mail cannot be longer than 100 characters.
+                                    </p>
+                                </div>-->
+                            </div>
+                            <!-- Siguiente -->
+                            <div class="form-group">
+                                <label class="control-label" for="password" data-translate="global.form.newpassword">New password</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="{{'global.form.newpassword.placeholder' | translate}}"
+                                       ng-model="vm.registerAccount.password" ng-minlength=4 ng-maxlength=50 required>
+                                <!--<div ng-show="form.password.$dirty && form.password.$invalid">
+                                    <p class="help-block"
+                                       ng-show="form.password.$error.required" data-translate="global.messages.validate.newpassword.required">
+                                        Your password is required.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.password.$error.minlength" data-translate="global.messages.validate.newpassword.minlength">
+                                        Your password is required to be at least 4 characters.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.password.$error.maxlength" data-translate="global.messages.validate.newpassword.maxlength">
+                                        Your password cannot be longer than 50 characters.
+                                    </p>
+                                </div>-->
+                                <password-strength-bar password-to-check="vm.registerAccount.password"></password-strength-bar>
+                            </div>
+                            <!-- Siguiente -->
+                            <div class="form-group">
+                                <label class="control-label" for="confirmPassword" data-translate="global.form.confirmpassword">New password confirmation</label>
+                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="{{'global.form.confirmpassword.placeholder' | translate}}"
+                                       ng-model="vm.confirmPassword" ng-minlength=4 ng-maxlength=50 required>
+                                <!--<div ng-show="form.confirmPassword.$dirty && form.confirmPassword.$invalid">
+                                    <p class="help-block"
+                                       ng-show="form.confirmPassword.$error.required" data-translate="global.messages.validate.confirmpassword.required">
+                                        Your confirmation password is required.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.confirmPassword.$error.minlength" data-translate="global.messages.validate.confirmpassword.minlength">
+                                        Your confirmation password is required to be at least 4 characters.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.confirmPassword.$error.maxlength" data-translate="global.messages.validate.confirmpassword.maxlength">
+                                        Your confirmation password cannot be longer than 50 characters.
+                                    </p>
+                                </div>-->
+                            </div>
+                            <!-- Siguiente -->
+                            <div class="form-group">
+                                <label class="control-label" for="address" >Address</label>
+                                <input type="text" class="form-control" id="address" name="address" placeholder="Address"
+                                       ng-model="vm.registerAccount.address" ng-minlength=10 ng-maxlength=50 required>
+                                <!--<div ng-show="form.address.$dirty && form.address.$invalid">
+                                    <p class="help-block"
+                                       ng-show="form.address.$error.required" data-translate="global.messages.validate.address.required">
+                                        Your address is required.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.address.$error.minlength" data-translate="global.messages.validate.address.minlength">
+                                        Your address is required to be at least 10 characters.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.address.$error.maxlength" data-translate="global.messages.validate.address.maxlength">
+                                        Your address cannot be longer than 50 characters.
+                                    </p>
+                                </div>-->
+                            </div>
+                            <!-- Siguinete -->
+                            <div class="form-group">
+                                <label class="control-label" for="phone" >Phone</label>
+                                <input type="number" class="form-control" id="phone" name="phone" placeholder="phone"
+                                       ng-model="vm.registerAccount.phone" ng-minlength=6 ng-maxlength=10 required>
+                                <!--<div ng-show="form.phone.$dirty && form.phone.$invalid">
+                                    <p class="help-block"
+                                       ng-show="form.phone.$error.required" data-translate="">
+                                        Your phone is required.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.phone.$error.minlength" data-translate="">
+                                        Your addrphoneess is required to be at least 10 characters.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.phone.$error.maxlength" data-translate="">
+                                        Your phone cannot be longer than 50 characters.
+                                    </p>
+                                </div>-->
+                            </div>
+                            <!-- Acaba div -->
+                        </div>
+                        <p></p>
+                        <!--<div class="alert alert-warning" data-translate="global.messages.info.authenticated" translate-compile>
+                            If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
+                        </div>-->
+                        <div class="col-md-4 col-md-offset-2" style="margin-left:10px">
+                            <div class="form-group" >
+                                <label class="control-label" for="firstName" >firstname</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="firstName"
+                                       ng-model="vm.registerAccount.firstName" ng-minlength=6 ng-maxlength=10 required>
+                                <div ng-show="form.firstName.$dirty && form.firstName.$invalid">
+                                    <!--<p class="help-block"-->
+                                    <!--ng-show="form.firstName.$error.required" data-translate="">-->
+                                    <!--Your phone is required.-->
+                                    <!--</p>-->
+                                    <!--<p class="help-block"-->
+                                    <!--ng-show="form.firstName.$error.minlength" data-translate="">-->
+                                    <!--Your addrphoneess is required to be at least 10 characters.-->
+                                    <!--</p>-->
+                                    <!--<p class="help-block"-->
+                                    <!--ng-show="form.firstName.$error.maxlength" data-translate="">-->
+                                    <!--Your phone cannot be longer than 50 characters.-->
+                                    <!--</p>-->
+                                </div>
+                            </div>
+                            <!-- Siguiente -->
+                            <div class="form-group">
+                                <label class="control-label" for="lastName" >lastName</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="lastName"
+                                       ng-model="vm.registerAccount.lastName" ng-minlength=6 ng-maxlength=10 required>
+                                <div ng-show="form.lastName.$dirty && form.lastName.$invalid">
+                                    <!--<p class="help-block"-->
+                                    <!--ng-show="form.firstName.$error.required" data-translate="">-->
+                                    <!--Your phone is required.-->
+                                    <!--</p>-->
+                                    <!--<p class="help-block"-->
+                                    <!--ng-show="form.firstName.$error.minlength" data-translate="">-->
+                                    <!--Your addrphoneess is required to be at least 10 characters.-->
+                                    <!--</p>-->
+                                    <!--<p class="help-block"-->
+                                    <!--ng-show="form.firstName.$error.maxlength" data-translate="">-->
+                                    <!--Your phone cannot be longer than 50 characters.-->
+                                    <!--</p>-->
+                                </div>
+                            </div>
+                            <!-- Siguiente -->
+                            <div class="form-group">
+                                <label class="control-label" for="country" >Country</label>
+                                <input type="text" class="form-control" id="country" name="country" placeholder="country"
+                                       ng-model="vm.registerAccount.country" ng-minlength=6 ng-maxlength=10 required>
+                                <!--<div ng-show="form.country.$dirty && form.country.$invalid">
+                                    <p class="help-block"
+                                       ng-show="form.country.$error.required" data-translate="">
+                                        Your country is required.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.country.$error.minlength" data-translate="">
+                                        Your country is required to be at least 10 characters.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.country.$error.maxlength" data-translate="">
+                                        Your country cannot be longer than 50 characters.
+                                    </p>
+                                </div>-->
+                            </div>
+                            <!-- Siguiente -->
+                            <div class="form-group">
+                                <label class="control-label" for="city" >City</label>
+                                <input type="text" class="form-control" id="city" name="city" placeholder="city"
+                                       ng-model="vm.registerAccount.city" ng-minlength=6 ng-maxlength=10 required>
+                                <!--<div ng-show="form.city.$dirty && form.city.$invalid">
+                                    <p class="help-block"
+                                       ng-show="form.city.$error.required" data-translate="">
+                                        Your city is required.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.city.$error.minlength" data-translate="">
+                                        Your city is required to be at least 10 characters.
+                                    </p>
+                                    <p class="help-block"
+                                       ng-show="form.city.$error.maxlength" data-translate="">
+                                        Your city cannot be longer than 50 characters.
+                                    </p>
+                                </div>-->
+                            </div>
+                            <!-- Siguiente -->
+                            <div class="form-group">
+                                <label class="control-label" for="birthday" >Age</label>
+                                <input type="date" class="form-control" id="birthday" name="birthday" placeholder="birthday"
+                                       ng-model="vm.registerAccount.birthday"  required>
+                            </div>
+                            <!-- Siguiente -->
+                        </div>
+                        <div class="col-md-12">
+                            <button style="width:7%;" type="submit" ng-disabled="form.$invalid" class="btn btn-primary" data-translate="register.form.button">Register</button>
+                        </div>
 
 
 
 
-                <div class="form-group">
-                    <label class="control-label" for="phone" >Phone</label>
-                    <input type="number" class="form-control" id="phone" name="phone" placeholder="phone"
-                           ng-model="vm.registerAccount.phone" ng-minlength=6 ng-maxlength=10 required>
-                    <div ng-show="form.phone.$dirty && form.phone.$invalid">
-                        <p class="help-block"
-                           ng-show="form.phone.$error.required" data-translate="">
-                            Your phone is required.
-                        </p>
-                        <p class="help-block"
-                           ng-show="form.phone.$error.minlength" data-translate="">
-                            Your addrphoneess is required to be at least 10 characters.
-                        </p>
-                        <p class="help-block"
-                           ng-show="form.phone.$error.maxlength" data-translate="">
-                            Your phone cannot be longer than 50 characters.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="firstName" >firstname</label>
-                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="firstName"
-                           ng-model="vm.registerAccount.firstName" ng-minlength=6 ng-maxlength=10 required>
-                    <div ng-show="form.firstName.$dirty && form.firstName.$invalid">
-                        <!--<p class="help-block"-->
-                           <!--ng-show="form.firstName.$error.required" data-translate="">-->
-                            <!--Your phone is required.-->
-                        <!--</p>-->
-                        <!--<p class="help-block"-->
-                           <!--ng-show="form.firstName.$error.minlength" data-translate="">-->
-                            <!--Your addrphoneess is required to be at least 10 characters.-->
-                        <!--</p>-->
-                        <!--<p class="help-block"-->
-                           <!--ng-show="form.firstName.$error.maxlength" data-translate="">-->
-                            <!--Your phone cannot be longer than 50 characters.-->
-                        <!--</p>-->
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="lastName" >lastName</label>
-                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="lastName"
-                           ng-model="vm.registerAccount.lastName" ng-minlength=6 ng-maxlength=10 required>
-                    <div ng-show="form.lastName.$dirty && form.lastName.$invalid">
-                        <!--<p class="help-block"-->
-                        <!--ng-show="form.firstName.$error.required" data-translate="">-->
-                        <!--Your phone is required.-->
-                        <!--</p>-->
-                        <!--<p class="help-block"-->
-                        <!--ng-show="form.firstName.$error.minlength" data-translate="">-->
-                        <!--Your addrphoneess is required to be at least 10 characters.-->
-                        <!--</p>-->
-                        <!--<p class="help-block"-->
-                        <!--ng-show="form.firstName.$error.maxlength" data-translate="">-->
-                        <!--Your phone cannot be longer than 50 characters.-->
-                        <!--</p>-->
-                    </div>
-                </div>
-
-
-                <div class="form-group">
-                <label class="control-label" for="country" >Country</label>
-                <input type="text" class="form-control" id="country" name="country" placeholder="country"
-                       ng-model="vm.registerAccount.country" ng-minlength=6 ng-maxlength=10 required>
-                <div ng-show="form.country.$dirty && form.country.$invalid">
-                    <p class="help-block"
-                       ng-show="form.country.$error.required" data-translate="">
-                        Your country is required.
-                    </p>
-                    <p class="help-block"
-                       ng-show="form.country.$error.minlength" data-translate="">
-                        Your country is required to be at least 10 characters.
-                    </p>
-                    <p class="help-block"
-                       ng-show="form.country.$error.maxlength" data-translate="">
-                        Your country cannot be longer than 50 characters.
-                    </p>
-                </div>
+                    </div><!--Cierra Row -->
+                </form>
             </div>
+        </div>
 
-
-                <div class="form-group">
-                    <label class="control-label" for="city" >City</label>
-                    <input type="text" class="form-control" id="city" name="city" placeholder="city"
-                           ng-model="vm.registerAccount.city" ng-minlength=6 ng-maxlength=10 required>
-                    <div ng-show="form.city.$dirty && form.city.$invalid">
-                        <p class="help-block"
-                           ng-show="form.city.$error.required" data-translate="">
-                            Your city is required.
-                        </p>
-                        <p class="help-block"
-                           ng-show="form.city.$error.minlength" data-translate="">
-                            Your city is required to be at least 10 characters.
-                        </p>
-                        <p class="help-block"
-                           ng-show="form.city.$error.maxlength" data-translate="">
-                            Your city cannot be longer than 50 characters.
-                        </p>
-                    </div>
-                </div>
-
-
-                <!--<div class="form-group">-->
-                    <!--<label class="control-label" for="age" >Age</label>-->
-                    <!--<input type="number" class="form-control" id="age" name="age" placeholder="age"-->
-                           <!--ng-model="vm.registerAccount.age" ng-minlength=2 ng-maxlength=3 required>-->
-                    <!--<div ng-show="form.age.$dirty && form.age.$invalid">-->
-                        <!--<p class="help-block"-->
-                           <!--ng-show="form.age.$error.required" data-translate="">-->
-                            <!--Your age is required.-->
-                        <!--</p>-->
-                        <!--<p class="help-block"-->
-                           <!--ng-show="form.age.$error.minlength" data-translate="">-->
-                            <!--Your age is required to be at least 10 characters.-->
-                        <!--</p>-->
-                        <!--<p class="help-block"-->
-                           <!--ng-show="form.age.$error.maxlength" data-translate="">-->
-                            <!--Your age cannot be longer than 3 characters.-->
-                        <!--</p>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-
-
-                <div class="form-group">
-                    <label class="control-label" for="birthday" >Age</label>
-                    <input type="date" class="form-control" id="birthday" name="birthday" placeholder="birthday"
-                           ng-model="vm.registerAccount.birthday"  required>
-
-
-                </div>
-
-
-
-
-
-
-
-
-
-                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" data-translate="register.form.button">Register</button>
-            </form>
-            <p></p>
-            <div class="alert alert-warning" data-translate="global.messages.info.authenticated" translate-compile>
-                If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
-            </div>
+    </div>
+    <div class="section" id="section5" data-anchor="six-page" style="margin: 0 auto; text-align: center;padding-top: 0px; padding:0px; width:100%; height:100% !important; z-index:99999999;">
+        <div class="slide" style="width:100%; height:100% !important; background-color: #fff;">
+            <div id="map_canvas" style="width:100%; height:50%"></div>
+            <img src="img/logogas.png" alt="" style="width: 60px; margin-top: 30px; margin-bottom: 20px;" class="simple">
+            <p>Calle Pelayo 8, 08003 Barcelona<br>
+                Tel +34 00 000 00 00</p><br>
+            <p>Contacta con nosotros</p>
+            <a href="mailto:alexcasanova@designingcode.com" style="font-weight:normal;">casanovaalex11@gmail.com</a><br><br>
+            <!--<p style="width:100%;">Follow us</p>
+            <a href="" style="font-weight: normal;">Twitter</a> | <a href="" style="font-weight: normal;">Facebook</a> | <a href="" style="font-weight: normal;">Instagram</a> | <a href="" style="font-weight: normal;">Vimeo</a>-->
+            <h6>RETRO</h6>
         </div>
     </div>
 </div>
+<script src="js/classie.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
