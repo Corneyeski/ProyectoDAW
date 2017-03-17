@@ -8,9 +8,27 @@
             "validate": {
                 "login": {
                     "required": "Su nombre de usuario es obligatorio.",
-                    "minlength": "Su nombre de usuario debe tener al menos 1 caracter.",
-                    "maxlength": "Su nombre de usuario no puede tener más de 50 caracteres.",
+                    "minlength": "Su nombre de usuario debe tener al menos 5 caracteres.",
+                    "maxlength": "Su nombre de usuario no puede tener más de 10 caracteres.",
                     "pattern": "Su nombre de usuario sólo puede contener letras minúsculas y dígitos."
+                },
+                "email": {
+                    "required": "Su email es obligatorio.",
+                    "minlength": "Su email debe tener al menos 5 caracteres.",
+                    "maxlength": "Su email no puede tener más de 20 caracteres.",
+                    "pattern": "Su nombre de usuario sólo puede contener letras minúsculas y dígitos."
+                },
+                "newpassword": {
+                    "required": "La contraseña es obligatoria.",
+                    "minlength": "Su contraseña debe tener al menos 8 caracteres.",
+                    "maxlength": "Su contraseña no puede tener más de 15 caracteres.",
+                    "pattern": "Su contraseña debe contener almenos una letra minúsculas, una letra mayúscula  y un dígito."
+                },
+                "phone": {
+                    "required": "El telefono es obligatorio.",
+                    "minlength": "Su telefono debe tener 9 dígitos.",
+                    "maxlength": "Su telefono debe tener 9 dígitos.",
+                    "pattern": "Su teleono solo puede contener números."
                 }
             },
             "success": "<strong>¡Registro guardado!</strong> Por favor, revise su correo electrónico para confirmar.",
