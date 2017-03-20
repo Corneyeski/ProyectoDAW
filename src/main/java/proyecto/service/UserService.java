@@ -120,19 +120,19 @@ public class UserService {
         if(birthday != null) {
             userExt.setBirthdate(birthday.toLocalDate());
         }
-        //userExt.setId(Long.parseLong("6"));
         userExt.setCountry(country);
         userExt.setPhone(phone);
         userExt.setCity(city);
         userExt.setKind(kind);
         userExt.setUser(newUser);
+
+
+        int age = ZonedDateTime.now().getYear() - birthday.getYear();
+        userExt.setAge(age);
         /*userExt.setValidated(false);
         userExt.setTags("");
         userExt.setPopular(0.0);
-        userExt.setCompanyPoints(0.0);
-        userExt.setAge(18);*/
-
-        System.out.println(userExt);
+        userExt.setCompanyPoints(0.0);*/
 
         userExtRepository.save(userExt);
 

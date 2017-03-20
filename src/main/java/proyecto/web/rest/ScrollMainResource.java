@@ -10,10 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 import proyecto.domain.DTO.MainScrollDTO;
 import proyecto.domain.Offer;
 import proyecto.domain.Photo;
+import proyecto.domain.User;
 import proyecto.domain.UserExt;
 import proyecto.repository.OfferRepository;
 import proyecto.repository.PhotoRepository;
 import proyecto.repository.UserExtRepository;
+import proyecto.repository.UserRepository;
+import proyecto.security.SecurityUtils;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -33,33 +36,42 @@ public class ScrollMainResource {
     @Inject
     PhotoRepository photoRepository;
 
+    @Inject
+    UserRepository userRepository;
+
     @RequestMapping(value = "/main/scroll",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional
     public ResponseEntity<List<MainScrollDTO>> MainScroll(){
 
+        UserExt userExt = userExtRepository.
+            findByUser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get());
+
         //TODO obtener fotos donde la puntuacion del usuario sea mayor a 3
 
-        List<Photo> photos = photoRepository.findUserPopularGreaterThan();
+        List<Photo> photos = photoRepository.findUserExtPopularGreaterThan(userExt.getCity());
 
         List<Offer> offer = offerRepository.findOfferOrderByDate();
-
-        //UserExt userExt = userExtRepository.findByUser(photos.get(1).getUser());
 
         List<MainScrollDTO> scroll = new ArrayList<>();
 
         int j = 0;
-        for (int i = 0;i < photos.size(); i++){
+        int ran = (int) (Math.random() * 2) + 7;
+
+        for(Photo photo : photos){
             MainScrollDTO main = new MainScrollDTO();
 
-            if(i % 4 == 0){
-                main.setOffer(offer.get(j));
-                j++;
+            if(j == ran && !offer.isEmpty()){
+                main.setOffer(offer.get(0));
+                scroll.add(main);
+                offer.remove(0);
+
+                j = 0;
             }else{
-                main.setPhoto(photos.get(i));
-                main.setUserExt(photos.get(i).getUser().getUserExt());
+                main.setPhoto(photo);
+                main.setUserExt(photo.getUser().getUserExt());
+                scroll.add(main);
             }
-            scroll.add(main);
         }
 
         return new ResponseEntity<>(
