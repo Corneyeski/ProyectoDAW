@@ -36,7 +36,7 @@ public class ScrollMainResource {
     @RequestMapping(value = "/main/scroll",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional
-    public ResponseEntity<List<Photo>> MainScroll(){
+    public ResponseEntity<List<MainScrollDTO>> MainScroll(){
 
         //TODO obtener fotos donde la puntuacion del usuario sea mayor a 3
 
@@ -63,7 +63,7 @@ public class ScrollMainResource {
         }
 
         return new ResponseEntity<>(
-            photos,
+            scroll,
             HttpStatus.OK);
     }
 }
