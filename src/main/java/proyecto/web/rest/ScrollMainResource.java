@@ -17,6 +17,7 @@ import proyecto.repository.UserExtRepository;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -41,9 +42,25 @@ public class ScrollMainResource {
 
         List<Photo> photos = photoRepository.findUserPopularGreaterThan();
 
-        List<Offer> offer = offerRepository.findAll();
+        List<Offer> offer = offerRepository.findOfferOrderByDate();
 
         //UserExt userExt = userExtRepository.findByUser(photos.get(1).getUser());
+
+        List<MainScrollDTO> scroll = new ArrayList<>();
+
+        int j = 0;
+        for (int i = 0;i < photos.size(); i++){
+            MainScrollDTO main = new MainScrollDTO();
+
+            if(i % 4 == 0){
+                main.setOffer(offer.get(j));
+                j++;
+            }else{
+                main.setPhoto(photos.get(i));
+                main.setUserExt(photos.get(i).getUser().getUserExt());
+            }
+            scroll.add(main);
+        }
 
         return new ResponseEntity<>(
             photos,
