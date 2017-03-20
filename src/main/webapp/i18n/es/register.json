@@ -8,14 +8,14 @@
             "validate": {
                 "login": {
                     "required": "Su nombre de usuario es obligatorio.",
-                    "minlength": "Su nombre de usuario debe tener al menos 5 caracteres.",
+                    "minlength": "Su nombre de usuario debe tener al menos 7 caracteres.",
                     "maxlength": "Su nombre de usuario no puede tener más de 10 caracteres.",
                     "pattern": "Su nombre de usuario sólo puede contener letras minúsculas y dígitos."
                 },
                 "email": {
                     "required": "Su email es obligatorio.",
-                    "minlength": "Su email debe tener al menos 5 caracteres.",
-                    "maxlength": "Su email no puede tener más de 20 caracteres.",
+                    "minlength": "Su email debe tener al menos 7 caracteres.",
+                    "maxlength": "Su email no puede tener más de 10 caracteres.",
                     "pattern": "Su nombre de usuario sólo puede contener letras minúsculas y dígitos."
                 },
                 "newpassword": {
