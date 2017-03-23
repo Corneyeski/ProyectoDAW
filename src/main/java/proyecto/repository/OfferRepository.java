@@ -19,6 +19,6 @@ public interface OfferRepository extends JpaRepository<Offer,Long> {
     @Query("select offer from Offer offer left join fetch offer.users where offer.id =:id")
     Offer findOneWithEagerRelationships(@Param("id") Long id);
 
-    @Query("select offer from Offer offer order by offer.time desc")
-    List<Offer> findOfferOrderByDate();
+    @Query("select offer from Offer offer where offer.closed = false order by offer.time desc")
+    List<Offer> findOfferOrderByDateAndNotClosed();
 }

@@ -48,15 +48,16 @@ public class ScrollMainResource {
             findByUser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get());
 
         //TODO obtener fotos donde la puntuacion del usuario sea mayor a 3
+        //TODO Añadira UserExt el campo bloqueado
 
         List<Photo> photos = photoRepository.findUserExtPopularGreaterThan(userExt.getCity());
 
-        List<Offer> offer = offerRepository.findOfferOrderByDate();
+        List<Offer> offer = offerRepository.findOfferOrderByDateAndNotClosed();
 
         List<MainScrollDTO> scroll = new ArrayList<>();
 
         int j = 0;
-        int ran = (int) (Math.random() * 2) + 7;
+        int ran = (int) (Math.random() * 4) + 2;
 
         for(Photo photo : photos){
             MainScrollDTO main = new MainScrollDTO();
@@ -71,6 +72,7 @@ public class ScrollMainResource {
                 main.setPhoto(photo);
                 main.setUserExt(photo.getUser().getUserExt());
                 scroll.add(main);
+                j++;
             }
         }
 
