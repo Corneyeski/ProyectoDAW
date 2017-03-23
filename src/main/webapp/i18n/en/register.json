@@ -9,7 +9,7 @@
                 "login": {
                     "required": "Required user.",
                     "minlength": ".",
-                    "maxlength": "Your username must be at least 5 characters.",
+                    "maxlength": "Your username must be at least 7 characters.",
                     "pattern": "Your username can contain only lowercase letters and digits. "
                 }
             },

@@ -123,7 +123,11 @@ public class UserService {
         userExt.setCountry(country);
         userExt.setPhone(phone);
         userExt.setCity(city);
-        userExt.setKind(kind);
+        if(birthday == null) {
+            userExt.setKind(1);
+        }else{
+            userExt.setKind(0);
+        }
         userExt.setUser(newUser);
 
 

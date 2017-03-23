@@ -9,9 +9,6 @@
 
     function stateConfig($stateProvider) {
 
-
-
-
         $stateProvider.state('inicio-usuario', {
             parent: 'inicio',
             url: '/inicio-usuario',
