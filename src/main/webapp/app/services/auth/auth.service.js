@@ -99,6 +99,10 @@
                 }.bind(this)).$promise;
         }
 
+        function mainScroll(){
+
+        }
+
         function login (credentials, callback) {
             var cb = callback || angular.noop;
             var deferred = $q.defer();

@@ -26,7 +26,7 @@ public class PhotoResource {
     private final Logger log = LoggerFactory.getLogger(PhotoResource.class);
 
     private static final String ENTITY_NAME = "photo";
-        
+
     private final PhotoRepository photoRepository;
 
     public PhotoResource(PhotoRepository photoRepository) {
@@ -115,5 +115,6 @@ public class PhotoResource {
         photoRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
 
 }

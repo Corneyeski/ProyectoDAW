@@ -16,15 +16,20 @@
             <ul class="nav navbar-nav navbar-right">
 
 
-
+                <li ui-sref-active="active">
 
                     <a ui-sref="home" ng-click="vm.collapseNavbar()">
                         <span class="glyphicon glyphicon-home"></span>
                         <span class="hidden-sm" data-translate="global.menu.home">Home</span>
                     </a>
                 </li>
+                <li ui-sref-active="active">
 
-
+                    <a ui-sref="inicio-usuario" ng-click="vm.collapseNavbar()">
+                        <span class="glyphicon glyphicon-home"></span>
+                        <span class="hidden-sm" data-translate="">Inicio</span>
+                    </a>
+                </li>
 
                 <!-- BOTON PRUEBA CAMBIO PLANTILLA A LA DEFAULT-------------------->
 
@@ -47,12 +52,13 @@
                 <!--------------------------------------->
 
                 <!----  BOTON INICIO-USUARIO ------->
-                <li ui-sref-active="active">
-                    <a href="/app/inicio/usuario/inicio-usuario.html" ng-click="vm.collapseNavbar()">
+                <!--<li ui-sref-active="active">-->
 
-                        <span class="hidden-sm">INICIO-USUARIO</span>
-                    </a>
-                </li>
+                    <!--<a ui-sref="inicio-usuario" ng-click="vm.collapseNavbar()">-->
+
+                        <!--<span class="hidden-sm">INICIO-USUARIO</span>-->
+                    <!--</a>-->
+                <!--</li>-->
 
                 <!------------------------------------>
                 <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
