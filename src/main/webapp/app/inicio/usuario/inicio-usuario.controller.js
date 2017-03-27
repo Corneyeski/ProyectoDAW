@@ -11,6 +11,8 @@
     function InicioController($translate, $timeout, Auth, LoginService, UserExt, entity) {
         var vm = this;
 
-        vm.photosDTO = entity;
+        vm.photosDTO = entity[0];
+
+
     }
 })();
