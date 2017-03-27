@@ -6,7 +6,7 @@
         .controller('InicioController', InicioController);
 
 
-    InicioController.$inject = ['$translate', '$timeout', 'Auth', 'LoginService', 'UserExt'];
+    InicioController.$inject = ['$translate', '$timeout', 'Auth', 'LoginService', 'UserExt', 'entity'];
 
     function InicioController($translate, $timeout, Auth, LoginService, UserExt, entity) {
         var vm = this;

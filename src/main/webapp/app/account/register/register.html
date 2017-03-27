@@ -372,36 +372,36 @@
     <script type="text/javascript" src="js/examples.js"></script>
 
     <script type="text/javascript">
-        //        $(document).ready(function() {
-        //            $('#fullpage').fullpage({
-        //                verticalCentered: false,
-        //                onLeave:function(index, nextIndex, direction){
-        //                    //after leaving section 2
-        //                    if(nextIndex ==1 || nextIndex ==3 || nextIndex ==4 || nextIndex ==5){
-        //                        $('.menu-button').addClass('menu-blanco');
-        //                        $('.idiomas a').addClass('idiomablanco');
-        //                    }
-        //                    else{
-        //                        $('.menu-button').removeClass('menu-blanco');
-        //                        $('.idiomas a').removeClass('idiomablanco');
-        //                    }
-        //
-        //
-        //                },
-        //                afterRender: function(){
-        //                    $( ".nextsection:hidden" ).fadeIn( 3000 );
-        //                    $( ".teclado" ).fadeIn( 'fast' , function() {
-        //                        $( ".teclado" ).delay(3000).fadeOut(  4000  );
-        //                    });
-        //                }
-        //
-        //            });
-        //        });
+                $(document).ready(function() {
+                    $('#fullpage').fullpage({
+                        verticalCentered: false,
+                        onLeave:function(index, nextIndex, direction){
+                            //after leaving section 2
+                            if(nextIndex ==1 || nextIndex ==3 || nextIndex ==4 || nextIndex ==5){
+                                $('.menu-button').addClass('menu-blanco');
+                                $('.idiomas a').addClass('idiomablanco');
+                            }
+                            else{
+                                $('.menu-button').removeClass('menu-blanco');
+                                $('.idiomas a').removeClass('idiomablanco');
+                            }
+
+
+                        },
+                        afterRender: function(){
+                            $( ".nextsection:hidden" ).fadeIn( 3000 );
+                            $( ".teclado" ).fadeIn( 'fast' , function() {
+                                $( ".teclado" ).delay(3000).fadeOut(  4000  );
+                            });
+                        }
+
+                    });
+                });
     </script>
     <script type="text/javascript">
         $(function () {
 
-            $('a[href*=#]').click(function () {
+            $('a[href*=\\#]:not([href=\\#])').click(function () {
 
                 if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
                     && location.hostname == this.hostname) {
