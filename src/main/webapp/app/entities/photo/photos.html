@@ -24,7 +24,9 @@
                     <th><span data-translate="proyectoApp.photo.url">Url</span></th>
                     <th><span data-translate="proyectoApp.photo.time">Time</span></th>
                     <th><span data-translate="proyectoApp.photo.tags">Tags</span></th>
+                    <th><span data-translate="proyectoApp.photo.points">Points</span></th>
                     <th><span data-translate="proyectoApp.photo.user">User</span></th>
+                    <th><span data-translate="proyectoApp.photo.album">Album</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -41,8 +43,12 @@
                     <td>{{photo.url}}</td>
                     <td>{{photo.time | date:'medium'}}</td>
                     <td>{{photo.tags}}</td>
+                    <td>{{photo.points}}</td>
                     <td>
                         {{photo.user.login}}
+                    </td>
+                    <td>
+                        <a ui-sref="album-detail({id:photo.album.id})">{{photo.album.id}}</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

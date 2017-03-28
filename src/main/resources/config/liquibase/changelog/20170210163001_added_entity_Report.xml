@@ -24,11 +24,11 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="message" type="varchar(255)">
+            <column name="title" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
-            <column name="title" type="varchar(255)">
+            <column name="message" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 

@@ -18,11 +18,11 @@ public class Report implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "message")
-    private String message;
-
     @Column(name = "title")
     private String title;
+
+    @Column(name = "message")
+    private String message;
 
     @ManyToOne
     private User user;
@@ -41,19 +41,6 @@ public class Report implements Serializable {
         this.id = id;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public Report message(String message) {
-        this.message = message;
-        return this;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -65,6 +52,19 @@ public class Report implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public Report message(String message) {
+        this.message = message;
+        return this;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public User getUser() {
@@ -130,8 +130,8 @@ public class Report implements Serializable {
     public String toString() {
         return "Report{" +
             "id=" + id +
-            ", message='" + message + "'" +
             ", title='" + title + "'" +
+            ", message='" + message + "'" +
             '}';
     }
 }

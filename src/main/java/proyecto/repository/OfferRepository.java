@@ -21,4 +21,5 @@ public interface OfferRepository extends JpaRepository<Offer,Long> {
 
     @Query("select offer from Offer offer where offer.closed = false order by offer.time desc")
     List<Offer> findOfferOrderByDateAndNotClosed();
+
 }

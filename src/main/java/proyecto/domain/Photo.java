@@ -38,8 +38,14 @@ public class Photo implements Serializable {
     @Column(name = "tags")
     private String tags;
 
+    @Column(name = "points")
+    private Double points;
+
     @ManyToOne
     private User user;
+
+    @ManyToOne
+    private Album album;
 
     public Long getId() {
         return id;
@@ -127,6 +133,19 @@ public class Photo implements Serializable {
         this.tags = tags;
     }
 
+    public Double getPoints() {
+        return points;
+    }
+
+    public Photo points(Double points) {
+        this.points = points;
+        return this;
+    }
+
+    public void setPoints(Double points) {
+        this.points = points;
+    }
+
     public User getUser() {
         return user;
     }
@@ -138,6 +157,19 @@ public class Photo implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Album getAlbum() {
+        return album;
+    }
+
+    public Photo album(Album album) {
+        this.album = album;
+        return this;
+    }
+
+    public void setAlbum(Album album) {
+        this.album = album;
     }
 
     @Override
@@ -170,6 +202,7 @@ public class Photo implements Serializable {
             ", url='" + url + "'" +
             ", time='" + time + "'" +
             ", tags='" + tags + "'" +
+            ", points='" + points + "'" +
             '}';
     }
 }

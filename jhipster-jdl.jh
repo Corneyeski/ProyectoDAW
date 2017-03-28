@@ -8,7 +8,8 @@ country String,
 city String,
 popular Double,
 companyPoints Double,
-validated Boolean
+validated Boolean,
+age Integer
 }
 entity Following{
 time ZonedDateTime
@@ -16,7 +17,12 @@ time ZonedDateTime
 entity Offer{
 name String,
 description String,
-time ZonedDateTime
+time ZonedDateTime,
+salary Integer,
+timeJob Double,
+closed Boolean,
+tags String,
+location String
 }
 entity Photo{
 name String,
@@ -47,11 +53,19 @@ value Integer required,
 comments String,
 }
 entity Report{
+title String,
 message String
 }
 entity Video{
 id String,
 title String
+}
+entity Album{
+name String,
+time ZonedDateTime
+}
+entity Bloqued{
+
 }
 relationship ManyToOne{
 Video{user(login)} to User
@@ -94,16 +108,10 @@ relationship ManyToOne{
 relationship ManyToOne{
     Connection{user(login)} to User
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+relationship OneToMany{
+    Album{photo()} to Photo
+}
+relationship ManyToOne{
+    Bloqued{block(login)} to User,
+    Bloqued{blocked(login)} to User
+}

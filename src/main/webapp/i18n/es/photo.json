@@ -21,7 +21,9 @@
             "url": "Url",
             "time": "Time",
             "tags": "Tags",
-            "user": "User"
+            "points": "Points",
+            "user": "User",
+            "album": "Album"
         }
     }
 }

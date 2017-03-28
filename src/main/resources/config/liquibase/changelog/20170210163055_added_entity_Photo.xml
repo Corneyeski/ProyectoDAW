@@ -47,7 +47,15 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="points" type="double">
+                <constraints nullable="true" />
+            </column>
+
             <column name="user_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="album_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

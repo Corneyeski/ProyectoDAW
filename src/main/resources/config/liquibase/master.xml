@@ -16,6 +16,8 @@
     <include file="classpath:config/liquibase/changelog/20170210163057_added_entity_Connection.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170210163058_added_entity_Conversation.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170210163059_added_entity_Message.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170325005114_added_entity_Album.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170325005115_added_entity_Bloqued.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20170210163000_added_entity_constraints_UserProfileValoration.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170210163001_added_entity_constraints_Report.xml" relativeToChangelogFile="false"/>
@@ -28,5 +30,6 @@
     <include file="classpath:config/liquibase/changelog/20170210163057_added_entity_constraints_Connection.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170210163058_added_entity_constraints_Conversation.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170210163059_added_entity_constraints_Message.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170325005115_added_entity_constraints_Bloqued.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

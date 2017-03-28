@@ -12,10 +12,7 @@ import proyecto.domain.Offer;
 import proyecto.domain.Photo;
 import proyecto.domain.User;
 import proyecto.domain.UserExt;
-import proyecto.repository.OfferRepository;
-import proyecto.repository.PhotoRepository;
-import proyecto.repository.UserExtRepository;
-import proyecto.repository.UserRepository;
+import proyecto.repository.*;
 import proyecto.security.SecurityUtils;
 
 import javax.inject.Inject;
@@ -39,6 +36,9 @@ public class ScrollMainResource {
     @Inject
     UserRepository userRepository;
 
+    @Inject
+    FollowingRepository followingRepository;
+
     @RequestMapping(value = "/main/scroll",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional
@@ -47,12 +47,14 @@ public class ScrollMainResource {
         UserExt userExt = userExtRepository.
             findByUser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get());
 
-        //TODO obtener fotos donde la puntuacion del usuario sea mayor a 3
+        //TODO obtener fotos donde la puntuacion de la foto sea mayor a 3
         //TODO Añadira UserExt el campo bloqueado
 
         List<Photo> photos = photoRepository.findUserExtPopularGreaterThan(userExt.getCity());
 
         List<Offer> offer = offerRepository.findOfferOrderByDateAndNotClosed();
+
+
 
         List<MainScrollDTO> scroll = new ArrayList<>();
 

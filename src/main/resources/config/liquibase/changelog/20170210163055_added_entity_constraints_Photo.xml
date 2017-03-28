@@ -14,5 +14,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
 
+        <addForeignKeyConstraint baseColumnNames="album_id"
+                                 baseTableName="photo"
+                                 constraintName="fk_photo_album_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="album"/>
+
     </changeSet>
 </databaseChangeLog>

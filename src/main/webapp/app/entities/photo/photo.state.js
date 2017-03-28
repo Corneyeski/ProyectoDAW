@@ -110,6 +110,7 @@
                                 url: null,
                                 time: null,
                                 tags: null,
+                                points: null,
                                 id: null
                             };
                         }

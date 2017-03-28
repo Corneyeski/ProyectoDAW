@@ -5,9 +5,9 @@
         .module('proyectoApp')
         .controller('PhotoDialogController', PhotoDialogController);
 
-    PhotoDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Photo', 'User'];
+    PhotoDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Photo', 'User', 'Album'];
 
-    function PhotoDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Photo, User) {
+    function PhotoDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Photo, User, Album) {
         var vm = this;
 
         vm.photo = entity;
@@ -18,6 +18,7 @@
         vm.openFile = DataUtils.openFile;
         vm.save = save;
         vm.users = User.query();
+        vm.albums = Album.query();
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();

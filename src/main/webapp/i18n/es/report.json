@@ -16,8 +16,8 @@
             "detail": {
                 "title": "Report"
             },
-            "message": "Message",
             "title": "Title",
+            "message": "Message",
             "user": "User",
             "photo": "Photo",
             "offer": "Offer"

@@ -63,10 +63,22 @@
                     ng-model="vm.photo.tags"
                     />
         </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="proyectoApp.photo.points" for="field_points">Points</label>
+            <input type="number" class="form-control" name="points" id="field_points"
+                    ng-model="vm.photo.points"
+                    />
+        </div>
 
         <div class="form-group">
             <label data-translate="proyectoApp.photo.user" for="field_user">User</label>
             <select class="form-control" id="field_user" name="user" ng-model="vm.photo.user" ng-options="user as user.login for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="proyectoApp.photo.album" for="field_album">Album</label>
+            <select class="form-control" id="field_album" name="album" ng-model="vm.photo.album" ng-options="album as album.id for album in vm.albums track by album.id">
                 <option value=""></option>
             </select>
         </div>

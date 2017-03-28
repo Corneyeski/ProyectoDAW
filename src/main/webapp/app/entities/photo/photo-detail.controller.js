@@ -5,9 +5,9 @@
         .module('proyectoApp')
         .controller('PhotoDetailController', PhotoDetailController);
 
-    PhotoDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'DataUtils', 'entity', 'Photo', 'User'];
+    PhotoDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'DataUtils', 'entity', 'Photo', 'User', 'Album'];
 
-    function PhotoDetailController($scope, $rootScope, $stateParams, previousState, DataUtils, entity, Photo, User) {
+    function PhotoDetailController($scope, $rootScope, $stateParams, previousState, DataUtils, entity, Photo, User, Album) {
         var vm = this;
 
         vm.photo = entity;

@@ -6,6 +6,12 @@
             "relationshipName": "user",
             "otherEntityName": "user",
             "otherEntityField": "login"
+        },
+        {
+            "relationshipName": "album",
+            "otherEntityName": "album",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
         }
     ],
     "fields": [
@@ -29,11 +35,15 @@
         {
             "fieldName": "tags",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "points",
+            "fieldType": "Double"
         }
     ],
     "changelogDate": "20170210163055",
-    "entityTableName": "photo",
     "dto": "no",
-    "pagination": "no",
-    "service": "no"
+    "service": "no",
+    "entityTableName": "photo",
+    "pagination": "no"
 }

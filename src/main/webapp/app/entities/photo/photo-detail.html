@@ -29,9 +29,17 @@
         <dd>
             <span>{{vm.photo.tags}}</span>
         </dd>
+        <dt><span data-translate="proyectoApp.photo.points">Points</span></dt>
+        <dd>
+            <span>{{vm.photo.points}}</span>
+        </dd>
         <dt><span data-translate="proyectoApp.photo.user">User</span></dt>
         <dd>
             {{vm.photo.user.login}}
+        </dd>
+        <dt><span data-translate="proyectoApp.photo.album">Album</span></dt>
+        <dd>
+            <a ui-sref="album-detail({id:vm.photo.album.id})">{{vm.photo.album.id}}</a>
         </dd>
     </dl>
 

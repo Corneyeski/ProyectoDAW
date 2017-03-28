@@ -1,8 +1,6 @@
 package proyecto.domain;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -55,7 +53,8 @@ public class UserExt implements Serializable {
     @Column(name = "age")
     private Integer age;
 
-    @OneToOne
+    @OneToOne(optional = false)
+    @NotNull
     @JoinColumn(unique = true)
     private User user;
 
