@@ -3,6 +3,7 @@ package proyecto.repository;
 import proyecto.domain.Bloqued;
 
 import org.springframework.data.jpa.repository.*;
+import proyecto.domain.User;
 
 import java.util.List;
 
@@ -17,5 +18,7 @@ public interface BloquedRepository extends JpaRepository<Bloqued,Long> {
 
     @Query("select bloqued from Bloqued bloqued where bloqued.blocked.login = ?#{principal.username}")
     List<Bloqued> findByBlockedIsCurrentUser();
+
+    List<Bloqued> findByBlock(User user);
 
 }

@@ -78,6 +78,20 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(name = "reset_date")
     private ZonedDateTime resetDate = null;
 
+
+    /*@ManyToOne
+    private User blocked;*/
+    @OneToMany(mappedBy = "blocked")
+    private Set<Bloqued> bloquedUsers = new HashSet<>();
+
+    public Set<Bloqued> getBloquedUsers() {
+        return bloquedUsers;
+    }
+
+    public void setBloquedUsers(Set<Bloqued> bloquedUsers) {
+        this.bloquedUsers = bloquedUsers;
+    }
+
     @JsonIgnore
     @ManyToMany
     @JoinTable(
