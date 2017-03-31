@@ -21,6 +21,10 @@ public interface PhotoRepository extends JpaRepository<Photo,Long> {
         "ORDER BY photo.time desc ")
     List<Photo> findUserExtPopularGreaterThan(@Param("city")String city);
 
+    @Query("select photo from Photo photo" +
+        " where :user member of photo.user.followedUsers " +
+        "ORDER BY photo.time desc ")
+    List<Photo> findUserExtFollowing(@Param("followedUsers")String followedUsers);
 }
 
 //and :user member of photo.user.bloquedUsers.blocked

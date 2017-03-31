@@ -52,6 +52,7 @@ public class ScrollMainResource {
         //TODO Añadira UserExt el campo bloqueado
 
         List<Photo> photos = photoRepository.findUserExtPopularGreaterThan(userExt.getCity())
+            //TODO Codigo para buscar los usuarios bloqueados.
             .parallelStream()
             .peek(photo -> System.out.println("antes del filtro" + photo))
             .filter(photo ->
@@ -65,7 +66,7 @@ public class ScrollMainResource {
             .collect(Collectors.toList());
 
 
-
+        List<User> followingUsers = followingRepository.SelectFollowingFindByFollower(userExt.getUser());
 
         List<Offer> offer = offerRepository.findOfferOrderByDateAndNotClosed();
 

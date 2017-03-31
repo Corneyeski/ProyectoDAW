@@ -84,13 +84,8 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @OneToMany(mappedBy = "blocked")
     private Set<Bloqued> bloquedUsers = new HashSet<>();
 
-    public Set<Bloqued> getBloquedUsers() {
-        return bloquedUsers;
-    }
-
-    public void setBloquedUsers(Set<Bloqued> bloquedUsers) {
-        this.bloquedUsers = bloquedUsers;
-    }
+    /*@OneToMany(mappedBy = "followed")
+    private Set<Bloqued> followedUsers = new HashSet<>();*/
 
     @JsonIgnore
     @ManyToMany
@@ -228,6 +223,10 @@ public class User extends AbstractAuditingEntity implements Serializable {
     public UserExt getUserExt() {return userExt;}
 
     public void setUserExt(UserExt userExt) {this.userExt = userExt;}
+
+    public Set<Bloqued> getBloquedUsers() {return bloquedUsers;}
+
+    public void setBloquedUsers(Set<Bloqued> bloquedUsers) {this.bloquedUsers = bloquedUsers;}
 
     @Override
     public boolean equals(Object o) {
