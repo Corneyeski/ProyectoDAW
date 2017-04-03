@@ -5,6 +5,7 @@
         .module('proyectoApp')
         .config(stateConfig);
 
+
     stateConfig.$inject = ['$stateProvider'];
 
     function stateConfig($stateProvider) {
@@ -69,3 +70,4 @@
 //         });
 //     }
 // })();
+
