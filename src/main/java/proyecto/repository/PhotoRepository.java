@@ -4,7 +4,9 @@ import org.springframework.data.repository.query.Param;
 import proyecto.domain.Photo;
 
 import org.springframework.data.jpa.repository.*;
+import proyecto.domain.User;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -21,10 +23,10 @@ public interface PhotoRepository extends JpaRepository<Photo,Long> {
         "ORDER BY photo.time desc ")
     List<Photo> findUserExtPopularGreaterThan(@Param("city")String city);
 
-    @Query("select photo from Photo photo" +
-        " where :user member of photo.user.followedUsers " +
-        "ORDER BY photo.time desc ")
-    List<Photo> findUserExtFollowing(@Param("followedUsers")String followedUsers);
+    /*@Query("select photo from Photo photo" +
+        " where photo.user member of :followedUsers " +
+        "ORDER BY photo.time desc")
+    List<Photo> findUserExtFollowing(@Param("followedUsers")Collection<User> followedUsers);*/
 }
 
 //and :user member of photo.user.bloquedUsers.blocked

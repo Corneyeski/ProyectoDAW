@@ -15,6 +15,7 @@ import proyecto.security.SecurityUtils;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -66,7 +67,9 @@ public class ScrollMainResource {
             .collect(Collectors.toList());
 
 
-        List<User> followingUsers = followingRepository.SelectFollowingFindByFollower(userExt.getUser());
+        Collection<User> followingUsers = followingRepository.SelectFollowingFindByFollower(userExt.getUser());
+
+        //photoRepository.findUserExtFollowing(followingUsers);
 
         List<Offer> offer = offerRepository.findOfferOrderByDateAndNotClosed();
 
