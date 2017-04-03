@@ -28,6 +28,10 @@ a {
     margin:0px;
     padding:0px;
 }
+.navbar{
+    display: none;
+}
+
 h3 {
     font-family: 'TradeGothicBoldCondTwenty';
 }

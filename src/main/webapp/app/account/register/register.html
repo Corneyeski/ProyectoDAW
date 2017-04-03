@@ -20,340 +20,15 @@
         }
     </style>
 
-    <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css"/>
-    <link rel="stylesheet" type="text/css" href="css/main.css"/>
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="es/css/flechita.css"/>
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <link href="css/loading-bar.css" rel="stylesheet" type="text/css"/>
-
+    <link rel="stylesheet" type="text/css" href="../../../content/css/jquery.fullPage.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../content/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../content/css/style.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="es/css/flechita.css"/>-->
+    <link rel="stylesheet" href="../../../bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../bower_components/angular-loading-bar/build/loading-bar.css">
+    <!--<link rel="stylesheet" href="../../../content/css/registration/style.css">-->
     <style>
-        @media screen and (-webkit-min-device-pixel-ratio: 0) {
-            .contenedor4 img {
-                width: 500px;
-            }
-        }
 
-        @media (min-width: 1900px) {
-            #section0,
-            #section1,
-            #section2,
-            #section3,
-            #section4 {
-                background-size: cover;
-                -webkit-background-size: 160% !important;
-                background-size: 160% !important;
-                background-position: center;
-            }
-
-            .contenedor h2 {
-                font-size: 4.5em;
-                margin: 0;
-                padding: 0;
-                color: #322b80;
-            }
-        }
-
-        /* will be red only in google chrome */
-
-        /* Style for our header texts
-        * --------------------------------------- */
-        /* Centered texts in each section
-        * --------------------------------------- */
-        .section {
-            text-align: center;
-            -webkit-background-size: cover;
-            background-size: cover;
-        }
-
-        /* Backgrounds will cover all the section
-        * --------------------------------------- */
-        #section0,
-        #section1,
-        #section2,
-        #section3 {
-            background-size: cover;
-        }
-
-        /* Defining each section background and styles
-        * --------------------------------------- */
-        #section1, #section2, #section3, #section4 {
-            height: 100% !important;
-        }
-
-        #section2 {
-            background-color: coral;
-            padding: 0% 0 0 0;
-        }
-
-        #section3 h1 {
-            color: #000;
-        }
-
-        /*Adding background for the slides
-       * --------------------------------------- */
-        #slide1, #slide2, #slide3, #slide4, #slide5, #slide6 {
-            text-align: center;
-            padding-top: 0px;
-            -webkit-background-size: cover;
-            background-size: cover;
-            background-position: center;
-            height: 100%;
-            background-color: #fff;
-        }
-
-        .slide {
-            text-align: center;
-            padding-top: 0px;
-            -webkit-background-size: cover;
-            background-size: cover;
-            background-position: center;
-            height: 100%;
-            background-color: #fff;
-        }
-
-        #slide1 {
-            background-image: url(img/dewards.png);
-        }
-
-        #slide2 {
-            background-image: url(works/imgdocus/docus1.jpg);
-        }
-
-        #slide3 {
-            background-position: left center;
-            background-image: url(works/imgwanted/wanted1.jpg);
-        }
-
-        #slide4 {
-            background-image: url(works/images/opinadors1.jpg);
-        }
-
-        #slide5 {
-            background-image: url(works/imggentdara/gentdara1.jpg);
-        }
-
-        #slide6 {
-            background-image: url(works/imgnarrativa/narrativa1.jpg);
-        }
-
-        #slide7 {
-            background-image: url(works/imgtous/tous.jpg);
-        }
-
-        #slide8 {
-            background-image: url(img/roca.jpg);
-        }
-
-        #slide9 {
-            background-image: url(img/triitme.jpg);
-        }
-
-        #slide10 {
-            background-image: url(img/MercatFlors_G001.jpg);
-        }
-
-        #slide11 {
-            background-image: url(img/ravalejar.jpg);
-        }
-
-        /* Bottom menu
-        * --------------------------------------- */
-        #infoMenu li a {
-            color: #fff;
-        }
-
-        @media (max-width: 800px) {
-            .homemanifesto p {
-                display: none;
-            }
-
-            .mas {
-                display: inline;
-                display: inline-table;
-                font-size: 20px;
-                width: 100%;
-                height: auto;
-                margin: 0px;
-                margin-bottom: 5px;
-                color: #fff;
-                text-align: center;
-            }
-
-            .homemanifesto h1 {
-                display: none;
-            }
-
-            .homemanifesto h2 {
-                display: inline;
-                font-size: 30px;
-                text-align: center;
-                margin-bottom: 20px;
-                line-height: 35px;
-                font-weight: normal;
-                font-family: 'TradeGothicBoldCondTwenty';
-                letter-spacing: 1px;
-            }
-
-            #section3 .contenedor p {
-                color: #fff;
-                font-size: 20px;
-                width: 90%;
-                margin: 0 auto;
-                font-family: 'Merriweather', serif !important;
-            }
-
-            #section3 .contenedor h4 {
-                font-size: 17px;
-                margin-top: 50px;
-            }
-
-            #section3 .contenedor h3 {
-                font-size: 3em;
-                margin-bottom: -25px;
-            }
-
-            .contenedor .textooculto {
-                display: inline;
-                width: 80% !important;
-                margin: 0 auto;
-                line-height: 15px;
-                font-size: 16px !important;
-                margin-left: 50px;
-                margin-right: 50px;
-            }
-
-            .textoprueba {
-                display: none;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo {
-                position: fixed;
-                top: 15px;
-                left: 15px;
-                width: 60px;
-                height: auto;
-                z-index: 9999999;
-            }
-
-            .slide h3 {
-                font-size: 18px;
-            }
-
-            .slogan img {
-                margin-top: 10px;
-            }
-
-            .contenedor .slogan {
-                margin-top: 30px;
-            }
-
-            .contenedor .slogan img {
-                padding-top: 20px;
-            }
-
-            .manifestobutton {
-                color: #fff;
-                margin: 0 auto;
-                text-transform: uppercase;
-                width: auto;
-                margin-top: 20px;
-                text-decoration: none;
-                font-size: 24px;
-                letter-spacing: 1px;
-                font-weight: lighter;
-                font-family: "tradegothiceighteen";
-            }
-
-            #section2 .contenedor2 h3 {
-                margin-top: 30px;
-            }
-
-            .contenedor .textooculto {
-                display: inline;
-                width: 80% !important;
-                margin: 0 auto;
-                line-height: 15px;
-                font-size: 18px !important;
-                margin-left: 50px;
-                margin-right: 50px;
-            }
-
-            .contenedor .textooculto p {
-                width: 80% !important;
-            }
-
-            #section0 {
-                background-image: url(img/portada.png) !important;
-            }
-
-            #section2 {
-                background-image: url(img/sinsights.png) !important;
-            }
-
-            #section3 {
-                background-image: url(img/sculture.png) !important;
-            }
-
-            #section3 .contenedor h4 {
-                font-size: 17px;
-                margin-top: 50px;
-            }
-
-            #section3 .godeep {
-                margin-top: 100px;
-            }
-
-            .simple {
-                display: none;
-            }
-
-            #section5 iframe {
-                margin-bottom: 50px;
-            }
-
-            #section3 #slide1 {
-                background-color: brown;
-                background-repeat: no-repeat;
-                -webkit-background-size: cover;
-                background-size: cover;
-            }
-        }
-
-        @media (max-width: 320px) {
-            .logo {
-                position: fixed;
-                top: 15px;
-                left: 15px;
-                width: 55px;
-                height: auto;
-                z-index: 9999999;
-            }
-
-            .contenedor .textooculto {
-                display: inline;
-                width: 80% !important;
-                margin: 0 auto;
-                line-height: 15px;
-                font-size: 16px !important;
-                margin-left: 50px;
-                margin-right: 50px;
-            }
-
-            #section1 .contenedor h2 {
-                font-size: 25px;
-            }
-
-            #section2 .contenedor2 h3 {
-                margin-top: 60px;
-            }
-
-            #section3 .godeep {
-                margin-top: 60px;
-            }
-        }
     </style>
 
     <!--[if IE]>
@@ -368,8 +43,8 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 
-    <script type="text/javascript" src="js/jquery.fullPage.js"></script>
-    <script type="text/javascript" src="js/examples.js"></script>
+    <script src="../../../bower_components/jquery/dist/jquery.fullPage.js"></script>
+    <script src="../../../bower_components/jquery/dist/examples.js"></script>
 
     <script type="text/javascript">
                 $(document).ready(function() {
@@ -486,6 +161,9 @@
             });
         }
     </script>
+
+
+
 </head>
 <body onload="initialize()">
 
@@ -499,15 +177,15 @@
                 <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.register()"
                       show-validation>
                     <div class="row">
-                        <div class="col-md-12" style="margin-bottom:20px"><h3>Login</h3></div>
+                        <div class="col-md-12 tituloregis" style="margin-bottom:20px"><h3>Login</h3></div>
                         <div class="col-md-4 col-md-offset-2">
                             <div class="form-group">
                                 <label class="control-label" for="login"
                                        data-translate="global.form.username">Username</label>
                                 <input type="text" class="form-control" id="logindf" name="login"
-                                       placeholder="{{'global.form.username.placeholder' | translate}}"
-                                />/ ng-model="vm.registerAccount.login" ng-minlength=1 ng-maxlength=50
-                                ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>
+                                       placeholder="{{'global.form.username.placeholder' | translate}}"/>
+                                <!--/ ng-model="vm.registerAccount.login" ng-minlength=1 ng-maxlength=50-->
+                                <!--ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>-->
                                 <!--<div ng-show="form.login.$dirty && form.login.$invalid">
                                     <p class="help-block"
                                            ng-show="form.login.$error.required" data-translate="register.messages.validate.login.required">
@@ -549,8 +227,8 @@
                             <div class="form-group">
                                 <label class="control-label" for="password" data-translate="global.form.newpassword">Password</label>
                                 <input type="password" class="form-control" id="passwordfd" name="password"
-                                       placeholder="{{'global.form.newpassword.placeholder' | translate}}"
-                                />/ ng-model="vm.registerAccount.password" ng-minlength=4 ng-maxlength=50 required>
+                                       placeholder="{{'global.form.newpassword.placeholder' | translate}}"/>
+                                <!-- / ng-model="vm.registerAccount.password" ng-minlength=4 ng-maxlength=50 required>-->
                                 <!--<div ng-show="form.password.$dirty && form.password.$invalid">
                                     <p class="help-block"
                                        ng-show="form.password.$error.required" data-translate="global.messages.validate.newpassword.required">
@@ -591,10 +269,6 @@
         </div>
     </div>
     <!-- A PARTIR DE AQUI ES EL REGISTRO -->
-    <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-    <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-    <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-    <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
     <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
     <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
     <!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -1125,7 +799,7 @@
         <div class="section" id="section5" data-anchor="six-page" style="margin: 0 auto; text-align: center;padding-top: 0px; padding:0px; width:100%; height:100% !important; z-index:99999999;">
         <div class="slide" style="width:100%; height:100% !important; background-color: #fff;">
         <div id="map_canvas" style="width:100%; height:50%"></div>
-        <img src="img/logogas.png" alt="" style="width: 60px; margin-top: 30px; margin-bottom: 20px;" class="simple">
+        <!--<img src="img/logogas.png" alt="" style="width: 60px; margin-top: 30px; margin-bottom: 20px;" class="simple">-->
         <p>Calle Pelayo 8, 08003 Barcelona<br>
         Tel +34 00 000 00 00</p><br>
         <p>Contacta con nosotros</p>
@@ -1136,8 +810,8 @@
         </div>
         </div>
         </div>
-        <script src="js/classie.js"></script>
-        <script src="js/main.js"></script>
+        <script src="../../../bower_components/jquery/dist/classie.js"></script>
+        <script src="../../../bower_components/jquery/dist/main.js"></script>
 
 </body>
 </html>
