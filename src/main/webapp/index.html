@@ -1,13 +1,14 @@
 <!doctype html>
 <html class="no-js">
 <head>
+    <base href="/"/>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>proyecto</title>
     <meta name="description" content="">
     <meta name="google" value="notranslate">
     <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
     <!-- build:css content/css/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
@@ -17,7 +18,7 @@
     <!-- build:css content/css/main.css -->
     <link rel="stylesheet" href="content/css/main.css">
     <link rel="stylesheet" href="content/css/registration/register-2.css">
-    <base href="/">
+
     <!-- endbuild -->
 </head>
 <body ng-app="proyectoApp" ng-strict-di>
@@ -31,20 +32,8 @@
             <!-- Angular views -->
         </div>
 
-        <div class="footer" ng-cloak>
-            <p >ESTA ES LA DEFAULT</p>
-        </div>
-    </div>
 
-    <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
-    <script>
-        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-        e.src='//www.google-analytics.com/analytics.js';
-        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-        ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>-->
+    </div>
 
     <!-- build:js app/vendor.js -->
     <!-- bower:js -->
@@ -264,6 +253,7 @@
     <script src="app/account/activate/activate.state.js"></script>
     <script src="app/account/activate/activate.controller.js"></script>
     <script src="app/account/account.state.js"></script>
+    <script src="app/blocks/config/html5.mode.config.js"></script>
     <!-- endinject -->
     <!-- endbuild -->
 
