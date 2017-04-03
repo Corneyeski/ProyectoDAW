@@ -41,19 +41,18 @@ public class ScrollMainResource {
     @Inject
     BloquedRepository bloquedRepository;
 
-    @RequestMapping(value = "/main/scroll",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/main/scroll", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional
-    public ResponseEntity<List<MainScrollDTO>> MainScroll(){
+    public ResponseEntity<List<MainScrollDTO>> MainScroll() {
 
         UserExt userExt = userExtRepository.
             findByUser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get());
 
-        //TODO obtener fotos donde la puntuacion de la foto sea mayor a 3
-        //TODO Añadira UserExt el campo bloqueado
 
-        List<Photo> photos = photoRepository.findUserExtPopularGreaterThan(userExt.getCity())
-            //TODO Codigo para buscar los usuarios bloqueados.
+        //TODO Codigo para buscar los usuarios bloqueados con JAVA 8.
+
+       /* List<Photo> photos = photoRepository.findUserExtPopularGreaterThan(userExt.getCity())
             .parallelStream()
             .peek(photo -> System.out.println("antes del filtro" + photo))
             .filter(photo ->
@@ -64,32 +63,48 @@ public class ScrollMainResource {
                     .peek(user -> System.out.println("usuario bloqueado " + user))
                     .noneMatch(user -> user.equals(photo.getUser())))
                     .peek(photo -> System.out.println("despues del filtro" + photo))
-            .collect(Collectors.toList());
+            .collect(Collectors.toList());*/
 
+        //TODO Codigo para buscar los usuarios bloqueados con QUERY.
+
+        Collection<User> collection = bloquedRepository.selectBlockedFindByBlock(userExt.getUser());
+        List<Photo> photos = photoRepository.findUserExtPopularGreaterThanBlocked(userExt.getCity(), collection);
+
+
+        //TODO ------------------------------------- Usuarios Seguidos
 
         Collection<User> followingUsers = followingRepository.SelectFollowingFindByFollower(userExt.getUser());
 
-        //photoRepository.findUserExtFollowing(followingUsers);
+        List<Photo> followPhotos = photoRepository.findUserExtFollowing(followingUsers);
 
         List<Offer> offer = offerRepository.findOfferOrderByDateAndNotClosed();
 
-
+        //TODO Mezcla final (Coctel Molotov)
 
         List<MainScrollDTO> scroll = new ArrayList<>();
 
         int j = 0;
-        int ran = (int) (Math.random() * 4) + 2;
+        int ranOfert = (int) (Math.random() * 4) + 2;
 
-        for(Photo photo : photos){
+        int x = 0;
+        int ranFollow = (int) (Math.random() * 4) + 2;
+
+        for (Photo photo : photos) {
             MainScrollDTO main = new MainScrollDTO();
 
-            if(j == ran && !offer.isEmpty()){
+            if (j == ranOfert && !offer.isEmpty()) {
                 main.setOffer(offer.get(0));
                 scroll.add(main);
                 offer.remove(0);
+                ranOfert = (int) (Math.random() * 4) + 2;
 
                 j = 0;
-            }else{
+            } else if (x == ranFollow && !followPhotos.isEmpty()) {
+                main.setPhoto(followPhotos.get(0));
+                scroll.add(main);
+                followPhotos.remove(0);
+                ranFollow = (int) (Math.random() * 4) + 2;
+            } else {
                 main.setPhoto(photo);
                 main.setUserExt(photo.getUser().getUserExt());
                 scroll.add(main);
