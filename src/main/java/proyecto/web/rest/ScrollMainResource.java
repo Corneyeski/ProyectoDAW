@@ -52,7 +52,7 @@ public class ScrollMainResource {
 
         //TODO Codigo para buscar los usuarios bloqueados con JAVA 8.
 
-       /* List<Photo> photos = photoRepository.findUserExtPopularGreaterThan(userExt.getCity())
+        /*List<Photo> photos = photoRepository.findUserExtPopularGreaterThan(userExt.getCity())
             .parallelStream()
             .peek(photo -> System.out.println("antes del filtro" + photo))
             .filter(photo ->
@@ -64,19 +64,28 @@ public class ScrollMainResource {
                     .noneMatch(user -> user.equals(photo.getUser())))
                     .peek(photo -> System.out.println("despues del filtro" + photo))
             .collect(Collectors.toList());*/
+        //TODO creamos las listas
+
+        List<Photo> followPhotos = new ArrayList<>();
+        List<Photo> photos = new ArrayList<>();
 
         //TODO Codigo para buscar los usuarios bloqueados con QUERY.
 
-        Collection<User> collection = bloquedRepository.selectBlockedFindByBlock(userExt.getUser());
-        List<Photo> photos = photoRepository.findUserExtPopularGreaterThanBlocked(userExt.getCity(), collection);
+        Collection<User> blockUsersCollection = bloquedRepository.selectBlockedFindByBlock(userExt.getUser());
 
+        if(!blockUsersCollection.isEmpty() && blockUsersCollection != null) {
+            photos = photoRepository.findUserExtPopularGreaterThanBlocked(userExt.getCity(), blockUsersCollection);
+        }else{
+            photos = photoRepository.findUserExtPopularGreaterThan(userExt.getCity());
+        }
 
         //TODO ------------------------------------- Usuarios Seguidos
 
         Collection<User> followingUsers = followingRepository.SelectFollowingFindByFollower(userExt.getUser());
 
-        List<Photo> followPhotos = photoRepository.findUserExtFollowing(followingUsers);
-
+        if(!followingUsers.isEmpty() && followingUsers != null) {
+            followPhotos = photoRepository.findUserExtFollowing(followingUsers);
+        }
         List<Offer> offer = offerRepository.findOfferOrderByDateAndNotClosed();
 
         //TODO Mezcla final (Coctel Molotov)
