@@ -11,6 +11,7 @@
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
+            'home': { method: 'GET', isArray: true, url: 'api/main/scroll'},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {
