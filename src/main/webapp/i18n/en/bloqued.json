@@ -1,0 +1,23 @@
+{
+    "proyectoApp": {
+        "bloqued" : {
+            "home": {
+                "title": "Bloqueds",
+                "createLabel": "Create a new Bloqued",
+                "createOrEditLabel": "Create or edit a Bloqued",
+                "search": "Search for Bloqued"
+            },
+            "created": "A new Bloqued is created with identifier {{ param }}",
+            "updated": "A Bloqued is updated with identifier {{ param }}",
+            "deleted": "A Bloqued is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Bloqued {{ id }}?"
+            },
+            "detail": {
+                "title": "Bloqued"
+            },
+            "block": "Block",
+            "blocked": "Blocked"
+        }
+    }
+}

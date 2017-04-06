@@ -1,0 +1,27 @@
+
+<div>
+    <h2><span data-translate="proyectoApp.bloqued.detail.title">Bloqued</span> {{vm.bloqued.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span data-translate="proyectoApp.bloqued.block">Block</span></dt>
+        <dd>
+            {{vm.bloqued.block.login}}
+        </dd>
+        <dt><span data-translate="proyectoApp.bloqued.blocked">Blocked</span></dt>
+        <dd>
+            {{vm.bloqued.blocked.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="bloqued-detail.edit({id:vm.bloqued.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

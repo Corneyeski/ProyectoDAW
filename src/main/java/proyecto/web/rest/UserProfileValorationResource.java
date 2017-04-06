@@ -1,9 +1,11 @@
 package proyecto.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import proyecto.domain.User;
 import proyecto.domain.UserProfileValoration;
 
 import proyecto.repository.UserProfileValorationRepository;
+import proyecto.repository.UserRepository;
 import proyecto.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -11,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.inject.Inject;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -27,20 +30,13 @@ public class UserProfileValorationResource {
     private final Logger log = LoggerFactory.getLogger(UserProfileValorationResource.class);
 
     private static final String ENTITY_NAME = "userProfileValoration";
-        
-    private final UserProfileValorationRepository userProfileValorationRepository;
 
-    public UserProfileValorationResource(UserProfileValorationRepository userProfileValorationRepository) {
-        this.userProfileValorationRepository = userProfileValorationRepository;
-    }
+    @Inject
+    private UserProfileValorationRepository userProfileValorationRepository;
 
-    /**
-     * POST  /user-profile-valorations : Create a new userProfileValoration.
-     *
-     * @param userProfileValoration the userProfileValoration to create
-     * @return the ResponseEntity with status 201 (Created) and with body the new userProfileValoration, or with status 400 (Bad Request) if the userProfileValoration has already an ID
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
+    @Inject
+    private UserRepository userRepository;
+
     @PostMapping("/user-profile-valorations")
     @Timed
     public ResponseEntity<UserProfileValoration> createUserProfileValoration(@Valid @RequestBody UserProfileValoration userProfileValoration) throws URISyntaxException {
@@ -54,15 +50,6 @@ public class UserProfileValorationResource {
             .body(result);
     }
 
-    /**
-     * PUT  /user-profile-valorations : Updates an existing userProfileValoration.
-     *
-     * @param userProfileValoration the userProfileValoration to update
-     * @return the ResponseEntity with status 200 (OK) and with body the updated userProfileValoration,
-     * or with status 400 (Bad Request) if the userProfileValoration is not valid,
-     * or with status 500 (Internal Server Error) if the userProfileValoration couldnt be updated
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
     @PutMapping("/user-profile-valorations")
     @Timed
     public ResponseEntity<UserProfileValoration> updateUserProfileValoration(@Valid @RequestBody UserProfileValoration userProfileValoration) throws URISyntaxException {
@@ -76,11 +63,6 @@ public class UserProfileValorationResource {
             .body(result);
     }
 
-    /**
-     * GET  /user-profile-valorations : get all the userProfileValorations.
-     *
-     * @return the ResponseEntity with status 200 (OK) and the list of userProfileValorations in body
-     */
     @GetMapping("/user-profile-valorations")
     @Timed
     public List<UserProfileValoration> getAllUserProfileValorations() {
@@ -89,12 +71,6 @@ public class UserProfileValorationResource {
         return userProfileValorations;
     }
 
-    /**
-     * GET  /user-profile-valorations/:id : get the "id" userProfileValoration.
-     *
-     * @param id the id of the userProfileValoration to retrieve
-     * @return the ResponseEntity with status 200 (OK) and with body the userProfileValoration, or with status 404 (Not Found)
-     */
     @GetMapping("/user-profile-valorations/{id}")
     @Timed
     public ResponseEntity<UserProfileValoration> getUserProfileValoration(@PathVariable Long id) {
@@ -103,18 +79,54 @@ public class UserProfileValorationResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(userProfileValoration));
     }
 
-    /**
-     * DELETE  /user-profile-valorations/:id : delete the "id" userProfileValoration.
-     *
-     * @param id the id of the userProfileValoration to delete
-     * @return the ResponseEntity with status 200 (OK)
-     */
     @DeleteMapping("/user-profile-valorations/{id}")
     @Timed
     public ResponseEntity<Void> deleteUserProfileValoration(@PathVariable Long id) {
         log.debug("REST request to delete UserProfileValoration : {}", id);
         userProfileValorationRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+
+
+    @GetMapping("/setUpdateValoration/{vote}&{voted}&{value}")
+    @Timed
+    public ResponseEntity<Void> setUpdateValoration(@PathVariable Long vote, @PathVariable Long voted, @PathVariable int value) throws URISyntaxException {
+
+        if (vote == voted) {
+            return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, vote.toString())).build();
+        } else {
+
+            User user = userRepository.findOne(vote);
+            User userTwo = userRepository.findOne(voted);
+            UserProfileValoration userProfileValoration = userProfileValorationRepository.findByValoradorAndValorado(user, userTwo);
+
+            if (userProfileValoration != null) {
+                userProfileValoration.setValue(value);
+                userProfileValorationRepository.save(userProfileValoration);
+            } else {
+                userProfileValoration.setValorador(user);
+                userProfileValoration.setValorado(userTwo);
+                userProfileValoration.setValue(value);
+                userProfileValorationRepository.save(userProfileValoration);
+            }
+            return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, vote.toString())).build();
+        }
+    }
+
+    @PostMapping("/setUpdateValorationPost/{vote}/{voted}")
+    public ResponseEntity<Void> setUpdateValorationPost(@PathVariable Long vote, @PathVariable Long voted) throws URISyntaxException {
+
+        if (vote == voted) {
+            return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, vote.toString())).build();
+        } else {
+            User user = userRepository.findOne(vote);
+            User userTwo = userRepository.findOne(voted);
+
+            if (userProfileValorationRepository.findByValoradorAndValorado(user, userTwo) != null) {
+
+            }
+            return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, vote.toString())).build();
+        }
     }
 
 }

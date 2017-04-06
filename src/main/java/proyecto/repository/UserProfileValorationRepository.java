@@ -1,5 +1,6 @@
 package proyecto.repository;
 
+import proyecto.domain.User;
 import proyecto.domain.UserProfileValoration;
 
 import org.springframework.data.jpa.repository.*;
@@ -18,4 +19,5 @@ public interface UserProfileValorationRepository extends JpaRepository<UserProfi
     @Query("select userProfileValoration from UserProfileValoration userProfileValoration where userProfileValoration.valorado.login = ?#{principal.username}")
     List<UserProfileValoration> findByValoradoIsCurrentUser();
 
+    UserProfileValoration findByValoradorAndValorado(User user, User userTwo);
 }
