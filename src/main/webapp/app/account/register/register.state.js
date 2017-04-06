@@ -7,11 +7,31 @@
 
     stateConfig.$inject = ['$stateProvider'];
 
+    // function stateConfig($stateProvider) {
+    //     $stateProvider.state('login', {
+    //         parent: account,
+    //         url: '/register',
+    //         data: {
+    //             authorities: [],
+    //             pageTitle: 'login.title'
+    //         },
+    //         views: {
+    //             'content@': {
+    //                 templateUrl: 'app/account/login/login.html',
+    //                 controller: 'LoginController',
+    //                 controllerAs: 'vm'
+    //             }
+    //         },
+    //         resolve: {
+    //             translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+    //                 $translatePartialLoader.addPart('login');
+    //                 return $translate.refresh();
+    //             }]
+    //         }
+    //     });
+    // }
+
     function stateConfig($stateProvider) {
-
-
-
-
         $stateProvider.state('register', {
             parent: 'account',
             url: '/register',
