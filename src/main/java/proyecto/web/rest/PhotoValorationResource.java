@@ -1,9 +1,14 @@
 package proyecto.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import proyecto.domain.Photo;
 import proyecto.domain.PhotoValoration;
 
+import proyecto.domain.User;
+import proyecto.domain.UserProfileValoration;
+import proyecto.repository.PhotoRepository;
 import proyecto.repository.PhotoValorationRepository;
+import proyecto.repository.UserRepository;
 import proyecto.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -11,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.inject.Inject;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -26,20 +32,16 @@ public class PhotoValorationResource {
     private final Logger log = LoggerFactory.getLogger(PhotoValorationResource.class);
 
     private static final String ENTITY_NAME = "photoValoration";
-        
-    private final PhotoValorationRepository photoValorationRepository;
 
-    public PhotoValorationResource(PhotoValorationRepository photoValorationRepository) {
-        this.photoValorationRepository = photoValorationRepository;
-    }
+    @Inject
+    private PhotoValorationRepository photoValorationRepository;
 
-    /**
-     * POST  /photo-valorations : Create a new photoValoration.
-     *
-     * @param photoValoration the photoValoration to create
-     * @return the ResponseEntity with status 201 (Created) and with body the new photoValoration, or with status 400 (Bad Request) if the photoValoration has already an ID
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
+    @Inject
+    private UserRepository userRepository;
+
+    @Inject
+    private PhotoRepository photoRepository;
+
     @PostMapping("/photo-valorations")
     @Timed
     public ResponseEntity<PhotoValoration> createPhotoValoration(@RequestBody PhotoValoration photoValoration) throws URISyntaxException {
@@ -53,15 +55,6 @@ public class PhotoValorationResource {
             .body(result);
     }
 
-    /**
-     * PUT  /photo-valorations : Updates an existing photoValoration.
-     *
-     * @param photoValoration the photoValoration to update
-     * @return the ResponseEntity with status 200 (OK) and with body the updated photoValoration,
-     * or with status 400 (Bad Request) if the photoValoration is not valid,
-     * or with status 500 (Internal Server Error) if the photoValoration couldnt be updated
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
     @PutMapping("/photo-valorations")
     @Timed
     public ResponseEntity<PhotoValoration> updatePhotoValoration(@RequestBody PhotoValoration photoValoration) throws URISyntaxException {
@@ -75,11 +68,6 @@ public class PhotoValorationResource {
             .body(result);
     }
 
-    /**
-     * GET  /photo-valorations : get all the photoValorations.
-     *
-     * @return the ResponseEntity with status 200 (OK) and the list of photoValorations in body
-     */
     @GetMapping("/photo-valorations")
     @Timed
     public List<PhotoValoration> getAllPhotoValorations() {
@@ -116,4 +104,36 @@ public class PhotoValorationResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 
+
+    @GetMapping("/setUpdateValorationPhoto/{vote}&{voted}&{value}")
+    @Timed
+    public ResponseEntity<Void> setUpdateValoration(@PathVariable Long vote, @PathVariable Long voted, @PathVariable Double value) throws URISyntaxException {
+
+        if (value < 0 || value > 5) {
+            return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, vote.toString())).build();
+        } else {
+
+            User user = userRepository.findOne(vote);
+            Photo photo = photoRepository.findOne(voted);
+
+            PhotoValoration photoValoration = photoValorationRepository.findByUserAndPhoto(user, photo);
+
+            if (photoValoration != null) {
+                photoValoration.setMark(value);
+                photoValorationRepository.save(photoValoration);
+            } else {
+                photoValoration = new PhotoValoration();
+                photoValoration.setUser(user);
+                photoValoration.setPhoto(photo);
+                photoValoration.setMark(value);
+
+                photoValorationRepository.save(photoValoration);
+            }
+            Double points = photoValorationRepository.avgPhoto(photo);
+            photo.setPoints(points);
+            photoRepository.save(photo);
+
+            return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, vote.toString())).build();
+        }
+    }
 }

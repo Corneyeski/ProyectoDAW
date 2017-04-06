@@ -87,6 +87,7 @@ public class UserProfileValorationResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 
+    //TODO Añadir gestion de errores, respuestas
 
     @GetMapping("/setUpdateValoration/{vote}&{voted}&{value}")
     @Timed
