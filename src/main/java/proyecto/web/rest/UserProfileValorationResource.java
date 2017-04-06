@@ -92,7 +92,7 @@ public class UserProfileValorationResource {
     @Timed
     public ResponseEntity<Void> setUpdateValoration(@PathVariable Long vote, @PathVariable Long voted, @PathVariable int value) throws URISyntaxException {
 
-        if (vote == voted) {
+        if (vote == voted || value < 0 || value > 5) {
             return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, vote.toString())).build();
         } else {
 
@@ -104,16 +104,22 @@ public class UserProfileValorationResource {
                 userProfileValoration.setValue(value);
                 userProfileValorationRepository.save(userProfileValoration);
             } else {
+                userProfileValoration = new UserProfileValoration();
                 userProfileValoration.setValorador(user);
                 userProfileValoration.setValorado(userTwo);
                 userProfileValoration.setValue(value);
+
                 userProfileValorationRepository.save(userProfileValoration);
             }
+            Double points = userProfileValorationRepository.avgUserPoints(userProfileValoration.getValorado());
+            userTwo.getUserExt().setPopular(points);
+            userRepository.save(userTwo);
+
             return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, vote.toString())).build();
         }
     }
 
-    @PostMapping("/setUpdateValorationPost/{vote}/{voted}")
+    /*@PostMapping("/setUpdateValorationPost/{vote}/{voted}")
     public ResponseEntity<Void> setUpdateValorationPost(@PathVariable Long vote, @PathVariable Long voted) throws URISyntaxException {
 
         if (vote == voted) {
@@ -127,6 +133,6 @@ public class UserProfileValorationResource {
             }
             return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, vote.toString())).build();
         }
-    }
+    }*/
 
 }

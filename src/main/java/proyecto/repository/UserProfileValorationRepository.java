@@ -1,5 +1,6 @@
 package proyecto.repository;
 
+import org.springframework.data.repository.query.Param;
 import proyecto.domain.User;
 import proyecto.domain.UserProfileValoration;
 
@@ -20,4 +21,7 @@ public interface UserProfileValorationRepository extends JpaRepository<UserProfi
     List<UserProfileValoration> findByValoradoIsCurrentUser();
 
     UserProfileValoration findByValoradorAndValorado(User user, User userTwo);
+
+    @Query("select AVG(userProfileValoration.value) FROM  UserProfileValoration userProfileValoration WHERE userProfileValoration.valorado = :user")
+    Double avgUserPoints(@Param("user")User user);
 }
