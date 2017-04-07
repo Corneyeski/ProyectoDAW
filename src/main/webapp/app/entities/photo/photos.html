@@ -31,7 +31,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="photo in vm.photos track by photo.id">
+                <tr ng-repeat="photo in vm.photos track by vm.photos.id">
                     <td><a ui-sref="photo-detail({id:photo.id})">{{photo.id}}</a></td>
                     <td>{{photo.name}}</td>
                     <td>
