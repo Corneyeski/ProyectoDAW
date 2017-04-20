@@ -1,5 +1,8 @@
 package proyecto.web.rest.util;
 
+import org.apache.commons.io.IOUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 import proyecto.domain.User;
 import proyecto.domain.UserExt;
 import proyecto.repository.OfferRepository;
@@ -7,6 +10,9 @@ import proyecto.repository.UserExtRepository;
 import proyecto.repository.UserRepository;
 
 import javax.inject.Inject;
+import java.io.IOException;
+import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Random;
 
@@ -74,5 +80,13 @@ public class GenerarDatosRandom {
                 cont++;
             }
         }while(cont < 50);
+
+        try {
+            JSONObject json = new JSONObject(IOUtils.toString(new URL("https://api.gettyimages.com/v3/search/images?fields=id,title,thumb,referral_destinations&sort_order=best"), Charset.forName("UTF-8")));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
