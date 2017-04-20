@@ -89,12 +89,12 @@ public class UserProfileValorationResource {
 
     //TODO Añadir gestion de errores, respuestas
 
-    @GetMapping("/setUpdateValoration/{vote}&{voted}&{value}")
+    @PutMapping("/setUpdateValoration/{vote}/{voted}/{value}")
     @Timed
     public ResponseEntity<Void> setUpdateValoration(@PathVariable Long vote, @PathVariable Long voted, @PathVariable int value) throws URISyntaxException {
 
         if (vote == voted || value < 0 || value > 5) {
-            return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, vote.toString())).build();
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idSameUser", "No te puedes votar a ti mismo")).body(null);
         } else {
 
             User user = userRepository.findOne(vote);

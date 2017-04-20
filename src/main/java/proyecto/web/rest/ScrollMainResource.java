@@ -1,6 +1,8 @@
 package proyecto.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -44,7 +46,7 @@ public class ScrollMainResource {
     @RequestMapping(value = "/main/scroll", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional
-    public ResponseEntity<List<MainScrollDTO>> MainScroll() {
+    public ResponseEntity<List<MainScrollDTO>> MainScroll(Pageable pageable) {
 
         UserExt userExt = userExtRepository.
             findByUser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get());
@@ -67,16 +69,16 @@ public class ScrollMainResource {
         //TODO creamos las listas
 
         List<Photo> followPhotos = new ArrayList<>();
-        List<Photo> photos = new ArrayList<>();
 
         //TODO Codigo para buscar los usuarios bloqueados con QUERY.
 
         Collection<User> blockUsersCollection = bloquedRepository.selectBlockedFindByBlock(userExt.getUser());
 
+        Page<Photo> photosPage = null;
         if(!blockUsersCollection.isEmpty() && blockUsersCollection != null) {
-            photos = photoRepository.findUserExtPopularGreaterThanBlocked(userExt.getCity(), blockUsersCollection);
+            photosPage = photoRepository.findUserExtPopularGreaterThanBlocked(userExt.getCity(), blockUsersCollection,pageable);
         }else{
-            photos = photoRepository.findUserExtPopularGreaterThan(userExt.getCity());
+            photosPage = photoRepository.findUserExtPopularGreaterThan(userExt.getCity(),pageable);
         }
 
         //TODO ------------------------------------- Usuarios Seguidos
@@ -98,7 +100,7 @@ public class ScrollMainResource {
         int x = 0;
         int ranFollow = (int) (Math.random() * 4) + 2;
 
-        for (Photo photo : photos) {
+        for (Photo photo : photosPage.getContent()) {
             MainScrollDTO main = new MainScrollDTO();
 
             if (j == ranOfert && !offer.isEmpty()) {
