@@ -88,29 +88,41 @@
     </script>
 </head>
 
-
-
 <body onload="initialize()">
 
 <div id="fullpage" style="margin:0 auto;">
+
+    <!-- LOGIN-->
     <div class="section" id="section0" data-anchor="first-page" style=" margin: 0 auto; text-align: center;padding-top: 0px; padding:0px;background-color: brown;">
 
         <div class="contenedor">
             <div>
-                <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.register()" show-validation>
+                <form class="form" role="form" ng-submit="vm.login($event)">
+                    <div class="form-group">
+                        <label for="username" data-translate="global.form.username">Login</label>
+                        <input type="text" class="form-control" id="username" placeholder="{{'global.form.username.placeholder' | translate}}" ng-model="vm.username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" data-translate="login.form.password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="{{'login.form.password.placeholder' | translate}}"
+                               ng-model="vm.password">
+                    </div>
+                    <div class="form-group">
+                        <label for="rememberMe">
+                            <input type="checkbox" id="rememberMe" ng-model="vm.rememberMe" checked>
+                            <span data-translate="login.form.rememberme">Remember me</span>
+                        </label>
+                    </div>
+                    <input type="submit" class="btn btn-primary" data-translate="login.form.button" value="LOGIN">
+                </form>
+                <!--<form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.register()" show-validation>
                     <div class="row">
                         <div class="col-md-12 tituloregis" style="margin-bottom:20px"><h3>Login</h3></div>
                         <div class="col-md-4 col-md-offset-2">
                             <div class="form-group">
-                                <label class="control-label" for="login"
-                                       data-translate="global.form.username">Username</label>
-                                <input type="text" class="form-control" id="logindf" name="login"
-                                       placeholder="{{'global.form.username.placeholder' | translate}}"
-
-
-
-
-                                ng-model="vm.registerAccount.login" ng-minlength=1 ng-maxlength=50>
+                                <label class="control-label" for="login" data-translate="global.form.username">Username</label>
+                                <input type="text" class="form-control" id="logindf" name="username" required
+                                       placeholder="{{'global.form.username.placeholder' | translate}}" ng-model="vm.registerAccount.login" ng-minlength=1 ng-maxlength=50>
                                 <ng-pattern="/^[_'.@A-Za-z0-9-]*$/" required>
                                 <div ng-show="form.login.$dirty && form.login.$invalid">
                                     <p class="help-block"
@@ -135,7 +147,7 @@
                         <div class="col-md-4 col-md-offset-2" style="margin-left:10px">
                             <div class="form-group">
                                 <label class="control-label" for="password" data-translate="global.form.newpassword">Password</label>
-                                <input type="password" class="form-control" id="passwordfd" name="password"
+                                <input type="password" class="form-control" id="passwordlogin" name="password"
                                        placeholder="{{'global.form.newpassword.placeholder' | translate}}"
                                 ng-model="vm.registerAccount.password" ng-minlength=4 ng-maxlength=50 required>
                                 <div ng-show="form.password.$dirty && form.password.$invalid">
@@ -152,7 +164,7 @@
                                         Your password cannot be longer than 50 characters.
                                     </p>
                                 </div>
-                                <!--<password-strength-bar password-to-check="vm.registerAccount.password"></password-strength-bar>-->
+                                <password-strength-bar password-to-check="vm.registerAccount.password"></password-strength-bar>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -160,8 +172,8 @@
                                     data-translate="register.form.button">Login
                             </button>
                         </div>
-                    </div><!--Cierra Row -->
-                </form>
+                    </div>Cierra Row
+                </form> -->
             </div>
 
         </div>
@@ -424,7 +436,8 @@
             </div>
         </div>
     </div>
-        <div class="section" id="section2" data-anchor="third-page">
+
+    <div class="section" id="section2" data-anchor="third-page">
             <div class="contenedor">
                 <div>
                     <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.register()" show-validation>
@@ -664,7 +677,8 @@
         </div>
 
         </div>
-        <div class="section" id="section5" data-anchor="six-page" style="margin: 0 auto; text-align: center;padding-top: 0px; padding:0px; width:100%; height:100% !important; z-index:99999999;">
+
+    <div class="section" id="section5" data-anchor="six-page" style="margin: 0 auto; text-align: center;padding-top: 0px; padding:0px; width:100%; height:100% !important; z-index:99999999;">
         <div class="slide" style="width:100%; height:100% !important; background-color: #fff;">
         <div id="map_canvas" style="width:100%; height:50%"></div>
         <!--<img src="img/logogas.png" alt="" style="width: 60px; margin-top: 30px; margin-bottom: 20px;" class="simple">-->
