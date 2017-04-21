@@ -4,6 +4,34 @@ body {
     color: #333;
 }
 
+
+
+
+/*USER PROFILE*/
+
+.container-profile{
+    width: 100%;
+    height: 100%;
+}
+.header-user{
+    width: 80%;
+    height: 100px;
+    margin: 0 auto;
+    background-color: red;
+
+}
+.left-user{
+    float: left;
+    width: 30%;
+    height: 100%;
+}
+.right-user{
+
+}
+.nameuser{
+    width: 70%;
+}
+
 /* ==========================================================================
 Hide ng-cloak on page load, https://docs.angularjs.org/api/ng/directive/ngCloak
 ========================================================================== */
@@ -341,61 +369,14 @@ ui bootstrap tweaks
 
 
 /* ================================================================================================================================================================================
-===================================================================================================================================================================================
-===================================================================================================================================================================================
-===================================================================================================================================================================================
-===================================================================================================================================================================================
+==============================================================================================================================================================================
 ===================================================================================================================================================================================
 ===================================================================================================================================================================================
 ===================================================================================================================================================================================
 */
 
 /*==================ESTE ES NUESTRO CSS(CUSTOM)======================================================================================================*/
-/*.container{*/
-    /*width: 100%; background-color: brown;*/
-/*}*/
-/*.global{*/
-    /*width:100%; height: 120px;*/
-/*}*/
-/*.logo{*/
-    /*display: inline-table; width: 20%; height: 100px; background-color: cadetblue;*/
-/*}*/
-/*.text{*/
-    /*display: inline-table; width: 30%; height: 100px; background-color: springgreen;*/
-/*}*/
-/*.form-regis-global{*/
-    /*width: 100%; margin: 0 auto;text-align: center;clear: both;background-size: cover;background-position: center 0px;height: 800px;*/
-/*}*/
-/*.form-regis-container{*/
-    /*padding-top: 70px;padding-bottom: 50px;height: 100%;*/
-/*}*/
-/*.form-regis-texto{*/
-    /*color: white; font-family: "Cardo"; font-style: italic;*/
-/*}*/
-/*.global-form{*/
-    /*height: 90%;*/
-/*}*/
-/*.form-regis-input-left{*/
-    /*float: left; position: absolute;min-height: 1px;width: 25%; left: 20%; margin-top: 40px;*/
-/*}*/
-/*.form-regis-input-left p {*/
-    /*margin-bottom: 1.5em;*/
-/*}*/
-/*.form-regis-input-left .form-input{*/
-    /*padding: 10px 7px; margin-bottom: 10px;border-radius: 3px;border: 0px;width: 100%;*/
-/*}*/
-/*.form-regis-input-right{*/
-    /*float: left; position: absolute;min-height: 1px;width: 25%; left: 55%; margin-top: 40px;*/
-/*}*/
-/*.form-regis-input-right p {*/
-    /*margin-bottom: 1.5em;*/
-/*}*/
-/*.form-regis-input-right .form-input{*/
-    /*padding: 10px 7px; margin-bottom: 10px;border-radius: 3px;border: 0px;width: 100%;*/
-/*}*/
-/*.form-regis-input-right .form-input{*/
-    /*padding: 10px 7px; margin-bottom: 10px;border-radius: 3px;border: 0px;width: 100%;*/
-/*}*/
+
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 .btn { display: inline-block; *display: inline; *zoom: 1; padding: 4px 10px 4px; margin-bottom: 0; font-size: 13px; line-height: 18px; color: #333333; text-align: center;text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75); vertical-align: middle; background-color: #f5f5f5; background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6); background-image: -ms-linear-gradient(top, #ffffff, #e6e6e6); background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6)); background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6); background-image: -o-linear-gradient(top, #ffffff, #e6e6e6); background-image: linear-gradient(top, #ffffff, #e6e6e6); background-repeat: repeat-x; filter: progid:dximagetransform.microsoft.gradient(startColorstr=#ffffff, endColorstr=#e6e6e6, GradientType=0); border-color: #e6e6e6 #e6e6e6 #e6e6e6; border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); border: 1px solid #e6e6e6; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05); -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05); cursor: pointer; *margin-left: .3em; }
 .btn:hover, .btn:active, .btn.active, .btn.disabled, .btn[disabled] { background-color: #e6e6e6; }
@@ -552,50 +533,6 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
     background-color: #fff;
 }
 
-#slide1 {
-    background-image: url(img/dewards.png);
-}
-
-#slide2 {
-    background-image: url(works/imgdocus/docus1.jpg);
-}
-
-#slide3 {
-    background-position: left center;
-    background-image: url(works/imgwanted/wanted1.jpg);
-}
-
-#slide4 {
-    background-image: url(works/images/opinadors1.jpg);
-}
-
-#slide5 {
-    background-image: url(works/imggentdara/gentdara1.jpg);
-}
-
-#slide6 {
-    background-image: url(works/imgnarrativa/narrativa1.jpg);
-}
-
-#slide7 {
-    background-image: url(works/imgtous/tous.jpg);
-}
-
-#slide8 {
-    background-image: url(img/roca.jpg);
-}
-
-#slide9 {
-    background-image: url(img/triitme.jpg);
-}
-
-#slide10 {
-    background-image: url(img/MercatFlors_G001.jpg);
-}
-
-#slide11 {
-    background-image: url(img/ravalejar.jpg);
-}
 .container-fluid{
     padding:0px !important;
 }
@@ -726,18 +663,6 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
 
     .contenedor .textooculto p {
         width: 80% !important;
-    }
-
-    #section0 {
-        background-image: url(img/portada.png) !important;
-    }
-
-    #section2 {
-        background-image: url(img/sinsights.png) !important;
-    }
-
-    #section3 {
-        background-image: url(img/sculture.png) !important;
     }
 
     #section3 .contenedor h4 {
