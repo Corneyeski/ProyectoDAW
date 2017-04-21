@@ -27,6 +27,28 @@
                     return $translate.refresh();
                 }]
             }
-        });
+        })
+        .state('nada', {
+                parent: 'app',
+                url: '/nada',
+                data: {
+                    authorities: []
+                },
+                views: {
+                    'content@': {
+                        templateUrl: 'app/inicio/usuario/inicio-usuario.html',
+                        controller: 'InicioController',
+                        controllerAs: 'vm'
+                    }
+                },
+                resolve: {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                        //$translatePartialLoader.addPart('video');
+                        return $translate.refresh();
+                    }]
+                }
+            }
+
+        );
     }
 })();

@@ -10,21 +10,40 @@
 
     function InicioController($translate, $timeout, Auth, LoginService, UserExt, entity) {
         var vm = this;
-        var array2=[];
+        var listImage = [entity[0], entity[1], entity[2], entity[3], entity[4], entity[5], entity[6], entity[7]];
 
 
-        vm.photosDTO = entity[0];
 
-        console.log(array2);
         console.log(entity);
+        var aux = 8;
+        vm.photos = listImage;
 
 
-        vm.loadMore = function() {
-            for(var i=0;i<entity.length;i++){
-                array2.push(entity[i]);
+        vm.loadMore = function () {
+            var last = listImage[listImage.length - 1];
+            var j = 8;
+            for (var i = 0; i < 4; i++) {
+                if (aux < entity.length) {
+
+
+                        listImage.push(entity[j]);
+                        j++;
+                        aux++;
+
+
+
+
+                } else {
+                    console.log("no hay mas imagenes");
+                    break;
+                }
             }
-            vm.photos=array2;
+
+
         };
+
+
+
 
 
     }

@@ -6,21 +6,22 @@
         .controller('RegisterController', RegisterController);
 
 
-    RegisterController.$inject = ['$translate', '$timeout', 'Auth', 'LoginService'];
+    RegisterController.$inject = ['$rootScope','$translate', '$timeout', 'Auth'];
 
-    function RegisterController ($translate, $timeout, Auth, LoginService) {
+    function RegisterController ($rootScope, $translate, $timeout, Auth) {
         var vm = this;
 
         vm.doNotMatch = null;
         vm.error = null;
         vm.errorUserExists = null;
-        vm.login = LoginService.open;
         vm.register = register;
         vm.registerAccount = {};
         vm.registerAccount.useSanitizeValueStrategy
         vm.success = null;
+        vm.login = login;
 
-        $timeout(function (){angular.element('#login').focus();});
+        $timeout(function (){
+            angular.element('#login').focus();});
 
         function register () {
             if (vm.registerAccount.password !== vm.confirmPassword) {
@@ -46,5 +47,28 @@
                 });
             }
         }
+
+        vm.login = function($event){
+            console.log("AJSDUASHDLASDLNASLD");
+            /*event.preventDefault();
+            Auth.login({
+                username: vm.username,
+                password: vm.password,
+                rememberMe: vm.rememberMe
+            }).then(function () {
+                vm.authenticationError = false;
+                vm.isAuthenticated = Principal.isAuthenticated;
+                $rootScope.$broadcast('authenticationSuccess');
+                if (Auth.getPreviousState()) {
+                    var previousState = Auth.getPreviousState();
+                    Auth.resetPreviousState();
+                    $state.go(previousState.name, previousState.params);
+                }
+            }).catch(function () {
+                vm.authenticationError = true;
+            });*/
+        }
+
     }
+
 })();
