@@ -9,7 +9,6 @@
 
     function HomeController ($rootScope, $scope, Principal, LoginService, $state, Auth) {
         var vm = this;
-
         vm.account = null;
         vm.isAuthenticated = null;
         //vm.login = LoginService.open;
@@ -46,7 +45,7 @@
                  Auth.resetPreviousState();
                 // $state.go(previousState.name, previousState.params);
                      //$state.go('nada',null);
-                     $state.go('^');
+                     $state.go("nada");
 
                  }
 
