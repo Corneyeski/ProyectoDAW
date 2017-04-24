@@ -120,6 +120,7 @@ public class UserService {
         if(birthday != null) {
             userExt.setBirthdate(birthday.toLocalDate());
         }
+
         userExt.setCountry(country);
         userExt.setPhone(phone);
         userExt.setCity(city);
