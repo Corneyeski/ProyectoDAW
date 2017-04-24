@@ -14,7 +14,7 @@ body {
     height: 100%;
 }
 .header-user{
-    width: 80%;
+    width: 90%;
     height: 100px;
     margin: 0 auto;
     background-color: red;
@@ -22,14 +22,79 @@ body {
 }
 .left-user{
     float: left;
-    width: 30%;
+    width: 5%;
     height: 100%;
+    margin-top: 50px;
 }
 .right-user{
-
+    height: 50px;
 }
 .nameuser{
-    width: 70%;
+    width: 90%;
+    margin: 0 auto;
+    border-bottom: 1px solid black;
+    height: 100%;
+}
+.nameuser p{
+    margin: 0 0 10px;
+    font-size: 36px;
+}
+
+.contenido-usu{
+    width: 90%;
+    margin: 0 auto;
+    height: 300px;
+    background-color: blue;
+}
+
+.info-usu{
+    width: 50%;
+    float: left;
+    padding: 80px;
+    display: inline-table;
+}
+.img-usu{
+    width: 37%;
+    display: inline-table;
+    float: right;
+    margin: 10px;
+}
+.follow{
+    width: 90%;
+    height: 35px;
+    margin: 0 auto;
+    background-color: #3e8f3e;
+}
+.form-follow{
+    width: 45%;
+    height: 35px;
+    margin: 0 auto;
+}
+.albumes{
+    float: left;
+    padding: 7px;
+}
+.buttons{
+    float: right;
+    padding: 5px;
+}
+.list-albumes{
+    width: 90%;
+    margin: 0 auto;
+    background-color: orange;
+    height: 400px;
+
+}
+.list-albumes div{
+    padding: 10px;
+    display: inline-table;
+    margin: 20px;
+}
+.single-album{
+    width: 260px;
+    height: 300px;
+    border: 1px solid black;
+    margin-left: 10px;
 }
 
 /* ==========================================================================

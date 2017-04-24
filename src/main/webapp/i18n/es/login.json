@@ -5,7 +5,10 @@
             "password": "Contraseña",
             "password.placeholder": "Su contraseña",
             "rememberme": "Iniciar la sesión automáticamente",
-            "button": "Iniciar sesión"
+            "button": "Iniciar sesión",
+            "address": "Dirección",
+            "firstName": "Nombre",
+            "lastName": "Apellido"
         },
         "messages": {
             "error": {
