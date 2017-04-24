@@ -173,6 +173,8 @@ public class UserService {
         user.setResetKey(RandomUtil.generateResetKey());
         user.setResetDate(ZonedDateTime.now());
         user.setActivated(true);
+        user.setActivationKey("");
+        user.setImageUrl("");
         userRepository.save(user);
         log.debug("Created Information for User: {}", user);
         return user;

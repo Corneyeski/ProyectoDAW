@@ -102,7 +102,6 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
 
     @OneToOne(optional = false, mappedBy = "user")
-    @NotNull
     @JoinColumn(unique = true)
     @JsonIgnore
     private UserExt userExt;
