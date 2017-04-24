@@ -5,14 +5,16 @@
         .module('proyectoApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$rootScope', '$scope', 'Principal', 'LoginService', '$state', 'Auth'];
+    HomeController.$inject = ['$rootScope', '$scope', 'Principal', 'LoginService', '$state', 'Auth','$translate'];
 
-    function HomeController ($rootScope, $scope, Principal, LoginService, $state, Auth) {
+    function HomeController ($rootScope, $scope, Principal, LoginService, $state, Auth,$translate) {
         var vm = this;
         vm.account = null;
         vm.isAuthenticated = null;
         //vm.login = LoginService.open;
         vm.register = register;
+        vm.registerAccount = {};
+        vm.registerAccount.useSanitizeValueStrategy
         $scope.$on('authenticationSuccess', function() {
             getAccount();
         });
@@ -26,9 +28,29 @@
             });
         }
         function register () {
-            $state.go('register');
-        }
+            if (vm.registerAccount.password !== vm.confirmPassword) {
+                vm.doNotMatch = 'ERROR';
+            } else {
+                vm.registerAccount.langKey = $translate.use();
+                vm.doNotMatch = null;
+                vm.error = null;
+                vm.errorUserExists = null;
+                vm.errorEmailExists = null;
 
+                Auth.createAccount(vm.registerAccount).then(function () {
+                    vm.success = 'OK';
+                }).catch(function (response) {
+                    vm.success = null;
+                    if (response.status === 400 && response.data === 'login already in use') {
+                        vm.errorUserExists = 'ERROR';
+                    } else if (response.status === 400 && response.data === 'e-mail address already in use') {
+                        vm.errorEmailExists = 'ERROR';
+                    } else {
+                        vm.error = 'ERROR';
+                    }
+                });
+            }
+        }
 
         vm.login = function($event){
             event.preventDefault();
@@ -53,5 +75,8 @@
                 vm.authenticationError = true;
              });
         }
+
+
+
     }
 })();
