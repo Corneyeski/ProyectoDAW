@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class=''>
+<html class='fondo'>
 <head>
     <script
         src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script>
@@ -24,11 +24,11 @@
      style="width:100%;padding-left: 16%; padding-right: 10%;">
 
 
-        <div class="imagenesInicio " ng-repeat="data in vm.photos track by $index" style="width: 200px; ">
+        <div class="imagenesInicio " id="contentImage" ng-repeat="data in vm.photos track by $index" style="width: 200px; ">
             <div ng-switch="data.offer">
 
                 <div ng-switch-when=null>
-                    <img data-ng-src="{{'data:' + data.photo.imageContentType + ';base64,' + data.photo.image }}"
+                    <img  data-ng-src="{{'data:' + data.photo.imageContentType + ';base64,' + data.photo.image }}"
                          style="width: 200px; height:200px;" alt="photo image"/>
                 </div>
 
@@ -44,9 +44,34 @@
 
         </div>
 
+
+
+
     </div>
 
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="//placehold.it/1000x600" class="img-responsive">
+            </div>
+        </div>
+    </div>
+</div>
 
+<script>
+    function centerModal() {
+    $(this).css('display', 'block');
+    var $dialog = $(this).find(".modal-dialog");
+    var offset = ($(window).height() - $dialog.height()) / 2;
+    // Center modal vertically in window
+    $dialog.css("margin-top", offset);
+}
+
+$('.modal').on('show.bs.modal', centerModal);
+$(window).on("resize", function () {
+    $('.modal:visible').each(centerModal);
+});</script>
 
 
 

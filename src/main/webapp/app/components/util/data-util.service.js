@@ -13,6 +13,7 @@
             abbreviate: abbreviate,
             byteSize: byteSize,
             openFile: openFile,
+            openPhoto: openPhoto,
             toBase64: toBase64
         };
 
@@ -61,7 +62,9 @@
         function openFile (type, data) {
             $window.open('data:' + type + ';base64,' + data, '_blank', 'height=300,width=400');
         }
+        function openPhoto(type, data){
 
+        }
         function toBase64 (file, cb) {
             var fileReader = new FileReader();
             fileReader.readAsDataURL(file);
