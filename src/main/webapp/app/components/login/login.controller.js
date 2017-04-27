@@ -43,7 +43,7 @@
                 $uibModalInstance.close();
                 if ($state.current.name === 'register' || $state.current.name === 'activate' ||
                     $state.current.name === 'finishReset' || $state.current.name === 'requestReset') {
-                    $state.go('home');
+                    // $state.go('home');
                 }
 
                 $rootScope.$broadcast('authenticationSuccess');
@@ -53,7 +53,7 @@
                 if (Auth.getPreviousState()) {
                     var previousState = Auth.getPreviousState();
                     Auth.resetPreviousState();
-                    $state.go(previousState.name, previousState.params);
+                    // $state.go(previousState.name, previousState.params);
                 }
             }).catch(function () {
                 vm.authenticationError = true;

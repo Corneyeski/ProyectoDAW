@@ -17,7 +17,7 @@
             views: {
                 'content@': {
                     templateUrl: 'app/account/profile/profile.html',
-                    //controller: 'ProfileController',
+                   // controller: 'ProfileController',
                     controllerAs: 'vm'
                 }
             },

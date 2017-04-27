@@ -13,6 +13,7 @@
             'ngFileUpload',
             'ui.bootstrap',
             'ui.bootstrap.datetimepicker',
+            'ui.bootstrap.modal',
             'ui.router',
             'infinite-scroll',
             // jhipster-needle-angularjs-add-module JHipster will add new module here

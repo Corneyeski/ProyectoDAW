@@ -20,58 +20,74 @@
 <body>
 <h1>Página de Inicio</h1>
 
-<div  class="col-lg-12" infinite-scroll='vm.loadMore()' infinite-scroll-distance="1"
-     style="width:100%;padding-left: 16%; padding-right: 10%;">
+<!--<div  class="col-lg-12" infinite-scroll='vm.loadMore()' infinite-scroll-distance="1"-->
+     <!--style="width:100%;padding-left: 16%; padding-right: 10%;">-->
 
 
-        <div class="imagenesInicio " id="contentImage" ng-repeat="data in vm.photos track by $index" style="width: 200px; ">
-            <div ng-switch="data.offer">
+        <!--<div class="imagenesInicio " id="contentImage" ng-repeat="data in vm.photos2 track by $index" style="width: 200px; ">-->
+            <!--<div ng-switch="data.offer">-->
 
-                <div ng-switch-when=null>
-                    <img  data-ng-src="{{'data:' + data.photo.imageContentType + ';base64,' + data.photo.image }}"
-                         style="width: 200px; height:200px;" alt="photo image"/>
-                </div>
+                <!--<div ng-switch-when=null>-->
+                    <!--<img  data-ng-src="{{'data:' + data.photo.imageContentType + ';base64,' + data.photo.image }}"-->
+                         <!--style="width: 200px; height:200px;" alt="photo image"/>-->
+                <!--</div>-->
 
-                <div ng-switch-default>
-                    {{data.offer.name}}
-                </div>
-
-
-            </div>
+                <!--<div ng-switch-default>-->
+                    <!--{{data.offer.name}}-->
+                <!--</div>-->
 
 
-
-
-        </div>
+            <!--</div>-->
 
 
 
 
+        <!--</div>-->
+
+
+
+
+    <!--</div>-->
+
+<!--<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+    <!--<div class="modal-dialog">-->
+        <!--<div class="modal-content">-->
+            <!--<div class="modal-body">-->
+                <!--<img src="//placehold.it/1000x600" class="img-responsive">-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<script>-->
+    <!--function centerModal() {-->
+    <!--$(this).css('display', 'block');-->
+    <!--var $dialog = $(this).find(".modal-dialog");-->
+    <!--var offset = ($(window).height() - $dialog.height()) / 2;-->
+    <!--// Center modal vertically in window-->
+    <!--$dialog.css("margin-top", offset);-->
+<!--}-->
+
+<!--$('.modal').on('show.bs.modal', centerModal);-->
+<!--$(window).on("resize", function () {-->
+    <!--$('.modal:visible').each(centerModal);-->
+<!--});</script>-->
+
+<button class="btn" ng-click="vm.open()">Open Modal</button>
+
+<div modal="showModal" close="cancel()">
+    <div class="modal-header">
+        <h4>Modal Dialog</h4>
     </div>
-
-<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="//placehold.it/1000x600" class="img-responsive">
-            </div>
-        </div>
+    <div class="modal-body">
+        <p>Example paragraph with some text.</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" ng-click="ok()">Okay</button>
+        <button class="btn" ng-click="cancel()">Cancel</button>
     </div>
 </div>
 
-<script>
-    function centerModal() {
-    $(this).css('display', 'block');
-    var $dialog = $(this).find(".modal-dialog");
-    var offset = ($(window).height() - $dialog.height()) / 2;
-    // Center modal vertically in window
-    $dialog.css("margin-top", offset);
-}
-
-$('.modal').on('show.bs.modal', centerModal);
-$(window).on("resize", function () {
-    $('.modal:visible').each(centerModal);
-});</script>
 
 
 

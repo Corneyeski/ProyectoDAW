@@ -9,16 +9,10 @@
     InicioController.$inject = ['$translate', '$timeout', 'Auth', 'LoginService', 'UserExt', 'entity', 'DataUtils'];
 
     function InicioController($translate, $timeout, Auth, LoginService, UserExt, entity, DataUtils) {
-
-
-
-
-
-
-        var vm = this;
+ var vm = this;
         var listImage = [entity[0], entity[1], entity[2], entity[3], entity[4], entity[5], entity[6], entity[7]];
         var aux = 8;
-        vm.photos = listImage;
+        vm.photos2 = listImage;
         vm.loadMore = function () {
             var last = listImage[listImage.length - 1];
             var j = 8;
@@ -34,6 +28,18 @@
             }
         };
 
+
+        vm.open = function() {
+            vm.showModal = true;
+        };
+
+        vm.ok = function() {
+            vm.showModal = false;
+        };
+
+        vm.cancel = function() {
+            vm.showModal = false;
+        };
 
     }
 })();
