@@ -62,13 +62,26 @@
                  vm.authenticationError = false;
                  vm.isAuthenticated = Principal.isAuthenticated;
                  $rootScope.$broadcast('authenticationSuccess');
-                 if (Auth.getPreviousState()) {
-                 var previousState = Auth.getPreviousState();
-                 Auth.resetPreviousState();
-                 $state.go(previousState.name, previousState.params);
-                     //$state.go('nada',null);
-                     // $state.go("nada");
+                // if (Auth.getPreviousState()==null) {
+                 // var previousState = $state('home'); // Auth.getPreviousState();
+                 //
+                 // Auth.resetPreviousState();
+                 // $state.go(previousState.name, previousState.params);
+                 //     $state.go('nada',null);
+                  //   $state.go('nada',null);
 
+                   //                   }else{
+
+
+                // }
+
+                 var isAuthenticated = Principal.isAuthenticated();
+                 if(isAuthenticated){
+                     $state.go('nada',null);
+                 }else{
+                     $state.go('accessdenied').then(function() {
+                         LoginService.open();
+                     });
                  }
 
              }).catch(function () {
