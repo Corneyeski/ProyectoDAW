@@ -3,13 +3,38 @@
 
     angular
         .module('proyectoApp')
-        .controller('InicioController', InicioController);
-
+        .controller('InicioController', InicioController)
+        .directive('modal', function () {
+        return {
+            restrict: 'EA',
+            scope: {
+                title: '=modalTitle',
+                header: '=modalHeader',
+                body: '=modalBody',
+                footer: '=modalFooter',
+                callbackbuttonleft: '&ngClickLeftButton',
+                callbackbuttonright: '&ngClick',
+                handler: '=lolo'
+            },
+            templateUrl: 'partialModal.html',
+            transclude: true,
+            controller: function ($scope) {
+                vm.handler = 'pop';
+            },
+        };
+    });
 
     InicioController.$inject = ['$translate', '$timeout', 'Auth', 'LoginService', 'UserExt', 'entity', 'DataUtils'];
 
     function InicioController($translate, $timeout, Auth, LoginService, UserExt, entity, DataUtils) {
  var vm = this;
+        vm.header = 'Put here your header';
+        vm.body = 'Put here your body';
+        vm.footer = 'Put here your footer';
+
+        vm.myRightButton = function (bool) {
+            alert('!!! first function call!');
+        };
         var listImage = [entity[0], entity[1], entity[2], entity[3], entity[4], entity[5], entity[6], entity[7]];
         var aux = 8;
         vm.photos2 = listImage;
@@ -29,17 +54,7 @@
         };
 
 
-        vm.open = function() {
-            vm.showModal = true;
-        };
 
-        vm.ok = function() {
-            vm.showModal = false;
-        };
-
-        vm.cancel = function() {
-            vm.showModal = false;
-        };
 
     }
 })();
