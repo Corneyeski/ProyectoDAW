@@ -21,8 +21,10 @@ import javax.transaction.Transactional;
 import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 
 @RestController
@@ -44,47 +46,55 @@ public class DataGenerator {
     @Inject
     PhotoRepository photoRepository;
 
-    @RequestMapping(value = "/DataGenerator",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/DataGenerator", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     @Transactional
     public ResponseEntity<List<String>> searchPhoto() throws URISyntaxException {
 
         List<Image> images = imageService.getAllImages();
 
-        List<User> users = userRepository.findAll();
+        Set<String> logins = new HashSet<>();
+        Set<String> mails = new HashSet<>();
 
-        /*for(int i = 0;i < 100;i++){
+        for (int i = 0; i < 100; i++) {
 
             User user = new User();
 
-            int ran = 0 + (int) (Math.random() * 15);
+            int ran = 1 + (int) (Math.random() * 15);
             String ranname = "";
             for (int j = 0; j < ran; j++) {
                 Random r = new Random();
                 ranname += (char) (r.nextInt(26) + 'a');
             }
             user.setFirstName(ranname);
-            user.setPassword("stucom");
+            user.setPassword("stucom123");
 
-            ran = 0 + (int) (Math.random() * 15);
-            ranname = "";
-            for (int j = 0; j < ran; j++) {
-                Random r = new Random();
-                ranname += (char) (r.nextInt(26) + 'a');
-            }
-            ranname += "@";
-            for (int j = 0; j < ran; j++) {
-                Random r = new Random();
-                ranname += (char) (r.nextInt(26) + 'a');
-            }
+            do {
+                ran = 1 + (int) (Math.random() * 15);
+                ranname = "";
+                for (int j = 0; j < ran; j++) {
+                    Random r = new Random();
+                    ranname += (char) (r.nextInt(26) + 'a');
+                }
+                ranname += "@";
+                for (int j = 0; j < ran; j++) {
+                    Random r = new Random();
+                    ranname += (char) (r.nextInt(26) + 'a');
+                }
+            }while(mails.contains(ranname));
             user.setEmail(ranname);
+            mails.add(ranname);
 
-            ran = 0 + (int) (Math.random() * 15);
-            ranname = "";
-            for (int j = 0; j < ran; j++) {
-                Random r = new Random();
-                ranname += (char) (r.nextInt(26) + 'a');
-            }
+            do {
+                //ran = 15 + (int) (Math.random() * 40);
+                ran = (int) (Math.random() * (50 - 10) + 10);
+                ranname = "";
+                for (int j = 0; j < ran; j++) {
+                    Random r = new Random();
+                    ranname += (char) (r.nextInt(26) + 'a');
+                }
+            } while (logins.contains(ranname));
+
             user.setLangKey("es");
             user.setLogin(ranname);
             user.setActivated(true);
@@ -94,15 +104,20 @@ public class DataGenerator {
             user.setResetKey("stucom");
             user.setResetDate(ZonedDateTime.now());
             userRepository.save(user);
-        }*/
 
+            logins.add(user.getLogin());
+        }
+
+        List<User> users = userRepository.findAll();
 
         int cont = 0;
-        do {
-            for (User u : users) {
+        for (User u : users) {
+
+            if (u.getUserExt() == null) {
+
                 UserExt userExt = new UserExt();
 
-                int ran = 0 + (int) (Math.random() * 15);
+                int ran = 1 + (int) (Math.random() * 15);
                 String ranname = "";
                 for (int i = 0; i < ran; i++) {
                     Random r = new Random();
@@ -140,7 +155,7 @@ public class DataGenerator {
 
                 Photo p = new Photo();
                 p.setUser(u);
-                p.setUrl(images.get(cont).getReferralDestinations().get(0).getSiteName());
+                p.setUrl(images.get(cont).getReferralDestinations().get(0).getUri());
                 p.setName(images.get(cont).getTitle());
                 Random r = new Random();
                 double d = -0 + r.nextDouble() * 5.0;
@@ -149,9 +164,11 @@ public class DataGenerator {
                 photoRepository.save(p);
 
                 cont++;
+                if (cont == 30) {
+                    cont = 0;
+                }
             }
-        }while(cont < 50);
-
+        }
         return null;
     }
 }
