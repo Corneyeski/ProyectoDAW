@@ -38,6 +38,11 @@
                     authorities: ['ROLE_USER']
                 },
                 views: {
+                    'navbar@':{
+                        templateUrl: 'app/layouts/left-navbar/left-navbar.html',
+                        controller: 'LeftNavbarController',
+                        controllerAs: 'vm'
+                    },
                     'content@': {
                         templateUrl: 'app/inicio/usuario/inicio-usuario.html',
                         controller: 'InicioController',
