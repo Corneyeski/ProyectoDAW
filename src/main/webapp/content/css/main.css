@@ -9,92 +9,58 @@ body {
 
 /*USER PROFILE*/
 
-.container-profile{
-    width: 100%;
-    height: 100%;
-}
-.header-user{
-    width: 90%;
-    height: 100px;
-    margin: 0 auto;
-    background-color: red;
+.general-profile{
 
 }
-.left-user{
-    float: left;
-    width: 5%;
-    height: 100%;
-    margin-top: 50px;
+.usu{
+    margin: 0 auto;
+    text-align: center;
+
 }
-.right-user{
+.row{
+    margin: 0 auto;
+}
+.img-usuario{
+    margin: 0 auto;
+
+}
+.separador{
+    height: 100px;
+}
+.separador2{
     height: 50px;
 }
-.nameuser{
-    width: 90%;
+.img-usuario img{
+    max-width:400px;
+    max-height: 400px;
     margin: 0 auto;
-    border-bottom: 1px solid black;
-    height: 100%;
+    border-radius: 200px 200px 200px 200px;
+    -moz-border-radius: 200px 200px 200px 200px;
+    -webkit-border-radius: 200px 200px 200px 200px;
+    border: 0px solid #000000;
 }
-.nameuser p{
-    margin: 0 0 10px;
-    font-size: 36px;
-}
-
-.contenido-usu{
-    width: 90%;
+.botones{
     margin: 0 auto;
-    height: 300px;
-    background-color: blue;
+    text-align: center;
 }
-
-.info-usu{
-    width: 50%;
-    float: left;
-    padding: 80px;
-    display: inline-table;
-}
-.img-usu{
-    width: 37%;
-    display: inline-table;
-    float: right;
-    margin: 10px;
-}
-.follow{
-    width: 90%;
-    height: 35px;
-    margin: 0 auto;
-    background-color: #3e8f3e;
-}
-.form-follow{
-    width: 45%;
-    height: 35px;
-    margin: 0 auto;
-}
-.albumes{
-    float: left;
-    padding: 7px;
-}
-.buttons{
-    float: right;
-    padding: 5px;
-}
-.list-albumes{
-    width: 90%;
-    margin: 0 auto;
-    background-color: orange;
-    height: 400px;
+.albumes-profile{
 
 }
-.list-albumes div{
-    padding: 10px;
-    display: inline-table;
-    margin: 20px;
+.mis-albumes{
+    text-align: center;
+    border-bottom: 1px solid cadetblue;
 }
-.single-album{
-    width: 260px;
-    height: 300px;
-    border: 1px solid black;
-    margin-left: 10px;
+.album{
+    height: 200px;
+    background-color: #5bc0de;
+    margin: 30px;
+}
+.apartados{
+    text-align: center;
+}
+.page-header{
+    margin: 0 !important;
+    border-color: cadetblue !important;
 }
 
 /* ==========================================================================
