@@ -35,6 +35,7 @@
                 }]
                 ,entity: ['$stateParams', 'UserExt', function($stateParams, UserExt) {
                     return UserExt.home().$promise;
+
                 }]
             }
         })
