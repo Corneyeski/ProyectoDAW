@@ -1,158 +1,89 @@
 <div class="container-fluid">
-    <div class="row separador"></div>
     <div class="row usu">
         <div class="col-lg-12 img-usuario">
             <div>
-                <img class="" src="../../../content/images/17125453_353353921724745_8088302319000616960_n.jpg"/></div>
-            </div>
+                <img src="../../../content/images/17125453_353353921724745_8088302319000616960_n.jpg"/></div>
+        </div>
     </div>
     <div class="row separador"></div>
-    <div class="row apartados">
-        <div class="col-lg-4"><h1>Siguiendo</h1></div>
-        <div class="col-lg-4"><h1>Albumes</h1></div>
-        <div class="col-lg-4"><h1>Editar perfil</h1></div>
-    </div>
+
     <div class="page-header"></div>
-    <div class="row separador2"></div>
-    <div class="row titulo">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4 mis-albumes"><h1>MIS ALBUMES</h1></div>
-        <div class="col-lg-4"></div>
+    <!-- #region Jssor Slider Begin -->
+    <div class="container-fluid">
+        <div class="row">
+        <div class="main">
+            <div id="cbp-contentslider" class="cbp-contentslider">
+                <ul>
+                    <li id="slide1">
+                        <h3 class="icon-wolf">Siguiendo</h3>
+                        <div>
+                            <div class="cbp-content">
+                                <p>Veggies sunt bona vobis, proinde vos postulo esse magis desert raisin bush tomato soko salsify garbanzo horseradish cabbage burdock.</p>
+                                <p>Daikon artichoke gumbo azuki bean bok choy avocado winter purslane gram earthnut pea broccoli salsify squash plantain wattle seed wakame broccoli rabe bamboo shoot. Zucchini lotus root azuki bean epazote dulse pumpkin rutabaga spinach. Endive mung bean gumbo maize plantain rock melon.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="slide2">
+                        <h3 class="icon-rabbit">Mis albumes</h3>
+                        <div class="row albumes-profile">
+                            <div class="col-lg-2 album">
+                            </div>
+                            <div class="col-lg-2 album">
+                            </div>
+                            <div class="col-lg-2 album">
+                            </div>
+                            <div class="col-lg-2 album">
+                            </div>
+                            <div class="col-lg-2 album">
+                            </div>
+                        </div>
+                    </li>
+                    <li id="slide3">
+                        <h3 class="icon-aligator">Editar Perfil</h3>
+                        <div>
+                            <div class="cbp-content">
+                                <p>Tomato shallot broccoli rabe aubergine melon fava bean soybean sorrel. Tomatillo plantain wattle seed pea ricebean sorrel fennel welsh onion kakadu plum celery. Arugula radicchio garlic welsh onion kale celtuce tomato fava bean beet greens soybean burdock groundnut lentil broccoli rabe.</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <nav>
+                    <a href="#slide1" class="icon-wolf"><span>Siguiendo</span></a>
+                    <a href="#slide2" class="icon-rabbit"><span>Mis Albumes</span></a>
+                    <a href="#slide3" class="icon-aligator"><span>Editar perfil</span></a>
+                </nav>
+            </div>
+        </div>
+            </div>
     </div>
-    <div class="row albumes-profile">
-        <div class="col-lg-2 album">
-        </div>
-        <div class="col-lg-2 album">
-        </div>
-        <div class="col-lg-2 album">
-        </div>
-        <div class="col-lg-2 album">
-        </div>
-        <div class="col-lg-2 album">
-        </div>
-    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script>
+        $(function () {
+            /*
+             - how to call the plugin:
+             $( selector ).cbpContentSlider( [options] );
+             - options:
+             {
+             // default transition speed (ms)
+             speed : 500,
+             // default transition easing
+             easing : 'ease-in-out',
+             // current item's index
+             current : 0
+             }
+             - destroy:
+             $( selector ).cbpContentSlider( 'destroy' );
+             */
+
+            $('#cbp-contentslider').cbpContentSlider();
+        });
+    </script>
 </div>
+
+
 <style>
-    .navbar{
-        display:none;
+    .navbar {
+        display: none;
     }
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<html>-->
-    <!--<head>-->
-
-    <!--</head>-->
-
-    <!--<body>-->
-        <!--<div class="container-profile">-->
-            <!--<div class="left-user">-->
-                <!--<ul>-->
-                    <!--<li>HOLA</li>-->
-                    <!--<li>HOLA</li>-->
-                    <!--<li>HOLA</li>-->
-                    <!--<li>HOLA</li>-->
-                    <!--<li>HOLA</li>-->
-                    <!--<li>HOLA</li>-->
-
-                <!--</ul>-->
-            <!--</div>-->
-            <!--<div class="header-user">-->
-                <!--<div class="right-user">-->
-                    <!--<div class="nameuser">-->
-                        <!--<p>Àlex Casanova</p>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-            <!--</div>-->
-            <!--<div class="contenido-usu">-->
-                <!--<div class="info-usu">-->
-                    <!--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis urna erat, id aliquet mi pretium vel. Integer sit amet rhoncus ligula. Fusce vel ex feugiat, vulputate nibh ut, dictum leo. Nullam bibendum leo ultrices leo euismod, id pulvinar eros sagittis. Donec a convallis mauris. In nec metus sit amet nibh gravida dapibus. Curabitur eleifend justo sit amet tortor ultricies pharetra. Praesent sed enim nec tellus blandit faucibus ac a enim. Nam lorem arcu, viverra id sodales at, mollis sit amet risus. Integer cursus ligula ex, vitae tempor velit blandit eget. Quisque eget iaculis nulla. Aliquam lobortis fermentum diam laoreet mollis. Fusce rhoncus ultrices convallis.-->
-                <!--</div>-->
-                <!--<div class="img-usu">-->
-                    <!--<img src="../../../content/images/2.jpg" height="280" width="220"/>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="follow">-->
-                <!--<div class="form-follow">-->
-                    <!--<div class="albumes">-->
-
-                     <!--<select >-->
-                        <!--<option>Mi album</option>-->
-                        <!--<option>Verano 2017</option>-->
-                        <!--<option>Navidades</option>-->
-                        <!--<option>Semana Santa</option>-->
-                    <!--</select>-->
-
-                    <!--</div>-->
-                    <!--<div class="buttons">-->
-                    <!--<button>Seguir Usuario</button>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="list-albumes">-->
-            <!--<div>-->
-                <!--<div class="single-album"></div>-->
-                <!--<div class="single-album"></div>-->
-                <!--<div class="single-album"></div>-->
-                <!--<div class="single-album"></div>-->
-
-            <!--</div>-->
-        <!--</div>-->
-
-        <!--<div ng-switch="vm.isAuthenticated()">-->
-            <!--<div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">-->
-                <!--You are logged in as user "{{vm.account.login}}".-->
-            <!--</div>-->
-
-            <!--<div class="alert alert-warning" ng-switch-when="false" data-translate="global.messages.info.authenticated" translate-compile>-->
-                <!--If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").-->
-            <!--</div>-->
-
-            <!--<div class="alert alert-warning" ng-switch-when="false" data-translate="global.messages.info.register" translate-compile>-->
-                <!--You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new account</a>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</body>-->
-<!--</html>-->
-<!--<style>-->
-    <!--.navbar{-->
-        <!--display: none;-->
-    <!--}-->
-
-<!--</style>-->

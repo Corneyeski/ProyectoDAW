@@ -12,12 +12,12 @@
             parent: 'account',
             url: '/profile',
             data: {
-                //authorities: []
+                authorities: ['ROLE_USER']
             },
             views: {
                 'content@': {
                     templateUrl: 'app/account/profile/profile.html',
-                   // controller: 'ProfileController',
+                    controller: 'UserProfileController',
                     controllerAs: 'vm'
                 }
             },
