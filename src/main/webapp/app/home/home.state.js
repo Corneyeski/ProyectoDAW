@@ -45,7 +45,7 @@
                     },
                     'content@': {
                         templateUrl: 'app/inicio/usuario/inicio-usuario.html',
-                        controller: 'InicioController',
+                       // controller: 'InicioController',
                         controllerAs: 'vm'
                     }
                 },

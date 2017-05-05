@@ -21,57 +21,60 @@
 <h1>Página de Inicio</h1>
 
 <div  class="col-lg-12" infinite-scroll='vm.loadMore()' infinite-scroll-distance="1"
-     style="width:100%;padding-left: 16%; padding-right: 10%;">
+style="width:100%;padding-left: 16%; padding-right: 10%;">
 
 
-        <div class="imagenesInicio " id="contentImage" ng-repeat="data in vm.photos2 track by $index" style="width: 200px; ">
-            <div ng-switch="data.offer">
+<div class="imagenesInicio " id="contentImage" ng-repeat="data in vm.photos2 track by $index" style="width: 200px; ">
+<div ng-switch="data.offer">
 
-                <div ng-switch-when=null>
-                    <img  data-ng-src="{{'data:' + data.photo.imageContentType + ';base64,' + data.photo.image }}"
-                         style="width: 200px; height:200px;" alt="photo image"/>
-                </div>
+<div ng-switch-when=null>
+<img ng-click="vm.openModal(data)" data-ng-src="{{'data:' + data.photo.imageContentType + ';base64,' + data.photo.image }}"
+style="width: 200px; height:200px;" alt="photo image"/>
+</div>
 
-                <div ng-switch-default>
-                    {{data.offer.name}}
-                </div>
-
-                <li ui-sref-active="active" ng-switch-when="false">
-                    <a href="" ng-click="vm.login()" id="login">
-                        <span class="glyphicon glyphicon-log-in"></span>&nbsp;
-                        <span data-translate="global.menu.account.login">Sign in</span>
-                    </a>
-                </li>
-            </div>
+<div ng-switch-default>
+{{data.offer.name}}
+</div>
 
 
-
-
-        </div>
-
-
-
-
-    </div>
-<!--<modal lolo="modal1" modal-body='body' modal-footer='footer' modal-header='header' data-ng-click="vm.myRightButton()">-->
-
-<!--</modal>-->
-
-
-<!--<a href="{{modal1}}" role="button" class="btn btn-success" data-toggle="modal">Launch Demo Modal</a>-->
-
-
-
-
-
-
-
-
+</div>
 
 
 
 
 </div>
+
+
+
+
+</div>
+
+
+
+
+
+<!--<div class="col-md-6 col-md-offset-3">-->
+    <!--<h1>Home</h1>-->
+    <!--<p>{{vm.bodyText}}</p>-->
+    <!--<button ng-click="vm.openModal('custom-modal-1')">Open Modal 1</button>-->
+    <!--<button ng-click="vm.openModal('custom-modal-2')">Open Modal 2</button>-->
+<!--</div>-->
+
+
+
+<!--<modal id="custom-modal-1">-->
+    <!--<div class="modal">-->
+        <!--<div class="modal-body">-->
+            <!--<h1>A Custom Modal!</h1>-->
+            <!--<p>-->
+                <!--Home page text: <input type="text" ng-model="vm.bodyText" />-->
+            <!--</p>-->
+            <!--<button ng-click="vm.closeModal('custom-modal-1');">Close</button>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="modal-background"></div>-->
+<!--</modal>-->
+
 
 
 </body>
