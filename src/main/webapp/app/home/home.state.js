@@ -40,7 +40,7 @@
                 views: {
                     'navbar@':{
                         templateUrl: 'app/layouts/left-navbar/left-navbar.html',
-                        controller: 'LeftNavbarController',
+                        controller: 'NavbarController',
                         controllerAs: 'vm'
                     },
                     'content@': {
