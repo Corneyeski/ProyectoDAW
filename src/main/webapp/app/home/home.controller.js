@@ -1,6 +1,10 @@
 (function() {
     'use strict';
 
+    $("#navbar").attr("class","");
+    $("#content").attr("class","col-lg-12");
+    $("#content").css('padding', '0');
+
     angular
         .module('proyectoApp')
         .controller('HomeController', HomeController);
