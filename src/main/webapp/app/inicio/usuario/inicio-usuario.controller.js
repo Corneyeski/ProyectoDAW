@@ -9,9 +9,7 @@
 
     function InicioController($translate, $timeout, Auth, LoginService, UserExt, entity, DataUtils,$uibModal) {
         var vm = this;
-        // vm.header = 'Put here your header';
-        // vm.body = 'Put here your body';
-        // vm.footer = 'Put here your footer';
+
         vm.openModal = openModal;
         vm.closeModal = closeModal;
 
@@ -24,7 +22,7 @@
         function openModal(data){
             console.log(data);
             var modalInstance = $uibModal.open({
-                //template: '<img  data-ng-src="{{'data:' + data.photo.imageContentType + ';base64,' + data.photo.image }}"'
+
 
     template: '<div class="imgModal"><img data-ng-src="'+'data:'+data.photo.imageContentType+';base64,'+data.photo.image+'"</img></div>'
 

@@ -5,7 +5,7 @@
         </a>
     </div>
     <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav ">
+        <ul class="nav navbar-nav " ng-switch="vm.isAuthenticated()">
             <li ui-sref-active="active">
 
                 <a ui-sref="home" ng-click="vm.collapseNavbar()">
