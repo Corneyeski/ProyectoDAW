@@ -20,6 +20,11 @@
         }
 
         function openModal(data){
+
+           var widthScreen= screen.width;
+            var heightScreen=screen.height;
+
+
             console.log(data);
             var modalInstance = $uibModal.open({
 
