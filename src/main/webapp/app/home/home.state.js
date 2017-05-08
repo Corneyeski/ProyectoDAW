@@ -33,7 +33,7 @@
 
         .state('nada', {
                 parent: 'app',
-                url: '/nada',
+                url: '/inicio-usuario',
                 data: {
                     authorities: ['ROLE_USER']
                 },
@@ -45,7 +45,7 @@
                     },
                     'content@': {
                         templateUrl: 'app/inicio/usuario/inicio-usuario.html',
-                       // controller: 'InicioController',
+                        controller: 'InicioController',
                         controllerAs: 'vm'
                     }
                 },
