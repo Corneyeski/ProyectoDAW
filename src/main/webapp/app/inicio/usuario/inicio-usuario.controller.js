@@ -26,7 +26,7 @@
             var modalInstance = $uibModal.open({
                 //template: '<img  data-ng-src="{{'data:' + data.photo.imageContentType + ';base64,' + data.photo.image }}"'
 
-    template: '<img data-ng-src="'+'data: '+data.photo.imageContentType+';base64, '+data.photo.image+'</img>'
+    template: '<div class="imgModal"><img data-ng-src="'+'data:'+data.photo.imageContentType+';base64,'+data.photo.image+'"</img></div>'
 
             });
         }
