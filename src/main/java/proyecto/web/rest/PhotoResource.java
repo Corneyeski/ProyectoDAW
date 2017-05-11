@@ -47,8 +47,11 @@ public class PhotoResource {
 
         System.out.println("llego");
 
-        if (photo.getId() != null || photo.getImageContentType().contains("image")) {
+        if (photo.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new photo cannot already have an ID")).body(null);
+        }
+        if(!photo.getImageContentType().contains("image")){
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "badfile", "Invalid type of file")).body(null);
         }
         Photo result = photoRepository.save(photo);
         return ResponseEntity.created(new URI("/api/photos/" + result.getId()))
