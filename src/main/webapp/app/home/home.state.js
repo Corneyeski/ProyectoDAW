@@ -15,6 +15,7 @@
                 authorities: []
             },
             views: {
+
                 'content@': {
 
                     templateUrl: 'app/home/home.html',
