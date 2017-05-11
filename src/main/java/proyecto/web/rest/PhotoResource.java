@@ -26,7 +26,7 @@ public class PhotoResource {
     private final Logger log = LoggerFactory.getLogger(PhotoResource.class);
 
     private static final String ENTITY_NAME = "photo";
-        
+
     private final PhotoRepository photoRepository;
 
     public PhotoResource(PhotoRepository photoRepository) {
@@ -44,7 +44,10 @@ public class PhotoResource {
     @Timed
     public ResponseEntity<Photo> createPhoto(@RequestBody Photo photo) throws URISyntaxException {
         log.debug("REST request to save Photo : {}", photo);
-        if (photo.getId() != null) {
+
+        System.out.println("llego");
+
+        if (photo.getId() != null || photo.getImageContentType().contains("image")) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new photo cannot already have an ID")).body(null);
         }
         Photo result = photoRepository.save(photo);

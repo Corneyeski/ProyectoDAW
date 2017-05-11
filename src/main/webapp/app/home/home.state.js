@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -24,7 +24,7 @@
                 }
             },
             resolve: {
-                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('home');
                     return $translate.refresh();
                 }]
@@ -32,32 +32,51 @@
         })
 
 
-        .state('nada', {
+            .state('nada', {
+                    parent: 'app',
+                    url: '/inicio-usuario',
+                    data: {
+                        authorities: ['ROLE_USER']
+                    },
+                    views: {
+                        'navbar@': {
+                            templateUrl: 'app/layouts/left-navbar/left-navbar.html',
+                            controller: 'NavbarController',
+                            controllerAs: 'vm'
+                        },
+                        'content@': {
+                            templateUrl: 'app/inicio/usuario/inicio-usuario.html',
+                            controller: 'InicioController',
+                            controllerAs: 'vm'
+                        }
+                    },
+                    resolve: {
+                        translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                            //$translatePartialLoader.addPart('video');
+                            return $translate.refresh();
+                        }]
+                    }
+                }
+            )
+            .state('photoFilter', {
                 parent: 'app',
-                url: '/inicio-usuario',
+                url: '/photoFilter',
                 data: {
                     authorities: ['ROLE_USER']
                 },
                 views: {
-                    'navbar@':{
-                        templateUrl: 'app/layouts/left-navbar/left-navbar.html',
-                        controller: 'NavbarController',
-                        controllerAs: 'vm'
-                    },
                     'content@': {
-                        templateUrl: 'app/inicio/usuario/inicio-usuario.html',
-                        controller: 'InicioController',
+                        templateUrl: 'app/filter/photoFilter/photoFilter.html',
+                        controller: 'photoFilter',
                         controllerAs: 'vm'
                     }
                 },
                 resolve: {
-                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate,$translatePartialLoader) {
+                    translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                         //$translatePartialLoader.addPart('video');
                         return $translate.refresh();
                     }]
                 }
-            }
-
-        );
+            });
     }
 })();
