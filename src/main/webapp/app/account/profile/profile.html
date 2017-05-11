@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="row mainrow">
     <div class="row usu">
         <div class="col-lg-12 img-usuario">
             <div>
@@ -7,7 +7,7 @@
     </div>
     <div class="row separador"></div>
 
-    <div class="page-header"></div>
+    <!--<div class="page-header"></div>-->
     <!-- #region Jssor Slider Begin -->
     <div class="container-fluid">
         <div class="row">
@@ -38,14 +38,28 @@
                             </div>
                         </div>
                     </li>
+
                     <li id="slide3">
                         <h3 class="icon-aligator">Editar Perfil</h3>
                         <div>
                             <div class="cbp-content">
-                                <p>Tomato shallot broccoli rabe aubergine melon fava bean soybean sorrel. Tomatillo plantain wattle seed pea ricebean sorrel fennel welsh onion kakadu plum celery. Arugula radicchio garlic welsh onion kale celtuce tomato fava bean beet greens soybean burdock groundnut lentil broccoli rabe.</p>
+                                <div class="row">
+                                    <div class="col-lg-4 profile">
+                                        <label>Nombre:</label><input type="text">
+                                    </div>
+                                    <div class="col-lg-4 profile">
+                                        <label>Apellido:</label><input type="text">
+                                    </div>
+                                    <div class="col-lg-4 profile">
+                                        <label>Correo:</label><input type="text" ng-model="correo">
+                                    </div>
+                                </div>
+                                <p>{{vm.account}}</p>
+                                <button ng-click="vm.modify">Modificar</button>
                             </div>
                         </div>
                     </li>
+
                 </ul>
                 <nav>
                     <a href="#slide1" class="icon-wolf"><span>Siguiendo</span></a>
@@ -59,7 +73,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
     <script>
-        $(function () {
+       // $(function () {
             /*
              - how to call the plugin:
              $( selector ).cbpContentSlider( [options] );
@@ -76,8 +90,8 @@
              $( selector ).cbpContentSlider( 'destroy' );
              */
 
-            $('#cbp-contentslider').cbpContentSlider();
-        });
+            //$('#cbp-contentslider').cbpContentSlider();
+       // });
     </script>
 </div>
 

@@ -33,7 +33,7 @@
         })
         .state('user-ext-detail', {
             parent: 'user-ext',
-            url: '/user-ext/{id}',
+            url: '/profile/{id}',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'proyectoApp.userExt.detail.title'

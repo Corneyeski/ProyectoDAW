@@ -96,7 +96,7 @@ html, body, .container { height: 100%;}
 /* main wrapper */
 .cbp-contentslider {
     width: 100%;
-    height: 50%;
+    height: 550px;
     margin: 1em auto;
     position: absolute;
     /*	border: 4px solid #47a3da*/
@@ -127,12 +127,23 @@ html, body, .container { height: 100%;}
     z-index: 100;
 }
 
+.profile nav{
+
+}
+.profile p{
+    float: left;
+    width: 40%;
+}
+.mainrow{
+    margin: 0 auto;
+}
 .cbp-contentslider nav {
     position: absolute;
-    bottom: 500px;
+    bottom: 550px;
     left: 0;
     right: 0;
     height: 3.313em;
+    background-color: white;
     z-index: 1000;
     border-top: none;
     overflow: hidden;
@@ -141,7 +152,7 @@ html, body, .container { height: 100%;}
 .cbp-contentslider nav a {
     float: left;
     display: block;
-    width: 20%;
+    width: 33%;
     height: 100%;
     font-weight: 400;
     letter-spacing: 0.1em;
@@ -167,7 +178,7 @@ html, body, .container { height: 100%;}
 
 .cbp-contentslider nav a:last-child {
     border: none;
-    box-shadow: 1px 0 #47a3da; /* fills gap caused by rounding */
+    /*box-shadow: 1px 0 #47a3da; !* fills gap caused by rounding *!*/
 }
 
 .cbp-contentslider nav a:hover {
@@ -243,23 +254,11 @@ html, body, .container { height: 100%;}
 }
 
 .cbp-contentslider .cbp-content {
-    -webkit-column-rule: 1px dashed #47a3da;
-    -moz-column-rule: 1px dashed #47a3da;
-    column-rule: 1px dashed #47a3da;
-    -webkit-column-count: 2;
-    -moz-column-count: 2;
-    -o-column-count: 2;
-    column-count: 2;
-    -webkit-column-gap: 1em;
-    -moz-column-gap: 1em;
-    -o-column-gap: 1em;
-    column-gap: 1em;
-    vertical-align: top;
-    padding: 1em 0;
+    /*.cbp-contentslider p*/
 }
 
 .cbp-contentslider p {
-    color: #47a3da;
+    /*color: #47a3da;*/
     padding: 0 0.5em 0.4em;
     margin: 0;
     font-size: 1.2em;

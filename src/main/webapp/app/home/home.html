@@ -54,72 +54,60 @@
          style=" margin: 0 auto; text-align: center;padding-top: 0px; padding:0px;background-color: brown;">
 
         <div class="contenedor">
-            <div>
-                <form class="form" role="form" ng-submit="vm.login($event)">
-                    <div class="form-group">
-                        <label for="username" data-translate="global.form.username">Login</label>
-                        <input type="text" class="form-control" id="username"
-                               placeholder="{{'global.form.username.placeholder' | translate}}" ng-model="vm.username">
-                    </div>
-                    <div class="form-group">
-                        <label for="password" data-translate="login.form.password">Password</label>
-                        <input type="password" class="form-control" id="password"
-                               placeholder="{{'login.form.password.placeholder' | translate}}"
-                               ng-model="vm.password">
-                    </div>
-                    <div class="form-group">
-                        <label for="rememberMe">
-                            <input type="checkbox" id="rememberMe" ng-model="vm.rememberMe" checked>
-                            <span data-translate="login.form.rememberme">Remember me</span>
-                        </label>
-                    </div>
-                    <input type="submit" class="btn btn-primary" data-translate="login.form.button" value="LOGIN">
-                </form>
+            <div class="row separador"></div>
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                    <form class="form" role="form" ng-submit="vm.login($event)">
+                        <div class="form-group">
+                            <label for="username" data-translate="global.form.username">Login</label>
+                            <input type="text" class="form-control" id="username" placeholder="{{'global.form.username.placeholder' | translate}}" ng-model="vm.username">
+                        </div>
+                        <div class="form-group">
+                            <label for="password" data-translate="login.form.password">Password</label>
+                            <input type="password" class="form-control" id="passwordlogin" placeholder="{{'login.form.password.placeholder' | translate}}" ng-model="vm.password">
+                        </div>
+                        <div class="form-group">
+                            <label for="rememberMe">
+                                <input type="checkbox" id="rememberMe" ng-model="vm.rememberMe" checked>
+                                <span data-translate="login.form.rememberme">Remember me</span>
+                            </label>
+                        </div>
+                        <input type="submit" class="btn btn-primary" data-translate="login.form.button" value="Inicia">
+                    </form>
+                </div>
+                <div class="col-lg-4"></div>
             </div>
 
         </div>
     </div>
     <!-- FIN LOGIN -->
-
+    <!-- REGISTRO -->
     <div class="section" id="section1" data-anchor="second-page"
          style="background-color: cadetblue; margin: 0 auto; text-align: center;padding-top: 0px; padding:0px;">
         <div class="contenedor">
-            <div>
-                <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.register()"
-                      show-validation>
+            <div class="row">
+                <form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.register()" show-validation>
                     <div class="row">
                         <div class="col-md-12" style="margin-bottom:20px"><h3>Regístrate como usuario</h3></div>
                         <div class="col-md-4 col-md-offset-2">
                             <div class="form-group">
-                                <label class="control-label" for="login"
-                                       data-translate="global.form.username">Username</label>
-                                <input type="text" class="form-control" id="login" name="login"
-                                       placeholder="{{'global.form.username.placeholder' | translate}}"
-                                       ng-model="vm.registerAccount.login" ng-minlength=5 ng-maxlength=10
-                                       required><!--ng-pattern="/^[_'.@A-Za-z0-9-]*$/"-->
-                                <div ng-show="form.login.$dirty && form.login.$invalid">
-                                    <p class="help-block" ng-show="form.login.$error.required"
-                                       data-translate="register.messages.validate.login.required">
-                                        Usuario requerido.
-                                    </p>
-                                    <p class="help-block"
-                                       ng-show="form.login.$error.minlength"
-                                       data-translate="register.messages.validate.login.minlength">
-
-                                        Su nombre de usuario debe tener al menos 5 caracteres.
-                                    </p>
-                                    <p class="help-block"
-                                       ng-show="form.login.$error.maxlength"
-                                       data-translate="register.messages.validate.login.maxlength">
-
-                                        Su nombre de usuario no puede tener más de 10 caracteres.
-                                    </p>
-                                    <p class="help-block"
-                                       ng-show="form.login.$error.pattern"
-                                       data-translate="register.messages.validate.login.pattern">
-                                        Su nombre de usuario sólo puede contener letras minúsculas y dígitos.
-                                    </p>
-                                </div>
+                                <label class="control-label" for="login" data-translate="global.form.username">Username</label>
+                                    <input type="text" class="form-control" id="login" name="login" placeholder="{{'global.form.username.placeholder' | translate}}" ng-model="vm.registerAccount.login" ng-minlength=5 ng-maxlength=10 required><!--ng-pattern="/^[_'.@A-Za-z0-9-]*$/"-->
+                                        <div ng-show="form.login.$dirty && form.login.$invalid">
+                                            <p class="help-block" ng-show="form.login.$error.required"data-translate="register.messages.validate.login.required">
+                                                Usuario requerido.
+                                            </p>
+                                            <p class="help-block" ng-show="form.login.$error.minlength" data-translate="register.messages.validate.login.minlength">
+                                                Su nombre de usuario debe tener al menos 5 caracteres.
+                                            </p>
+                                            <p class="help-block" ng-show="form.login.$error.maxlength" data-translate="register.messages.validate.login.maxlength">
+                                                Su nombre de usuario no puede tener más de 10 caracteres.
+                                            </p>
+                                            <p class="help-block"ng-show="form.login.$error.pattern"data-translate="register.messages.validate.login.pattern">
+                                                Su nombre de usuario sólo puede contener letras minúsculas y dígitos.
+                                            </p>
+                                        </div>
                             </div>
 
                             <!--Siguiente -->

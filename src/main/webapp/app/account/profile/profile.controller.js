@@ -11,6 +11,7 @@
         var vm = this;
         vm.account = null;
         vm.isAuthenticated = null;
+        vm.modify  = modificar();
 
         $scope.$on('authenticationSuccess', function() {
             getAccount();
@@ -25,6 +26,11 @@
                 vm.isAuthenticated = Principal.isAuthenticated;
             });
 
+        }
+        console.log($scope.correo);
+
+        function modificar(){
+            console.log("hoaskdlakshdasd");
         }
     }
 
