@@ -9,7 +9,7 @@
 
     function NavbarController ($state, Auth, Principal, ProfileService, LoginService) {
         var vm = this;
-
+        var count = 0;
         vm.isNavbarCollapsed = true;
         vm.isAuthenticated = Principal.isAuthenticated;
 
@@ -23,8 +23,9 @@
         vm.toggleNavbar = toggleNavbar;
         vm.collapseNavbar = collapseNavbar;
         vm.$state = $state;
+        vm.hide = hide;
 
-        function login() {
+            function login() {
             collapseNavbar();
             LoginService.open();
         }
@@ -41,6 +42,18 @@
 
         function collapseNavbar() {
             vm.isNavbarCollapsed = true;
+        }
+
+        function hide(){
+            /*$("#style-1").fadeOut();
+            $("#style-2").fadeIn();*/
+            if(count%2 == 0) {
+                $("#style-1").animate({left: "-120px"}, 100);
+                count++;
+            }else{
+                $("#style-1").animate({left : "0px"},100);
+                count++;
+            }
         }
     }
 })();
