@@ -139,7 +139,7 @@ public class DataGenerator {
                     Random r = new Random();
                     ranname += (char) (r.nextInt(26) + 'a');
                 }
-                userExt.setCountry(ranname);
+                userExt.setCountry("Barcelona");
 
 
                 ran = 9 + (int) (Math.random() * 15);
