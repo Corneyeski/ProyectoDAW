@@ -1,8 +1,28 @@
+/*MODAL*/
+.modal-dialog {
+    width:auto;
+    position: absolute;
+
+}
+.modal-content{
+
+    top:16%;
+    /*left:33%;*/
+width: auto !important;
+    height: auto !important;
+    max-width: 0;
+}
+.modal{
+    padding-top: 0;
+    /*width: auto;*/
+    /*height:auto;*/
+}
+/*FIN MODAL*/
+
+
 
 /*USER PROFILE*/
-.imgModal{
-    margin:0;
-}
+
 .general-profile{
 
 }
