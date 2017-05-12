@@ -18,7 +18,9 @@
             UserExt.query(function(result) {
                 vm.userExts = result;
                 vm.searchQuery = null;
+
             });
         }
+        console.log(vm.userExts);
     }
 });

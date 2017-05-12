@@ -2,73 +2,190 @@
 
 
 
+<div class="row mainrow">
+    <div class="row usu">
+        <div class="col-lg-12 img-usuario">
+            <div>
+                <img src="../../../content/images/17125453_353353921724745_8088302319000616960_n.jpg"/></div>
+        </div>
+    </div>
+    <div class="row separador"></div>
 
-<div>
-    <h2><span data-translate="proyectoApp.userExt.detail.title">User Ext</span> {{vm.userExt.id}}</h2>
-    <hr>
-    <jhi-alert-error></jhi-alert-error>
-    <dl class="row jh-entity-details">
-        <dt><span data-translate="proyectoApp.userExt.birthdate">Birthdate</span></dt>
-        <dd>
-            <span>{{vm.userExt.birthdate | date:'mediumDate'}}</span>
-        </dd>
-        <dt><span data-translate="proyectoApp.userExt.phone">Phone</span></dt>
-        <dd>
-            <span>{{vm.userExt.phone}}</span>
-        </dd>
-        <dt><span data-translate="proyectoApp.userExt.kind">Kind</span></dt>
-        <dd>
-            <span>{{vm.userExt.kind}}</span>
-        </dd>
-        <dt><span data-translate="proyectoApp.userExt.tags">Tags</span></dt>
-        <dd>
-            <span>{{vm.userExt.tags}}</span>
-        </dd>
-        <dt><span data-translate="proyectoApp.userExt.address">Address</span></dt>
-        <dd>
-            <span>{{vm.userExt.address}}</span>
-        </dd>
-        <dt><span data-translate="proyectoApp.userExt.country">Country</span></dt>
-        <dd>
-            <span>{{vm.userExt.country}}</span>
-        </dd>
-        <dt><span data-translate="proyectoApp.userExt.city">City</span></dt>
-        <dd>
-            <span>{{vm.userExt.city}}</span>
-        </dd>
-        <dt><span data-translate="proyectoApp.userExt.popular">Popular</span></dt>
-        <dd>
-            <span>{{vm.userExt.popular}}</span>
-        </dd>
-        <dt><span data-translate="proyectoApp.userExt.companyPoints">Company Points</span></dt>
-        <dd>
-            <span>{{vm.userExt.companyPoints}}</span>
-        </dd>
-        <dt><span data-translate="proyectoApp.userExt.validated">Validated</span></dt>
-        <dd>
-            <span>{{vm.userExt.validated}}</span>
-        </dd>
-        <dt><span data-translate="proyectoApp.userExt.age">Age</span></dt>
-        <dd>
-            <span>{{vm.userExt.age}}</span>
-        </dd>
-        <dt><span data-translate="proyectoApp.userExt.user">User</span></dt>
-        <dd>
-            {{vm.userExt.user.login}}
-        </dd>
-    </dl>
+    <!--<div class="page-header"></div>-->
+    <!-- #region Jssor Slider Begin -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="main">
+                <div id="cbp-contentslider" class="cbp-contentslider">
+                    <ul>
+                        <li id="slide1">
+                            <h3 class="icon-wolf">Siguiendo</h3>
+                            <div>
+                                <div class="cbp-content">
+                                    <p>Veggies sunt bona vobis, proinde vos postulo esse magis desert raisin bush tomato soko salsify garbanzo horseradish cabbage burdock.</p>
+                                    <p>Daikon artichoke gumbo azuki bean bok choy avocado winter purslane gram earthnut pea broccoli salsify squash plantain wattle seed wakame broccoli rabe bamboo shoot. Zucchini lotus root azuki bean epazote dulse pumpkin rutabaga spinach. Endive mung bean gumbo maize plantain rock melon.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li id="slide2">
+                            <h3 class="icon-rabbit">Mis albumes</h3>
+                            <div class="row albumes-profile">
+                                <div class="col-lg-2 album">
+                                </div>
+                                <div class="col-lg-2 album">
+                                </div>
+                                <div class="col-lg-2 album">
+                                </div>
+                                <div class="col-lg-2 album">
+                                </div>
+                                <div class="col-lg-2 album">
+                                </div>
+                            </div>
+                        </li>
 
-    <button type="submit"
-            ui-sref="{{ vm.previousState }}"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
-    </button>
+                        <li id="slide3">
+                            <h3 class="icon-aligator">Editar Perfil</h3>
+                            <div>
+                                <div class="cbp-content">
+                                    <div class="row">
+                                        <div class="col-lg-4 profile">
+                                            {{vm.userExt.user.login}}
+                                        </div>
+                                        <div class="col-lg-4 profile">
+                                            {{vm.userExt.user.lastName}}
+                                        </div>
+                                        <div class="col-lg-4 profile">
+                                            <label>Correo:</label><input type="text" ng-model="correo">
+                                        </div>
+                                    </div>
+                                    <p>{{vm.account}}</p>
+                                    <button ng-click="vm.modify">Modificar</button>
+                                </div>
+                            </div>
+                        </li>
 
-    <button type="button" ui-sref="user-ext-detail.edit({id:vm.userExt.id})" class="btn btn-primary">
-        <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
-    </button>
+                    </ul>
+                    <nav>
+                        <a href="#slide1" class="icon-wolf"><span>Siguiendo</span></a>
+                        <a href="#slide2" class="icon-rabbit"><span>Mis Albumes</span></a>
+                        <a href="#slide3" class="icon-aligator"><span>Editar perfil</span></a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script>
+        // $(function () {
+        /*
+         - how to call the plugin:
+         $( selector ).cbpContentSlider( [options] );
+         - options:
+         {
+         // default transition speed (ms)
+         speed : 500,
+         // default transition easing
+         easing : 'ease-in-out',
+         // current item's index
+         current : 0
+         }
+         - destroy:
+         $( selector ).cbpContentSlider( 'destroy' );
+         */
+
+        //$('#cbp-contentslider').cbpContentSlider();
+        // });
+    </script>
 </div>
+
+
+<style>
+
+</style>
+
+
+
+
+
+<!--<div>-->
+    <!--<h2><span data-translate="proyectoApp.userExt.detail.title">User Ext</span> {{vm.userExt.id}}</h2>-->
+    <!--<hr>-->
+    <!--<jhi-alert-error></jhi-alert-error>-->
+    <!--<dl class="row jh-entity-details">-->
+        <!--<dt><span data-translate="proyectoApp.userExt.birthdate">Birthdate</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.userExt.birthdate | date:'mediumDate'}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span data-translate="proyectoApp.userExt.phone">Phone</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.userExt.phone}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span data-translate="proyectoApp.userExt.kind">Kind</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.userExt.kind}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span data-translate="proyectoApp.userExt.tags">Tags</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.userExt.tags}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span data-translate="proyectoApp.userExt.address">Address</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.userExt.address}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span data-translate="proyectoApp.userExt.country">Country</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.userExt.country}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span data-translate="proyectoApp.userExt.city">City</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.userExt.city}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span data-translate="proyectoApp.userExt.popular">Popular</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.userExt.popular}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span data-translate="proyectoApp.userExt.companyPoints">Company Points</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.userExt.companyPoints}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span data-translate="proyectoApp.userExt.validated">Validated</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.userExt.validated}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span data-translate="proyectoApp.userExt.age">Age</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.userExt.age}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span data-translate="proyectoApp.userExt.user">User</span></dt>-->
+        <!--<dd>-->
+            <!--{{vm.userExt.user.login}}-->
+        <!--</dd>-->
+        <!--<dd>-->
+            <!--{{vm.userExt.user.photo}}-->
+        <!--</dd>-->
+    <!--</dl>-->
+    <!--{{vm.userExt}}-->
+
+
+    <!--<button type="submit"-->
+            <!--ui-sref="{{ vm.previousState }}"-->
+            <!--class="btn btn-info">-->
+        <!--<span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>-->
+    <!--</button>-->
+
+    <!--<button type="button" ui-sref="user-ext-detail.edit({id:vm.userExt.id})" class="btn btn-primary">-->
+        <!--<span class="glyphicon glyphicon-pencil"></span>-->
+        <!--<span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>-->
+    <!--</button>-->
+<!--</div>-->
+
+
+
+
+
+
+
 
 
 

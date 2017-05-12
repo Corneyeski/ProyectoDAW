@@ -17,5 +17,6 @@
             vm.userExt = result;
         });
         $scope.$on('$destroy', unsubscribe);
+        console.log(vm.userExt);
     }
 })();

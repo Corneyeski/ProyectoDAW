@@ -39,6 +39,11 @@
                 pageTitle: 'proyectoApp.userExt.detail.title'
             },
             views: {
+                'navbar@':{
+                    templateUrl:'app/layouts/left-navbar/left-navbar.html',
+                    controller: 'NavbarController',
+                    controllerAs:'vm'
+                },
                 'content@': {
                     templateUrl: 'app/entities/user-ext/user-ext-detail.html',
                     controller: 'UserExtDetailController',
