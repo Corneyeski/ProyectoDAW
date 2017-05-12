@@ -30,7 +30,7 @@
             // var modalInstance
             $rootScope.modalInstance = $uibModal.open({
             template: '<img style="width: auto;height: auto;left:50%;top: 50%;" data-ng-src="'+'data:'+data.photo.imageContentType+';base64,'+data.photo.image+'"</img> ' +
-                    '<button ng-click="vm.closeModal()" type="submit" ui-sref="user-ext-detail2({id:'+data.photo.user.id+'})">jooola</button> '
+                    '<button ng-click="vm.closeModal()" type="submit" ui-sref="user-ext-detail({id:'+data.photo.user.id+'})">jooola</button> '
 
 
             });
@@ -51,7 +51,7 @@
         vm.loadMore = function () {
             var last = listImage[listImage.length - 1];
             var j = 8;
-            for (var i = 0; i < 12; i++) {
+            for (var i = 0; i < 4; i++) {
                 if (aux < entity.length) {
                     listImage.push(entity[j]);
                     j++;
