@@ -25,7 +25,7 @@
             var heightScreen=screen.height;
 
 
-            console.log(data);
+
 
             // var modalInstance
             $rootScope.modalInstance = $uibModal.open({
@@ -47,11 +47,11 @@
         var listImage = [entity[0], entity[1], entity[2], entity[3], entity[4], entity[5], entity[6], entity[7]];
         var aux = 8;
         vm.photos2 = listImage;
-        console.log(entity[0]);
+        console.log(entity);
         vm.loadMore = function () {
             var last = listImage[listImage.length - 1];
             var j = 8;
-            for (var i = 0; i < 4; i++) {
+            for (var i = 0; i < 12; i++) {
                 if (aux < entity.length) {
                     listImage.push(entity[j]);
                     j++;
