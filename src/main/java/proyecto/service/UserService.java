@@ -139,13 +139,14 @@ public class UserService {
         userExt.setPopular(0.0);
         userExt.setCompanyPoints(0.0);*/
 
-        userExtRepository.save(userExt);
+
 
         newUser.setUserExt(userExt);
 
         userRepository.save(newUser);
         log.debug("Created Information for User: {}", newUser);
 
+        userExtRepository.save(userExt);
 
         return newUser;
     }
