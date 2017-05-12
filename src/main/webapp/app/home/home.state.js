@@ -67,7 +67,7 @@
                 views: {
                     'content@': {
                         templateUrl: 'app/filter/photoFilter/photoFilter.html',
-                        controller: 'photoFilter',
+                        controller: 'PhotoFilterController',
                         controllerAs: 'vm'
                     }
                 },

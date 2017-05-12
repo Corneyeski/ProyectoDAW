@@ -46,14 +46,10 @@
         }
 
         function hide() {
-            /*$("#style-1").fadeOut();
-             $("#style-2").fadeIn();*/
             $("#style-1").animate({left: "-120px"}, 100);
         }
 
         function show() {
-            /*$("#style-1").fadeOut();
-             $("#style-2").fadeIn();*/
             $("#style-1").animate({left: "0px"}, 100);
         }
     }
