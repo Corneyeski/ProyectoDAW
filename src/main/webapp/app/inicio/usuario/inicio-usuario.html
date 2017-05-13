@@ -1,19 +1,32 @@
 
 <div   infinite-scroll='vm.loadMore()' infinite-scroll-distance="1">
 
+<div class="row">
+    <div class="col-lg-4">
+
+    </div>
+    <div class="col-lg-4 logoScroll" class="col-lg-4">
+        <img src="content/images/logo-jhipster.png">RETRO JOB<img>
+    </div>
+    <div class="col-lg-4">
+
+    </div>
+
+</div>
 
 
-
-    <div class="imagenesInicio " id="contentImage" ng-repeat="data in vm.photos2 track by $index"
-         style="width: 200px; ">
+    <div class="container imagenesInicio " id="contentImage" ng-repeat="data in vm.photos2 track by $index"
+         style="width: 300px;height: 300px; ">
         <div ng-switch ="data.offer">
 
             <div ng-switch-when=null>
                 <div ng-switch ="data.photo.url">
                     <div ng-switch-when=null>
-                        <img ng-click="vm.openModal(data)"
+                        <img  ng-mouseover="vm.enterImg($event)" ng-mouseleave="vm.leaveImg($event)"  ng-click="vm.openModal(data)"
                              data-ng-src="{{'data:' + data.photo.imageContentType + ';base64,' + data.photo.image }}"
-                             style="width: 250px; height:250px;" alt="photo image"/>
+                             style="width: 300px; height:300px;" alt="photo image"/>
+
+
 
 
 
@@ -28,7 +41,7 @@
 
             </div>
             <div ng-switch-default>
-                <!--{{data.offer.name}}-->
+                {{data.offer.name}}
             </div>
         </div>
 

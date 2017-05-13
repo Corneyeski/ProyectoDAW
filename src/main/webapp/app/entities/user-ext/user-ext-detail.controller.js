@@ -11,12 +11,13 @@
         var vm = this;
 
         vm.userExt = entity;
+        console.log(vm.userExt);
         vm.previousState = previousState.name;
 
         var unsubscribe = $rootScope.$on('proyectoApp:userExtUpdate', function(event, result) {
             vm.userExt = result;
         });
         $scope.$on('$destroy', unsubscribe);
-        console.log(vm.userExt);
+
     }
 })();
