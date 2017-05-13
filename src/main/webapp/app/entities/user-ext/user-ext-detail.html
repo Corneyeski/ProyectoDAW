@@ -30,6 +30,10 @@
                         <li id="slide2">
                             <h3 class="icon-rabbit">Mis albumes</h3>
                             <div class="row albumes-profile">
+                                {{vm.userExt.photo}}
+                                <!--<div ng-repeat="()">-->
+
+                                <!--</div>-->
                                 <div class="col-lg-2 album">
                                 </div>
                                 <div class="col-lg-2 album">
@@ -44,22 +48,28 @@
                         </li>
 
                         <li id="slide3">
-                            <h3 class="icon-aligator">Editar Perfil</h3>
+                            <h3 class="icon-aligator">Mis datos</h3>
                             <div>
                                 <div class="cbp-content">
-                                    <div class="row">
+                                    <div class="row"  ng-repeat="x in vm.userExt">
                                         <div class="col-lg-4 profile">
-                                            {{vm.userExt.user.login}}
+                                            <label>login:</label>
+                                            {{x.login}}
                                         </div>
                                         <div class="col-lg-4 profile">
-                                            {{vm.userExt.user.lastName}}
-                                        </div>
-                                        <div class="col-lg-4 profile">
-                                            <label>Correo:</label><input type="text" ng-model="correo">
+                                        <label>Nombre:</label>
+                                            {{x.firstName}}
                                         </div>
                                     </div>
-                                    <p>{{vm.account}}</p>
-                                    <button ng-click="vm.modify">Modificar</button>
+                                    <button type="submit"
+                                            ui-sref="{{ vm.previousState }}"
+                                            class="btn btn-info">
+                                        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+                                    </button>
+                                    <button type="button" ui-sref="user-ext-detail.edit({id:vm.userExt.id})" class="btn btn-primary">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+                                    </button>
                                 </div>
                             </div>
                         </li>
@@ -103,10 +113,6 @@
 <style>
 
 </style>
-
-
-
-
 
 <!--<div>-->
     <!--<h2><span data-translate="proyectoApp.userExt.detail.title">User Ext</span> {{vm.userExt.id}}</h2>-->
