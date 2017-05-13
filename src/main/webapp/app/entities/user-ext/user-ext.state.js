@@ -55,8 +55,10 @@
                     $translatePartialLoader.addPart('userExt');
                     return $translate.refresh();
                 }],
-                entity: ['$stateParams', 'UserExt', function($stateParams, UserExt) {
-                    return UserExt.get({id : $stateParams.id}).$promise;
+                entity: ['$stateParams', 'UserExt','Photo', function($stateParams, UserExt,Photo) {
+                   return UserExt.get({id : $stateParams.id}).$promise;
+                    return Photo.photosuser({id :3}).$promise;
+
                 }],
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
