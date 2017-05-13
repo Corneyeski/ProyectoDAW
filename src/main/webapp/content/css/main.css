@@ -453,13 +453,24 @@ Development Ribbon
     z-index: -1;
     position: relative;
 }
-
+/*IMAGENES INICIO*/
 .imagenesInicio {
     display: inline-block;
-    margin-left: 5px;
-    margin-bottom: 30px;
+    margin-right: 3%;
+    margin-top: 10%;
+    background-color: black;
+}
+.logoScroll{
+    padding-top: 5%;
+}
+/*HOVER*/
+.container{
+    padding: 0;
 }
 
+/*FIN HOVER*/
+
+/*FIN IMAGENES INICIO*/
 .ribbon {
     background-color: #a00;
     box-shadow: 0 0 10px #888;
