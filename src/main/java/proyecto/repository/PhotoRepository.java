@@ -34,6 +34,8 @@ public interface PhotoRepository extends JpaRepository<Photo,Long> {
         " where photo.user in :followedUsers " +
         "ORDER BY photo.time desc")
     List<Photo> findUserExtFollowing(@Param("followedUsers")Collection<User> followedUsers);
+
+    List<Photo> findByUser(User user);
 }
 
 //and :user member of photo.user.bloquedUsers.blocked
