@@ -12,26 +12,13 @@
 
         vm.openModal = openModal;
         vm.closeModal = closeModal;
-        vm.enterImg=enterImg;
-        vm.leaveImg=leaveImg;
+
         initController();
 
         function initController() {
             vm.bodyText = 'This text can be updated in modal 1';
         }
 
-function enterImg(data){
-
-
-    data.target.style.opacity="0.2";
-
-
-    data.target.style.transition=".7s ease";
-}
-function leaveImg(data){
-
-    data.target.style.opacity="1";
-}
         function openModal(data){
 
             var widthScreen= screen.width;
@@ -42,7 +29,7 @@ function leaveImg(data){
 
             // var modalInstance
             $rootScope.modalInstance = $uibModal.open({
-            template: '<img   style="width: auto;height: auto;left:50%;top: 50%;" data-ng-src="'+'data:'+data.photo.imageContentType+';base64,'+data.photo.image+'"</img> ' +
+            template: '<img style="width: auto;height: auto;left:50%;top: 50%;" data-ng-src="'+'data:'+data.photo.imageContentType+';base64,'+data.photo.image+'"</img> ' +
                     '<button ng-click="vm.closeModal()" type="submit" ui-sref="user-ext-detail({id:'+data.userExt.id+'})">jooola</button> '
 
 
@@ -51,7 +38,7 @@ function leaveImg(data){
         }
 
         function closeModal(){
-
+            console.log("CERRAR");
             //$uibModal.close('my-custom-modal');
             $rootScope.modalInstance.close('mal');
         }
@@ -60,11 +47,11 @@ function leaveImg(data){
         var listImage = [entity[0], entity[1], entity[2], entity[3], entity[4], entity[5], entity[6], entity[7]];
         var aux = 8;
         vm.photos2 = listImage;
-
+        console.log(entity);
         vm.loadMore = function () {
             var last = listImage[listImage.length - 1];
             var j = 8;
-            for (var i = 0; i < 3; i++) {
+            for (var i = 0; i < 4; i++) {
                 if (aux < entity.length) {
                     listImage.push(entity[j]);
                     j++;
