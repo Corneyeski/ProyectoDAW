@@ -70,28 +70,40 @@
         })
         .state('user-ext-detail.edit', {
             parent: 'user-ext-detail',
-            url: '/detail/edit',
+            url: '/edit',
             data: {
                 authorities: ['ROLE_USER']
             },
-            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
-                $uibModal.open({
+            views:{
+                'navbar@':{
+                    templateUrl:'app/layouts/left-navbar/left-navbar.html',
+                    controller: 'NavbarController',
+                    controllerAs:'vm'
+                },
+                'content@': {
                     templateUrl: 'app/entities/user-ext/user-ext-dialog.html',
-                    controller: 'UserExtDialogController',
-                    controllerAs: 'vm',
-                    backdrop: 'static',
-                    size: 'lg',
-                    resolve: {
-                        entity: ['UserExt', function(UserExt) {
-                            return UserExt.get({id : $stateParams.id}).$promise;
-                        }]
-                    }
-                }).result.then(function() {
-                    $state.go('^', {}, { reload: false });
-                }, function() {
-                    $state.go('^');
-                });
-            }]
+                    controller: 'UserExtDetailController',
+                    controllerAs: 'vm'
+                }
+            }
+            // onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+            //     $uibModal.open({
+            //         templateUrl: 'app/entities/user-ext/user-ext-dialog.html',
+            //         controller: 'UserExtDialogController',
+            //         controllerAs: 'vm',
+            //         backdrop: 'static',
+            //         size: 'lg',
+            //         resolve: {
+            //             entity: ['UserExt', function(UserExt) {
+            //                 return UserExt.get({id : $stateParams.id}).$promise;
+            //             }]
+            //         }
+            //     }).result.then(function() {
+            //         $state.go('^', {}, { reload: false });
+            //     }, function() {
+            //         $state.go('^');
+            //     });
+            // }]
         })
         .state('user-ext.new', {
             parent: 'user-ext',
@@ -131,31 +143,6 @@
                 });
             }]
         })
-        .state('user-ext.edit', {
-            parent: 'user-ext',
-            url: '/{id}/edit',
-            data: {
-                authorities: ['ROLE_USER']
-            },
-            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
-                $uibModal.open({
-                    templateUrl: 'app/entities/user-ext/user-ext-dialog.html',
-                    controller: 'UserExtDialogController',
-                    controllerAs: 'vm',
-                    backdrop: 'static',
-                    size: 'lg',
-                    resolve: {
-                        entity: ['UserExt', function(UserExt) {
-                            return UserExt.get({id : $stateParams.id}).$promise;
-                        }]
-                    }
-                }).result.then(function() {
-                    $state.go('user-ext', null, { reload: 'user-ext' });
-                }, function() {
-                    $state.go('^');
-                });
-            }]
-        })
         .state('user-ext.delete', {
             parent: 'user-ext',
             url: '/{id}/delete',
@@ -181,5 +168,4 @@
             }]
         });
     }
-
 })();

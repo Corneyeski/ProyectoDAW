@@ -30,10 +30,6 @@
                         <li id="slide2">
                             <h3 class="icon-rabbit">Mis albumes</h3>
                             <div class="row albumes-profile">
-                                {{vm.userExt.photo}}
-                                <!--<div ng-repeat="()">-->
-
-                                <!--</div>-->
                                 <div class="col-lg-2 album">
                                 </div>
                                 <div class="col-lg-2 album">
@@ -51,25 +47,42 @@
                             <h3 class="icon-aligator">Mis datos</h3>
                             <div>
                                 <div class="cbp-content">
-                                    <div class="row"  ng-repeat="x in vm.userExt">
+                                    <div class="row">
                                         <div class="col-lg-4 profile">
-                                            <label>login:</label>
-                                            {{x.login}}
+                                            <label>login</label>
+                                            {{vm.userExt.user.login}}
                                         </div>
                                         <div class="col-lg-4 profile">
-                                        <label>Nombre:</label>
-                                            {{x.firstName}}
+                                            <label>Nombre</label>
+                                            {{vm.userExt.user.firstName}}
                                         </div>
-
+                                        <div class="col-lg-4 profile">
+                                            <label>Apellido</label>
+                                            {{vm.userExt.user.lastName}}
+                                        </div>
+                                        </div>
+                                    <div class="row">
+                                        <div class="col-lg-4 profile">
+                                            <label>Edad</label>
+                                            {{vm.userExt.age}}
+                                        </div>
+                                        <div class="col-lg-4 profile">
+                                            <label>Localidad</label>
+                                            {{vm.userExt.city}}
+                                        </div>
+                                        <div class="col-lg-4 profile">
+                                            <label>Dirección</label>
+                                            {{vm.userExt.address}}
+                                        </div>
                                     </div>
-                                    <button type="submit"
-                                            ui-sref="{{ vm.previousState }}"
-                                            class="btn btn-info">
-                                        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
-                                    </button>
+                                    <!--<button type="submit"-->
+                                            <!--ui-sref="{{ vm.previousState }}"-->
+                                            <!--class="btn btn-info">-->
+                                        <!--<span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>-->
+                                    <!--</button>-->
                                     <button type="button" ui-sref="user-ext-detail.edit({id:vm.userExt.id})" class="btn btn-primary">
                                         <span class="glyphicon glyphicon-pencil"></span>
-                                        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+                                        <span class="hidden-sm-down" data-translate="entity.action.edit"> Editar perfil</span>
                                     </button>
                                 </div>
                             </div>
@@ -79,7 +92,7 @@
                     <nav>
                         <a href="#slide1" class="icon-wolf"><span>Siguiendo</span></a>
                         <a href="#slide2" class="icon-rabbit"><span>Mis Albumes</span></a>
-                        <a href="#slide3" class="icon-aligator"><span>Editar perfil</span></a>
+                        <a href="#slide3" class="icon-aligator"><span>Mis datos</span></a>
                     </nav>
                 </div>
             </div>

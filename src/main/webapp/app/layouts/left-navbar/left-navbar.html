@@ -6,19 +6,18 @@
     </div>
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav " ng-switch="vm.isAuthenticated()">
-            <li ui-sref-active="active">
-
-                <a ui-sref="home" ng-click="vm.collapseNavbar()">
-                    <span class="fa fa-home"></span>
-                    <span class="hidden-sm" data-translate="global.menu.home">Home</span>
-                </a>
-            </li>
+            <!--<li ui-sref-active="active">-->
+                <!--<a ui-sref="home" ng-click="vm.collapseNavbar()">-->
+                    <!--<span class="fa fa-home"></span>-->
+                    <!--<span class="hidden-sm" data-translate="global.menu.home">Home</span>-->
+                <!--</a>-->
+            <!--</li>-->
 
 
             <li ui-sref-active="active">
                 <a ui-sref="inicio-usuario" ng-click="vm.collapseNavbar()">
 
-                    <span class="hidden-sm">Click me</span>
+                    <span class="hidden-sm">Inicio</span>
                 </a>
             </li>
 
@@ -28,11 +27,11 @@
                 </a>
             </li>
 
-            <li ui-sref-active="active">
-                <a ui-sref="profile" ng-click="vm.collapseNavbar()">
-                    <span class="hidden-sm ng-scope">profile</span>
-                </a>
-            </li>
+            <!--<li ui-sref-active="active">-->
+                <!--<a ui-sref="profile" ng-click="vm.collapseNavbar()">-->
+                    <!--<span class="hidden-sm ng-scope">profile</span>-->
+                <!--</a>-->
+            <!--</li>-->
             <!------------------------------------>
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
             <li ng-class="{active: vm.$state.includes('entity')}" ng-switch-when="true" uib-dropdown class="dropdown pointer">
