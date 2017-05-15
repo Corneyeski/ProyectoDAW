@@ -3,7 +3,9 @@ package proyecto.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import proyecto.domain.Photo;
 
+import proyecto.domain.User;
 import proyecto.repository.PhotoRepository;
+import proyecto.repository.UserRepository;
 import proyecto.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -28,9 +30,11 @@ public class PhotoResource {
     private static final String ENTITY_NAME = "photo";
 
     private final PhotoRepository photoRepository;
+    private final UserRepository userRepository;
 
-    public PhotoResource(PhotoRepository photoRepository) {
+    public PhotoResource(PhotoRepository photoRepository, UserRepository userRepository) {
         this.photoRepository = photoRepository;
+        this.userRepository = userRepository;
     }
 
     /**
@@ -105,6 +109,35 @@ public class PhotoResource {
     public ResponseEntity<Photo> getPhoto(@PathVariable Long id) {
         log.debug("REST request to get Photo : {}", id);
         Photo photo = photoRepository.findOne(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(photo));
+    }
+
+    /**
+     * GET  /PhotoOfCurrentUser : get the "id" photo.
+     *
+     * @return the ResponseEntity with status 200 (OK) and with body the photo, or with status 404 (Not Found)
+     */
+    @GetMapping("/PhotoOfCurrentUser")
+    @Timed
+    public ResponseEntity<List<Photo>> getPhotoOfCurrentUser() {
+        log.debug("REST request to get Photo : {}");
+        List<Photo> photo = photoRepository.findByUserIsCurrentUser();
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(photo));
+    }
+
+    /**
+     * GET  /photos/:id : get the "id" photo.
+     *
+     * @param id the id of the photo to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the photo, or with status 404 (Not Found)
+     */
+    @GetMapping("/photosOfUser/{id}")
+    @Timed
+    public ResponseEntity<List<Photo>> getPhotosOfUser(@PathVariable Long id) {
+        log.debug("REST request to get Photo : {}", id);
+
+        User user = userRepository.findOne(id);
+        List<Photo> photo = photoRepository.findByUser(user);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(photo));
     }
 

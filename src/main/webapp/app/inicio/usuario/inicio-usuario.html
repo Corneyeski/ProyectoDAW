@@ -1,23 +1,33 @@
 
 <div   infinite-scroll='vm.loadMore()' infinite-scroll-distance="1">
 
+<div class="row">
+    <div class="col-lg-4">
+
+    </div>
+    <div class="col-lg-4 logoScroll" class="col-lg-4">
+        <img src="content/images/logo-jhipster.png">RETRO JOB<img>
+    </div>
+    <div class="col-lg-4">
+
+    </div>
+
+</div>
 
 
+    <div class="container imagenesInicio " id="contentImage" ng-repeat="data in vm.photos2 track by $index"
+         style="width: 300px;height: 300px; ">
+        <div ng-switch ="data.offer">
 
-    <div class="imgHome " id="contentImage" ng-repeat="data in vm.photos2 track by $index">
-
-        <div class="ofertasHome" ng-switch ="data.offer">
-
-            <div   ng-switch-when=null>
+            <div ng-switch-when=null>
                 <div ng-switch ="data.photo.url">
-                    <div class="hover10 column" ng-switch-when=null>
-                       <figure> <img class="photo" ng-click="vm.openModal(data)"
+                    <div ng-switch-when=null>
+                        <img ng-click="vm.openModal(data)"
                              data-ng-src="{{'data:' + data.photo.imageContentType + ';base64,' + data.photo.image }}"
-                               style="width: 250px; height:250px;" alt="photo image"/></figure>
+                             style="width: 250px; height:250px;" alt="photo image"/>
 
-            <div class="infoFoto">
-                hola petu
-            </div>
+
+
                     </div>
                     <div ng-switch-default>
                         <img ng-click="vm.openModal(data)" src='{{data.photo.url}}' style="width: 250px; height:250px;" alt="photo image"/>
@@ -28,7 +38,7 @@
 
 
             </div>
-            <div class="ofertasHome"ng-switch-default>
+            <div ng-switch-default>
                 {{data.offer.name}}
             </div>
         </div>

@@ -30,6 +30,7 @@
                         <li id="slide2">
                             <h3 class="icon-rabbit">Mis albumes</h3>
                             <div class="row albumes-profile">
+
                                 <div class="col-lg-2 album">
                                 </div>
                                 <div class="col-lg-2 album">
@@ -44,22 +45,46 @@
                         </li>
 
                         <li id="slide3">
-                            <h3 class="icon-aligator">Editar Perfil</h3>
+                            <h3 class="icon-aligator">Mis datos</h3>
                             <div>
                                 <div class="cbp-content">
                                     <div class="row">
                                         <div class="col-lg-4 profile">
+                                            <label>login</label>
                                             {{vm.userExt.user.login}}
                                         </div>
                                         <div class="col-lg-4 profile">
-                                            {{vm.userExt.user.lastName}}
+                                            <label>Nombre</label>
+                                            {{vm.userExt.user.firstName}}
                                         </div>
                                         <div class="col-lg-4 profile">
-                                            <label>Correo:</label><input type="text" ng-model="correo">
+                                            <label>Apellido</label>
+                                            {{vm.userExt.user.lastName}}
+                                        </div>
+                                        </div>
+                                    <div class="row">
+                                        <div class="col-lg-4 profile">
+                                            <label>Edad</label>
+                                            {{vm.userExt.age}}
+                                        </div>
+                                        <div class="col-lg-4 profile">
+                                            <label>Localidad</label>
+                                            {{vm.userExt.city}}
+                                        </div>
+                                        <div class="col-lg-4 profile">
+                                            <label>Dirección</label>
+                                            {{vm.userExt.address}}
                                         </div>
                                     </div>
-                                    <p>{{vm.account}}</p>
-                                    <button ng-click="vm.modify">Modificar</button>
+                                    <!--<button type="submit"-->
+                                            <!--ui-sref="{{ vm.previousState }}"-->
+                                            <!--class="btn btn-info">-->
+                                        <!--<span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>-->
+                                    <!--</button>-->
+                                    <button type="button" ui-sref="user-ext-detail.edit({id:vm.userExt.id})" class="btn btn-primary">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                        <span class="hidden-sm-down" data-translate="entity.action.edit"> Editar perfil</span>
+                                    </button>
                                 </div>
                             </div>
                         </li>
@@ -68,7 +93,7 @@
                     <nav>
                         <a href="#slide1" class="icon-wolf"><span>Siguiendo</span></a>
                         <a href="#slide2" class="icon-rabbit"><span>Mis Albumes</span></a>
-                        <a href="#slide3" class="icon-aligator"><span>Editar perfil</span></a>
+                        <a href="#slide3" class="icon-aligator"><span>Mis datos</span></a>
                     </nav>
                 </div>
             </div>
@@ -103,10 +128,6 @@
 <style>
 
 </style>
-
-
-
-
 
 <!--<div>-->
     <!--<h2><span data-translate="proyectoApp.userExt.detail.title">User Ext</span> {{vm.userExt.id}}</h2>-->
