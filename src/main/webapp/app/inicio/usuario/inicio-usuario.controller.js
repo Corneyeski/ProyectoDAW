@@ -5,9 +5,9 @@
         .module('proyectoApp')
         .controller('InicioController', InicioController);
 
-    InicioController.$inject = ['$translate', '$timeout', 'Auth', 'LoginService', 'UserExt', 'entity', 'DataUtils','$uibModal', '$rootScope'];
+    InicioController.$inject = ['$translate', '$timeout', 'Auth', 'LoginService', 'UserExt', 'entity', 'DataUtils', '$uibModal', '$rootScope'];
 
-    function InicioController($translate, $timeout, Auth, LoginService, UserExt, entity, DataUtils,$uibModal, $rootScope) {
+    function InicioController($translate, $timeout, Auth, LoginService, UserExt, entity, DataUtils, $uibModal, $rootScope) {
         var vm = this;
 
         vm.openModal = openModal;
@@ -19,25 +19,24 @@
             vm.bodyText = 'This text can be updated in modal 1';
         }
 
-        function openModal(data){
 
-            var widthScreen= screen.width;
-            var heightScreen=screen.height;
+        function openModal(data) {
 
-
+            var widthScreen = screen.width;
+            var heightScreen = screen.height;
 
 
             // var modalInstance
             $rootScope.modalInstance = $uibModal.open({
-            template: '<img style="width: auto;height: auto;left:50%;top: 50%;" data-ng-src="'+'data:'+data.photo.imageContentType+';base64,'+data.photo.image+'"</img> ' +
-                    '<button ng-click="vm.closeModal()" type="submit" ui-sref="user-ext-detail({id:'+data.photo.user.id+'})">jooola</button> '
+                template: '<img style="width: auto;height: auto;left:50%;top: 50%;" data-ng-src="' + 'data:' + data.photo.imageContentType + ';base64,' + data.photo.image + '"</img> ' +
+                '<button ng-click="vm.closeModal()" type="submit" ui-sref="user-ext-detail({id:' + data.photo.user.id + '})">jooola</button> '
 
 
             });
             closeModal();
         }
 
-        function closeModal(){
+        function closeModal() {
             console.log("CERRAR");
             //$uibModal.close('my-custom-modal');
             $rootScope.modalInstance.close('mal');
@@ -62,8 +61,6 @@
                 }
             }
         };
-
-
 
 
     }

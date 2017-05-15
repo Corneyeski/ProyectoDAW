@@ -4,19 +4,20 @@
 
 
 
-    <div class="imagenesInicio " id="contentImage" ng-repeat="data in vm.photos2 track by $index"
-         style="width: 200px; ">
-        <div ng-switch ="data.offer">
+    <div class="imgHome " id="contentImage" ng-repeat="data in vm.photos2 track by $index">
 
-            <div ng-switch-when=null>
+        <div class="ofertasHome" ng-switch ="data.offer">
+
+            <div   ng-switch-when=null>
                 <div ng-switch ="data.photo.url">
-                    <div ng-switch-when=null>
-                        <img ng-click="vm.openModal(data)"
+                    <div class="hover10 column" ng-switch-when=null>
+                       <figure> <img class="photo" ng-click="vm.openModal(data)"
                              data-ng-src="{{'data:' + data.photo.imageContentType + ';base64,' + data.photo.image }}"
-                             style="width: 250px; height:250px;" alt="photo image"/>
+                               style="width: 250px; height:250px;" alt="photo image"/></figure>
 
-
-
+            <div class="infoFoto">
+                hola petu
+            </div>
                     </div>
                     <div ng-switch-default>
                         <img ng-click="vm.openModal(data)" src='{{data.photo.url}}' style="width: 250px; height:250px;" alt="photo image"/>
@@ -27,8 +28,8 @@
 
 
             </div>
-            <div ng-switch-default>
-                <!--{{data.offer.name}}-->
+            <div class="ofertasHome"ng-switch-default>
+                {{data.offer.name}}
             </div>
         </div>
 
