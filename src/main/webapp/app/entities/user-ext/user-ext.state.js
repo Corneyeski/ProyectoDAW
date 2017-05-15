@@ -56,8 +56,8 @@
                     return $translate.refresh();
                 }],
                 entity: ['$stateParams', 'UserExt','Photo', function($stateParams, UserExt,Photo) {
-                   return UserExt.get({id : $stateParams.id}).$promise;
-                    return Photo.photosuser({id :3}).$promise;
+                    return UserExt.get({id : $stateParams.id}).$promise;
+                    //return Photo.photosUser.$promise;
 
                 }],
                 previousState: ["$state", function ($state) {
@@ -87,6 +87,11 @@
                     controller: 'UserExtDetailController',
                     controllerAs: 'vm'
                 }
+            },
+            resolve:{
+                entity: ['$stateParams','UserExt', function($stateParams,UserExt) {
+                     return UserExt.get({id : $stateParams.id}).$promise;
+                                 }]
             }
             // onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
             //     $uibModal.open({
@@ -100,7 +105,7 @@
             //                 return UserExt.get({id : $stateParams.id}).$promise;
             //             }]
             //         }
-            //     }).result.then(function() {
+            //     ).result.then(function() {
             //         $state.go('^', {}, { reload: false });
             //     }, function() {
             //         $state.go('^');
