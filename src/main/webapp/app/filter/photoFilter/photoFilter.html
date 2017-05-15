@@ -1,14 +1,28 @@
 <div class="row">
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-
-            </div>
-            <div class="navbar-collapse" uib-collapse="vm.isNavbarCollapsed" ng-switch="vm.isAuthenticated()">
-
-            </div>
+    <div class="page-header">
+        <h2>Filtro de fotos</h2>
+    </div>
+    <div class="navbar-collapse" uib-collapse="vm.isNavbarCollapsed" ng-switch="vm.isAuthenticated()">
+        <div class="col-lg-4">
+            <form class="form" role="form" ng-submit="vm.login($event)">
+                <div class="form-group">
+                    <label for="username" data-translate="global.form.username">Login</label>
+                    <input type="text" class="form-control" id="username" placeholder="{{'global.form.username.placeholder' | translate}}" ng-model="vm.username">
+                </div>
+                <div class="form-group">
+                    <label for="password" data-translate="login.form.password">Password</label>
+                    <input type="password" class="form-control" id="passwordlogin" placeholder="{{'login.form.password.placeholder' | translate}}" ng-model="vm.password">
+                </div>
+                <div class="form-group">
+                    <label for="rememberMe">
+                        <input type="checkbox" id="rememberMe" ng-model="vm.rememberMe" checked>
+                        <span data-translate="login.form.rememberme">Remember me</span>
+                    </label>
+                </div>
+                <input type="submit" class="btn btn-primary" data-translate="login.form.button" value="Inicia">
+            </form>
         </div>
-    </nav>
+    </div>
 </div>
 <div class="row">
 

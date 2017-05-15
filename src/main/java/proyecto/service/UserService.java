@@ -118,7 +118,7 @@ public class UserService {
 
         userExt.setAddress(address);
         if(birthday != null) {
-            userExt.setBirthdate(birthday.toLocalDate());
+            userExt.setBirthdate(birthday.toLocalDate().plusDays(1));
         }
 
         userExt.setCountry(country);
