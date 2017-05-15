@@ -459,6 +459,10 @@ Development Ribbon
     margin-right: 3%;
     margin-top: 10%;
     background-color: black;
+    text-align: center;
+    color: white;
+    font-size:20px;
+
 }
 .logoScroll{
     padding-top: 5%;
