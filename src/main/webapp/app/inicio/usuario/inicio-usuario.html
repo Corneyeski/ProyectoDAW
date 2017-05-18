@@ -19,27 +19,32 @@
          style="width: 300px;height: 300px; ">
         <div ng-switch ="data.offer">
 
-            <div ng-switch-when=null>
-                <div ng-switch ="data.photo.url">
-                    <div ng-switch-when=null>
-                        <img  ng-mouseover="vm.enterImg($event)" ng-mouseleave="vm.leaveImg($event)"  ng-click="vm.openModal(data)"
-                             data-ng-src="{{'data:' + data.photo.imageContentType + ';base64,' + data.photo.image }}"
-                             style="width: 300px; height:300px;" alt="photo image"/>
+            <div ng-mouseenter="vm.enterImg($event)" ng-mouseleave="vm.leaveImg($event)" ng-switch-when=null>
+                <!--<div class="empty-space" style="height: 15%;"></div>-->
+                <!--<span style="display:block;">Ricard Huelamo</span>-->
+                <!--<div class="empty-space" style="height:5%;"></div>-->
+                <!--<span style="display:block; font-size: 120px;">4</span>-->
+                <!--<div class="empty-space" style="height:10%;"></div>-->
+                <!--<span style="display:block;">Barcelona, España</span>-->
+
+                <div id="info" style="position: absolute;display:none ;text-align: center;">
+<div class="empty-space"></div>
+                    <div>{{data.userExt.user.login}}</div>
+                    <div>{{data.photo.points}}</div>
+                    <div>{{data.userExt.city}}</div>
 
 
 
 
 
-                    </div>
-                    <div ng-switch-default>
-                        <img ng-click="vm.openModal(data)" src='{{data.photo.url}}' style="width: 250px; height:250px;" alt="photo image"/>
-
-                    </div>
 
                 </div>
+                <img   ng-click="vm.openModal(data)"
+                      data-ng-src="{{'data:' + data.photo.imageContentType + ';base64,' + data.photo.image }}"
+                      style="width: 300px; height:300px;" alt="photo image"/>
 
 
-            </div>
+ </div>
             <div ng-switch-default>
                 {{data.offer.name}}
             </div>

@@ -11,7 +11,7 @@
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
-            'photosuser':{method:'GET', isArray:false, url:'api/photo/{id}'},
+            'photosUser':{ method:'GET', isArray:false, url:'api/PhotosOfCurrentUser'},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {

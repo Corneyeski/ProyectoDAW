@@ -117,9 +117,9 @@ public class PhotoResource {
      *
      * @return the ResponseEntity with status 200 (OK) and with body the photo, or with status 404 (Not Found)
      */
-    @GetMapping("/PhotoOfCurrentUser")
+    @GetMapping("/PhotosOfCurrentUser")
     @Timed
-    public ResponseEntity<List<Photo>> getPhotoOfCurrentUser() {
+    public ResponseEntity<List<Photo>> getPhotosOfCurrentUser() {
         log.debug("REST request to get Photo : {}");
         List<Photo> photo = photoRepository.findByUserIsCurrentUser();
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(photo));
