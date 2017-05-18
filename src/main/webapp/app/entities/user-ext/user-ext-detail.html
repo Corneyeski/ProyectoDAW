@@ -19,10 +19,11 @@
                 <div id="cbp-contentslider" class="cbp-contentslider">
                     <ul>
                         <li id="slide1">
-                            <h3 class="icon-wolf">Siguiendo</h3>
+                            <h3 ng-if="vm.currentAccount.id==vm.userExt.id" class="icon-wolf">Mis seguidores</h3>
+                            <h3 ng-if="vm.currentAccount.id!==vm.userExt.id" class="icon-wolf">Seguidores de {{vm.userExt.user.login}}</h3>
                             <div>
                                 <div class="cbp-content">
-                                    <button ng-if="!vm.currentAccount.id==vm.userExt.id" type="button" class="btn btn-primary" value="Seguir">Seguir</button>
+                                    <button ng-if="vm.currentAccount.id!==vm.userExt.id" type="button" class="btn btn-primary" value="Seguir">Seguir</button>
                                     <div ng-repeat="data in vm.Following track by $index">
                                         <label>Nombre: </label>{{data.followed.firstName}}
                                     </div>
@@ -30,11 +31,13 @@
                             </div>
                         </li>
                         <li id="slide2">
-                            <h3 class="icon-rabbit">Mis albumes</h3>
+
+                            <h3 ng-if="vm.currentAccount.id==vm.userExt.id" class="icon-rabbit">Mis fotos</h3>
+                            <h3 ng-if="vm.currentAccount.id!==vm.userExt.id" class="icon-rabbit">Fotos de {{vm.userExt.user.login}}</h3>
 
                             <div class="row albumes-profile">
                                 <div class="col-lg-4" ng-repeat="photo in vm.photosUser track by $index">
-                                    {{photo.name}}
+
                                     <img data-ng-src="{{'data:' + photo.imageContentType + ';base64,' + photo.image }}"
                                          style="width: 300px; height:300px;" alt="photo image"/>
                                 </div>
@@ -42,7 +45,10 @@
                         </li>
 
                         <li id="slide3">
-                            <h3 class="icon-aligator">Mis datos</h3>
+                            <div ng-if="vm.currentAccount.id==vm.userExt.id"><h3 class="icon-aligator">Mis datos</h3></div>
+
+                            <div  ng-if="vm.currentAccount.id!==vm.userExt.id"><h3 class="icon-aligator">Datos de {{vm.userExt.user.login}}</h3></div>
+
                             <div>
                                 <div class="cbp-content">
                                     <div class="row">
@@ -88,9 +94,11 @@
 
                     </ul>
                     <nav>
-                        <a href="#slide1" class="icon-wolf"><span>Siguiendo</span></a>
-                        <a href="#slide2" class="icon-rabbit"><span>Mis Albumes</span></a>
-                        <a href="#slide3" class="icon-aligator"><span>Mis datos</span></a>
+                        <a href="#slide1" class="icon-wolf"><span>Seguidores</span></a>
+
+                        <a ng-if="vm.currentAccount.id==vm.userExt.id" href="#slide2" class="icon-rabbit"><span>Mis Fotos</span></a>
+                        <a ng-if="vm.currentAccount.id!==vm.userExt.id" href="#slide2" class="icon-rabbit"><span>Fotos</span></a>
+                        <a href="#slide3" class="icon-aligator"><span>Información</span></a>
                     </nav>
                 </div>
             </div>
