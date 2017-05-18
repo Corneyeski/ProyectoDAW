@@ -3,7 +3,9 @@ package proyecto.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import proyecto.domain.Following;
 
+import proyecto.domain.User;
 import proyecto.repository.FollowingRepository;
+import proyecto.repository.UserRepository;
 import proyecto.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -29,8 +31,11 @@ public class FollowingResource {
 
     private final FollowingRepository followingRepository;
 
-    public FollowingResource(FollowingRepository followingRepository) {
+    private final UserRepository userRepository;
+
+    public FollowingResource(FollowingRepository followingRepository,UserRepository userRepository) {
         this.followingRepository = followingRepository;
+        this.userRepository = userRepository;
     }
 
     /**
@@ -104,6 +109,15 @@ public class FollowingResource {
         return followings;
     }
 
+    @GetMapping("/followers/{id}")
+    @Timed
+    public ResponseEntity<List<Following>> getFollowers(@PathVariable Long id) {
+        log.debug("REST request to get Following : {}", id);
+
+        User user = userRepository.findOne(id);
+        List<Following> following = followingRepository.findByFollowersOneUser(user);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(following));
+    }
     /**
      * GET  /followings/:id : get the "id" following.
      *
