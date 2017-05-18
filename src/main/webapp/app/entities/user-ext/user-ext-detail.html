@@ -22,23 +22,18 @@
                             <h3 class="icon-wolf">Siguiendo</h3>
                             <div>
                                 <div class="cbp-content">
-                                    <button type="button" class="btn btn-primary" value="Seguir">Seguir</button>
+                                    <button ng-if="!vm.currentAccount.id==vm.userExt.id" type="button" class="btn btn-primary" value="Seguir">Seguir</button>
                                 </div>
                             </div>
                         </li>
                         <li id="slide2">
                             <h3 class="icon-rabbit">Mis albumes</h3>
-                            <div class="row albumes-profile">
 
-                                <div class="col-lg-2 album">
-                                </div>
-                                <div class="col-lg-2 album">
-                                </div>
-                                <div class="col-lg-2 album">
-                                </div>
-                                <div class="col-lg-2 album">
-                                </div>
-                                <div class="col-lg-2 album">
+                            <div class="row albumes-profile">
+                                <div class="col-lg-4" ng-repeat="photo in vm.photosUser track by $index">
+                                    {{photo.name}}
+                                    <img data-ng-src="{{'data:' + photo.imageContentType + ';base64,' + photo.image }}"
+                                         style="width: 300px; height:300px;" alt="photo image"/>
                                 </div>
                             </div>
                         </li>
@@ -80,7 +75,7 @@
                                             <!--class="btn btn-info">-->
                                         <!--<span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>-->
                                     <!--</button>-->
-                                    <button type="button" ui-sref="user-ext-detail.edit({id:vm.userExt.id})" class="btn btn-primary">
+                                    <button ng-if="vm.currentAccount.id==vm.userExt.id" type="button" ui-sref="user-ext-detail.edit({id:vm.userExt.id})" class="btn btn-primary">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                         <span class="hidden-sm-down" data-translate="entity.action.edit"> Editar perfil</span>
                                     </button>

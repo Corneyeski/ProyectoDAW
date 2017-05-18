@@ -31,7 +31,6 @@
             }
         })
 
-
             .state('nada', {
                     parent: 'app',
                     url: '/inicio-usuario',
