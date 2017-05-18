@@ -21,6 +21,9 @@
                     return data;
                 }
             },
+            'getFollowers': {
+              method: 'GET', isArray:true, url:'api/followed'
+            },
             'update': { method:'PUT' }
         });
     }

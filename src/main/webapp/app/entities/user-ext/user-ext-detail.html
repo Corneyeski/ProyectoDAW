@@ -23,6 +23,9 @@
                             <div>
                                 <div class="cbp-content">
                                     <button ng-if="!vm.currentAccount.id==vm.userExt.id" type="button" class="btn btn-primary" value="Seguir">Seguir</button>
+                                    <div ng-repeat="data in vm.Following track by $index">
+                                        <label>Nombre: </label>{{data.followed.firstName}}
+                                    </div>
                                 </div>
                             </div>
                         </li>

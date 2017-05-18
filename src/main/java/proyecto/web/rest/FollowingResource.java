@@ -93,6 +93,7 @@ public class FollowingResource {
         return followings;
     }
 
+    // la gente q me sigue
     @GetMapping("/followers")
     @Timed
     public List<Following> getAllFollowers() {
@@ -101,6 +102,7 @@ public class FollowingResource {
         return followings;
     }
 
+    // la gente khè sigo
     @GetMapping("/followed")
     @Timed
     public List<Following> getAllFollowed() {
@@ -109,6 +111,7 @@ public class FollowingResource {
         return followings;
     }
 
+    // los followers de un perfil ajeno
     @GetMapping("/followers/{id}")
     @Timed
     public ResponseEntity<List<Following>> getFollowers(@PathVariable Long id) {

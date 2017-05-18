@@ -5,17 +5,17 @@
         .module('proyectoApp')
         .controller('UserExtDetailController', UserExtDetailController);
 
-    UserExtDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'UserExt', 'User','Photo', 'Principal'];
+    UserExtDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'UserExt', 'User','Photo', 'Principal','Following'];
 
-    function UserExtDetailController($scope, $rootScope, $stateParams, previousState, entity, UserExt, User, Photo, Principal) {
+    function UserExtDetailController($scope, $rootScope, $stateParams, previousState, entity, UserExt, User, Photo, Principal, Following) {
         var vm = this;
 
+        vm.Following;
         vm.currentAccount;
         vm.userExt = entity;
         vm.previousState = previousState.name;
         //console.log(vm.userExt);
         loadAll();
-        console.log(Photo.photosUser);
         function loadAll() {
             Photo.query(function(result){
 
@@ -23,7 +23,15 @@
                 console.log(vm.photosUser);
                 vm.searchQuery = null;
             });
+
+            Following.getFollowers(function(result){
+               vm.Following = result;
+                vm.searchQuery = null;
+            });
+
         }
+
+
 
         Principal.identity().then(function (account){
             vm.currentAccount = account;
