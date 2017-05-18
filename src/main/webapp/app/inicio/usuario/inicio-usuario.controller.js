@@ -27,10 +27,14 @@ function enterImg(data){
 
 
     data.target.style.transition=".7s ease";
+    console.log(entity[0]);
+    data.currentTarget.children.info.style.display="inline-block";
+
 }
 function leaveImg(data){
 
     data.target.style.opacity="1";
+    data.currentTarget.children.info.style.display="none";
 }
         function openModal(data){
 

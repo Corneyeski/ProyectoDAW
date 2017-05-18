@@ -37,8 +37,8 @@
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     //$translatePartialLoader.addPart('inicio-usuario');
                     return $translate.refresh();
-                }]
-                ,entity: ['$stateParams', 'UserExt', function($stateParams, UserExt) {
+                }],
+                entity: ['$stateParams', 'UserExt', function($stateParams, UserExt) {
                     return UserExt.home().$promise;
 
                 }]

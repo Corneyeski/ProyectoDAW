@@ -373,7 +373,29 @@ Development Ribbon
     background-color: rgb(0, 0, 0); /* Fallback color */
     background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
 }
+/* INFORMACIÓN USUARIO HOVER*/
+#info{
+    width: 300px;
+    height: 300px;
+}
+#info div {
+    display: block;
+    width: 100%;
+    text-align: center;
 
+}
+    #info div:nth-child(3){
+        font-size: 60px;
+    }
+#info div:nth-child(2), #info div:last-child{
+    font-size: 30px;
+}
+    .empty-space{
+
+        height: 65px;
+    }
+
+/*FIN INFORMACIÓN USUARIO HOVER*/
 /* Modal Content (Image) */
 .modal-content {
     margin: auto;

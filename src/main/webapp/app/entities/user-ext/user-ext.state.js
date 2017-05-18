@@ -51,7 +51,7 @@
                 }
             },
             resolve: {
-                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {-
                     $translatePartialLoader.addPart('userExt');
                     return $translate.refresh();
                 }],
