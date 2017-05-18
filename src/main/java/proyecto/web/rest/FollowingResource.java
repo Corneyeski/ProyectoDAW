@@ -26,7 +26,7 @@ public class FollowingResource {
     private final Logger log = LoggerFactory.getLogger(FollowingResource.class);
 
     private static final String ENTITY_NAME = "following";
-        
+
     private final FollowingRepository followingRepository;
 
     public FollowingResource(FollowingRepository followingRepository) {
@@ -85,6 +85,22 @@ public class FollowingResource {
     public List<Following> getAllFollowings() {
         log.debug("REST request to get all Followings");
         List<Following> followings = followingRepository.findAll();
+        return followings;
+    }
+
+    @GetMapping("/followers")
+    @Timed
+    public List<Following> getAllFollowers() {
+        log.debug("REST request to get all Followings");
+        List<Following> followings = followingRepository.findByFollowerIsCurrentUser();
+        return followings;
+    }
+
+    @GetMapping("/followed")
+    @Timed
+    public List<Following> getAllFollowed() {
+        log.debug("REST request to get all Followings");
+        List<Following> followings = followingRepository.findByFollowedIsCurrentUser();
         return followings;
     }
 
