@@ -1,5 +1,5 @@
 
-<div   infinite-scroll='vm.loadMore()' infinite-scroll-distance="1">
+<div   infinite-scroll='vm.loadPage(vm.page + 1)' infinite-scroll-disabled="vm.page >= vm.links['last']">
 
 <div class="row">
     <div class="col-lg-4">
@@ -15,8 +15,8 @@
 </div>
 
 
-    <div class="container imagenesInicio " id="contentImage" ng-repeat="data in vm.photos2 track by $index"
-         style="width: 300px;height: 300px; ">
+    <div class="container imagenesInicio " id="contentImage" ng-repeat="data in vm.scrolls track by $index"
+         style="width: 300px;height: 300px;  ">
         <div ng-switch ="data.offer">
 
             <div ng-mouseenter="vm.enterImg($event)" ng-mouseleave="vm.leaveImg($event)" ng-switch-when=null>
@@ -27,11 +27,11 @@
                 <!--<div class="empty-space" style="height:10%;"></div>-->
                 <!--<span style="display:block;">Barcelona, España</span>-->
 
-                <div id="info" style="position: absolute;display:none ;text-align: center;">
-<div class="empty-space"></div>
-                    <div>{{data.userExt.user.login}}</div>
-                    <div>{{data.photo.points}}</div>
-                    <div>{{data.userExt.city}}</div>
+                <div id="info" style="position: absolute;width:300px;height:300px;text-align: center;font-size: 180px;padding-top:30px;display: none;">
+
+                    <!--<div>{{data.userExt.user.login}}</div>-->
+                    {{data.photo.points}}
+                    <!--<div>{{data.userExt.city}}</div>-->
 
 
 
@@ -46,8 +46,10 @@
 
  </div>
             <div ng-switch-default>
-                {{data.offer.name}}
-            </div>
+                 <!--{{data.offer.name}}-->
+                <!--{{data.offer.description}}-->
+                <img style="width: 300px; height:300px;" src="/content/images/oferta.gif">
+
         </div>
 
 
