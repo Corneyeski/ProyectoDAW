@@ -61,9 +61,9 @@ public class FollowingResource {
             .body(result);
     }
 
-    @PostMapping("/Newfollowing")
+    @PostMapping("/Newfollowing/{id}")
     @Timed
-    public ResponseEntity<Following> createNewFollowing(@RequestBody Long id) throws URISyntaxException {
+    public ResponseEntity<Following> createNewFollowing(@PathVariable Long id) throws URISyntaxException {
 
         User followed = userRepository.findOne(id);
         User follower = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
