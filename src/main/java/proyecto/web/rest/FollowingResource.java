@@ -6,6 +6,7 @@ import proyecto.domain.Following;
 import proyecto.domain.User;
 import proyecto.repository.FollowingRepository;
 import proyecto.repository.UserRepository;
+import proyecto.security.SecurityUtils;
 import proyecto.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,6 +61,33 @@ public class FollowingResource {
             .body(result);
     }
 
+    @PostMapping("/Newfollowing")
+    @Timed
+    public ResponseEntity<Following> createNewFollowing(@RequestBody Long id) throws URISyntaxException {
+
+        User followed = userRepository.findOne(id);
+        User follower = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+
+        Following following = followingRepository.findExistByFollowerAndFollowed(followed,follower);
+
+        if(following != null){
+            followingRepository.delete(following);
+
+            return ResponseEntity.ok().headers(HeaderUtil.createAlert("deleted succesfuly","deleted succesfuly")).body(null);
+        }else {
+            following.setFollowed(followed);
+            following.setFollower(follower);
+            following.setTime(ZonedDateTime.now());
+        }
+
+        /*if (followed == null) {
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new following cannot already have an ID")).body(null);
+        }*/
+        Following result = followingRepository.save(following);
+        return ResponseEntity.created(new URI("/api/followings/" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+            .body(result);
+    }
     /**
      * PUT  /followings : Updates an existing following.
      *

@@ -25,6 +25,7 @@
         vm.$state = $state;
         vm.hide = hide;
         vm.show = show;
+        vm.upload = upload;
 
         function login() {
             collapseNavbar();
@@ -51,6 +52,9 @@
 
         function show() {
             $("#style-1").animate({left: "0px"}, 100);
+        }
+        function upload(){
+
         }
     }
 })();
