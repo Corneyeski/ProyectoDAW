@@ -21,6 +21,10 @@
 
             });
         }
+        vm.createFollowing=function(id){
+
+        }
+
         // console.log(vm.userExts);
     }
 });

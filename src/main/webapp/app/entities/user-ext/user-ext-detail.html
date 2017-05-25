@@ -1,18 +1,12 @@
-
-
-
-
 <div class="row mainrow">
+    <div class="row separador2"></div>
     <div class="row usu">
         <div class="col-lg-12 img-usuario">
             <div>
-                <img src="../../../content/images/17125453_353353921724745_8088302319000616960_n.jpg"/></div>
+                <img class="img-circle" src="../../../content/images/17125453_353353921724745_8088302319000616960_n.jpg"/></div>
         </div>
     </div>
     <div class="row separador"></div>
-
-    <!--<div class="page-header"></div>-->
-    <!-- #region Jssor Slider Begin -->
     <div class="container-fluid">
         <div class="row">
             <div class="main">
@@ -23,7 +17,8 @@
                             <h3 ng-if="vm.currentAccount.id!==vm.userExt.id" class="icon-wolf">Seguidores de {{vm.userExt.user.login}}</h3>
                             <div>
                                 <div class="cbp-content">
-                                    <button ng-if="vm.currentAccount.id!==vm.userExt.id" type="button" class="btn btn-primary" value="Seguir">Seguir</button>
+                                    <button ng-if="vm.currentAccount.id!==vm.userExt.id" type="button" class="btn btn-primary"ng-click="vm.createFollowing(vm.userExt.user.id)" value="Seguir">Seguir</button>
+                                    <button ng-if="vm.currentAccount.id ==vm.userExt.id" type="button" class="btn btn-primary" ui-sref="following.delete" value="Siguiendo">Siguiendo</button>
                                     <div ng-repeat="data in vm.Following track by $index">
                                         <label>Nombre: </label>{{data.followed.firstName}}
                                     </div>
@@ -31,24 +26,18 @@
                             </div>
                         </li>
                         <li id="slide2">
-
                             <h3 ng-if="vm.currentAccount.id==vm.userExt.id" class="icon-rabbit">Mis fotos</h3>
                             <h3 ng-if="vm.currentAccount.id!==vm.userExt.id" class="icon-rabbit">Fotos de {{vm.userExt.user.login}}</h3>
-
                             <div class="row albumes-profile">
                                 <div class="col-lg-4" ng-repeat="photo in vm.photosUser track by $index">
-
-                                    <img data-ng-src="{{'data:' + photo.imageContentType + ';base64,' + photo.image }}"
-                                         style="width: 300px; height:300px;" alt="photo image"/>
+                                    <img data-ng-src="{{'data:' + photo.imageContentType + ';base64,' + photo.image }}" style="width: 300px; height:300px;" alt="photo image"/>
                                 </div>
                             </div>
                         </li>
 
                         <li id="slide3">
                             <div ng-if="vm.currentAccount.id==vm.userExt.id"><h3 class="icon-aligator">Mis datos</h3></div>
-
-                            <div  ng-if="vm.currentAccount.id!==vm.userExt.id"><h3 class="icon-aligator">Datos de {{vm.userExt.user.login}}</h3></div>
-
+                            <div ng-if="vm.currentAccount.id!==vm.userExt.id"><h3 class="icon-aligator">Datos de {{vm.userExt.user.login}}</h3></div>
                             <div>
                                 <div class="cbp-content">
                                     <div class="row">
@@ -79,11 +68,6 @@
                                             {{vm.userExt.address}}
                                         </div>
                                     </div>
-                                    <!--<button type="submit"-->
-                                            <!--ui-sref="{{ vm.previousState }}"-->
-                                            <!--class="btn btn-info">-->
-                                        <!--<span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>-->
-                                    <!--</button>-->
                                     <button ng-if="vm.currentAccount.id==vm.userExt.id" type="button" ui-sref="user-ext-detail.edit({id:vm.userExt.id})" class="btn btn-primary">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                         <span class="hidden-sm-down" data-translate="entity.action.edit"> Editar perfil</span>
@@ -91,7 +75,6 @@
                                 </div>
                             </div>
                         </li>
-
                     </ul>
                     <nav>
                         <a href="#slide1" class="icon-wolf"><span>Seguidores</span></a>

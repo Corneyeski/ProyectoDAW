@@ -11,8 +11,9 @@
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
+            'createFollowing':{method:'PUT', isArray:false, url:'api/NewFollowing/:id'},
             'get': {
-                method: 'GET',
+                method: 'PUT',
                 transformResponse: function (data) {
                     if (data) {
                         data = angular.fromJson(data);

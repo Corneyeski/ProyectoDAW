@@ -84,15 +84,20 @@
                 },
                 'content@': {
                     templateUrl: 'app/entities/user-ext/user-ext-dialog.html',
-                    controller: 'UserExtDetailController',
+                    controller: 'UserExtDialogController',
                     controllerAs: 'vm'
                 }
             },
-            resolve:{
-                entity: ['$stateParams','UserExt', function($stateParams,UserExt) {
-                     return UserExt.get({id : $stateParams.id}).$promise;
-                                 }]
-            }
+            // resolve:{
+            //     entity: ['$stateParams','UserExt', function($stateParams,UserExt) {
+            //          return UserExt.get({id : $stateParams.id}).$promise;
+            //                      }]
+            // }.result.then(function () {
+            //     $state.go('^', {}, { reload: false });
+            // },
+            //     function () {
+            //     $state.go('^');
+            // }),
             // onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
             //     $uibModal.open({
             //         templateUrl: 'app/entities/user-ext/user-ext-dialog.html',
@@ -105,7 +110,7 @@
             //                 return UserExt.get({id : $stateParams.id}).$promise;
             //             }]
             //         }
-            //     ).result.then(function() {
+            //     }).result.then(function() {
             //         $state.go('^', {}, { reload: false });
             //     }, function() {
             //         $state.go('^');
@@ -174,5 +179,29 @@
                 });
             }]
         });
+        // .state('follow',{
+        //     parent:'following',
+        //     url:'',
+        //     data:{
+        //         authorities: ['ROLE_USER']
+        //     },
+        //     views:{
+        //         'navbar@':{
+        //             templateUrl:'app/layouts/left-navbar/left-navbar.html',
+        //             controller: 'NavbarController',
+        //             controllerAs:'vm'
+        //         },
+        //         'content@': {
+        //             templateUrl: 'app/entities/user-ext/user-ext-dialog.html',
+        //             controller: 'UserExtDetailController',
+        //             controllerAs: 'vm'
+        //         }
+        //     },
+        //     resolve:{
+        //         entity:[
+        //
+        //         ]
+        //     }
+        // });
     }
 })();

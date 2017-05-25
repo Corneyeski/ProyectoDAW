@@ -10,6 +10,8 @@
     function UserExtDetailController($scope, $rootScope, $stateParams, previousState, entity, UserExt, User, Photo, Principal, Following) {
         var vm = this;
 
+        console.log("hola");
+
         vm.Following;
         vm.currentAccount;
         vm.userExt = entity;
@@ -28,10 +30,32 @@
                vm.Following = result;
                 vm.searchQuery = null;
             });
-
         }
 
+        vm.createFollowing=function(id){
+            Following.createFollowing({'id': id},{});
+            console.log(id);
+            // $state.go('user-ext-detail', null, {reload:'user-search'});
+        }
 
+        function save () {
+            vm.isSaving = true;
+            console.log("save");
+            if (vm.userExt.id !== null) {
+                UserExt.update(vm.userExt, onSaveSuccess, onSaveError);
+            } else {
+                UserExt.save(vm.userExt, onSaveSuccess, onSaveError);
+            }
+        }
+
+        function onSaveSuccess (result) {
+            $scope.$emit('proyectoApp:userExtUpdate', result);
+            $uibModalInstance.close(result);
+            vm.isSaving = false;
+        }
+        function onSaveError () {
+            vm.isSaving = false;
+        }
 
         Principal.identity().then(function (account){
             vm.currentAccount = account;

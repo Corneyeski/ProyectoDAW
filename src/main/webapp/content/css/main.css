@@ -50,13 +50,13 @@
 }
 
 .img-usuario img {
-    max-width: 400px;
-    max-height: 400px;
+    width: 304px;
+    height: 236px;
     margin: 0 auto;
-    border-radius: 200px 200px 200px 200px;
-    -moz-border-radius: 200px 200px 200px 200px;
-    -webkit-border-radius: 200px 200px 200px 200px;
-    border: 0px solid #000000;
+    /*border-radius: 200px 200px 200px 200px;*/
+    /*-moz-border-radius: 200px 200px 200px 200px;*/
+    /*-webkit-border-radius: 200px 200px 200px 200px;*/
+    /*border: 0px solid #000000;*/
 }
 
 .botones {
@@ -264,7 +264,7 @@ html, body, .container {
     left: 0;
     padding: 0 1em;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: hidden;
 }
 
 .cbp-contentslider .cbp-content {

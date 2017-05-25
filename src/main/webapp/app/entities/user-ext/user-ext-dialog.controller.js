@@ -16,6 +16,7 @@
         vm.openCalendar = openCalendar;
         vm.save = save;
         vm.users = User.query();
+        console.log("dialog0");
 
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
@@ -27,6 +28,7 @@
 
         function save () {
             vm.isSaving = true;
+            console.log("save");
             if (vm.userExt.id !== null) {
                 UserExt.update(vm.userExt, onSaveSuccess, onSaveError);
             } else {

@@ -20,13 +20,13 @@ public interface FollowingRepository extends JpaRepository<Following,Long> {
     @Query("select following from Following following where following.followed.login = ?#{principal.username}")
     List<Following> findByFollowedIsCurrentUser();
 
-    @Query("select following.followed from Following following where following.follower = :user")
+    @Query("select following.followed from Following following where following.follower =:user")
     List<User> SelectFollowingFindByFollower(@Param("user")User user);
 
-    @Query("select following from Following following where following.follower = :user")
+    @Query("select following from Following following where following.follower =:user")
     List<Following> findByFollowersOneUser(@Param("user")User user);
 
-    @Query("select  following from Following following where following.follower = :follower and following.followed = :followed")
-    Following findExistByFollowerAndFollowed(@Param("user")User followed,@Param("user")User follower);
+    @Query("select  following from Following following where following.follower =:follower and following.followed =:followed")
+    Following findExistByFollowerAndFollowed(@Param("followed")User followed,@Param("follower")User follower);
 
 }

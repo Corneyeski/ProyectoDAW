@@ -74,7 +74,7 @@
         <!--</div>-->
         <!--<div class="form-group">-->
             <!--<label class="control-label" data-translate="proyectoApp.userExt.validated" for="field_validated">Validated</label>-->
-            <!--<input type="checkbox" class="form-control" name="validated" id="field_validated"-->
+            <!--<input type=u"checkbox" class="form-control" name="validated" id="field_validated"-->
                     <!--ng-model="vm.userExt.validated"-->
                     <!--/>-->
         <!--</div>-->
@@ -97,7 +97,7 @@
             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
         </button>
 
-        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+        <button type="button" ng-click="vm.save" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary" >
             <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
         </button>
     </div>
