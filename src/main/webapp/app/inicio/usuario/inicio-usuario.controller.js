@@ -61,7 +61,17 @@ console.log(entity);
                 // }
 
                 for (var i = 0; i < entity.length; i++) {
+                    if(entity[i].photo.points % 1 ===0){
                         vm.scrolls.push(entity[i]);
+
+                    }else{
+                         var points = entity[i].photo.points;
+                       points =  points.toFixed(2);
+                        entity[i].photo.points= points;
+                        vm.scrolls.push(entity[i]);
+
+                    }
+
 
 
                 }
@@ -99,15 +109,7 @@ function leaveImg(data){
     data.currentTarget.children.info.style.display="none";
 }
         function openModal(data){
-
-            var widthScreen= screen.width;
-            var heightScreen=screen.height;
-
-
-
-
-            // var modalInstance
-            $rootScope.modalInstance = $uibModal.open({
+          $rootScope.modalInstance = $uibModal.open({
             template: '<img style="width: auto;height: auto;left:50%;top: 50%;" data-ng-src="'+'data:'+data.photo.imageContentType+';base64,'+data.photo.image+'"</img> ' +
                     '<button ng-click="vm.closeModal()" type="submit" ui-sref="user-ext-detail({id:'+data.photo.user.id+'})">Perfil Usuario</button> '
 
