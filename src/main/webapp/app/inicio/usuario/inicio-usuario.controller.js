@@ -110,7 +110,7 @@ function leaveImg(data){
 }
         function openModal(data){
           $rootScope.modalInstance = $uibModal.open({
-            template: '<img style="width: auto;height: auto;left:50%;top: 50%;" data-ng-src="'+'data:'+data.photo.imageContentType+';base64,'+data.photo.image+'"</img> ' +
+            template: '<img class="imgmodal" data-ng-src="'+'data:'+data.photo.imageContentType+';base64,'+data.photo.image+'"</img> ' +
                     '<button ng-click="vm.closeModal()" type="submit" ui-sref="user-ext-detail({id:'+data.photo.user.id+'})">Perfil Usuario</button> '
 
 
