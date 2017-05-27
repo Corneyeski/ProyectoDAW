@@ -1,3 +1,7 @@
+$("#uploadModal").click(change);
+function change() {
+    $("#uploadModal").toggle();
+}
 (function () {
     'use strict';
 
@@ -5,9 +9,9 @@
         .module('proyectoApp')
         .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService'];
+    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService', '$uibModal', '$rootScope'];
 
-    function NavbarController($state, Auth, Principal, ProfileService, LoginService) {
+    function NavbarController($state, Auth, Principal, ProfileService, LoginService, $uibModal, $rootScope) {
         var vm = this;
         var count = 0;
         vm.isNavbarCollapsed = true;
@@ -53,8 +57,9 @@
         function show() {
             $("#style-1").animate({left: "0px"}, 100);
         }
-        function upload(){
 
+        function upload() {
+            $("#uploadModal").toggle();
         }
     }
 })();

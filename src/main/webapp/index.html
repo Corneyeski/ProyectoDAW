@@ -35,7 +35,30 @@
         <!-- Angular views -->
     </div>
 </div>
-
+<div class="row text-center" id="uploadModal" ng-click="vm.upload()">
+    <div class="row text-center">
+        <div class="page-header text-center">
+            <div class="btn btn-block btn-danger text-center">
+                <h2>Subir foto</h2>
+            </div>
+            <div class="form-group">
+                <label for="photoName">Nombre de la foto</label>
+                <input type="text" class="form-control" id="photoName">
+            </div>
+            <div class="btn btn-block btn-danger text-center">
+                <h2>Subir video</h2>
+            </div>
+            <div class="form-group">
+                <label for="videoName">Nombre de la foto</label>
+                <input type="text" class="form-control" id="videoName">
+                <label for="url">URL:</label>
+                <input type="text" class="form-control" id="url">
+                <label for="description">Descripcion</label>
+                <input type="text" class="form-control" id="description">
+            </div>
+        </div>
+    </div>
+</div>
 <!-- build:js app/vendor.js -->
 <!-- bower:js -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
