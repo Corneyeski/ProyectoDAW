@@ -25,4 +25,9 @@ public interface BloquedRepository extends JpaRepository<Bloqued,Long> {
 
     List<Bloqued> findByBlock(User user);
 
+    /*@Query("select  bloqued from Bloqued bloqued where bloqued.block =:block and bloqued.bloqued =:bloqued")
+    Bloqued findExistByBlockAndBloquedAndBlocked(@Param("block")User block,@Param("bloqued")User bloqued);*/
+
+    boolean findByBlockAndBlocked(User block, User blocked);
+
 }

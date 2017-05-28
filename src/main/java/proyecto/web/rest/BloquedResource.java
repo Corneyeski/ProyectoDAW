@@ -3,7 +3,10 @@ package proyecto.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import proyecto.domain.Bloqued;
 
+import proyecto.domain.User;
 import proyecto.repository.BloquedRepository;
+import proyecto.repository.UserRepository;
+import proyecto.security.SecurityUtils;
 import proyecto.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -26,11 +29,14 @@ public class BloquedResource {
     private final Logger log = LoggerFactory.getLogger(BloquedResource.class);
 
     private static final String ENTITY_NAME = "bloqued";
-        
+
     private final BloquedRepository bloquedRepository;
 
-    public BloquedResource(BloquedRepository bloquedRepository) {
+    private final UserRepository userRepository;
+
+    public BloquedResource(BloquedRepository bloquedRepository, UserRepository userRepository) {
         this.bloquedRepository = bloquedRepository;
+        this.userRepository = userRepository;
     }
 
     /**
@@ -53,6 +59,28 @@ public class BloquedResource {
             .body(result);
     }
 
+     @PostMapping("/newBloqued")
+     @Timed
+     public ResponseEntity<Bloqued> createNewBloqued(@RequestBody long id) throws URISyntaxException {
+
+        User blocked = userRepository.findOne(id);
+
+        if(blocked == null){
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idnotexists", "ID de usuario no valida")).body(null);
+        }else{
+            User block = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+
+            Bloqued bloqued = new Bloqued(block,blocked);
+
+            if(bloquedRepository.findByBlockAndBlocked(block,blocked)){
+                return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "AlredyExist", "alredy exist")).body(null);
+            }else{
+                bloquedRepository.save(bloqued);
+            }
+        }
+
+        return null;
+     }
     /**
      * PUT  /bloqueds : Updates an existing bloqued.
      *
@@ -112,8 +140,19 @@ public class BloquedResource {
     @Timed
     public ResponseEntity<Void> deleteBloqued(@PathVariable Long id) {
         log.debug("REST request to delete Bloqued : {}", id);
-        bloquedRepository.delete(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+
+        User user = userRepository.findOne(id);
+
+        if(user == null){
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "invalidUser", "Not valid user")).body(null);
+        }else{
+            if(bloquedRepository.findByBlockAndBlocked(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get(),user)){
+                return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "Notblockedactualy", "user not bloqued")).body(null);
+            }else{
+                bloquedRepository.delete(id);
+                return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+            }
+        }
     }
 
 }

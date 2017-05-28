@@ -68,7 +68,7 @@ public class FollowingResource {
         User followed = userRepository.findOne(id);
         User follower = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
 
-        Following following = followingRepository.findExistByFollowerAndFollowed(followed,follower);
+        Following following = followingRepository.findByFollowedAndFollower(followed,follower);
 
         if(following != null){
             followingRepository.delete(following);

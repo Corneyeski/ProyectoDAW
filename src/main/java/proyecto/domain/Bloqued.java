@@ -41,6 +41,11 @@ public class Bloqued implements Serializable {
         return this;
     }
 
+    public Bloqued(User block, User blocked) {
+        this.block = block;
+        this.blocked = blocked;
+    }
+
     public void setBlock(User user) {
         this.block = user;
     }
