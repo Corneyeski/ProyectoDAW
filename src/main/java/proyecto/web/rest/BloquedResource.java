@@ -75,11 +75,10 @@ public class BloquedResource {
             if(bloquedRepository.findByBlockAndBlocked(block,blocked)){
                 return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "AlredyExist", "alredy exist")).body(null);
             }else{
-                bloquedRepository.save(bloqued);
+                Bloqued result = bloquedRepository.save(bloqued);
+                return ResponseEntity.ok().headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.toString())).build();
             }
         }
-
-        return null;
      }
     /**
      * PUT  /bloqueds : Updates an existing bloqued.
