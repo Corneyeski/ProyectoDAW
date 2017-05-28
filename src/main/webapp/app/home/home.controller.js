@@ -1,9 +1,9 @@
 (function() {
     'use strict';
 
-    $("#navbar").attr("class","");
+    /*$("#navbar").attr("class","");
     $("#content").attr("class","col-lg-12");
-    $("#content").css('padding', '0');
+    $("#content").css('padding', '0');*/
 
     angular
         .module('proyectoApp')
