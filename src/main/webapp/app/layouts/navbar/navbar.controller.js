@@ -1,6 +1,6 @@
 $("#uploadModal").click(change);
 function change() {
-    $("#uploadModal").toggle();
+    $("#oculto").toggle();
 }
 (function () {
     'use strict';
@@ -59,7 +59,7 @@ function change() {
         }
 
         function upload() {
-            $("#uploadModal").toggle();
+            $("#oculto").toggle();
         }
     }
 })();

@@ -1319,7 +1319,6 @@ input:focus {
     }
 }
 #uploadModal{
-    display: none;
     width: 100%;
     height: 100%;
     background-color: black;
@@ -1328,8 +1327,19 @@ input:focus {
     margin: 0;
     top: 0;
     opacity: 0.8;
-    z-index: 5;
 }
-.oculto{
+#oculto{
     display: none;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    top: 0;
+}
+#fomUpload{
+    position: relative;
+    z-index: 10;
+    width: 10%;
+    height: 20%;
+    background-color: white;
 }
