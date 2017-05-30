@@ -30,6 +30,7 @@ function change() {
         vm.hide = hide;
         vm.show = show;
         vm.upload = upload;
+        vm.modal = modal;
 
         function login() {
             collapseNavbar();
@@ -60,6 +61,36 @@ function change() {
 
         function upload() {
             $("#oculto").toggle();
+        }
+
+        function modal() {
+            $uibModal.open({
+                templateUrl: 'app/entities/photo/photo-dialog.html',
+                controller: 'PhotoDialogController',
+                controllerAs: 'vm',
+                backdrop: 'static',
+                size: 'lg',
+                resolve: {
+                    entity: function () {
+                        return {
+                            name: null,
+                            image: null,
+                            imageContentType: null,
+                            url: null,
+                            time: null,
+                            tags: null,
+                            points: null,
+                            id: null
+                        };
+                    }
+                }
+            }).result.then(function() {
+                // $state.go('photo', null, { reload: 'photo' });
+                $state.go($state.current.name);
+            }, function() {
+                // $state.go('photo');
+                $state.go($state.current.name);
+            });
         }
     }
 })();
