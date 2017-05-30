@@ -63,6 +63,7 @@ console.log(entity);
                 for (var i = 0; i < entity.length; i++) {
                     if(entity[i].photo.points % 1 ===0){
                         vm.scrolls.push(entity[i]);
+                        console.log(entity[i].photo.points);
 
                     }else{
                          var points = entity[i].photo.points;
@@ -111,7 +112,7 @@ function leaveImg(data){
         function openModal(data){
           $rootScope.modalInstance = $uibModal.open({
             template: '<img class="imgmodal" data-ng-src="'+'data:'+data.photo.imageContentType+';base64,'+data.photo.image+'"</img> ' +
-                    '<button ng-click="vm.closeModal()" type="submit" ui-sref="user-ext-detail({id:'+data.photo.user.id+'})">Perfil Usuario</button> '
+                    '<button ng-click="vm.closeModal()" type="submit" ui-sref="user-ext-detail({id:'+data.userExt.id+'})">Perfil Usuario</button> '
 
 
             });
