@@ -12,6 +12,7 @@
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
             'photosUser':{ method:'GET', isArray:false, url:'api/photosOfUser/{id}'},
+            'photoSave':{ method:'POST', isArray:false, url:'api/newPhoto'},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {

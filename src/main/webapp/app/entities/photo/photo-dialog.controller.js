@@ -33,7 +33,7 @@
             if (vm.photo.id !== null) {
                 Photo.update(vm.photo, onSaveSuccess, onSaveError);
             } else {
-                Photo.save(vm.photo, onSaveSuccess, onSaveError);
+                Photo.photoSave(vm.photo, onSaveSuccess, onSaveError);
             }
         }
 

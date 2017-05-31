@@ -6,6 +6,7 @@ import proyecto.domain.Photo;
 import proyecto.domain.User;
 import proyecto.repository.PhotoRepository;
 import proyecto.repository.UserRepository;
+import proyecto.security.SecurityUtils;
 import proyecto.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,6 +59,32 @@ public class PhotoResource {
         if(!photo.getImageContentType().contains("image")){
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "badfile", "Invalid type of file")).body(null);
         }
+        Photo result = photoRepository.save(photo);
+        return ResponseEntity.created(new URI("/api/photos/" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+            .body(result);
+    }
+
+    @PostMapping("/newPhoto")
+    @Timed
+    public ResponseEntity<Photo> newPhoto(@RequestBody Photo photo) throws URISyntaxException {
+        log.debug("REST request to save Photo : {}", photo);
+
+        if(photo.getName() == null || photo.getName().equals("")){
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "invalidname", "invalid name")).body(null);
+        }
+        if (photo.getId() != null) {
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new photo cannot already have an ID")).body(null);
+        }
+        if(!photo.getImageContentType().contains("image")){
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "badfile", "Invalid type of file")).body(null);
+        }
+
+        User user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+
+        photo.setUser(user);
+        photo.setTime(ZonedDateTime.now());
+
         Photo result = photoRepository.save(photo);
         return ResponseEntity.created(new URI("/api/photos/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
