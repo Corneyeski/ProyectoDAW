@@ -118,7 +118,9 @@ function leaveImg(data){
           $rootScope.modalInstance = $uibModal.open({
             template: '<img class="imgmodal" data-ng-src="'+'data:'+data.photo.imageContentType+';base64,'+data.photo.image+'"</img> ' +
                     '<button data-ng-click="vm.closeModal()" type="submit" ui-sref="user-ext-detail({id:'+data.userExt.id+'})">Perfil Usuario</button> ' +
-            '<div data-ng-click="vm.votacion()" class=" glyphicon glyphicon-star-empty"></div><span data-ng-click="vm.votacion()" class=" glyphicon glyphicon-star-empty"></span><span data-ng-click="vm.votacion()" class=" glyphicon glyphicon-star-empty"></span><span data-ng-click="vm.votacion()" class=" glyphicon glyphicon-star-empty"></span><span data-ng-click="vm.votacion()" class=" glyphicon glyphicon-star-empty"></span>'
+            ' <ul class="rating"> <li ng-repeat="star in stars"  ng-class="star" ng-click="toggle($index)"><i class="fa fa-star-o"></i> </li> </ul>'
+
+
 
 
             });
