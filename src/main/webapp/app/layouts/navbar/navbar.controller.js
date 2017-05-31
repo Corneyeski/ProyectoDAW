@@ -65,7 +65,7 @@ function change() {
 
         function modal() {
             $uibModal.open({
-                templateUrl: 'app/entities/photo/photo-dialog.html',
+                templateUrl: 'app/entities/photo/photo-dialog-user.html',
                 controller: 'PhotoDialogController',
                 controllerAs: 'vm',
                 backdrop: 'static',
@@ -85,10 +85,8 @@ function change() {
                     }
                 }
             }).result.then(function() {
-                // $state.go('photo', null, { reload: 'photo' });
                 $state.go($state.current.name);
             }, function() {
-                // $state.go('photo');
                 $state.go($state.current.name);
             });
         }
