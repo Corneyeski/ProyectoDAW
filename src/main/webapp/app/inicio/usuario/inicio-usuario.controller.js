@@ -26,7 +26,7 @@
         vm.predicate = 'id';
         vm.reset = reset;
         vm.reverse = true;
-console.log(entity);
+
         loadAll();
 
 
@@ -38,23 +38,23 @@ console.log(entity);
         function loadAll () {
             UserExt.home({
                 page: vm.page,
-                size: vm.itemsPerPage,
-                sort: sort()
+                size: vm.itemsPerPage
+                // sort: sort()
             }, onSuccess, onError);
-            function sort() {
-                var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
-                if (vm.predicate !== 'id') {
-                    result.push('id');
-                }
-                return result;
-            }
+            // function sort() {
+            //     var result = [vm.predicate + ',' + (vm.reverse ? 'asc' : 'desc')];
+            //     if (vm.predicate !== 'id') {
+            //         result.push('id');
+            //     }
+            //     return result;
+            // }
 
             function onSuccess(data, headers) {
                 vm.totalItems = headers('X-Total-Count');
                // vm.links = ParseLinks.parse(headers('link'));
 
 
-                console.log(vm.totalItems);
+
 
                 // for (var i = 0; i < data.length; i++) {
                 //     vm.scrolls.push(data[i]);
@@ -63,7 +63,7 @@ console.log(entity);
                 for (var i = 0; i < entity.length; i++) {
                     if(entity[i].photo.points % 1 ===0){
                         vm.scrolls.push(entity[i]);
-                        console.log(entity[i].photo.points);
+                        console.log(i);
 
                     }else{
                          var points = entity[i].photo.points;
