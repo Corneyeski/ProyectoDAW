@@ -166,6 +166,22 @@ public class FollowingResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(following));
     }
 
+    @GetMapping("/isFollowing/{id}")
+    @Timed
+    public ResponseEntity<Boolean> isFollowing(@PathVariable Long id) {
+        log.debug("REST request to get Following : {}", id);
+
+        User followed = userRepository.findOne(id);
+        User follower = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+
+        Following following = followingRepository.findByFollowedAndFollower(followed,follower);
+
+        Boolean result = false;
+        if(following != null){
+            result = true;
+        }
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
+    }
     /**
      * DELETE  /followings/:id : delete the "id" following.
      *
