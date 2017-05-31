@@ -25,6 +25,6 @@
 
         }
 
-        // console.log(vm.userExts);
+        console.log(vm.userExts);
     }
 });

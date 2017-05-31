@@ -5,9 +5,9 @@
         .module('proyectoApp')
         .controller('UserExtDialogController', UserExtDialogController);
 
-    UserExtDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'entity', 'UserExt', 'User'];
+    UserExtDialogController.$inject = ['$timeout', '$scope','$state', '$stateParams', '$q', 'entity', 'UserExt', 'User'];
 
-    function UserExtDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, entity, UserExt, User) {
+    function UserExtDialogController ($timeout, $scope,$state, $stateParams, $q, entity, UserExt, User) {
         var vm = this;
 
         vm.userExt = entity;
@@ -23,12 +23,13 @@
         });
 
         function clear () {
-            $uibModalInstance.dismiss('cancel');
+            // $uibModalInstance.dismiss('cancel');
+            $state.go('^', {}, { reload: false });
         }
 
         function save () {
             vm.isSaving = true;
-            console.log("save");
+
             if (vm.userExt.id !== null) {
                 UserExt.update(vm.userExt, onSaveSuccess, onSaveError);
             } else {
@@ -38,7 +39,10 @@
 
         function onSaveSuccess (result) {
             $scope.$emit('proyectoApp:userExtUpdate', result);
-            $uibModalInstance.close(result);
+            console.log("save");
+            // $uibModalInstance.close(result);
+            $state.go('^', {}, { reload: false });
+            // $state.reload();
             vm.isSaving = false;
         }
 

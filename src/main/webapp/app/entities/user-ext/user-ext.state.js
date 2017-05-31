@@ -88,16 +88,11 @@
                     controllerAs: 'vm'
                 }
             },
-            // resolve:{
-            //     entity: ['$stateParams','UserExt', function($stateParams,UserExt) {
-            //          return UserExt.get({id : $stateParams.id}).$promise;
-            //                      }]
-            // }.result.then(function () {
-            //     $state.go('^', {}, { reload: false });
+            // resolve: {
+            //     entity: ['UserExt','$stateParams', function($stateParams,UserExt) {
+            //         return UserExt.get({id : $stateParams.id}).$promise;
+            //     }]
             // },
-            //     function () {
-            //     $state.go('^');
-            // }),
             // onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
             //     $uibModal.open({
             //         templateUrl: 'app/entities/user-ext/user-ext-dialog.html',

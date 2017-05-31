@@ -10,6 +10,7 @@
     function FollowingDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Following, User) {
         var vm = this;
 
+        console.log("entra");
         vm.following = entity;
         vm.clear = clear;
         vm.datePickerOpenStatus = {};

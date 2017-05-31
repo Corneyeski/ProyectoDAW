@@ -9,7 +9,7 @@
 
     function FollowingDetailController($scope, $rootScope, $stateParams, previousState, entity, Following, User) {
         var vm = this;
-
+        // console.log("entra");
         vm.following = entity;
         vm.previousState = previousState.name;
 

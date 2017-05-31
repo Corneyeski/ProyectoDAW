@@ -13,11 +13,12 @@
                 <div id="cbp-contentslider" class="cbp-contentslider">
                     <ul>
                         <li id="slide1">
+
                             <h3 ng-if="vm.currentAccount.id==vm.userExt.id" class="icon-wolf">Mis seguidores</h3>
                             <h3 ng-if="vm.currentAccount.id!==vm.userExt.id" class="icon-wolf">Seguidores de {{vm.userExt.user.login}}</h3>
                             <div>
                                 <div class="cbp-content">
-                                    <button ng-if="vm.currentAccount.id!==vm.userExt.id" type="button" class="btn btn-primary"ng-click="vm.createFollowing(vm.userExt.user.id)" value="Seguir">Seguir</button>
+                                    <button ng-if="vm.currentAccount.id!==vm.userExt.id" type="button" class="btn btn-primary" ng-click="vm.createFollowing(vm.userExt.user.id)" value="Seguir">Seguir</button>
                                     <button ng-if="vm.currentAccount.id ==vm.userExt.id" type="button" class="btn btn-primary" ui-sref="following.delete" value="Siguiendo">Siguiendo</button>
                                     <div ng-repeat="data in vm.Following track by $index">
                                         <label>Nombre: </label>{{data.followed.firstName}}

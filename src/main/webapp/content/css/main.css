@@ -266,7 +266,7 @@ html, body, .container {
     left: 0;
     padding: 0 1em;
     overflow-x: hidden;
-    overflow-y: hidden;
+    /*overflow-y: hidden;*/
 }
 
 .cbp-contentslider .cbp-content {

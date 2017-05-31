@@ -10,13 +10,14 @@
     function UserExtDetailController($scope, $rootScope, $stateParams, previousState, entity, UserExt, User, Photo, Principal, Following) {
         var vm = this;
 
-        console.log("hola");
+        // console.log("hola");
 
         vm.Following;
         vm.currentAccount;
         vm.userExt = entity;
         vm.previousState = previousState.name;
-        //console.log(vm.userExt);
+
+        console.log(vm.userExt);
         loadAll();
         function loadAll() {
             Photo.query(function(result){
@@ -28,6 +29,7 @@
 
             Following.getFollowers(function(result){
                vm.Following = result;
+                console.log(vm.Following);
                 vm.searchQuery = null;
             });
         }
