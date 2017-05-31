@@ -11,7 +11,17 @@
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
-            'home': { method: 'GET', isArray: true, url: 'api/main/scroll'},
+            'home': { method: 'GET',
+                isArray: true,
+                url: 'api/main/scroll',
+
+                transformResponse: function (data) {
+                    if (data) {
+                        data = angular.fromJson(data);
+                    }
+                    return data;
+                }
+            },
 
             'get': {
                 method: 'GET',
