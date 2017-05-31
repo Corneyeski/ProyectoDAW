@@ -89,7 +89,7 @@
             }]
         })
         .state('photo.new', {
-            parent: 'photo',
+             parent: 'photo',
             url: '/new',
             data: {
                 authorities: ['ROLE_USER']
@@ -122,6 +122,7 @@
                 });
             }]
         })
+
         .state('photo.edit', {
             parent: 'photo',
             url: '/{id}/edit',
