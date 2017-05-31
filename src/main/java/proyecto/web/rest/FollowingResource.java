@@ -61,7 +61,7 @@ public class FollowingResource {
             .body(result);
     }
 
-    @PostMapping("/Newfollowing/{id}")
+    @PutMapping("/NewFollowing/{id}")
     @Timed
     public ResponseEntity<Following> createNewFollowing(@PathVariable Long id) throws URISyntaxException {
 
@@ -133,7 +133,7 @@ public class FollowingResource {
         return followings;
     }
 
-    // la gente khè sigo
+    //TODO la gente khè sigo
     @GetMapping("/followed")
     @Timed
     public List<Following> getAllFollowed() {
@@ -142,7 +142,7 @@ public class FollowingResource {
         return followings;
     }
 
-    // los followers de un perfil ajeno
+    //TODO los followers de un perfil ajeno
     @GetMapping("/followers/{id}")
     @Timed
     public ResponseEntity<List<Following>> getFollowers(@PathVariable Long id) {
