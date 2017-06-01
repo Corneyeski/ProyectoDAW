@@ -1040,10 +1040,7 @@ input:focus {
     .contenedor4 img {
         width: 500px;
     }
-}
 
-@media (min-width: 1900px) {
-    #section0,
     #section1,
     #section2,
     #section3,
@@ -1052,7 +1049,24 @@ input:focus {
         -webkit-background-size: 160% !important;
         background-size: 160% !important;
         background-position: center;
+       background-position: center;
+
+
+}
+    #section0{
+        background-image: url("../images/home.jpg");
+        background-repeat: no-repeat;
+        background-size: 1919px;
+        background-position-y: 0%;
+        background-position-x: 50%;
+        z-index: 1;
     }
+    .contenedor{
+        height: 96%;
+    }
+}
+
+@media (min-width: 1900px) {
 
     .contenedor h2 {
         font-size: 4.5em;
@@ -1077,7 +1091,7 @@ input:focus {
 
 /* Backgrounds will cover all the section
 * --------------------------------------- */
-#section0,
+
 #section1,
 #section2,
 #section3 {
@@ -1255,6 +1269,7 @@ input:focus {
     .contenedor .textooculto p {
         width: 80% !important;
     }
+
 
     #section3 .contenedor h4 {
         font-size: 17px;

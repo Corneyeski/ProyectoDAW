@@ -52,7 +52,7 @@
     <div onload="initialize()" id="mainScroll">
         <div id="fullpage" style="margin:0 auto;">
             <div class="section" id="section0" data-anchor="first-page"
-                 style=" margin: 0 auto; text-align: center;padding-top: 0px; padding:0px;background-color: brown;">
+                 style=" margin: 0 auto; text-align: center;padding-top: 0px; padding:0px;">
 
                 <div class="contenedor">
                     <div class="row separador"></div>
@@ -61,38 +61,36 @@
                         <div class="col-lg-4">
                             <form class="form" role="form" ng-submit="vm.login($event)">
                                 <div class="form-group">
-                                    <label for="username" data-translate="global.form.username">Login</label>
+                                    <label for="username" style="color: white">Usuario</label>
                                     <input type="text" class="form-control" id="username"
-                                           placeholder="{{'global.form.username.placeholder' | translate}}"
+                                           placeholder="Usuario"
                                            ng-model="vm.username">
                                 </div>
                                 <div class="form-group">
-                                    <label for="password" data-translate="login.form.password">Password</label>
+                                    <label for="password" style="color: white">Contraseña</label>
                                     <input type="password" class="form-control" id="passwordlogin"
-                                           placeholder="{{'login.form.password.placeholder' | translate}}"
+                                           placeholder="Contraseña"
                                            ng-model="vm.password">
                                 </div>
                                 <div class="form-group">
-                                    <label for="rememberMe">
+                                    <label for="rememberMe" style="color: white">
                                         <input type="checkbox" id="rememberMe" ng-model="vm.rememberMe" checked>
-                                        <span data-translate="login.form.rememberme">Remember me</span>
+                                        <span data-translate="Recuérdame">Recuérdame</span>
                                     </label>
                                 </div>
                                 <input type="submit" class="btn btn-primary" data-translate="login.form.button"
-                                       value="Inicia">
+                                       value="Iniciar sesión">
                             </form>
                         </div>
                         <div class="col-lg-4"></div>
                     </div>
 
                 </div>
+                <div class="infologin">
+                    <img style="width: 20px;;" src="../../content/images/arrowdown.png"><span>Scroll</span></img>
+                </div>
             </div>
 <!-- FIN LOGIN -->
-
-
-
-
-
 
 <!-- REGISTRO -->
             <div class="section" id="section1" data-anchor="second-page"
@@ -105,18 +103,17 @@
                                 <div class="col-md-12" style="margin-bottom:20px"><h3>Regístrate como usuario</h3></div>
                                 <div class="col-md-4 col-md-offset-2">
                                     <div class="form-group">
-                                        <label class="control-label" for="login" data-translate="global.form.username">Username</label>
+                                        <label class="control-label" for="login" data-translate="Usuario">Usuario</label>
                                         <input type="text" class="form-control" id="login" name="login"
-                                               placeholder="{{'global.form.username.placeholder' | translate}}"
+                                               placeholder="Usuario"
                                                ng-model="vm.registerAccount.login" ng-minlength=5 ng-maxlength=10
                                                required><!--ng-pattern="/^[_'.@A-Za-z0-9-]*$/"-->
                                         <div ng-show="form.login.$dirty && form.login.$invalid">
                                             <p class="help-block" ng-show="form.login.$error.required"
-                                               data-translate="register.messages.validate.login.required">
-                                                Usuario requerido.
+                                               data-translate="Usuario requerido.">
                                             </p>
                                             <p class="help-block" ng-show="form.login.$error.minlength"
-                                               data-translate="register.messages.validate.login.minlength">
+                                               data-translate="Su nombre de usuario debe tener al menos 5 caracteres.">
                                                 Su nombre de usuario debe tener al menos 5 caracteres.
                                             </p>
                                             <p class="help-block" ng-show="form.login.$error.maxlength"
@@ -134,133 +131,132 @@
                                         <label class="control-label" for="email"
                                                data-translate="global.form.email">E-mail</label>
                                         <input type="email" class="form-control" id="email" name="email"
-                                               placeholder="{{'global.form.email.placeholder' | translate}}"
-                                               ng-model="vm.registerAccount.email" ng-minlength=7
+                                               placeholder="E-mail"
+                                               ng-model="vm.registerAccount.email" ng-minlength=7 maxlength="30"
                                                required>
 
                                         <div ng-show="form.email.$dirty && form.email.$invalid">
                                             <p class="help-block"
                                                ng-show="form.email.$error.required"
-                                               data-translate="global.messages.validate.email.required">
-                                                Your e-mail is required.
+                                               data-translate="">
+                                                Debe especificar un e-mail.
                                             </p>
                                             <p class="help-block"
                                                ng-show="form.email.$error.email"
-                                               data-translate="global.messages.validate.email.invalid">
-                                                Your e-mail is invalid.
+                                               data-translate="">
+                                                Su e-mail no es válido.
                                             </p>
                                             <p class="help-block"
                                                ng-show="form.email.$error.minlength"
-                                               data-translate="global.messages.validate.email.minlength">
-                                                Su nombre de usuario debe tener al menos 5 caracteres.
+                                               data-translate="">
+                                                Su e-mail debe tener al menos 5 carácteres.
                                             </p>
                                             <p class="help-block"
                                                ng-show="form.email.$error.maxlength"
-                                               data-translate="global.messages.validate.email.maxlength">
-                                                Your e-mail cannot be longer than 100 characters.
+                                               data-translate="">
+                                                Su e-mail no puede tener más de 30 carácteres.
                                             </p>
                                         </div>
                                     </div>
                                     <!-- PASSWORD -->
                                     <div class="form-group">
                                         <label class="control-label" for="password"
-                                               data-translate="global.form.newpassword">Nueva
+                                               data-translate="">Nueva
                                             contraseña</label>
                                         <input type="password" class="form-control" id="password" name="password"
-                                               placeholder="{{'global.form.newpassword.placeholder' | translate}}"
-                                               ng-model="vm.registerAccount.password" ng-minlength=8 ng-maxlength=15
+                                               placeholder="Contraseña"
+                                               ng-model="vm.registerAccount.password" ng-minlength=4 ng-maxlength=20
                                                required>
                                         <div ng-show="form.password.$dirty && form.password.$invalid">
                                             <p class="help-block"
                                                ng-show="form.password.$error.required"
-                                               data-translate="global.messages.validate.newpassword.required">
-                                                Your password is required.
+                                               data-translate="">
+                                                Debe especificar una contraseña.
                                             </p>
                                             <p class="help-block"
                                                ng-show="form.password.$error.minlength"
-                                               data-translate="global.messages.validate.newpassword.minlength">
-                                                Your password is required to be at least 4 characters.
+                                               data-translate="">
+                                                Su contraseña no puede tener menos de 4 carácteres.
                                             </p>
                                             <p class="help-block"
                                                ng-show="form.password.$error.maxlength"
-                                               data-translate="global.messages.validate.newpassword.maxlength">
-                                                Your password cannot be longer than 50 characters.
+                                               data-translate="">
+                                                Su contraseña no puede tener más de 20 characters.
                                             </p>
                                         </div>
-                                        <password-strength-bar
-                                            password-to-check="vm.registerAccount.password"></password-strength-bar>
+                                        <password-strength-bar password-to-check="vm.registerAccount.password"></password-strength-bar>
                                     </div>
                                     <!-- CONFIRMAR PASSWORD -->
                                     <div class="form-group">
                                         <label class="control-label" for="confirmPassword"
-                                               data-translate="global.form.confirmpassword">Confirmación
+                                               data-translate="Confirmar contraseña">Confirmación
                                             Contraseña</label>
                                         <input type="password" class="form-control" id="confirmPassword"
                                                name="confirmPassword"
-                                               placeholder="{{'global.form.confirmpassword.placeholder' | translate}}"
-                                               ng-model="vm.confirmPassword" ng-minlength=4 ng-maxlength=50 required>
+                                               placeholder="Confirmar contraseña"
+                                               ng-model="vm.confirmPassword" ng-minlength=4 ng-maxlength=20 required>
                                         <div ng-show="form.confirmPassword.$dirty && form.confirmPassword.$invalid">
                                             <p class="help-block"
                                                ng-show="form.confirmPassword.$error.required"
-                                               data-translate="global.messages.validate.confirmpassword.required">
-                                                Your confirmation password is required.
+                                               data-translate="">
+                                                Por favor, vuelva a introducir la contraseña.
                                             </p>
                                             <p class="help-block"
                                                ng-show="form.confirmPassword.$error.minlength"
-                                               data-translate="global.messages.validate.confirmpassword.minlength">
-                                                Your confirmation password is required to be at least 4 characters.
+                                               data-translate="">
+                                                Su contraseña no puede tener menos de 4 carácteres.
                                             </p>
                                             <p class="help-block"
                                                ng-show="form.confirmPassword.$error.maxlength"
-                                               data-translate="global.messages.validate.confirmpassword.maxlength">
-                                                Your confirmation password cannot be longer than 50 characters.
+                                               data-translate="">
+                                                Su contraseña no puede tener más de 20 characters.
                                             </p>
                                         </div>
                                     </div>
                                     <!-- DIRECCION -->
                                     <div class="form-group">
-                                        <label class="control-label" for="address">Address</label>
+                                        <label class="control-label" for="address">Dirección</label>
                                         <input type="text" class="form-control" id="address" name="address"
-                                               placeholder="Address"
-                                               ng-model="vm.registerAccount.address" ng-minlength=10 ng-maxlength=50
+                                               placeholder="Dirección"
+                                               ng-model="vm.registerAccount.address" ng-minlength=5 ng-maxlength=50
                                                required>
                                         <div ng-show="form.address.$dirty && form.address.$invalid">
                                             <p class="help-block"
                                                ng-show="form.address.$error.required"
                                                data-translate="global.messages.validate.address.required">
-                                                Your address is required.
+                                                Debe especificar una dirección.
                                             </p>
                                             <p class="help-block"
                                                ng-show="form.address.$error.minlength"
                                                data-translate="global.messages.validate.address.minlength">
-                                                Your address is required to be at least 10 characters.
+                                                Su dirección no puede tener menos de 4 carácteres.
                                             </p>
                                             <p class="help-block"
                                                ng-show="form.address.$error.maxlength"
                                                data-translate="global.messages.validate.address.maxlength">
-                                                Your address cannot be longer than 50 characters.
+                                                Su dirección no puede tener más de 50 carácteres.
                                             </p>
                                         </div>
                                     </div>
                                     <!-- TELEFONO -->
                                     <div class="form-group">
-                                        <label class="control-label" for="phone">Telefono</label>
+                                        <label class="control-label" for="phone">Teléfono</label>
                                         <input type="number" class="form-control" id="phone" name="phone"
-                                               placeholder="phone"
+                                               placeholder="Teléfono"
                                                ng-model="vm.registerAccount.phone" ng-minlength=9 ng-maxlength=9
                                                required>
                                         <div ng-show="form.phone.$dirty && form.phone.$invalid">
                                             <p class="help-block"
                                                ng-show="form.phone.$error.required" data-translate="">
-                                                Your phone is required.
+                                                Debes especificar un teléfono.
                                             </p>
                                             <p class="help-block"
                                                ng-show="form.phone.$error.minlength" data-translate="">
-                                                Su telefono debe tener 9 dígitos.
+                                                Su teléfono debe tener 9 dígitos.
                                             </p>
                                             <p class="help-block"
                                                ng-show="form.phone.$error.maxlength" data-translate="">
-                                                Su telefono debe tener 9 dígitos.
+                                                Su teléfono debe tener 9 dígitos.
                                             </p>
                                         </div>
                                     </div>
@@ -272,83 +268,83 @@
                                 </div>-->
                                 <div class="col-md-4 col-md-offset-2" style="margin-left:10px">
                                     <div class="form-group">
-                                        <label class="control-label" for="firstName">firstname</label>
+                                        <label class="control-label" for="firstName">Nombre</label>
                                         <input type="text" class="form-control" id="firstName" name="firstName"
-                                               placeholder="firstName"
-                                               ng-model="vm.registerAccount.firstName" ng-minlength=6 ng-maxlength=10
+                                               placeholder="Nombre"
+                                               ng-model="vm.registerAccount.firstName" ng-minlength=3 maxlength="15"
                                                required>
                                         <div ng-show="form.firstName.$dirty && form.firstName.$invalid">
                                             <p class="help-block" ng-show="form.firstName.$error.required"
                                                data-translate="">
-                                                Your phone is required.
+                                                Debes especificar un nombre.
                                             </p>
                                             <p class="help-block" ng-show="form.firstName.$error.minlength"
                                                data-translate="">
-                                                Your addrphoneess is required to be at least 10 characters.
+                                                Tu nombre debe tener más de 3 carácteres.
                                             </p>
                                             <p class="help-block" ng-show="form.firstName.$error.maxlength"
                                                data-translate="">
-                                                Your phone cannot be longer than 50 characters.
+                                                Tu nombre no pudede tener más de 15 carácteres.
                                             </p>
                                         </div>
                                     </div>
                                     <!-- APELLIDO -->
                                     <div class="form-group">
-                                        <label class="control-label" for="lastName">lastName</label>
+                                        <label class="control-label" for="lastName">Apellido</label>
                                         <input type="text" class="form-control" id="lastName" name="lastName"
-                                               placeholder="lastName"
-                                               ng-model="vm.registerAccount.lastName" ng-minlength=6 ng-maxlength=10
+                                               placeholder="Apellido"
+                                               ng-model="vm.registerAccount.lastName" ng-minlength=6 ng-maxlength=20
                                                required>
                                         <div ng-show="form.lastName.$dirty && form.lastName.$invalid">
                                             <p class="help-block" ng-show="form.firstName.$error.required"
                                                data-translate="">
-                                                Your phone is required.
+                                                Debes especificar un apellido.
                                             </p>
                                             <p class="help-block" ng-show="form.firstName.$error.minlength"
                                                data-translate="">
-                                                Your addrphoneess is required to be at least 10 characters.
+                                                El apellido debe tener más de 6 carácteres.
                                             </p>
                                             <p class="help-block" ng-show="form.firstName.$error.maxlength"
                                                data-translate="">
-                                                Your phone cannot be longer than 50 characters.
+                                                El apellido no puede tener más de 20 carácteres.
                                             </p>
                                         </div>
                                     </div>
                                     <!-- COUNTRY -->
                                     <div class="form-group">
-                                        <label class="control-label" for="country">Country</label>
+                                        <label class="control-label" for="country">País</label>
                                         <input type="text" class="form-control" id="country" name="country"
-                                               placeholder="country"
-                                               ng-model="vm.registerAccount.country" ng-minlength=6 ng-maxlength=10
+                                               placeholder="País"
+                                               ng-model="vm.registerAccount.country" ng-minlength=4 ng-maxlength=10
                                                required>
                                         <div ng-show="form.country.$dirty && form.country.$invalid">
                                             <p class="help-block" ng-show="form.country.$error.required"
                                                data-translate="">
-                                                Your country is required.
+                                                Desbes especificar un País.
                                             </p>
                                             <p class="help-block" ng-show="form.country.$error.minlength"
                                                data-translate="">
-                                                Your country is required to be at least 10 characters.
+                                                Tu país debe tener más de 4 carácteres.
                                             </p>
                                             <p class="help-block" ng-show="form.country.$error.maxlength"
                                                data-translate="">
-                                                Your country cannot be longer than 50 characters.
+                                                Tu país no puede tener más de 50 caracteres.
                                             </p>
                                         </div>
                                     </div>
                                     <!-- CIUDAD -->
                                     <div class="form-group">
-                                        <label class="control-label" for="city">City</label>
-                                        <input type="text" class="form-control" id="city" name="city" placeholder="city"
-                                               ng-model="vm.registerAccount.city" ng-minlength=6 ng-maxlength=10
+                                        <label class="control-label" for="city">Ciudad</label>
+                                        <input type="text" class="form-control" id="city" name="city" placeholder="Ciudad"
+                                               ng-model="vm.registerAccount.city" ng-minlength=4 ng-maxlength=50
                                                required>
                                         <div ng-show="form.city.$dirty && form.city.$invalid">
                                             <p class="help-block" ng-show="form.city.$error.required" data-translate="">
-                                                Your city is required.
+                                                Debes especificar tu ciudad.
                                             </p>
                                             <p class="help-block" ng-show="form.city.$error.minlength"
                                                data-translate="">
-                                                Your city is required to be at least 10 characters.
+                                                Tu ciudad debe tener más de 4 characters.
                                             </p>
                                             <p class="help-block" ng-show="form.city.$error.maxlength"
                                                data-translate="">
@@ -358,16 +354,16 @@
                                     </div>
                                     <!-- EDAD -->
                                     <div class="form-group">
-                                        <label class="control-label" for="birthday">Age</label>
+                                        <label class="control-label" for="birthday">Fecha de nacimiento</label>
                                         <input type="date" class="form-control" id="birthday" name="birthday"
-                                               placeholder="birthday" ng-model="vm.registerAccount.birthday" required>
+                                               placeholder="Edad" ng-model="vm.registerAccount.birthday" required>
                                     </div>
                                     <!-- BOTON -->
                                 </div>
                                 <div class="col-md-12">
                                     <button style="width:7%;" type="submit" ng-disabled="form.$invalid"
                                             class="btn btn-primary"
-                                            data-translate="">Register
+                                            data-translate="">Resgístrate
                                     </button>
                                 </div>
                             </div><!--Cierra Row -->
