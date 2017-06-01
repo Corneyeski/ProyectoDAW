@@ -1,4 +1,7 @@
 
+
+
+
 <div   infinite-scroll='vm.loadPage(vm.page + 1)' infinite-scroll-disabled="">
 
 <div class="row">
@@ -22,18 +25,13 @@
         <div ng-switch ="data.offer">
 
             <div ng-mouseenter="vm.enterImg($event)" ng-mouseleave="vm.leaveImg($event)" ng-switch-when=null>
-                <!--<div class="empty-space" style="height: 15%;"></div>-->
-                <!--<span style="display:block;">Ricard Huelamo</span>-->
-                <!--<div class="empty-space" style="height:5%;"></div>-->
-                <!--<span style="display:block; font-size: 120px;">4</span>-->
-                <!--<div class="empty-space" style="height:10%;"></div>-->
-                <!--<span style="display:block;">Barcelona, España</span>-->
 
-                <div id="info" style="position: absolute;width:300px;height:300px;text-align: center;font-size: 150px;padding-top:30px;display: none;">
 
-                    <!--<div>{{data.userExt.user.login}}</div>-->
-                    {{data.photo.points}}
-                    <!--<div>{{data.userExt.city}}</div>-->
+                <div id="info" style="position: absolute;width:300px;height:300px;text-align: center;font-size: 30px;padding-top:30px;display: none;">
+
+
+                    <!--{{data.photo.points}}-->
+                    <div ng-mouseenter="vm.ratingStar($event)" style="width: 30px;height: 30px;background-color: #00b3ee;display: inline-block;">fdf</div>
 
 
 

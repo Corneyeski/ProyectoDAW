@@ -15,7 +15,7 @@
         vm.enterImg=enterImg;
         vm.leaveImg=leaveImg;
 
-        vm.votacion=votacion;
+        vm.ratingStar=ratingStar;
       //  initController();
 
         vm.scrolls = [];
@@ -109,6 +109,9 @@ function enterImg(data){
     data.currentTarget.children.info.style.display="inline-block";
 
 }
+        function ratingStar(data){
+            console.log("entra");
+        }
 function leaveImg(data){
 
     data.target.style.opacity="1";
@@ -117,8 +120,8 @@ function leaveImg(data){
         function openModal(data){
           $rootScope.modalInstance = $uibModal.open({
             template: '<img class="imgmodal" data-ng-src="'+'data:'+data.photo.imageContentType+';base64,'+data.photo.image+'"</img> ' +
-                    '<button data-ng-click="vm.closeModal()" type="submit" ui-sref="user-ext-detail({id:'+data.userExt.id+'})">Perfil Usuario</button> ' +
-            ' <ul class="rating"> <li ng-repeat="star in stars"  ng-class="star" ng-click="toggle($index)"><i class="fa fa-star-o"></i> </li> </ul>'
+                    '<button data-ng-click="vm.closeModal()" type="submit" ui-sref="user-ext-detail({id:'+data.userExt.id+'})">Perfil Usuario</button> '
+
 
 
 
