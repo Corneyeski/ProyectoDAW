@@ -52,7 +52,7 @@ function change() {
         }
 
         function hide() {
-            $("#style-1").animate({left: "-120px"}, 100);
+            $("#style-1").animate({left: "-150px"}, 100);
         }
 
         function show() {
