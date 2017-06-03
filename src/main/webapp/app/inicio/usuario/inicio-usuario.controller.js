@@ -100,13 +100,14 @@ vm.disabled=data;
         }
 function enterImg(data){
 
-
-    data.target.style.opacity="0.2";
-
-
-    data.target.style.transition=".7s ease";
-
+console.log("vale");
+    data.currentTarget.children.info.style.opacity="0.8";
     data.currentTarget.children.info.style.display="inline-block";
+    data.currentTarget.children.info.style.zIndex="9999";
+    data.target.style.zIndex="-9999";
+    data.currentTarget.children.info.style.transition=".7s ease";
+
+    //data.currentTarget.children.info.style.display="inline-block";
      // data.target.style.zIndex="1";
      // data.currentTarget.children.info.style.zIndex="2";
 
@@ -115,10 +116,13 @@ function enterImg(data){
             console.log("entra");
         }
 function leaveImg(data){
-    data.target.style.opacity="1";
+    data.currentTarget.children.info.style.opacity="1";
+    data.currentTarget.children.info.style.display="none";
+    data.currentTarget.children.info.style.zIndex="-9999";
+    data.target.style.zIndex="9999";
      // data.target.style.zIndex="9999";
     // data.currentTarget.children.info.style.zIndex="-1";
-    data.currentTarget.children.info.style.display="none";
+    // data.currentTarget.children.info.style.display="none";
 
      // data.currentTarget.children.info.style.zIndex="-9999";
 

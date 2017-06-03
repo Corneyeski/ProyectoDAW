@@ -24,14 +24,31 @@
          style="width: 300px;height: 300px;  ">
         <div ng-switch ="data.offer">
 
-            <div ng-mouseenter="vm.enterImg($event)" ng-mouseleave="vm.leaveImg($event)" ng-switch-when=null>
+            <div ng-mouseenter="vm.enterImg($event)" ng-mouseleave="vm.leaveImg($event)" ng-switch-when=null style="width: 300px;height: 300px;">
 
 
-                <div id="info" style="position: absolute;width:300px;height:300px;text-align: center;font-size: 30px;padding-top:30px;display: none;">
+
+                <img   ng-click="vm.openModal(data)"
+                       data-ng-src="{{'data:' + data.photo.imageContentType + ';base64,' + data.photo.image }}"
+                       style="width: 300px;position: absolute; height:300px;z-index: 9999" alt="photo image"/>
+
+                <div id="info" style="width:300px;height:300px;text-align: center;font-size: 30px;padding-top:30px;background-color: black;position:absolute;display: none;z-index: -9999;background-color: black;">
 
 
                     {{data.photo.points}}
-                    <div data-ng-mouseenter="vm.ratingStar($event)" style="width: 30px;height: 30px;background-color: #00b3ee;display: inline-block;">fdf</div>
+                    <div data-ng-mouseenter="vm.ratingStar($event)" style="width: 30px;height: 30px;background-color: #00b3ee;display: inline-block;">
+
+
+
+
+                        fdf
+
+
+
+
+
+
+                    </div>
 
 
 
@@ -39,12 +56,11 @@
 
 
                 </div>
-                <img   ng-click="vm.openModal(data)"
-                      data-ng-src="{{'data:' + data.photo.imageContentType + ';base64,' + data.photo.image }}"
-                      style="width: 300px; height:300px;" alt="photo image"/>
+            </div>
 
 
- </div>
+
+
             <div ng-switch-default>
                  <!--{{data.offer.name}}-->
                 <!--{{data.offer.description}}-->
