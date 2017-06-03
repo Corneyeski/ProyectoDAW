@@ -5,9 +5,9 @@
         .module('proyectoApp')
         .controller('InicioController', InicioController)
 
-    InicioController.$inject = ['$translate', '$timeout', 'Auth', 'LoginService', 'UserExt', 'DataUtils', '$uibModal', '$rootScope', 'ParseLinks', 'paginationConstants', 'AlertService'];
+    InicioController.$inject = ['$translate', '$timeout', 'Auth', 'LoginService', 'UserExt', 'DataUtils', '$uibModal', '$rootScope', 'ParseLinks', 'paginationConstants', 'AlertService','entity','Principal'];
 
-    function InicioController ($translate, $timeout, Auth, LoginService, UserExt, DataUtils, $uibModal, $rootScope, ParseLinks, paginationConstants, AlertService) {
+    function InicioController ($translate, $timeout, Auth, LoginService, UserExt, DataUtils, $uibModal, $rootScope, ParseLinks, paginationConstants, AlertService,entity,Principal) {
         var vm = this;
 
         vm.openModal = openModal;
@@ -17,6 +17,7 @@
 
         vm.ratingStarEnter = ratingStarEnter;
         vm.ratingStarLeave = ratingStarLeave;
+        vm.ratingStarSend=ratingStarSend;
         //  initController();
 
         vm.scrolls = [];
@@ -44,7 +45,7 @@
                 vm.totalItems = headers('X-Total-Count');
 
                 vm.disabled = data;
-                console.log(data);
+
 
                 for (var i = 0; i < data.length; i++) {
                     if (data[i].photo.points % 1 === 0) {
@@ -64,6 +65,8 @@
             function onError (error) {
                 AlertService.error(error.data.message);
             }
+
+
         }
 
         function reset () {
@@ -79,7 +82,7 @@
 
         function enterImg (data) {
 
-            console.log('vale');
+
             data.currentTarget.children.info.style.opacity = '0.8';
             data.currentTarget.children.info.style.display = 'inline-block';
             data.currentTarget.children.info.style.zIndex = '9999';
@@ -89,14 +92,14 @@
         }
 
         function ratingStarEnter (data2) {
-            console.log(data2);
+
 
             data2.currentTarget.classList.remove('glyphicon-star-empty');
             data2.currentTarget.classList.add('glyphicon-star');
 
             var ojala = $(data2.currentTarget).prevAll();
 
-            console.log(ojala);
+
 
             for (var i = 0; i < ojala.length; i++) {
                 ojala[i].classList.remove('glyphicon-star-empty');
@@ -112,13 +115,42 @@
 
             var ojala = $(data.currentTarget).prevAll();
 
-            console.log(ojala);
+
 
             for (var i = 0; i < ojala.length; i++) {
                 ojala[i].classList.remove('glyphicon-star');
                 ojala[i].classList.add('glyphicon-star-empty');
             }
 
+        }
+
+        function ratingStarSend(data,photo){
+
+var points = data.currentTarget.classList[0].substr(4,1);
+vm.photo = photo.photo.id;
+vm.value=points;
+
+            getAccount();
+
+            function getAccount() {
+                Principal.identity().then(function(account) {
+                    vm.account = account;
+                    vm.isAuthenticated = Principal.isAuthenticated;
+                });
+            }
+console.log(vm.account);
+
+
+
+
+        // UserExt.sendValoration({
+        //
+        //     user:
+        //     photo:
+        //     value: vm.value,
+        //
+        //
+        // });
         }
 
         function leaveImg (data) {

@@ -51,12 +51,12 @@
                 }
             },
             resolve: {
-                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {-
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('userExt');
                     return $translate.refresh();
                 }],
                 entity: ['$stateParams', 'UserExt','Photo', function($stateParams, UserExt,Photo) {
-                    return UserExt.get({id : $stateParams.id}).$promise;
+                    return UserExt.get({id :$stateParams.id}).$promise;
                     //return Photo.photosUser.$promise;
 
                 }],

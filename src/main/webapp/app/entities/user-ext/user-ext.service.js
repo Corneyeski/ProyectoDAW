@@ -13,10 +13,14 @@
             'query': { method: 'GET', isArray: true},
             'home': { method: 'GET',
                 isArray: true,
-                url: 'api/main/scroll',
+                url: 'api/main/scroll'
 
             },
+            'sendValoration': { method: 'POST',
+                isArray: false,
+                url: '/api/setUpdateValorationPhoto/{vote}&{voted}&{value}'
 
+            },
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {
