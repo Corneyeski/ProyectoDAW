@@ -107,15 +107,22 @@ function enterImg(data){
     data.target.style.transition=".7s ease";
 
     data.currentTarget.children.info.style.display="inline-block";
+     // data.target.style.zIndex="1";
+     // data.currentTarget.children.info.style.zIndex="2";
 
 }
         function ratingStar(data){
             console.log("entra");
         }
 function leaveImg(data){
-
     data.target.style.opacity="1";
+     // data.target.style.zIndex="9999";
+    // data.currentTarget.children.info.style.zIndex="-1";
     data.currentTarget.children.info.style.display="none";
+
+     // data.currentTarget.children.info.style.zIndex="-9999";
+
+
 }
         function openModal(data){
           $rootScope.modalInstance = $uibModal.open({

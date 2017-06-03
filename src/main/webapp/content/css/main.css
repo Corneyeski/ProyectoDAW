@@ -1,6 +1,7 @@
 /*MODAL*/
 .modal-dialog {
-    width: auto;
+    width: 502px;
+    height: 528px;
     position: absolute;
     padding-left: 35%;
     padding-top: 9%;
