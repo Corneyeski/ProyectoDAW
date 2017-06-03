@@ -26,14 +26,14 @@
                                 </div>
                             </div>
                         </li>
-                        <li id="slide2" ui-sref="vm.photo.detail{vm.userExt.id}">
+                        <li id="slide2">
                             <h3 ng-if="vm.currentAccount.id==vm.userExt.user.id" class="icon-rabbit">Mis fotos</h3>
                             <h3 ng-if="vm.currentAccount.id!==vm.userExt.user.id" class="icon-rabbit">Fotos de {{vm.userExt.user.login}}</h3>
                             <div class="row albumes-profile">
 
-                                <div class="col-lg-4" ng-repeat="photo in vm.photosUser track by $index">
+                                <div class="col-lg-4" ng-repeat="photo in vm.Photos track by $index">
 
-                                    <img data-ng-src="{{'data:' + data.photo.imageContentType + ';base64,' + data.photo.image }}" style="width: 300px; height:300px;" alt="photo image"/>
+                                    <img data-ng-src="{{'data:' + photo.imageContentType + ';base64,' + photo.image }}" style="width: 300px; height:300px;" alt="photo image"/>
                                 </div>
                             </div>
                         </li>

@@ -11,7 +11,7 @@
         var vm = this;
 
         // console.log("hola");
-        vm.photosUser;
+        vm.Photo;
         vm.Following;
         vm.currentAccount;
         vm.userExt = entity;
@@ -21,8 +21,8 @@
         loadAll();
         function loadAll() {
             Photo.getImages(function (result) {
-                vm.photosUser = result;
-                console.log(result);
+                vm.Photo = result;
+                console.log(vm.Photo);
                 vm.searchQuery = null;
 
             });
