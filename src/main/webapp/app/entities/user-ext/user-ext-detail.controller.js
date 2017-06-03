@@ -11,7 +11,7 @@
         var vm = this;
 
         // console.log("hola");
-
+        vm.photosUser;
         vm.Following;
         vm.currentAccount;
         vm.userExt = entity;
@@ -20,23 +20,25 @@
         console.log(vm.userExt);
         loadAll();
         function loadAll() {
-            Photo.query(function(result){
-
+            Photo.getImages(function (result) {
                 vm.photosUser = result;
-                console.log(vm.photosUser);
+                console.log(result);
                 vm.searchQuery = null;
+
             });
 
-            Following.getFollowers(function(result){
-               vm.Following = result;
+            Following.getFollowers(function (result) {
+                vm.Following = result;
                 console.log(vm.Following);
                 vm.searchQuery = null;
             });
         }
 
         vm.createFollowing=function(id){
+
             Following.createFollowing({'id': id},{});
-            console.log(id);
+            console.log("Ahora estas siguiendo a este usuario " + id);
+
             // $state.go('user-ext-detail', null, {reload:'user-search'});
         }
 
