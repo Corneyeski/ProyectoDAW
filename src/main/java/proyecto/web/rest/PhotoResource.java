@@ -51,8 +51,6 @@ public class PhotoResource {
     public ResponseEntity<Photo> createPhoto(@RequestBody Photo photo) throws URISyntaxException {
         log.debug("REST request to save Photo : {}", photo);
 
-        System.out.println("llego");
-
         if (photo.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new photo cannot already have an ID")).body(null);
         }

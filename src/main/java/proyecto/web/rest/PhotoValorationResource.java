@@ -105,7 +105,7 @@ public class PhotoValorationResource {
     }
 
 
-    @GetMapping("/setUpdateValorationPhoto/{vote}&{voted}&{value}")
+    @PostMapping("/setUpdateValorationPhoto/{vote}&{voted}&{value}")
     @Timed
     public ResponseEntity<Void> setUpdateValoration(@PathVariable Long vote, @PathVariable Long voted, @PathVariable Double value) throws URISyntaxException {
 
