@@ -32,16 +32,20 @@
                        data-ng-src="{{'data:' + data.photo.imageContentType + ';base64,' + data.photo.image }}"
                        style="width: 300px;position: absolute; height:300px;z-index: 9999" alt="photo image"/>
 
-                <div id="info" style="width:300px;height:300px;text-align: center;font-size: 30px;padding-top:30px;background-color: black;position:absolute;display: none;z-index: -9999;background-color: black;">
+                <div id="info" style="width:300px;height:300px;text-align: center;font-size: 30px;padding-top:30px;background-color: black;position:absolute;display: none;z-index: -9999;">
 
 
                     {{data.photo.points}}
-                    <div data-ng-mouseenter="vm.ratingStar($event)" style="width: 30px;height: 30px;background-color: #00b3ee;display: inline-block;">
+                    <div  style="background-color: grey;display: inline-block;">
+
+                        <span data-ng-click="vm.ratingStarSend($event)" data-ng-mouseover="vm.ratingStarEnter($event)" data-ng-mouseleave="vm.ratingStarLeave($event)" class=" star1 glyphicon glyphicon-star-empty"></span>
+                        <span data-ng-click="vm.ratingStarSend($event)" data-ng-mouseover="vm.ratingStarEnter($event)" data-ng-mouseleave="vm.ratingStarLeave($event)" class="star2 glyphicon glyphicon-star-empty"></span>
+                        <span data-ng-click="vm.ratingStarSend($event)" data-ng-mouseover="vm.ratingStarEnter($event)" data-ng-mouseleave="vm.ratingStarLeave($event)" class="star3 glyphicon glyphicon-star-empty"></span>
+                        <span data-ng-click="vm.ratingStarSend($event)" data-ng-mouseover="vm.ratingStarEnter($event)" data-ng-mouseleave="vm.ratingStarLeave($event)" class="star4 glyphicon glyphicon-star-empty"></span>
+                        <span data-ng-click="vm.ratingStarSend($event)" data-ng-mouseover="vm.ratingStarEnter($event)" data-ng-mouseleave="vm.ratingStarLeave($event)" class="star5 glyphicon glyphicon-star-empty"></span>
 
 
 
-
-                        fdf
 
 
 
@@ -51,8 +55,7 @@
                     </div>
 
 
-
-
+º
 
 
                 </div>

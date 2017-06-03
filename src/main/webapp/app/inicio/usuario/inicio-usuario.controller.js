@@ -15,7 +15,8 @@
         vm.enterImg=enterImg;
         vm.leaveImg=leaveImg;
 
-        vm.ratingStar=ratingStar;
+        vm.ratingStarEnter=ratingStarEnter;
+        vm.ratingStarLeave=ratingStarLeave;
       //  initController();
 
         vm.scrolls = [];
@@ -32,11 +33,7 @@
 
         loadAll();
 
-        function votacion(data){
-            console.log("entra");
-            // this.removeClass('glyphicon-star-empty');
-            // this.addClass('glyphicon-star');
-        }
+
 
         function loadAll () {
             UserExt.home({
@@ -112,9 +109,50 @@ console.log("vale");
      // data.currentTarget.children.info.style.zIndex="2";
 
 }
-        function ratingStar(data){
-            console.log("entra");
+        function ratingStarEnter(data2){
+            console.log(data2);
+
+
+            data2.currentTarget.classList.remove('glyphicon-star-empty');
+            data2.currentTarget.classList.add('glyphicon-star');
+
+         var ojala = $(data2.currentTarget).prevAll();
+
+        console.log(ojala);
+
+        for(var i=0;i<ojala.length;i++){
+            ojala[i].classList.remove('glyphicon-star-empty');
+            ojala[i].classList.add('glyphicon-star');
         }
+
+
+
+
+        }
+
+
+
+        function ratingStarLeave(data){
+
+            data.currentTarget.classList.remove('glyphicon-star');
+            data.currentTarget.classList.add('glyphicon-star-empty');
+
+
+            var ojala = $(data.currentTarget).prevAll();
+
+            console.log(ojala);
+
+            for(var i=0;i<ojala.length;i++){
+                ojala[i].classList.remove('glyphicon-star');
+                ojala[i].classList.add('glyphicon-star-empty');
+            }
+
+
+        }
+
+
+
+
 function leaveImg(data){
     data.currentTarget.children.info.style.opacity="1";
     data.currentTarget.children.info.style.display="none";
