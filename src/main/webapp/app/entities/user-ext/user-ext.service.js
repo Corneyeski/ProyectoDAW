@@ -15,12 +15,6 @@
                 isArray: true,
                 url: 'api/main/scroll',
 
-                transformResponse: function (data) {
-                    if (data) {
-                        data = angular.fromJson(data);
-                    }
-                    return data;
-                }
             },
 
             'get': {

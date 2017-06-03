@@ -5,34 +5,57 @@
         .module('proyectoApp')
         .controller('UserExtDetailController', UserExtDetailController);
 
-    UserExtDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'UserExt', 'User','Photo', 'Principal','Following'];
+    UserExtDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'UserExt', 'User','Photo', 'Principal','Following','AlertService'];
 
-    function UserExtDetailController($scope, $rootScope, $stateParams, previousState, entity, UserExt, User, Photo, Principal, Following) {
+    function UserExtDetailController($scope, $rootScope, $stateParams, previousState, entity, UserExt, User, Photo, Principal, Following,AlertService) {
         var vm = this;
 
         // console.log("hola");
-        vm.Photo;
-        vm.Following;
-        vm.currentAccount;
+vm.photos=[];
+        // vm.Following;
+        // vm.currentAccount;
         vm.userExt = entity;
         vm.previousState = previousState.name;
 
-        console.log(vm.userExt);
+       console.log(vm.userExt);
         loadAll();
-        function loadAll() {
-            Photo.getImages(function (result) {
-                vm.Photo = result;
-                console.log(vm.Photo);
-                vm.searchQuery = null;
+        // function loadAll() {
+        //     Photo.getImages(function (result) {
+        //
+        //
+        //         vm.photos = result;
+        //         console.log(result);
+        //         vm.searchQuery = null;
+        //
+        //     });
+        //
+        //     // Following.getFollowers(function (result) {
+        //     //     vm.Following = result;
+        //     //     console.log(vm.Following);
+        //     //     vm.searchQuery = null;
+        //     // });
+        // }
 
-            });
+        function loadAll () {
+            Photo.getImages({
+                id: vm.userExt.user.id
 
-            Following.getFollowers(function (result) {
-                vm.Following = result;
-                console.log(vm.Following);
-                vm.searchQuery = null;
-            });
+                // sort: sort()
+            }, onSuccess, onError);
+
+            function onSuccess (data, headers) {
+
+
+                console.log(data);
+
+
+            }
+
+            function onError (error) {
+                AlertService.error(error.data.message);
+            }
         }
+
 
         vm.createFollowing=function(id){
 

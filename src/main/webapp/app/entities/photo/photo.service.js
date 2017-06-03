@@ -24,7 +24,10 @@
                 }
             },
             'getImages':{
-            method:'GET', isArray:false, url:'api/photosOfUser/:id'
+            method:'GET',
+                isArray:true,
+                url:'api/photosOfUser/:id',
+
         },
 
         'update': { method:'PUT' }
