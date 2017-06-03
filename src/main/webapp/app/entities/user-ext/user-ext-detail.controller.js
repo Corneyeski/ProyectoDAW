@@ -11,7 +11,7 @@
         var vm = this;
 
         // console.log("hola");
-vm.photos=[];
+vm.Photos=[];
         // vm.Following;
         // vm.currentAccount;
         vm.userExt = entity;
@@ -47,6 +47,8 @@ vm.photos=[];
 
 
                 console.log(data);
+
+                vm.Photos=data;
 
 
             }
