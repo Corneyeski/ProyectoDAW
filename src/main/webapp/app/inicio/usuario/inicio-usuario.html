@@ -24,14 +24,14 @@
          style="width: 300px;height: 300px;  ">
         <div ng-switch ="data.offer">
 
-            <div  ng-switch-when=null>
+            <div ng-mouseenter="vm.enterImg($event)" ng-mouseleave="vm.leaveImg($event)" ng-switch-when=null>
 
 
                 <div id="info" style="position: absolute;width:300px;height:300px;text-align: center;font-size: 30px;padding-top:30px;display: none;">
 
 
                     {{data.photo.points}}
-                    <!--<div data-ng-mouseenter="vm.ratingStar($event)" style="width: 30px;height: 30px;background-color: #00b3ee;display: inline-block;">fdf</div>-->
+                    <div data-ng-mouseenter="vm.ratingStar($event)" style="width: 30px;height: 30px;background-color: #00b3ee;display: inline-block;">fdf</div>
 
 
 
