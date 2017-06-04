@@ -99,8 +99,8 @@
 
             data.currentTarget.children.info.style.opacity = '0.8';
             data.currentTarget.children.info.style.display = 'inline-block';
-            data.currentTarget.children.info.style.zIndex = '9999';
-            data.target.style.zIndex = '-9999';
+            data.currentTarget.children.info.style.zIndex = '700';
+            data.target.style.zIndex = '-700';
             data.currentTarget.children.info.style.transition = '.7s ease';
 
         }
@@ -196,15 +196,19 @@
         function leaveImg (data) {
             data.currentTarget.children.info.style.opacity = '1';
             data.currentTarget.children.info.style.display = 'none';
-            data.currentTarget.children.info.style.zIndex = '-9999';
-            data.target.style.zIndex = '9999';
+            data.currentTarget.children.info.style.zIndex = '-700';
+            data.target.style.zIndex = '700';
 
         }
 
-        function openModal (data) {
+        function openModal (photo, data) {
+
+            console.log(photo);
+            console.log(data);
+
             $rootScope.modalInstance = $uibModal.open({
-                template: '<img class="imgmodal" data-ng-src="' + 'data:' + data.photo.imageContentType + ';base64,' + data.photo.image + '"</img> ' +
-                '<button data-ng-click="vm.closeModal()" type="submit" ui-sref="user-ext-detail({id:' + data.userExt.id + '})">Perfil Usuario</button> '
+                template: '<img style="z-index: 9999;" class="imgmodal" data-ng-src="' + 'data:' + data.photo.imageContentType + ';base64,' + data.photo.image + '"</img> ' +
+                '<button style="z-index: 9999;" data-ng-click="vm.closeModal()" type="submit" ui-sref="user-ext-detail({id:' + data.userExt.id + '})">Perfil Usuario</button> '
 
             });
             closeModal();

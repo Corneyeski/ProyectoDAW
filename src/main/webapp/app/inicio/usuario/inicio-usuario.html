@@ -28,11 +28,11 @@
 
 
 
-                <img   ng-click="vm.openModal(data)"
+                <img
                        data-ng-src="{{'data:' + data.photo.imageContentType + ';base64,' + data.photo.image }}"
-                       style="width: 300px;position: absolute; height:300px;z-index: 9999" alt="photo image"/>
+                       style="width: 300px;position: absolute; height:300px;z-index: 700" alt="photo image"/>
 
-                <div id="info" style="width:300px;height:300px;text-align: center;font-size: 30px;padding-top:30px;background-color: black;position:absolute;display: none;z-index: -9999;">
+                <div data-ng-click="vm.openModal($event,data)" id="info" style="width:300px;height:300px;text-align: center;font-size: 30px;padding-top:30px;background-color: black;position:absolute;display: none;z-index: -700;">
 
 
                     {{data.photo.points}}

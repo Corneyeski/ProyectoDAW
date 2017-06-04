@@ -17,8 +17,9 @@
 
             },
             'sendValoration': { method: 'POST',
-                isArray: false,
-                url: '/api/setUpdateValorationPhoto/{vote}&{voted}&{value}'
+                isArray: true,
+                url: '/api/setUpdateValorationPhoto/:vote&:voted&:value',
+
 
             },
             'current': { method: 'GET',
