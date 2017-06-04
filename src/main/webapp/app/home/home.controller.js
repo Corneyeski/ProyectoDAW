@@ -62,10 +62,10 @@
             }
         }
         function companyregister (){
-            if (vm.registerAccount.password !== vm.confirmPassword) {
+            if (vm.registerCompanyAccount.password !== vm.confirmPassword) {
                 vm.doNotMatch = 'ERROR';
             }else{
-                vm.registerAccount.langKey = $translate.use();
+                vm.registerCompanyAccount.langKey = $translate.use();
                 vm.doNotMatch = null;
                 vm.error = null;
                 vm.errorUserExists = null;
