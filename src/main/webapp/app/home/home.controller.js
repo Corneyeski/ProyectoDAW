@@ -19,8 +19,11 @@
         vm.isAuthenticated = null;
         //vm.login = LoginService.open;
         vm.register = register;
+        vm.companyregister = companyregister;
         vm.registerAccount = {};
         vm.registerAccount.useSanitizeValueStrategy;
+        vm.registerCompanyAccount = {};
+        vm.registerCompanyAccount.useSanitizeValueStrategy;
         $scope.$on('authenticationSuccess', function() {
             getAccount();
         });
@@ -44,6 +47,31 @@
                 vm.errorEmailExists = null;
 
                 Auth.createAccount(vm.registerAccount).then(function () {
+                    vm.success = 'OK';
+                    state.go('home',null);
+                }).catch(function (response) {
+                    vm.success = null;
+                    if (response.status === 400 && response.data === 'login already in use') {
+                        vm.errorUserExists = 'ERROR';
+                    } else if (response.status === 400 && response.data === 'e-mail address already in use') {
+                        vm.errorEmailExists = 'ERROR';
+                    } else {
+                        vm.error = 'ERROR';
+                    }
+                });
+            }
+        }
+        function companyregister (){
+            if (vm.registerAccount.password !== vm.confirmPassword) {
+                vm.doNotMatch = 'ERROR';
+            }else{
+                vm.registerAccount.langKey = $translate.use();
+                vm.doNotMatch = null;
+                vm.error = null;
+                vm.errorUserExists = null;
+                vm.errorEmailExists = null;
+                kind: vm.kind = 1;
+                Auth.createAccount(vm.registerCompanyAccount).then(function () {
                     vm.success = 'OK';
                     state.go('home',null);
                 }).catch(function (response) {

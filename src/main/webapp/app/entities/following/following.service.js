@@ -23,7 +23,7 @@
                 }
             },
             'getFollowers': {
-              method: 'GET', isArray:true, url:'api/followed'
+              method: 'GET', isArray:true, url:'api/followers/:id'
             },
             'update': { method:'PUT' }
         });

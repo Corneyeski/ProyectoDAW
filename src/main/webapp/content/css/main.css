@@ -42,12 +42,23 @@
     margin: 0 auto;
 
 }
-
+.img-circle{
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
 .separador {
     height: 100px;
     margin: 0px;
 }
-.bienvenida{
+.seguir{
+    background-color: #3897f0;
+    border-color: #3897f0;
+    color: white;
+}
+.bienvenida {
     font-family: "Consolas", "Menlo", "Courier", monospace;
     font-size: 3em;
     color: white;
@@ -83,7 +94,7 @@
 }
 
 .album {
-    height:155px;
+    height: 155px;
     background-color: #5bc0de;
     margin: 30px;
 }
@@ -367,10 +378,12 @@ Development Ribbon
 #myImg:hover {
     opacity: 0.7;
 }
-.imgmodal{
+
+.imgmodal {
     width: 500px !important;
     height: 500px !important;
 }
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -385,27 +398,28 @@ Development Ribbon
     background-color: rgb(0, 0, 0); /* Fallback color */
     background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
 }
+
 /* INFORMACIÓN USUARIO HOVER*/
-#info{
+#info {
     width: 300px;
     height: 300px;
 }
+
 #info div {
     display: block;
     width: 100%;
     text-align: center;
 
 }
-  #info{
+
+#info {
 
     color: #fff;
     font-size: 12em;
     font-weight: bold;
     font-family: Helvetica;
-    text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+    text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .3), 0 3px 5px rgba(0, 0, 0, .2), 0 5px 10px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .2), 0 20px 20px rgba(0, 0, 0, .15);
 }
-
-
 
 /*FIN INFORMACIÓN USUARIO HOVER*/
 /* Modal Content (Image) */
@@ -487,6 +501,7 @@ Development Ribbon
     z-index: -1;
     position: relative;
 }
+
 /*IMAGENES INICIO*/
 .imagenesInicio {
     display: inline-block;
@@ -495,14 +510,16 @@ Development Ribbon
 
     text-align: center;
     color: white;
-    font-size:20px;
+    font-size: 20px;
 
 }
-.logoScroll{
+
+.logoScroll {
     padding-top: 5%;
 }
+
 /*HOVER*/
-.container{
+.container {
     padding: 0;
 }
 
@@ -1048,7 +1065,6 @@ input:focus {
         width: 500px;
     }
 
-    #section1,
     #section2,
     #section3,
     #section4 {
@@ -1056,26 +1072,73 @@ input:focus {
         -webkit-background-size: 160% !important;
         background-size: 160% !important;
         background-position: center;
-       background-position: center;
+        background-position: center;
 
-
-}
-    #section0{
-        background-image: url("../images/studio-shoot.jpg");
+    }
+    #section0 label{
+        color: black;
+        /*text-shadow:-1px -1px 1px white, 1px 1px 1px white, -1px 1px 1px white, 1px -1px 1px white;*/
+    }
+    .textbineve{
+        font-family: 'Ruda', sans-serif;
+        /*border-bottom: 2px solid black ;*/
+    }
+    /*cornflowerblue*/
+    .form-control{
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    }
+    #section0 {
+        background-image: url("../images/image2.JPG");
         background-repeat: no-repeat;
         background-size: 1919px;
         background-position-y: 0%;
         background-position-x: 50%;
         z-index: 1;
     }
-    .contenedor{
+    .loginbutton{
+        background: #3897f0;
+        border-color: #3897f0;
+        /* margin: 0; */
+        border-radius: 3px;
+        /* height: 25px; */
+        border-width: 1px;
+        line-height: 5px;
+    }
+
+    #section1 {
+        background-image: url("../images/image5.JPG");
+        background-repeat: no-repeat;
+        background-size: 1919px;
+        background-position-y: 0%;
+        background-position-x: 50%;
+        z-index: 1;
+    }
+    .registroform{
+        width: 20%;
+        margin-left: 12%;
+        margin-right: 40px;
+        margin-top: 10px;
+    }
+    .formularioregistro{
+
+    }
+    .gp_1{
+        height: 172px;
+        /* margin-bottom: -7px; */
+        /* margin-top: -7px; */
+        width: 152px;
+    }
+
+    .contenedor {
         height: 96%;
     }
-    .form{
+
+    .form {
         width: 330px;
         margin: 0 auto;
     }
-    label{
+
+    label {
         font-size: 16px;
     }
 }
@@ -1284,7 +1347,6 @@ input:focus {
         width: 80% !important;
     }
 
-
     #section3 .contenedor h4 {
         font-size: 17px;
         margin-top: 50px;
@@ -1349,7 +1411,8 @@ input:focus {
         width: 1050px;
     }
 }
-#uploadModal{
+
+#uploadModal {
     width: 100%;
     height: 100%;
     background-color: black;
@@ -1359,7 +1422,8 @@ input:focus {
     top: 0;
     opacity: 0.8;
 }
-#oculto{
+
+#oculto {
     display: none;
     width: 100%;
     height: 100%;
@@ -1368,7 +1432,8 @@ input:focus {
     top: 0;
     position: absolute;
 }
-#fomUpload{
+
+#fomUpload {
     position: fixed;
     z-index: 10;
     width: 50%;

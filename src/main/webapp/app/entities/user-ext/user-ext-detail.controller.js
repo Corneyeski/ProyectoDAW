@@ -7,11 +7,12 @@
 
     UserExtDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'UserExt', 'User','Photo', 'Principal','Following','AlertService'];
 
-    function UserExtDetailController($scope, $rootScope, $stateParams, previousState, entity, UserExt, User, Photo, Principal, Following,AlertService) {
+    function UserExtDetailController($scope, $rootScope, $stateParams, previousState, entity, UserExt, User, Photo, Principal, Following, AlertService) {
         var vm = this;
 
         // console.log("hola");
-vm.Photos=[];
+        vm.Photos=[];
+        vm.Following=[];
         // vm.Following;
         // vm.currentAccount;
         vm.userExt = entity;
@@ -43,14 +44,15 @@ vm.Photos=[];
                 // sort: sort()
             }, onSuccess, onError);
 
-            function onSuccess (data, headers) {
+            Following.getFollowers({
+                id: vm.userExt.user.id
+            }, onSuccess, onError);
 
-
+            function onSuccess (data,headers) {
                 console.log(data);
-
                 vm.Photos=data;
-
-
+                vm.Following=data;
+                console.log(data);
             }
 
             function onError (error) {
@@ -63,7 +65,7 @@ vm.Photos=[];
 
             Following.createFollowing({'id': id},{});
             console.log("Ahora estas siguiendo a este usuario " + id);
-
+            $state.reload();
             // $state.go('user-ext-detail', null, {reload:'user-search'});
         }
 

@@ -11,7 +11,7 @@
         $stateProvider
         .state('user-ext', {
             parent: 'entity',
-            url: '/user-ext',
+            url: '/profile',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'proyectoApp.userExt.home.title'
@@ -33,7 +33,7 @@
         })
         .state('user-ext-detail', {
             parent: 'user-ext',
-            url: '/profile/{id}',
+            url: '/{id}',
             data: {
                 authorities: ['ROLE_USER'],
                 pageTitle: 'proyectoApp.userExt.detail.title'

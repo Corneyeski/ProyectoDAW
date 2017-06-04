@@ -27,7 +27,6 @@
             method:'GET',
                 isArray:true,
                 url:'api/photosOfUser/:id',
-
         },
 
         'update': { method:'PUT' }

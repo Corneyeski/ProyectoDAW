@@ -1,10 +1,13 @@
 <div class="row mainrow">
     <div class="row separador2"></div>
     <div class="row usu">
-        <div class="col-lg-12 img-usuario">
-            <div>
-                <img class="img-circle" src="../../../content/images/17125453_353353921724745_8088302319000616960_n.jpg"/></div>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 img-usuario">
+            <div class="gp_1">
+                <img class="img-circle" src="../../../content/images/17125453_353353921724745_8088302319000616960_n.jpg"/>
+            </div>
         </div>
+        <div class="col-lg-4"></div>
     </div>
     <div class="row separador"></div>
     <div class="container-fluid">
@@ -18,10 +21,11 @@
                             <h3 ng-if="vm.currentAccount.id!==vm.userExt.user.id" class="icon-wolf">Seguidores de {{vm.userExt.user.login}}</h3>
                             <div>
                                 <div class="cbp-content">
-                                    <button ng-if="vm.currentAccount.id!==vm.userExt.user.id" type="button" class="btn btn-primary" ng-click="vm.createFollowing(vm.userExt.user.id)" value="Seguir">Seguir</button>
-                                    <button ng-if="vm.currentAccount.id ==vm.userExt.user.id" type="button" class="btn btn-primary" ui-sref="following.delete" value="Siguiendo">Siguiendo</button>
-                                    <div ng-repeat="data in vm.Following track by $index">
-                                        <label>Nombre: </label>{{data.followed.firstName}}
+                                    <button ng-if="vm.currentAccount.id!==vm.userExt.user.id" type="button" class="seguir" ng-click="vm.createFollowing(vm.userExt.user.id)" value="Seguir">Seguir</button>
+                                    <button ng-if="vm.currentAccount.id ==vm.userExt.user.id" type="button" class="seguir" ui-sref="following.delete" value="Siguiendo">Siguiendo</button>
+                                    <div ng-repeat="follow in vm.Following track by $index">
+                                        <label>Nombre: </label>
+                                        {{follow.followed.firstName}}
                                     </div>
                                 </div>
                             </div>
