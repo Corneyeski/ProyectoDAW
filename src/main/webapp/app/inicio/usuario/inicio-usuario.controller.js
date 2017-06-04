@@ -157,13 +157,13 @@
                 console.log(vm.photo);
                 console.log(vm.value);
                 console.log(vm.idUsu);
-
+console.log(parseInt(vm.photo));
 
 
                 UserExt.sendValoration({
 
-                    vote: vm.photo,
-                    voted: vm.idUsu,
+                    vote: vm.idUsu,
+                    voted: vm.photo,
                     value: vm.value
 
 
@@ -182,6 +182,13 @@
             }
 
 
+            // UserExt.sendValoration({vote: vm.photo,voted:vm.idUsu,value:vm.value}).then(function () {
+            //     vm.success = 'OK';
+            //
+            // }).catch(function (response) {
+            //     vm.success = null;
+            //
+            // });
 
 
 

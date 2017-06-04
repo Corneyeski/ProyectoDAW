@@ -16,9 +16,9 @@
                 url: 'api/main/scroll'
 
             },
-            'sendValoration': { method: 'POST',
+            'sendValoration': { method: 'GET',
                 isArray: true,
-                url: '/api/setUpdateValorationPhoto/:vote&:voted&:value',
+                url: '/api/setUpdateValorationPhoto'
 
 
             },

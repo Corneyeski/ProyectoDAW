@@ -105,9 +105,9 @@ public class PhotoValorationResource {
     }
 
 
-    @PostMapping("/setUpdateValorationPhoto/{vote}&{voted}&{value}")
+    @GetMapping("/setUpdateValorationPhoto")
     @Timed
-    public ResponseEntity<Void> setUpdateValoration(@PathVariable Long vote, @PathVariable Long voted, @PathVariable Double value) throws URISyntaxException {
+    public ResponseEntity<Void> setUpdateValoration(@RequestParam Long vote, @RequestParam Long voted, @RequestParam Double value) throws URISyntaxException {
 
         if (value < 0 || value > 5) {
             return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, vote.toString())).build();
