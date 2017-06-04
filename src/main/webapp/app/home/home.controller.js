@@ -20,7 +20,7 @@
         //vm.login = LoginService.open;
         vm.register = register;
         vm.registerAccount = {};
-        vm.registerAccount.useSanitizeValueStrategy
+        vm.registerAccount.useSanitizeValueStrategy;
         $scope.$on('authenticationSuccess', function() {
             getAccount();
         });
@@ -67,8 +67,10 @@
                  rememberMe: vm.rememberMe
              }).then(function () {
                  vm.authenticationError = false;
+                 document.cookie="username=vm.username";
                  vm.isAuthenticated = Principal.isAuthenticated;
                  $rootScope.$broadcast('authenticationSuccess');
+                 document.cookie = "username="+vm.username;
                 // if (Auth.getPreviousState()==null) {
                  // var previousState = $state('home'); // Auth.getPreviousState();
                  //

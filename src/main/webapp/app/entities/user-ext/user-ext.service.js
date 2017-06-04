@@ -21,6 +21,11 @@
                 url: '/api/setUpdateValorationPhoto/{vote}&{voted}&{value}'
 
             },
+            'current': { method: 'GET',
+                isArray: false,
+                url: '/api/account'
+
+            },
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {

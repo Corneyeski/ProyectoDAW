@@ -3,7 +3,7 @@
 
     angular
         .module('proyectoApp')
-        .controller('InicioController', InicioController)
+        .controller('InicioController', InicioController);
 
     InicioController.$inject = ['$translate', '$timeout', 'Auth', 'LoginService', 'UserExt', 'DataUtils', '$uibModal', '$rootScope', 'ParseLinks', 'paginationConstants', 'AlertService','entity','Principal'];
 
@@ -66,6 +66,20 @@
                 AlertService.error(error.data.message);
             }
 
+            UserExt.current({
+
+            }, onSuccess2, onError2);
+
+            function onSuccess2 (data, headers) {
+
+             vm.idUsu=data.id;
+            }
+
+            function onError2 (error) {
+                AlertService.error(error.data.message);
+            }
+
+
 
         }
 
@@ -124,34 +138,60 @@
 
         }
 
-        function ratingStarSend(data,photo){
+        function ratingStarSend(data,photo) {
 
-var points = data.currentTarget.classList[0].substr(4,1);
-vm.photo = photo.photo.id;
-vm.value=points;
 
-            getAccount();
 
-            function getAccount() {
-                Principal.identity().then(function(account) {
-                    vm.account = account;
-                    vm.isAuthenticated = Principal.isAuthenticated;
-                });
+
+
+                //-----------PUNTOS--------------
+                var points = data.currentTarget.classList[0].substr(4, 1);
+                vm.value = points;
+                //---------------------------------
+                //------------ID PHOTO----------------
+
+                vm.photo = photo.photo.id;
+
+//------------------------------------
+
+                console.log(vm.photo);
+                console.log(vm.value);
+                console.log(vm.idUsu);
+
+
+
+                UserExt.sendValoration({
+
+                    vote: vm.photo,
+                    voted: vm.idUsu,
+                    value: vm.value
+
+
+                },onSuccess3, onError3);
+
+
+
+
+            function onSuccess3 (data, headers) {
+
+                console.log("nice");
             }
-console.log(vm.account);
+
+            function onError3 (error) {
+                AlertService.error(error.data.message);
+            }
 
 
 
 
-        // UserExt.sendValoration({
-        //
-        //     user:
-        //     photo:
-        //     value: vm.value,
-        //
-        //
-        // });
+
+
+
+
+
         }
+
+
 
         function leaveImg (data) {
             data.currentTarget.children.info.style.opacity = '1';
