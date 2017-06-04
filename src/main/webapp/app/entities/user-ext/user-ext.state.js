@@ -48,7 +48,8 @@
                     templateUrl: 'app/entities/user-ext/user-ext-detail.html',
                     controller: 'UserExtDetailController',
                     controllerAs: 'vm'
-                }
+                },
+
             },
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
@@ -58,6 +59,40 @@
                 entity: ['$stateParams', 'UserExt','Photo', function($stateParams, UserExt,Photo) {
                     return UserExt.get({id :$stateParams.id}).$promise;
                     //return Photo.photosUser.$promise;
+
+                }],
+                previousState: ["$state", function ($state) {
+                    var currentStateData = {
+                        name: $state.current.name || 'user-ext',
+                        params: $state.params,
+                        url: $state.href($state.current.name, $state.params)
+                    };
+                    return currentStateData;
+                }]
+            }
+        })
+        .state('company-detail',{
+            parent: 'user-ext',
+            url: '/{id}',
+            data:{
+                authorities: ['ROLE_USER'],
+                pageTitle: 'empresa'
+            },
+            views:{
+
+                'content@': {
+                    templateUrl: 'app/entities/user-ext/company-detail.html',
+                    controller: 'UserExtDetailController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve:{
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('userExt');
+                    return $translate.refresh();
+                }],
+                entity: ['$stateParams', 'UserExt','Photo', function($stateParams, UserExt) {
+                    return UserExt.get({id :$stateParams.id}).$promise;
 
                 }],
                 previousState: ["$state", function ($state) {

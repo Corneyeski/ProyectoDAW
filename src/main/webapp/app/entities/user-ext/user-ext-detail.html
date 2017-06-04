@@ -1,123 +1,257 @@
-<div class="row mainrow">
-    <div class="row separador2"></div>
-    <div class="row usu">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4 img-usuario">
-            <div class="gp_1">
-                <img class="img-circle" src="../../../content/images/17125453_353353921724745_8088302319000616960_n.jpg"/>
+<div  ng-switch="vm.userExt.kind">
+    <div ng-switch-when="1">
+
+        <!--EMPIEZA EMPRESA -->
+
+        <div class="row mainrow">
+            <div class="row separador2"></div>
+            <div class="row usu">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4 img-usuario">
+                    <div class="gp_1">
+                        <img class="img-circle" src="../../../content/images/17125453_353353921724745_8088302319000616960_n.jpg"/>
+                    </div>
+                </div>
+                <div class="col-lg-4"></div>
             </div>
-        </div>
-        <div class="col-lg-4"></div>
-    </div>
-    <div class="row separador"></div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="main">
-                <div id="cbp-contentslider" class="cbp-contentslider">
-                    <ul>
-                        <li id="slide1">
+            <div class="row separador"></div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="main">
+                        <div id="cbp-contentslider" class="cbp-contentslider">
+                            <ul>
+                                <li id="slide1">
 
-                            <h3 ng-if="vm.currentAccount.id==vm.userExt.user.id" class="icon-wolf">Mis seguidores</h3>
-                            <h3 ng-if="vm.currentAccount.id!==vm.userExt.user.id" class="icon-wolf">Seguidores de {{vm.userExt.user.login}}</h3>
-                            <div>
-                                <div class="cbp-content">
-                                    <button ng-if="vm.currentAccount.id!==vm.userExt.user.id" type="button" class="seguir" ng-click="vm.createFollowing(vm.userExt.user.id)" value="Seguir">Seguir</button>
-                                    <button ng-if="vm.currentAccount.id ==vm.userExt.user.id" type="button" class="seguir" ui-sref="following.delete" value="Siguiendo">Siguiendo</button>
-                                    <div ng-repeat="follow in vm.Following track by $index">
-                                        <label>Nombre: </label>
-                                        {{follow.followed.firstName}}
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li id="slide2">
-                            <h3 ng-if="vm.currentAccount.id==vm.userExt.user.id" class="icon-rabbit">Mis fotos</h3>
-                            <h3 ng-if="vm.currentAccount.id!==vm.userExt.user.id" class="icon-rabbit">Fotos de {{vm.userExt.user.login}}</h3>
-                            <div class="row albumes-profile">
-
-                                <div class="col-lg-4" ng-repeat="photo in vm.Photos track by $index">
-
-                                    <img data-ng-src="{{'data:' + photo.imageContentType + ';base64,' + photo.image }}" style="width: 300px; height:300px;" alt="photo image"/>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li id="slide3" >
-                            <div ng-if="vm.currentAccount.id==vm.userExt.user.id"><h3 class="icon-aligator">Mis datos</h3></div>
-                            <div ng-if="vm.currentAccount.id!==vm.userExt.user.id"><h3 class="icon-aligator">Datos de {{vm.userExt.user.login}}</h3></div>
-                            <div>
-                                <div class="cbp-content">
-                                    <div class="row">
-                                        <div class="col-lg-4 profile">
-                                            <label>login</label>
-                                            {{vm.userExt.user.login}}
-                                        </div>
-                                        <div class="col-lg-4 profile">
-                                            <label>Nombre</label>
-                                            {{vm.userExt.user.firstName}}
-                                        </div>
-                                        <div class="col-lg-4 profile">
-                                            <label>Apellido</label>
-                                            {{vm.userExt.user.lastName}}
-                                        </div>
-                                        </div>
-                                    <div class="row">
-                                        <div class="col-lg-4 profile">
-                                            <label>Edad</label>
-                                            {{vm.userExt.age}}
-                                        </div>
-                                        <div class="col-lg-4 profile">
-                                            <label>Localidad</label>
-                                            {{vm.userExt.city}}
-                                        </div>
-                                        <div class="col-lg-4 profile">
-                                            <label>Dirección</label>
-                                            {{vm.userExt.address}}
+                                    <h3 ng-if="vm.currentAccount.id==vm.userExt.user.id" class="icon-wolf">Mis seguidores</h3>
+                                    <h3 ng-if="vm.currentAccount.id!==vm.userExt.user.id" class="icon-wolf">Seguidores de {{vm.userExt.user.login}}</h3>
+                                    <div>
+                                        <div class="cbp-content">
+                                            <button ng-if="vm.currentAccount.id!==vm.userExt.user.id" type="button" class="seguir" ng-click="vm.createFollowing(vm.userExt.user.id)" value="Seguir">Seguir</button>
+                                            <button ng-if="vm.currentAccount.id ==vm.userExt.user.id" type="button" class="seguir" ui-sref="following.delete" value="Siguiendo">Siguiendo</button>
+                                            <div ng-repeat="follow in vm.Following track by $index">
+                                                <label>Nombre: </label>
+                                                {{follow.followed.firstName}}
+                                            </div>
                                         </div>
                                     </div>
-                                    <button ng-if="vm.currentAccount.id==vm.userExt.user.id" type="button" ui-sref="user-ext-detail.edit({id:vm.userExt.id})" class="btn btn-primary">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                        <span class="hidden-sm-down" data-translate="entity.action.edit"> Editar perfil</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <nav>
-                        <a href="#slide1" class="icon-wolf"><span>Seguidores</span></a>
+                                </li>
+                                <li id="slide2">
+                                    <h3 ng-if="vm.currentAccount.id==vm.userExt.user.id" class="icon-rabbit">Mis fotos</h3>
+                                    <h3 ng-if="vm.currentAccount.id!==vm.userExt.user.id" class="icon-rabbit">Fotos de {{vm.userExt.user.login}}</h3>
+                                    <div class="row albumes-profile">
 
-                        <a ng-if="vm.currentAccount.id==vm.userExt.user.id" href="#slide2" class="icon-rabbit"><span>Mis Fotos</span></a>
-                        <a ng-if="vm.currentAccount.id!==vm.userExt.user.id" href="#slide2" class="icon-rabbit"><span>Fotos</span></a>
-                        <a href="#slide3" class="icon-aligator"><span>Información</span></a>
-                    </nav>
+                                        <div class="col-lg-4" ng-repeat="photo in vm.Photos track by $index">
+
+                                            <img data-ng-src="{{'data:' + photo.imageContentType + ';base64,' + photo.image }}" style="width: 300px; height:300px;" alt="photo image"/>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li id="slide3" >
+                                    <div ng-if="vm.currentAccount.id==vm.userExt.user.id"><h3 class="icon-aligator">Mis datos</h3></div>
+                                    <div ng-if="vm.currentAccount.id!==vm.userExt.user.id"><h3 class="icon-aligator">Datos de {{vm.userExt.user.login}}</h3></div>
+                                    <div>
+                                        <div class="cbp-content">
+                                            <div class="row">
+                                                <div class="col-lg-4 profile">
+                                                    <label>login</label>
+                                                    {{vm.userExt.user.login}}
+                                                </div>
+                                                <div class="col-lg-4 profile">
+                                                    <label>Nombre</label>
+                                                    {{vm.userExt.user.firstName}}
+                                                </div>
+                                                <!--<div class="col-lg-4 profile">-->
+                                                    <!--<label>Apellido</label>-->
+                                                    <!--{{vm.userExt.user.lastName}}-->
+                                                <!--</div>-->
+                                            </div>
+                                            <div class="row">
+                                                <!--<div class="col-lg-4 profile">-->
+                                                    <!--<label>Edad</label>-->
+                                                    <!--{{vm.userExt.age}}-->
+                                                <!--</div>-->
+                                                <div class="col-lg-4 profile">
+                                                    <label>Localidad</label>
+                                                    {{vm.userExt.city}}
+                                                </div>
+                                                <div class="col-lg-4 profile">
+                                                    <label>Dirección</label>
+                                                    {{vm.userExt.address}}
+                                                </div>
+                                            </div>
+                                            <button ng-if="vm.currentAccount.id==vm.userExt.user.id" type="button" ui-sref="user-ext-detail.edit({id:vm.userExt.id})" class="btn btn-primary">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                                <span class="hidden-sm-down" data-translate="entity.action.edit"> Editar perfil</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <nav>
+                                <a href="#slide1" class="icon-wolf"><span>Seguidores</span></a>
+
+                                <a ng-if="vm.currentAccount.id==vm.userExt.user.id" href="#slide2" class="icon-rabbit"><span>Mis Fotos</span></a>
+                                <a ng-if="vm.currentAccount.id!==vm.userExt.user.id" href="#slide2" class="icon-rabbit"><span>Fotos</span></a>
+                                <a href="#slide3" class="icon-aligator"><span>Información</span></a>
+                            </nav>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+            <script>
+                // $(function () {
+                /*
+                 - how to call the plugin:
+                 $( selector ).cbpContentSlider( [options] );
+                 - options:
+                 {
+                 // default transition speed (ms)
+                 speed : 500,
+                 // default transition easing
+                 easing : 'ease-in-out',
+                 // current item's index
+                 current : 0
+                 }
+                 - destroy:
+                 $( selector ).cbpContentSlider( 'destroy' );
+                 */
+
+                //$('#cbp-contentslider').cbpContentSlider();
+                // });
+            </script>
+        </div>
+
+    </div>
+    <!--ACABA EMPRESA -->
+    <!--EMPIEZA USUARIO -->
+    <div ng-switch-when="0">
+
+        <div class="row mainrow">
+            <div class="row separador2"></div>
+            <div class="row usu">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4 img-usuario">
+                    <div class="gp_1">
+                        <img class="img-circle" src="../../../content/images/17125453_353353921724745_8088302319000616960_n.jpg"/>
+                    </div>
+                </div>
+                <div class="col-lg-4"></div>
+            </div>
+            <div class="row separador"></div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="main">
+                        <div id="cbp-contentslider" class="cbp-contentslider">
+                            <ul>
+                                <li id="slide1">
+
+                                    <h3 ng-if="vm.currentAccount.id==vm.userExt.user.id" class="icon-wolf">Mis seguidores</h3>
+                                    <h3 ng-if="vm.currentAccount.id!==vm.userExt.user.id" class="icon-wolf">Seguidores de {{vm.userExt.user.login}}</h3>
+                                    <div>
+                                        <div class="cbp-content">
+                                            <button ng-if="vm.currentAccount.id!==vm.userExt.user.id" type="button" class="seguir" ng-click="vm.createFollowing(vm.userExt.user.id)" value="Seguir">Seguir</button>
+                                            <button ng-if="vm.currentAccount.id ==vm.userExt.user.id" type="button" class="seguir" ui-sref="following.delete" value="Siguiendo">Siguiendo</button>
+                                            <div ng-repeat="follow in vm.Following track by $index">
+                                                <label>Nombre: </label>
+                                                {{follow.followed.firstName}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li id="slide2">
+                                    <h3 ng-if="vm.currentAccount.id==vm.userExt.user.id" class="icon-rabbit">Mis fotos</h3>
+                                    <h3 ng-if="vm.currentAccount.id!==vm.userExt.user.id" class="icon-rabbit">Fotos de {{vm.userExt.user.login}}</h3>
+                                    <div class="row albumes-profile">
+
+                                        <div class="col-lg-4" ng-repeat="photo in vm.Photos track by $index">
+
+                                            <img data-ng-src="{{'data:' + photo.imageContentType + ';base64,' + photo.image }}" style="width: 300px; height:300px;" alt="photo image"/>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li id="slide3" >
+                                    <div ng-if="vm.currentAccount.id==vm.userExt.user.id"><h3 class="icon-aligator">Mis datos</h3></div>
+                                    <div ng-if="vm.currentAccount.id!==vm.userExt.user.id"><h3 class="icon-aligator">Datos de {{vm.userExt.user.login}}</h3></div>
+                                    <div>
+                                        <div class="cbp-content">
+                                            <div class="row">
+                                                <div class="col-lg-4 profile">
+                                                    <label>login</label>
+                                                    {{vm.userExt.user.login}}
+                                                </div>
+                                                <div class="col-lg-4 profile">
+                                                    <label>Nombre</label>
+                                                    {{vm.userExt.user.firstName}}
+                                                </div>
+                                                <div class="col-lg-4 profile">
+                                                    <label>Apellido</label>
+                                                    {{vm.userExt.user.lastName}}
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-4 profile">
+                                                    <label>Edad</label>
+                                                    {{vm.userExt.age}}
+                                                </div>
+                                                <div class="col-lg-4 profile">
+                                                    <label>Localidad</label>
+                                                    {{vm.userExt.city}}
+                                                </div>
+                                                <div class="col-lg-4 profile">
+                                                    <label>Dirección</label>
+                                                    {{vm.userExt.address}}
+                                                </div>
+                                            </div>
+                                            <button ng-if="vm.currentAccount.id==vm.userExt.user.id" type="button" ui-sref="user-ext-detail.edit({id:vm.userExt.id})" class="btn btn-primary">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                                <span class="hidden-sm-down" data-translate="entity.action.edit"> Editar perfil</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <nav>
+                                <a href="#slide1" class="icon-wolf"><span>Seguidores</span></a>
+
+                                <a ng-if="vm.currentAccount.id==vm.userExt.user.id" href="#slide2" class="icon-rabbit"><span>Mis Fotos</span></a>
+                                <a ng-if="vm.currentAccount.id!==vm.userExt.user.id" href="#slide2" class="icon-rabbit"><span>Fotos</span></a>
+                                <a href="#slide3" class="icon-aligator"><span>Información</span></a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+            <script>
+                // $(function () {
+                /*
+                 - how to call the plugin:
+                 $( selector ).cbpContentSlider( [options] );
+                 - options:
+                 {
+                 // default transition speed (ms)
+                 speed : 500,
+                 // default transition easing
+                 easing : 'ease-in-out',
+                 // current item's index
+                 current : 0
+                 }
+                 - destroy:
+                 $( selector ).cbpContentSlider( 'destroy' );
+                 */
+
+                //$('#cbp-contentslider').cbpContentSlider();
+                // });
+            </script>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-    <script>
-        // $(function () {
-        /*
-         - how to call the plugin:
-         $( selector ).cbpContentSlider( [options] );
-         - options:
-         {
-         // default transition speed (ms)
-         speed : 500,
-         // default transition easing
-         easing : 'ease-in-out',
-         // current item's index
-         current : 0
-         }
-         - destroy:
-         $( selector ).cbpContentSlider( 'destroy' );
-         */
-
-        //$('#cbp-contentslider').cbpContentSlider();
-        // });
-    </script>
-</div>
+    </div>
 
 
 <style>

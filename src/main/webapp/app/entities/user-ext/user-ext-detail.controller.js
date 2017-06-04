@@ -13,29 +13,12 @@
         // console.log("hola");
         vm.Photos=[];
         vm.Following=[];
-        // vm.Following;
-        // vm.currentAccount;
+        vm.isFollowing=[];
         vm.userExt = entity;
         vm.previousState = previousState.name;
 
       // console.log(vm.userExt);
         loadAll();
-        // function loadAll() {
-        //     Photo.getImages(function (result) {
-        //
-        //
-        //         vm.photos = result;
-        //         console.log(result);
-        //         vm.searchQuery = null;
-        //
-        //     });
-        //
-        //     // Following.getFollowers(function (result) {
-        //     //     vm.Following = result;
-        //     //     console.log(vm.Following);
-        //     //     vm.searchQuery = null;
-        //     // });
-        // }
 
         function loadAll () {
 
@@ -50,33 +33,16 @@
             }, onSuccess2, onError2);
 
             function onSuccess (data,headers) {
-               // console.log(data);
                  vm.Photos=data;
-               //  vm.Following=data[0];
-               //  console.log("foto");
-               //  console.log(data);
-                // console.log("primero");
-                // console.log(data[0]);
-                // console.log("segundo");
-                // console.log(data[1]);
-
             }
 
             function onError (error) {
                 AlertService.error(error.data.message);
             }
             function onSuccess2 (data,headers) {
-                // console.log(data);
-                // vm.Photos=data;
                   vm.Following=data;
-                //
-                //
                 console.log("seguidores");
                 console.log(data);
-                // console.log(petu);
-                // console.log("segundo");
-                // console.log(data[1]);
-
             }
 
             function onError2 (error) {
@@ -85,6 +51,9 @@
 
         }
 
+        function isFollowing (){
+
+        }
 
         vm.createFollowing=function(id){
 

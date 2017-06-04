@@ -25,6 +25,9 @@
             'getFollowers': {
               method: 'GET', isArray:true, url:'api/followers/:id'
             },
+            'isFollowing':{
+                method: 'GET', isArray:true, url:'api/isFollowing/:id'
+            },
             'update': { method:'PUT' }
         });
     }
