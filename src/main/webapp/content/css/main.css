@@ -1163,7 +1163,7 @@ input:focus {
     text-align: center;
     -webkit-background-size: cover;
     background-size: cover;
-    height: 950px !important;
+    /*height: 950px !important;*/
 }
 
 /* Backgrounds will cover all the section
