@@ -18,7 +18,7 @@
         vm.userExt = entity;
         vm.previousState = previousState.name;
 
-       console.log(vm.userExt);
+      // console.log(vm.userExt);
         loadAll();
         // function loadAll() {
         //     Photo.getImages(function (result) {
@@ -38,6 +38,7 @@
         // }
 
         function loadAll () {
+
             Photo.getImages({
                 id: vm.userExt.user.id
 
@@ -46,18 +47,42 @@
 
             Following.getFollowers({
                 id: vm.userExt.user.id
-            }, onSuccess, onError);
+            }, onSuccess2, onError2);
 
             function onSuccess (data,headers) {
-                console.log(data);
-                vm.Photos=data;
-                vm.Following=data;
-                console.log(data);
+               // console.log(data);
+                 vm.Photos=data;
+               //  vm.Following=data[0];
+               //  console.log("foto");
+               //  console.log(data);
+                // console.log("primero");
+                // console.log(data[0]);
+                // console.log("segundo");
+                // console.log(data[1]);
+
             }
 
             function onError (error) {
                 AlertService.error(error.data.message);
             }
+            function onSuccess2 (data,headers) {
+                // console.log(data);
+                // vm.Photos=data;
+                  vm.Following=data;
+                //
+                //
+                console.log("seguidores");
+                console.log(data);
+                // console.log(petu);
+                // console.log("segundo");
+                // console.log(data[1]);
+
+            }
+
+            function onError2 (error) {
+                AlertService.error(error.data.message);
+            }
+
         }
 
 
