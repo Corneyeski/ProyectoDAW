@@ -131,9 +131,13 @@ public class UserService {
         }
         userExt.setUser(newUser);
 
+        if(birthday == null){
+            userExt.setAge(null);
+        }else{
+            int age = ZonedDateTime.now().getYear() - birthday.getYear();
+            userExt.setAge(age);
+        }
 
-        int age = ZonedDateTime.now().getYear() - birthday.getYear();
-        userExt.setAge(age);
         /*userExt.setValidated(false);
         userExt.setTags("");
         userExt.setPopular(0.0);
