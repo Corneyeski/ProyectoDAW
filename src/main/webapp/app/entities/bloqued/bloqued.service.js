@@ -20,7 +20,7 @@
                     return data;
                 }
             },
-            'createBloqued':{method: 'POST', isArray: false, url:'/api/newBloqued'},
+            'iscreateBloqued':{method: 'POST', isArray: false, url:'/api/newBloqued'},
             'update': { method:'PUT' }
         });
     }

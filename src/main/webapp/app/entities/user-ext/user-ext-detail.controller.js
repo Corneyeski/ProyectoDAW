@@ -13,7 +13,7 @@
         // console.log("hola");
         vm.Photos=[];
         vm.Following=[];
-        vm.isFollowing=[];
+
         vm.userExt = entity;
         vm.previousState = previousState.name;
 
@@ -32,6 +32,10 @@
                 id: vm.userExt.user.id
             }, onSuccess2, onError2);
 
+            Following.estaFollowing({
+                id: vm.userExt.user.id
+            },onSuccess3, onError3);
+
             function onSuccess (data,headers) {
                  vm.Photos=data;
             }
@@ -48,21 +52,33 @@
             function onError2 (error) {
                 AlertService.error(error.data.message);
             }
+            function onSuccess3 (data,headers) {
+                vm.PatataFollowing=data;
+                console.log("esta siguiendo");
+                console.log(data.$resolved);
+            }
+
+            function onError3 (error) {
+                AlertService.error(error.data.message);
+            }
 
         }
 
         vm.createFollowing=function(id){
-
-            Following.createFollowing({'id': id},{});
+            Following.iscreateFollowing({'id': id},{});
             console.log("Ahora estas siguiendo a este usuario " + id);
             $state.reload();
-            // $state.go('user-ext-detail', null, {reload:'user-search'});
         }
 
         vm.createBloqued = function(id){
-            Bloqued.createBloqued({'id': id},{});
+            Bloqued.iscreateBloqued({'id': id},{});
             console.log("Usuario bloqueado" + id);
             $state.reload;
+        }
+
+        vm.eliminarFollowing = function (id) {
+            Following.iseliminarFollowing({'id': id},{});
+            console.log("eliminado de seguidores")
         }
 
         function save () {

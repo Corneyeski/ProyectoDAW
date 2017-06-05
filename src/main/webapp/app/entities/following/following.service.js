@@ -11,7 +11,7 @@
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
-            'createFollowing':{method:'PUT', isArray:false, url:'api/NewFollowing/:id'},
+            'iscreateFollowing':{method:'PUT', isArray:false, url:'api/NewFollowing/:id'},
             'get': {
                 method: 'PUT',
                 transformResponse: function (data) {
@@ -25,8 +25,11 @@
             'getFollowers': {
               method: 'GET', isArray:true, url:'api/followers/:id'
             },
-            'isFollowing':{
-                method: 'GET', isArray:true, url:'api/isFollowing/:id'
+            'estaFollowing':{
+                method: 'GET', isArray:false, url:'api/isFollowing/:id'
+            },
+            'iseliminarFollowing':{
+                method:'DELETE', isArray:false, url:'api/followings/:id'
             },
             'update': { method:'PUT' }
         });

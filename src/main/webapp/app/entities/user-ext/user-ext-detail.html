@@ -20,19 +20,18 @@
                     <div class="main">
                         <div id="cbp-contentslider" class="cbp-contentslider">
                             <ul>
-                                <li id="slide1">
+                                <li id="slide1" >
 
                                     <h3 ng-if="vm.currentAccount.id==vm.userExt.user.id" class="icon-wolf">Mis seguidores</h3>
                                     <h3 ng-if="vm.currentAccount.id!==vm.userExt.user.id" class="icon-wolf">Seguidores de {{vm.userExt.user.login}}</h3>
                                     <div>
 
-                                        <div class="cbp-content">
+                                        <div class="cbp-content" ng-switch="vm.PatataFollowing.$resolved">
                                             <button ng-if="vm.currentAccount.id!==vm.userExt.user.id" type="button" class="seguir" ng-click="vm.createBloqued(vm.userExt.user.id)" value="Bloquear Usuario">Bloquear Usuario</button>
-                                            <button ng-if="vm.currentAccount.id!==vm.userExt.user.id" type="button" class="seguir" ng-click="vm.createFollowing(vm.userExt.user.id)" value="Seguir">Seguir</button>
-                                            <button ng-if="vm.currentAccount.id ==vm.userExt.user.id" type="button" class="seguir" ui-sref="following.delete" value="Siguiendo">Siguiendo</button>
+                                            <div ng-switch-when=false><button  type="button" class="seguir" ng-click="vm.createFollowing(vm.userExt.user.id)" value="Seguir">Seguir</button></div>
+                                            <div ng-switch-when=true><button type="button" class="seguir" ui-sref="following.delete" value="Siguiendo">Siguiendo</button></div>
                                             <div ng-repeat="follow in vm.Following track by $index">
-                                                <label>Nombre: </label>
-                                                {{follow.followed.firstName}}
+                                                <label>Nombre: </label>{{follow.followed.firstName}}
                                             </div>
                                         </div>
                                     </div>
@@ -148,15 +147,14 @@
                     <div class="main">
                         <div id="cbp-contentslider" class="cbp-contentslider">
                             <ul>
-                                <li id="slide1">
-
-                                    <h3 ng-if="vm.currentAccount.id==vm.userExt.user.id" class="icon-wolf">Mis seguidores</h3>
-                                    <h3 ng-if="vm.currentAccount.id!==vm.userExt.user.id" class="icon-wolf">Seguidores de {{vm.userExt.user.login}}</h3>
+                                <li id="slide1" >
+                                    <h3  ng-if="vm.currentAccount.id==vm.userExt.user.id" class="icon-wolf">Mis seguidores</h3>
+                                    <h3  ng-if="vm.currentAccount.id!==vm.userExt.user.id" class="icon-wolf">Seguidores de {{vm.userExt.user.login}}</h3>
                                     <div>
-                                        <div class="cbp-content">
+                                        <div class="cbp-content" ng-switch="vm.PatataFollowing.$resolved">
                                             <button type="button" class="seguir" ng-click="vm.createBloqued(vm.userExt.user.id)" value="Bloquear Usuario">Bloquear Usuario</button>
-                                            <button ng-if="vm.currentAccount.id!==vm.userExt.user.id" type="button" class="seguir" ng-click="vm.createFollowing(vm.userExt.user.id)" value="Seguir">Seguir</button>
-                                            <button ng-if="vm.currentAccount.id ==vm.userExt.user.id" type="button" class="seguir" ui-sref="following.delete" value="Siguiendo">Siguiendo</button>
+                                            <div ng-switch-when=false><button  type="button" class="seguir" ng-click="vm.createFollowing(vm.userExt.user.id)" value="Seguir">Seguir</button></div>
+                                            <div ng-switch-when=true><button type="button" class="seguir" ng-click="vm.eliminarFollowing(vm.userExt.user.id)" value="Siguiendo">Siguiendo</button></div>
                                             <div ng-repeat="follow in vm.Following track by $index">
                                                 <label>Nombre: </label>
                                                 {{follow.followed.firstName}}
