@@ -5,9 +5,9 @@
         .module('proyectoApp')
         .controller('UserExtDetailController', UserExtDetailController);
 
-    UserExtDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'UserExt', 'User','Photo', 'Principal','Following','AlertService'];
+    UserExtDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'UserExt', 'User','Photo', 'Principal','Following','Bloqued','AlertService'];
 
-    function UserExtDetailController($scope, $rootScope, $stateParams, previousState, entity, UserExt, User, Photo, Principal, Following, AlertService) {
+    function UserExtDetailController($scope, $rootScope, $stateParams, previousState, entity, UserExt, User, Photo, Principal, Following, Bloqued, AlertService) {
         var vm = this;
 
         // console.log("hola");
@@ -51,16 +51,18 @@
 
         }
 
-        function isFollowing (){
-
-        }
-
         vm.createFollowing=function(id){
 
             Following.createFollowing({'id': id},{});
             console.log("Ahora estas siguiendo a este usuario " + id);
             $state.reload();
             // $state.go('user-ext-detail', null, {reload:'user-search'});
+        }
+
+        vm.createBloqued = function(id){
+            Bloqued.createBloqued({'id': id},{});
+            console.log("Usuario bloqueado" + id);
+            $state.reload;
         }
 
         function save () {
