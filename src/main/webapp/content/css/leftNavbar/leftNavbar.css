@@ -42,3 +42,17 @@ li.navbar-brand {
 #style-1{
     left: -150px;
 }
+@media (max-width: 1690px) {
+    #style-1{
+        left: -100px;
+        margin: 0;
+        width: 15%;
+    }
+}
+@media (max-width: 1200px) {
+    #style-1{
+        left: 0;
+        margin: 0;
+        width: 15%;
+    }
+}

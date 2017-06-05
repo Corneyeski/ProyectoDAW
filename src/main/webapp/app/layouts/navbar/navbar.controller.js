@@ -52,9 +52,16 @@ function change() {
         }
 
         function hide() {
-            $("#style-1").animate({left: "-150px"}, 100);
+            if($(document).width() > 1690){
+                $("#style-1").animate({left: "-150px"}, 100);
+            }else {
+                if($(document).width() > 1200){
+                    $("#style-1").animate({left: "-100px", width: "10%"}, 100);
+                }else {
+                    $("#style-1").animate({left: "0px"}, 100);
+                }
+            }
         }
-
         function show() {
             $("#style-1").animate({left: "0px"}, 100);
         }
