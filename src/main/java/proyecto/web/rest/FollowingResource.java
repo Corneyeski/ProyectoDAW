@@ -76,8 +76,8 @@ public class FollowingResource {
             return ResponseEntity.ok().headers(HeaderUtil.createAlert("deleted succesfuly","deleted succesfuly")).body(null);
         }else {
             following = new Following();
-            following.setFollowed(followed);
-            following.setFollower(follower);
+            following.setFollowed(follower);
+            following.setFollower(followed);
             following.setTime(ZonedDateTime.now());
         }
 
