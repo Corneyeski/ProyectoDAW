@@ -17,7 +17,7 @@
         vm.userExt = entity;
         vm.previousState = previousState.name;
 
-      // console.log(vm.userExt);
+      console.log(vm.userExt);
         loadAll();
 
         function loadAll () {
@@ -61,7 +61,6 @@
             function onError3 (error) {
                 AlertService.error(error.data.message);
             }
-
         }
 
         vm.createFollowing=function(id){
