@@ -26,10 +26,10 @@
                                     <h3 ng-if="vm.currentAccount.id!==vm.userExt.user.id" class="icon-wolf">Seguidores de {{vm.userExt.user.login}}</h3>
                                     <div>
 
-                                        <div class="cbp-content" ng-switch="vm.PatataFollowing.$resolved">
+                                        <div class="cbp-content" ng-switch="vm.PatataFollowing">
                                             <button ng-if="vm.currentAccount.id!==vm.userExt.user.id" type="button" class="seguir" ng-click="vm.createBloqued(vm.userExt.user.id)" value="Bloquear Usuario">Bloquear Usuario</button>
-                                            <div ng-switch-when=false><button  type="button" class="seguir" ng-click="vm.createFollowing(vm.userExt.user.id)" value="Seguir">Seguir</button></div>
-                                            <div ng-switch-when=true><button type="button" class="seguir" ui-sref="following.delete" value="Siguiendo">Siguiendo</button></div>
+                                            <div ng-switch-when=null><button  type="button" class="seguir" ng-click="vm.createFollowing(vm.userExt.user.id)" value="Seguir">Seguir</button></div>
+                                            <div  ng-switch-default><button type="button" class="seguir" ui-sref="following.delete" value="Siguiendo">Siguiendo</button></div>
                                             <div ng-repeat="follow in vm.Following track by $index">
                                                 <label>Nombre: </label>{{follow.followed.firstName}}
                                             </div>

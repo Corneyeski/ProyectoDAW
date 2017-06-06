@@ -181,7 +181,13 @@ public class FollowingResource {
 
         Following result = followingRepository.findByFollowedAndFollower(followed,follower);
 
-        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
+        if(result == null){
+            return ResponseEntity.ok().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "not results", "not results for this shit")).body(null);
+        }else {
+            return ResponseEntity.ok()
+                .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, result.getId().toString()))
+                .body(result);
+        }
     }
     /**
      * DELETE  /followings/:id : delete the "id" following.

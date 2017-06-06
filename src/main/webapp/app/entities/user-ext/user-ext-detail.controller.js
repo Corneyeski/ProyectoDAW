@@ -45,8 +45,8 @@
             }
             function onSuccess2 (data,headers) {
                   vm.Following=data;
-                console.log("seguidores");
-                console.log(data);
+                // console.log("seguidores");
+                // console.log(data);
             }
 
             function onError2 (error) {
@@ -55,7 +55,12 @@
             function onSuccess3 (data,headers) {
                 vm.PatataFollowing=data;
                 console.log("esta siguiendo");
-                console.log(data.$resolved);
+                console.log(data);
+                if(data.followed.equals(undefined)){
+                    console.log("si null");
+                }else{
+                    console.log("no null");
+                }
             }
 
             function onError3 (error) {
