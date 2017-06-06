@@ -168,18 +168,19 @@ public class FollowingResource {
 
     @GetMapping("/isFollowing/{id}")
     @Timed
-    public ResponseEntity<Boolean> isFollowing(@PathVariable Long id) {
+    public ResponseEntity<Following> isFollowing(@PathVariable Long id) {
         log.debug("REST request to get Following : {}", id);
 
         User followed = userRepository.findOne(id);
+
+        if(followed == null){
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idnotvalid", "ID of folloed not valid")).body(null);
+        }
+
         User follower = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
 
-        Following following = followingRepository.findByFollowedAndFollower(followed,follower);
+        Following result = followingRepository.findByFollowedAndFollower(followed,follower);
 
-        Boolean result = false;
-        if(following != null){
-            result = true;
-        }
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(result));
     }
     /**
