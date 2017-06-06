@@ -241,7 +241,7 @@
             <li class="btn btn-default" ng-click="vm.modal()">
                 Subir
             </li>
-            <li class="btn btn-default" ng-click="vm.modalOffert()">
+            <li class="btn btn-default" ng-click="vm.modalOffert()" ng-switch="user-ext-detail({userExt.kind})" ng-switch-when="1">
                 Crear oferta de trabajo
             </li>
         </ul>
