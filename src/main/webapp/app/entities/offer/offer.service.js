@@ -11,6 +11,7 @@
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
+            'offertSave':{ method:'POST', isArray:false, url:'api/newOffert'},
             'get': {
                 method: 'GET',
                 transformResponse: function (data) {

@@ -26,7 +26,7 @@ public class OfferResource {
     private final Logger log = LoggerFactory.getLogger(OfferResource.class);
 
     private static final String ENTITY_NAME = "offer";
-        
+
     private final OfferRepository offerRepository;
 
     public OfferResource(OfferRepository offerRepository) {
@@ -43,6 +43,19 @@ public class OfferResource {
     @PostMapping("/offers")
     @Timed
     public ResponseEntity<Offer> createOffer(@RequestBody Offer offer) throws URISyntaxException {
+        log.debug("REST request to save Offer : {}", offer);
+        if (offer.getId() != null) {
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new offer cannot already have an ID")).body(null);
+        }
+        Offer result = offerRepository.save(offer);
+        return ResponseEntity.created(new URI("/api/offers/" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
+            .body(result);
+    }
+
+    @PostMapping("/newOffert")
+    @Timed
+    public ResponseEntity<Offer> newOffert(@RequestBody Offer offer) throws URISyntaxException {
         log.debug("REST request to save Offer : {}", offer);
         if (offer.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new offer cannot already have an ID")).body(null);

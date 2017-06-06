@@ -30,7 +30,7 @@
             if (vm.offer.id !== null) {
                 Offer.update(vm.offer, onSaveSuccess, onSaveError);
             } else {
-                Offer.save(vm.offer, onSaveSuccess, onSaveError);
+                Offer.offertSave(vm.offer, onSaveSuccess, onSaveError);
             }
         }
 

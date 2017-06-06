@@ -31,6 +31,7 @@ function change() {
         vm.show = show;
         vm.upload = upload;
         vm.modal = modal;
+        vm.modalOffert = modalOffert;
 
         function login() {
             collapseNavbar();
@@ -74,6 +75,34 @@ function change() {
             $uibModal.open({
                 templateUrl: 'app/entities/photo/photo-dialog-user.html',
                 controller: 'PhotoDialogController',
+                controllerAs: 'vm',
+                backdrop: 'static',
+                size: 'lg',
+                resolve: {
+                    entity: function () {
+                        return {
+                            name: null,
+                            image: null,
+                            imageContentType: null,
+                            url: null,
+                            time: null,
+                            tags: null,
+                            points: null,
+                            id: null
+                        };
+                    }
+                }
+            }).result.then(function() {
+                $state.go($state.current.name);
+            }, function() {
+                $state.go($state.current.name);
+            });
+        }
+
+        function modalOffert() {
+            $uibModal.open({
+                templateUrl: 'app/entities/offer/offer-dialog-user.html',
+                controller: 'OfferDialogController',
                 controllerAs: 'vm',
                 backdrop: 'static',
                 size: 'lg',
