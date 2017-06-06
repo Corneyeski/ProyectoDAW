@@ -3,7 +3,10 @@ package proyecto.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import proyecto.domain.Offer;
 
+import proyecto.domain.User;
 import proyecto.repository.OfferRepository;
+import proyecto.repository.UserRepository;
+import proyecto.security.SecurityUtils;
 import proyecto.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -29,8 +32,11 @@ public class OfferResource {
 
     private final OfferRepository offerRepository;
 
-    public OfferResource(OfferRepository offerRepository) {
+    private final UserRepository userRepository;
+
+    public OfferResource(OfferRepository offerRepository, UserRepository userRepository) {
         this.offerRepository = offerRepository;
+        this.userRepository = userRepository;
     }
 
     /**
@@ -86,6 +92,31 @@ public class OfferResource {
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, offer.getId().toString()))
             .body(result);
+    }
+
+    @PutMapping("/addUserOffert")
+    @Timed
+    public ResponseEntity<Offer> addUserOffert(@RequestBody Long id) throws URISyntaxException {
+
+        User user = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
+        Offer offer = offerRepository.findOne(id);
+
+        if(offer == null){
+            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idnotvalid", "ID of offert not valid")).body(null);
+        }else{
+            if(offer.getUsers().contains(user)){
+                offer.getUsers().remove(user);
+                Offer result = offerRepository.save(offer);
+                return ResponseEntity.ok().headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, offer.getId().toString()))
+                    .body(result);
+            }else {
+                offer.addUser(user);
+                Offer result = offerRepository.save(offer);
+                return ResponseEntity.ok().headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, offer.getId().toString()))
+                    .body(result);
+            }
+        }
+
     }
 
     /**
