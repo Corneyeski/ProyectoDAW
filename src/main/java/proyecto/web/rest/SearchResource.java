@@ -95,6 +95,10 @@ public class SearchResource {
 
         Map<String, Object> params = new HashMap<>();
 
+        if(username != null && !username.equals("")){
+            params.put("username",username);
+        }
+
         if(maxPopular != null && maxPopular > 0.0 && maxPopular > minPopular){
             params.put("maxPopular",maxPopular);
         }
@@ -103,6 +107,9 @@ public class SearchResource {
         }
         if(tags != null && !tags.equals("")){
             params.put("tags",tags);
+        }
+        if(time != null){
+            params.put("time",time);
         }
 
         List<Photo> result = photoCriteriaRepository.filterPhotoDefinitions(params);

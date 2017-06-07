@@ -68,11 +68,11 @@ public class UserExtCriteriaRepository {
         if(parameters.containsKey("city")) {
             String searchName = (String) parameters.get("city");
 
-            CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+           /* CriteriaBuilder cb = entityManager.getCriteriaBuilder();
             CriteriaQuery<User> query = cb.createQuery(User.class);
             Root<UserExt> userExt = query.from(UserExt.class);
             Join<UserExt, User> user = userExt.join("User");
-            query.select(user).where(cb.equal(userExt.get("firstName"), "prasad"));
+            query.select(user).where(cb.equal(userExt.get("firstName"), "prasad"));*/
 
 
             userExtCriteriaQuery.select(userExtRoot);
