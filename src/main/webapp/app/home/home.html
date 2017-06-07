@@ -370,6 +370,9 @@
                                         </p>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <button type="button" ngf-select="" ng-model="vm.registerAccount.imageUrl" class="btn btn-default btn-block ng-scope" ngf-change="vm.setImage($file, vm.photo)" accept="image/*" data-translate="entity.action.addimage">Add image</button>
+                                </div>
 
                                 <!-- BOTON -->
                             </div>
@@ -575,7 +578,9 @@
                                         </div>
                                     </div>
                                     <!-- APELLIDO -->
-                                    <!--e-->
+                                    <div class="form-group">
+                                        <button type="button" ngf-select="" class="btn btn-default btn-block ng-scope" ngf-change="vm.setImage($file, vm.photo)" accept="image/*" data-translate="entity.action.addimage">Add image</button>
+                                    </div>
                                     <!-- COUNTRY -->
                                     <div class="form-group">
                                         <label class="control-label" for="country">País</label>

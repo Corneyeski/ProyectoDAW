@@ -61,7 +61,7 @@
 
         function register () {
             $uibModalInstance.dismiss('cancel');
-            $state.go('register');
+            $state.go('home');
         }
 
         function requestResetPassword () {

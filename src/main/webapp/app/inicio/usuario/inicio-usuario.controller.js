@@ -5,9 +5,9 @@
         .module('proyectoApp')
         .controller('InicioController', InicioController);
 
-    InicioController.$inject = ['$translate', '$timeout', 'Auth', 'LoginService', 'UserExt', 'DataUtils', '$uibModal', '$rootScope', 'ParseLinks', 'paginationConstants', 'AlertService','entity','Principal'];
+    InicioController.$inject = ['$translate', '$timeout', 'Auth', 'LoginService', 'UserExt', 'DataUtils', '$uibModal', '$rootScope', 'ParseLinks', 'paginationConstants', 'AlertService', 'entity', 'Principal'];
 
-    function InicioController ($translate, $timeout, Auth, LoginService, UserExt, DataUtils, $uibModal, $rootScope, ParseLinks, paginationConstants, AlertService,entity,Principal) {
+    function InicioController($translate, $timeout, Auth, LoginService, UserExt, DataUtils, $uibModal, $rootScope, ParseLinks, paginationConstants, AlertService, entity, Principal) {
         var vm = this;
 
         vm.openModal = openModal;
@@ -17,9 +17,10 @@
 
         vm.ratingStarEnter = ratingStarEnter;
         vm.ratingStarLeave = ratingStarLeave;
-        vm.ratingStarSend=ratingStarSend;
+        vm.ratingStarSend = ratingStarSend;
         //  initController();
-vm.abrirVentanaPhoto=abrirVentanaPhoto;
+        vm.abrirVentanaPhoto = abrirVentanaPhoto;
+        vm.filtrosPhotos = filtrosPhotos;
         vm.scrolls = [];
         vm.loadPage = loadPage;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
@@ -30,10 +31,11 @@ vm.abrirVentanaPhoto=abrirVentanaPhoto;
         vm.predicate = 'id';
         vm.reset = reset;
         vm.reverse = true;
-
+        vm.fotos = {};
+        vm.fotos.useSanitizeValueStrategy;
         loadAll();
 
-        function loadAll () {
+        function loadAll() {
 
             UserExt.home({
                 page: vm.page,
@@ -41,62 +43,160 @@ vm.abrirVentanaPhoto=abrirVentanaPhoto;
                 // sort: sort()
             }, onSuccess, onError);
 
-            function onSuccess (data, headers) {
+            function onSuccess(data, headers) {
 
                 vm.totalItems = headers('X-Total-Count');
 
                 vm.disabled = data;
 
+                if(vm.filtrakosPhoto!=null){
+                    for (var i = 0; i < vm.filtrakosPhoto.length; i++) {
+                        if (vm.filtrakosPhoto[i].points % 1 === 0) {
+                        vm.scrolls.push(vm.filtrakosPhoto[i]);
+                            }else{
+                            var points = vm.filtrakosPhoto[i].points;
+                            points = points.toFixed(2);
+                            vm.filtrakosPhoto[i].points = points;
+                            vm.scrolls.push(vm.filtrakosPhoto[i]);
+                        }
+                    }
+                    vm.filtrakosPhoto=null;
 
-                for (var i = 0; i < data.length; i++) {
-                    if (data[i].photo.points % 1 === 0) {
-                        vm.scrolls.push(data[i]);
+                }else{
+                    if(vm.filtrakosOffer!=null){
+                        for (var i = 0; i < vm.filtrakosOffer.length; i++) {
+                            if (filtrakosOffer[i].photo.points % 1 === 0) {
+                                vm.scrolls.push(vm.filtrakosOffer[i]);
+                            }else{
+                                var points = filtrakosOffer[i].photo.points;
+                                points = points.toFixed(2);
+                                filtrakosOffer[i].photo.points = points;
+                                vm.scrolls.push(filtrakosOffer[i]);
+                            }
+                        }
 
-                    } else {
-                        var points = data[i].photo.points;
-                        points = points.toFixed(2);
-                        data[i].photo.points = points;
-                        vm.scrolls.push(data[i]);
+                    }else{
+                        if(vm.filtrakosUser!=null){
+                            for (var i = 0; i < vm.filtrakosUser.length; i++) {
+                                if (filtrakosUser[i].photo.points % 1 === 0) {
+                                    vm.scrolls.push(vm.filtrakosUser[i]);
+                                }else{
+                                    var points = filtrakosUser[i].photo.points;
+                                    points = points.toFixed(2);
+                                    filtrakosUser[i].photo.points = points;
+                                    vm.scrolls.push(filtrakosUser[i]);
+                                }
+                            }
+
+                    }else{
+                            for ( i = 0; i < data.length; i++) {
+
+
+
+                                if (data[i].photo.points % 1 === 0) {
+
+
+                                    vm.scrolls.push(data[i]);
+
+
+                                } else {
+                                    var points = data[i].photo.points;
+                                    points = points.toFixed(2);
+                                    data[i].photo.points = points;
+                                    vm.scrolls.push(data[i]);
+                                }
+                            }
+                        }
 
                     }
-
                 }
+
             }
 
-            function onError (error) {
+            function onError(error) {
                 AlertService.error(error.data.message);
             }
 
-            UserExt.current({
+            UserExt.current({}, onSuccess2, onError2);
 
-            }, onSuccess2, onError2);
+            function onSuccess2(data, headers) {
 
-            function onSuccess2 (data, headers) {
-
-             vm.idUsu=data.id;
+                vm.idUsu = data.id;
             }
 
-            function onError2 (error) {
+            function onError2(error) {
                 AlertService.error(error.data.message);
             }
-
-
-
         }
 
-        function reset () {
+        function filtrosPhotos() {
+            console.log(vm.fotos.nombre);
+
+            UserExt.filtroPhotos({
+                name: vm.fotos.nombre
+            }, onSuccess4, onError4);
+
+            function onSuccess4(data, headers) {
+                console.log(data);
+                vm.filtrakosPhoto = data;
+                console
+                loadAll();
+
+            }
+
+            function onError4(error) {
+                AlertService.error(error.data.message);
+            }
+        }
+        function filtrosUser() {
+            console.log(vm.fotos.nombre);
+
+            UserExt.filtroPhotos({
+                parametro: vm.fotos.nombre
+            }, onSuccess4, onError4);
+
+            function onSuccess4(data, headers) {
+
+                vm.filtrakosUser = data;
+
+
+            }
+
+            function onError4(error) {
+                AlertService.error(error.data.message);
+            }
+        }
+        function filtrosOffer() {
+            console.log(vm.fotos.nombre);
+
+            UserExt.filtroPhotos({
+                parametro: vm.fotos.nombre
+            }, onSuccess4, onError4);
+
+            function onSuccess4(data, headers) {
+
+                vm.filtrakosOffer = data;
+
+
+            }
+
+            function onError4(error) {
+                AlertService.error(error.data.message);
+            }
+        }
+
+        function reset() {
             vm.page = 0;
             vm.scrolls = [];
             loadAll();
         }
 
-        function loadPage (page) {
+        function loadPage(page) {
             vm.page = page;
             loadAll();
         }
 
-        function enterImg (data) {
-
+        function enterImg(data) {
 
             data.currentTarget.children.info.style.opacity = '0.8';
             data.currentTarget.children.info.style.display = 'inline-block';
@@ -105,22 +205,18 @@ vm.abrirVentanaPhoto=abrirVentanaPhoto;
             data.currentTarget.children.info.style.transition = '.7s ease';
 
         }
-        function abrirVentanaPhoto(data){
+
+        function abrirVentanaPhoto(data) {
 
             $('.filtrosPhoto').show();
-
-
         }
 
-        function ratingStarEnter (data2) {
-
+        function ratingStarEnter(data2) {
 
             data2.currentTarget.classList.remove('glyphicon-star-empty');
             data2.currentTarget.classList.add('glyphicon-star');
 
             var ojala = $(data2.currentTarget).prevAll();
-
-
 
             for (var i = 0; i < ojala.length; i++) {
                 ojala[i].classList.remove('glyphicon-star-empty');
@@ -129,14 +225,12 @@ vm.abrirVentanaPhoto=abrirVentanaPhoto;
 
         }
 
-        function ratingStarLeave (data) {
+        function ratingStarLeave(data) {
 
             data.currentTarget.classList.remove('glyphicon-star');
             data.currentTarget.classList.add('glyphicon-star-empty');
 
             var ojala = $(data.currentTarget).prevAll();
-
-
 
             for (var i = 0; i < ojala.length; i++) {
                 ojala[i].classList.remove('glyphicon-star');
@@ -145,46 +239,39 @@ vm.abrirVentanaPhoto=abrirVentanaPhoto;
 
         }
 
-        function ratingStarSend(data,photo) {
+        function ratingStarSend(data, photo) {
 
+            //-----------PUNTOS--------------
+            var points = data.currentTarget.classList[0].substr(4, 1);
+            vm.value = points;
+            //---------------------------------
+            //------------ID PHOTO----------------
 
-
-
-
-                //-----------PUNTOS--------------
-                var points = data.currentTarget.classList[0].substr(4, 1);
-                vm.value = points;
-                //---------------------------------
-                //------------ID PHOTO----------------
-
-                vm.photo = photo.photo.id;
+            vm.photo = photo.photo.id;
 
 //------------------------------------
 
-                console.log(vm.photo);
-                console.log(vm.value);
-                console.log(vm.idUsu);
-console.log(parseInt(vm.photo));
+            console.log(vm.photo);
+            console.log(vm.value);
+            console.log(vm.idUsu);
+            console.log(parseInt(vm.photo));
 
 
-                UserExt.sendValoration({
+            UserExt.sendValoration({
 
-                    vote: vm.idUsu,
-                    voted: vm.photo,
-                    value: vm.value
-
-
-                },onSuccess3, onError3);
+                vote: vm.idUsu,
+                voted: vm.photo,
+                value: vm.value
 
 
+            }, onSuccess3, onError3);
 
-
-            function onSuccess3 (data, headers) {
+            function onSuccess3(data, headers) {
 
                 console.log("nice");
             }
 
-            function onError3 (error) {
+            function onError3(error) {
                 AlertService.error(error.data.message);
             }
 
@@ -196,26 +283,17 @@ console.log(parseInt(vm.photo));
             //     vm.success = null;
             //
             // });
-
-
-
-
-
-
-
         }
 
 
-
-        function leaveImg (data) {
+        function leaveImg(data) {
             data.currentTarget.children.info.style.opacity = '1';
             data.currentTarget.children.info.style.display = 'none';
             data.currentTarget.children.info.style.zIndex = '-700';
             data.target.style.zIndex = '700';
-
         }
 
-        function openModal (photo, data) {
+        function openModal(photo, data) {
 
             console.log(photo);
             console.log(data);
@@ -228,7 +306,7 @@ console.log(parseInt(vm.photo));
             closeModal();
         }
 
-        function closeModal () {
+        function closeModal() {
 
             //$uibModal.close('my-custom-modal');
             $rootScope.modalInstance.close('mal');

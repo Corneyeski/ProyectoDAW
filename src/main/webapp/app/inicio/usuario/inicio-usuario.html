@@ -15,18 +15,27 @@
                             <b class="caret"></b>
                         </span>
                 </li>
+                <li ui-sref-active="active" uib-dropdown class="dropdown pointer filterMenu">
+
+                        <span ng-click="vm.abrirVentanaPhoto(true)">
+                            <span class="glyphicon glyphicon-filter"></span>
+                            <span class="hidden-sm">User</span>
+                            <b class="caret"></b>
+                        </span>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
+<form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.filtrosPhotos()" show-validation>
                     <div class="filtrosPhoto row" style="display: none;" >
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label style="font-size: 10px;" class="control-label" for="nombrePhoto">Nombre</label>
                                 <input style="padding-left: 30px;" type="text" class="form-control" id="nombrePhoto" name="nombrePhoto"
                                        placeholder="Nombre"
-                                       ng-model="vm.registerAccount.login" ng-minlength=5 ng-maxlength=20
-                                       required><!--ng-pattern="/^[_'.@A-Za-z0-9-]*$/"-->
+                                       ng-model="vm.fotos.nombre"
+                                       >
 
                             </div>
                         </div>
@@ -43,9 +52,15 @@
                         <div class="col-lg-4">
                             hola
                         </div>
+                        <button style="width:7%;" type="submit"
+                                class="btn btn-primary"
+                                data-translate="">enviar
+                        </button>
                     </div>
 
 
+
+</form>
 
 
 

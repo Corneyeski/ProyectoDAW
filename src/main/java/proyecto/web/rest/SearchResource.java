@@ -25,7 +25,8 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
-public class SearchResource {
+public class
+SearchResource {
 
     private final Logger log = LoggerFactory.getLogger(PhotoResource.class);
 

@@ -9,9 +9,9 @@ function change() {
         .module('proyectoApp')
         .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService', '$uibModal', '$rootScope'];
+    NavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService','entity', 'LoginService', '$uibModal', '$rootScope','UserExt'];
 
-    function NavbarController($state, Auth, Principal, ProfileService, LoginService, $uibModal, $rootScope) {
+    function NavbarController($state, Auth, Principal, ProfileService, LoginService,entity, $uibModal, $rootScope, UserExt) {
         var vm = this;
         var count = 0;
         vm.isNavbarCollapsed = true;

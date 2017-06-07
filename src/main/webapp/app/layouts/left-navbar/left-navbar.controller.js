@@ -5,9 +5,9 @@
         .module('proyectoApp')
         .controller('LeftNavbarController', LeftNavbarController);
 
-    LeftNavbarController.$inject = ['$state', 'Auth', 'Principal', 'ProfileService', 'LoginService'];
+    LeftNavbarController.$inject = ['$state', 'Auth', 'Principal', 'entity', 'ProfileService', 'LoginService', 'UserExt'];
 
-    function LeftNavbarController($state, Auth, Principal, ProfileService, LoginService) {
+    function LeftNavbarController($state, Auth, Principal, ProfileService, LoginService, entity,UserExt) {
         var vm = this;
 
         vm.isNavbarCollapsed = true;
@@ -17,7 +17,8 @@
             vm.inProduction = response.inProduction;
             vm.swaggerEnabled = response.swaggerEnabled;
         });
-
+        vm.userExt = entity;
+        console.log(vm.userExt);
         vm.login = login;
         vm.logout = logout;
         vm.toggleNavbar = toggleNavbar;

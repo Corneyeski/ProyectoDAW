@@ -68,7 +68,7 @@ public class FollowingResource {
         User followed = userRepository.findOne(id);
         User follower = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
 
-        Following following = followingRepository.findByFollowedAndFollower(followed,follower);
+        Following following = followingRepository.findByFollowedAndFollower(follower,followed);
 
         if(following != null){
             followingRepository.delete(following);
@@ -179,7 +179,7 @@ public class FollowingResource {
 
         User follower = userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get();
 
-        Following result = followingRepository.findByFollowedAndFollower(followed,follower);
+        Following result = followingRepository.findByFollowedAndFollower(follower,followed);
 
         if(result == null){
             return ResponseEntity.ok().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "not results", "not results for this shit")).body(null);

@@ -22,6 +22,12 @@
 
 
             },
+            'filtroPhotos': { method: 'GET',
+                isArray: true,
+                url: '/api/search/photos'
+
+
+            },
             'current': { method: 'GET',
                 isArray: false,
                 url: '/api/account'
