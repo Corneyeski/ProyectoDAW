@@ -19,7 +19,7 @@
         vm.ratingStarLeave = ratingStarLeave;
         vm.ratingStarSend=ratingStarSend;
         //  initController();
-
+vm.abrirVentanaPhoto=abrirVentanaPhoto;
         vm.scrolls = [];
         vm.loadPage = loadPage;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
@@ -34,6 +34,7 @@
         loadAll();
 
         function loadAll () {
+
             UserExt.home({
                 page: vm.page,
                 size: vm.itemsPerPage
@@ -102,6 +103,12 @@
             data.currentTarget.children.info.style.zIndex = '700';
             data.target.style.zIndex = '-700';
             data.currentTarget.children.info.style.transition = '.7s ease';
+
+        }
+        function abrirVentanaPhoto(data){
+
+            $('.filtrosPhoto').show();
+
 
         }
 

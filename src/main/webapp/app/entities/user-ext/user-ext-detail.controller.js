@@ -72,18 +72,18 @@
             Following.iscreateFollowing({'id': id},{});
             console.log("Ahora estas siguiendo a este usuario " + id);
             $state.reload();
-        }
+        };
 
         vm.createBloqued = function(id){
             Bloqued.iscreateBloqued({'id': id},{});
             console.log("Usuario bloqueado" + id);
             $state.reload;
-        }
+        };
 
         vm.eliminarFollowing = function (id) {
             Following.iseliminarFollowing({'id': id},{});
-            console.log("eliminado de seguidores")
-        }
+            console.log("eliminado de seguidores");
+        };
 
         function save () {
             vm.isSaving = true;

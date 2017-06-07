@@ -1,58 +1,102 @@
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
 
 
+        </div>
+        <div style="text-align: center;" class="navbar-collapse" uib-collapse="vm.isNavbarCollapsed" ng-switch="vm.isAuthenticated()">
+            <ul class="nav navbar-nav navbar-left">
 
+                <li ui-sref-active="active" uib-dropdown class="dropdown pointer filterMenu">
 
-<div   infinite-scroll='vm.loadPage(vm.page + 1)' infinite-scroll-disabled="">
-
-<div class="row">
-    <div class="col-lg-4">
-
+                        <span ng-click="vm.abrirVentanaPhoto(true)">
+                            <span class="glyphicon glyphicon-filter"></span>
+                            <span class="hidden-sm">Photo</span>
+                            <b class="caret"></b>
+                        </span>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="col-lg-4 logoScroll" class="col-lg-4">
-        <img src="content/images/logo-jhipster.png">RETRO JOB<img>
-    </div>
-    <div class="col-lg-4">
+</nav>
+                    <div class="filtrosPhoto row" style="display: none;" >
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label style="font-size: 10px;" class="control-label" for="nombrePhoto">Nombre</label>
+                                <input style="padding-left: 30px;" type="text" class="form-control" id="nombrePhoto" name="nombrePhoto"
+                                       placeholder="Nombre"
+                                       ng-model="vm.registerAccount.login" ng-minlength=5 ng-maxlength=20
+                                       required><!--ng-pattern="/^[_'.@A-Za-z0-9-]*$/"-->
 
-    </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label style="font-size: 10px;" class="control-label" >Max Points</label>
+                                <div class="range">
+                                    <input type="range" name="range" min="1" max="100" value="50" onchange="range.value=value">
+                                    <output id="range">50</output>
+                                </div>
 
-</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            hola
+                        </div>
+                    </div>
 
 
+
+
+
+
+<div infinite-scroll='vm.loadPage(vm.page + 1)' infinite-scroll-disabled="">
 
 
     <div class="container imagenesInicio " id="contentImage" ng-repeat="data in vm.scrolls track by $index"
          style="width: 300px;height: 300px;  ">
-        <div ng-switch ="data.offer">
+        <div ng-switch="data.offer">
 
-            <div ng-mouseenter="vm.enterImg($event)" ng-mouseleave="vm.leaveImg($event)" ng-switch-when=null style="width: 300px;height: 300px;">
-
+            <div ng-mouseenter="vm.enterImg($event)" ng-mouseleave="vm.leaveImg($event)" ng-switch-when=null
+                 style="width: 300px;height: 300px;">
 
 
                 <img
-                       data-ng-src="{{'data:' + data.photo.imageContentType + ';base64,' + data.photo.image }}"
-                       style="width: 300px;position: absolute; height:300px;z-index: 700" alt="photo image"/>
+                    data-ng-src="{{'data:' + data.photo.imageContentType + ';base64,' + data.photo.image }}"
+                    style="width: 300px;position: absolute; height:300px;z-index: 700" alt="photo image"/>
 
-                <div data-ng-click="vm.openModal($event,data)" id="info" style="width:300px;height:300px;text-align: center;font-size: 150px;background-color: black;position:absolute;display:none;z-index: -700;">
-                     <div class="pointsStyle" style="height: 300px;width: 300px;">
-                         <div style="height: 100px;width:100%;">
-                        {{data.photo.points}}
-                         </div>
+                <div data-ng-click="vm.openModal($event,data)" id="info"
+                     style="width:300px;height:300px;text-align: center;font-size: 150px;background-color: black;position:absolute;display:none;z-index: -700;">
+                    <div class="pointsStyle" style="height: 300px;width: 300px;">
+                        <div style="height: 100px;width:100%;">
+                            {{data.photo.points}}
+                        </div>
 
-                     </div>
-
-
-
-
-
-                    <div style="background-color: grey;height: 50px;width:100%;font-size: 27px;">
-                        <span style="display: inline-block;"  data-ng-click="vm.ratingStarSend($event,data)" data-ng-mouseover="vm.ratingStarEnter($event)" data-ng-mouseleave="vm.ratingStarLeave($event)" class="star1 glyphicon glyphicon-star-empty"></span>
-                        <span style="display: inline-block;"  data-ng-click="vm.ratingStarSend($event,data)" data-ng-mouseover="vm.ratingStarEnter($event)" data-ng-mouseleave="vm.ratingStarLeave($event)" class="star2 glyphicon glyphicon-star-empty"></span>
-                        <span style="display: inline-block;"  data-ng-click="vm.ratingStarSend($event,data)" data-ng-mouseover="vm.ratingStarEnter($event)" data-ng-mouseleave="vm.ratingStarLeave($event)" class="star3 glyphicon glyphicon-star-empty"></span>
-                        <span style="display: inline-block;"  data-ng-click="vm.ratingStarSend($event,data)" data-ng-mouseover="vm.ratingStarEnter($event)" data-ng-mouseleave="vm.ratingStarLeave($event)" class="star4 glyphicon glyphicon-star-empty"></span>
-                        <span style="display: inline-block;"  data-ng-click="vm.ratingStarSend($event,data)" data-ng-mouseover="vm.ratingStarEnter($event)" data-ng-mouseleave="vm.ratingStarLeave($event)" class="star5 glyphicon glyphicon-star-empty"></span>
                     </div>
 
 
+                    <div style="background-color: grey;height: 50px;width:100%;font-size: 27px;">
+                        <span style="display: inline-block;" data-ng-click="vm.ratingStarSend($event,data)"
+                              data-ng-mouseover="vm.ratingStarEnter($event)"
+                              data-ng-mouseleave="vm.ratingStarLeave($event)"
+                              class="star1 glyphicon glyphicon-star-empty"></span>
+                        <span style="display: inline-block;" data-ng-click="vm.ratingStarSend($event,data)"
+                              data-ng-mouseover="vm.ratingStarEnter($event)"
+                              data-ng-mouseleave="vm.ratingStarLeave($event)"
+                              class="star2 glyphicon glyphicon-star-empty"></span>
+                        <span style="display: inline-block;" data-ng-click="vm.ratingStarSend($event,data)"
+                              data-ng-mouseover="vm.ratingStarEnter($event)"
+                              data-ng-mouseleave="vm.ratingStarLeave($event)"
+                              class="star3 glyphicon glyphicon-star-empty"></span>
+                        <span style="display: inline-block;" data-ng-click="vm.ratingStarSend($event,data)"
+                              data-ng-mouseover="vm.ratingStarEnter($event)"
+                              data-ng-mouseleave="vm.ratingStarLeave($event)"
+                              class="star4 glyphicon glyphicon-star-empty"></span>
+                        <span style="display: inline-block;" data-ng-click="vm.ratingStarSend($event,data)"
+                              data-ng-mouseover="vm.ratingStarEnter($event)"
+                              data-ng-mouseleave="vm.ratingStarLeave($event)"
+                              class="star5 glyphicon glyphicon-star-empty"></span>
+                    </div>
 
 
                 </div>
@@ -60,20 +104,16 @@
             </div>
 
 
-
-
             <div ng-switch-default>
-                 <!--{{data.offer.name}}-->
+                <!--{{data.offer.name}}-->
                 <!--{{data.offer.description}}-->
                 <img style="width: 300px; height:300px;" src="/content/images/oferta.gif">
+
+            </div>
+
 
         </div>
 
 
     </div>
-
-
-
-
-</div>
 
