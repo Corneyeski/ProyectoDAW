@@ -72,8 +72,8 @@ public class BloquedResource {
 
             Bloqued bloqued = new Bloqued(block,blocked);
 
-            if(bloquedRepository.findByBlockAndBlocked(block,blocked)){
-                return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "AlredyExist", "alredy exist")).body(null);
+            if(bloquedRepository.findByBlockAndBlocked(block,blocked) == null){
+                return ResponseEntity.ok().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "AlredyExist", "alredy exist")).body(null);
             }else{
                 Bloqued result = bloquedRepository.save(bloqued);
                 return ResponseEntity.ok().headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.toString())).build();
@@ -145,7 +145,7 @@ public class BloquedResource {
         if(user == null){
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "invalidUser", "Not valid user")).body(null);
         }else{
-            if(bloquedRepository.findByBlockAndBlocked(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get(),user)){
+            if(bloquedRepository.findByBlockAndBlocked(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).get(),user) == null){
                 return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "Notblockedactualy", "user not bloqued")).body(null);
             }else{
                 bloquedRepository.delete(id);
