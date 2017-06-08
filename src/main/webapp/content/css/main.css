@@ -1247,7 +1247,7 @@ input:focus {
         width: 500px;
     }
 
-    #section2,
+
     #section3,
     #section4 {
         background-size: cover;
@@ -1289,6 +1289,14 @@ input:focus {
 
     #section1 {
         background-image: url("../images/image5.JPG");
+        background-repeat: no-repeat;
+        background-size: 1919px;
+        background-position-y: 0%;
+        background-position-x: 50%;
+        z-index: 1;
+    }
+    #section2 {
+        background-image: url("../images/image4.JPG");
         background-repeat: no-repeat;
         background-size: 1919px;
         background-position-y: 0%;
