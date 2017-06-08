@@ -41,8 +41,8 @@
 
             },
             'current': { method: 'GET',
-                isArray: false,
-                url: '/api/account'
+                isArray: true,
+                url: '/api/currentAccount'
 
             },
             'get': {

@@ -290,15 +290,13 @@
 
         function ratingStarSend(data, photo) {
 
-            //-----------PUNTOS--------------
+
             var points = data.currentTarget.classList[0].substr(4, 1);
             vm.value = points;
-            //---------------------------------
-            //------------ID PHOTO----------------
 
             vm.photo = photo.photo.id;
 
-//------------------------------------
+
 
             console.log(vm.photo);
             console.log(vm.value);
@@ -325,13 +323,7 @@
             }
 
 
-            // UserExt.sendValoration({vote: vm.photo,voted:vm.idUsu,value:vm.value}).then(function () {
-            //     vm.success = 'OK';
-            //
-            // }).catch(function (response) {
-            //     vm.success = null;
-            //
-            // });
+
         }
 
 
@@ -357,7 +349,7 @@
 
         function closeModal() {
 
-            //$uibModal.close('my-custom-modal');
+
             $rootScope.modalInstance.close('mal');
         }
 

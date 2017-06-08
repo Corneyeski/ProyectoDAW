@@ -40,7 +40,8 @@ function change() {
             UserExt.current({},onSuccess, onError);
             function onSuccess(data, headers) {
 
-                vm.idUsu = data.id;
+               // vm.idUsu = data.id;
+                console.log("dale0");
                 console.log(data);
             }
             function onError(error) {
