@@ -28,6 +28,18 @@
 
 
             },
+            'filtroUser': { method: 'GET',
+                isArray: true,
+                url: '/api/search/users'
+
+
+            },
+            'filtroOffer': { method: 'GET',
+                isArray: true,
+                url: '/api/search/offer'
+
+
+            },
             'current': { method: 'GET',
                 isArray: false,
                 url: '/api/account'

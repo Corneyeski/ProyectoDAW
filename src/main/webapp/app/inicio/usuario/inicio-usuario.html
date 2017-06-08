@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -11,15 +12,23 @@
 
                         <span ng-click="vm.abrirVentanaPhoto(true)">
                             <span class="glyphicon glyphicon-filter"></span>
-                            <span class="hidden-sm">Photo</span>
+                            <span class="hidden-sm">Fotos</span>
                             <b class="caret"></b>
                         </span>
                 </li>
                 <li ui-sref-active="active" uib-dropdown class="dropdown pointer filterMenu">
 
-                        <span ng-click="vm.abrirVentanaPhoto(true)">
+                        <span ng-click="vm.abrirVentanaUser()">
                             <span class="glyphicon glyphicon-filter"></span>
-                            <span class="hidden-sm">User</span>
+                            <span class="hidden-sm">Usuarios</span>
+                            <b class="caret"></b>
+                        </span>
+                </li>
+                <li ui-sref-active="active" uib-dropdown class="dropdown pointer filterMenu">
+
+                        <span ng-click="vm.abrirVentanaOffer()">
+                            <span class="glyphicon glyphicon-filter"></span>
+                            <span class="hidden-sm">Ofertas</span>
                             <b class="caret"></b>
                         </span>
                 </li>
@@ -27,41 +36,245 @@
         </div>
     </div>
 </nav>
-<form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.filtrosPhotos()" show-validation>
-                    <div class="filtrosPhoto row" style="display: none;" >
+<form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.filtrosUser()" >
+                    <div class="filtrosUser" style="display: none;background-color: #f8f8f8;border-color: #e7e7e7;border-radius: 4px;" >
+                        <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label style="font-size: 10px;" class="control-label" for="nombrePhoto">Nombre</label>
-                                <input style="padding-left: 30px;" type="text" class="form-control" id="nombrePhoto" name="nombrePhoto"
-                                       placeholder="Nombre"
-                                       ng-model="vm.fotos.nombre"
-                                       >
+                                <label style="font-size: 10px;" class="control-label" for="cityUser">Ciudad</label>
+                                <input style="padding-left: 30px;" type="text" class="form-control" id="cityUser" name="cityUser"
+                                       placeholder="Ciudad"
+                                       ng-model="vm.user.city"
+                                >
+                            {{vm.user.city}}
+                            </div>
+
+                            <div class="form-group">
+                                <label style="font-size: 10px;" class="control-label" for="tagUser">Tags</label>
+                                <input style="padding-left: 30px;" type="text" class="form-control" id="tagUser" name="tagUser"
+                                       placeholder="Tags"
+                                       ng-model="vm.user.tags"
+                                >
 
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label style="font-size: 10px;" class="control-label" >Max Points</label>
-                                <div class="range">
-                                    <input type="range" name="range" min="1" max="100" value="50" onchange="range.value=value">
-                                    <output id="range">50</output>
+                                <div class="range range-success">
+                                    <input type="range" name="range" min="1" max="100" value="50" ng-model="vm.user.maxPoints.value" onchange="rangeSuccess2.value=value">
+                                    <output id="rangeSuccess2">50</output>
                                 </div>
 
                             </div>
+                            <div class="form-group">
+
+                                <label style="font-size: 10px;" class="control-label" >Min Points</label>
+                                <div class="range range-success">
+                                    <input type="range" name="range" min="1" max="100" value="50" ng-model="vm.user.minPoints.value" onchange="rangeSuccess3.value=value">
+                                    <output id="rangeSuccess3">50</output>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-lg-4">
-                            hola
+                            <div class="form-group">
+                                <label style="font-size: 10px;" class="control-label" >Max Age</label>
+                                <div class="range rangeInfo">
+                                    <input type="range" name="range" min="1" max="100" value="50" ng-model="vm.user.maxAge.value" onchange="rangeInfo.value=value">
+                                    <output id="rangeInfo">50</output>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+
+                                <label style="font-size: 10px;" class="control-label" >Min Age</label>
+                                <div class="range rangeInfo">
+                                    <input type="range" name="range" min="1" max="100" value="50" ng-model="vm.user.minAge.value" onchange="rangeInfo2.value=value">
+                                    <output id="rangeInfo2">50</output>
+                                </div>
+                            </div>
+
                         </div>
-                        <button style="width:7%;" type="submit"
+
+
+                        </div>
+                        <div class="row" style="text-align: center;">
+                        <button style="width:7%;text-align: center;" type="submit"
                                 class="btn btn-primary"
-                                data-translate="">enviar
+                                data-translate="">Filtrar
                         </button>
+                        </div>
                     </div>
+
+
+
 
 
 
 </form>
 
+
+
+
+
+
+
+<form ng-show="!vm.success" name="form2" role="form" novalidate ng-submit="vm.filtrosPhotos()" >
+    <div class="filtrosPhoto" style="display: none;background-color: #f8f8f8;border-color: #e7e7e7;border-radius: 4px;" >
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label style="font-size: 10px;" class="control-label" for="nombrePhoto">Nombre</label>
+                    <input style="padding-left: 30px;" type="text" class="form-control" id="nombrePhoto" name="nombrePhoto"
+                           placeholder="Nombre"
+                           ng-model="vm.fotos.nombre"
+                    >
+
+                </div>
+
+                <div class="form-group">
+                    <label style="font-size: 10px;" class="control-label" for="tagPhoto">Tags</label>
+                    <input style="padding-left: 30px;" type="text" class="form-control" id="tagPhoto" name="tagPhoto"
+                           placeholder="Tags"
+                           ng-model="vm.fotos.tags"
+                    >
+
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label style="font-size: 10px;" class="control-label" >Max Points</label>
+                    <div class="range range-success">
+                        <input type="range" name="range" min="1" max="100" value="50" ng-model="vm.fotos.maxPoints.value"  onchange="rangeSuccess.value=value">
+                        <output id="rangeSuccess">50</output>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label style="font-size: 10px;" class="control-label" >Min Points</label>
+                    <div class="range range-primary">
+                        <input type="range" name="range" min="1" max="100" value="50" ng-model="vm.fotos.minPoints.value" onchange="rangePrimary.value=value">
+                        <output id="rangePrimary">50</output>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label style="font-size: 10px;" class="control-label" >Fecha de publicación</label>
+                    <div class='input-group date' >
+                        <input type='date' ng-model="vm.fotos.date"  />
+
+
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="row" style="text-align: center;">
+            <button style="width:7%;text-align: center;" type="submit"
+                    class="btn btn-primary"
+                    data-translate="">Filtrar
+            </button>
+        </div>
+    </div>
+
+
+
+
+
+
+</form>
+
+
+
+
+
+
+
+
+
+
+<form ng-show="!vm.success" name="form" role="form" novalidate ng-submit="vm.filtrosOffer()" >
+    <div class="filtrosOffer" style="display: none;background-color: #f8f8f8;border-color: #e7e7e7;border-radius: 4px;" >
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label style="font-size: 10px;" class="control-label" for="nombreOffer">Nombre</label>
+                    <input style="padding-left: 30px;" type="text" class="form-control" id="nombreOffer" name="nombreOffer"
+                           placeholder="Nombre"
+                           ng-model="vm.offer.nombre"
+                    >
+
+                </div>
+
+                <div class="form-group">
+                    <label style="font-size: 10px;" class="control-label" for="tagOffer">Tags</label>
+                    <input style="padding-left: 30px;" type="text" class="form-control" id="tagOffer" name="tagOffer"
+                           placeholder="Tags"
+                           ng-model="vm.offer.tags"
+                    >
+
+                </div>
+                <div class="form-group">
+                    <label style="font-size: 10px;" class="control-label" for="cityOffer">Ciudad</label>
+                    <input style="padding-left: 30px;" type="text" class="form-control" id="cityOffer" name="cityOffer"
+                           placeholder="Ciudad"
+                           ng-model="vm.offer.city"
+                    >
+
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label style="font-size: 10px;" class="control-label" >Max Salario</label>
+                    <div class="range range-success">
+                        <input type="range" name="range" min="1" max="100" value="50" ng-model="vm.offer.maxSalary.value" onchange="rangeSuccess4.value=value">
+                        <output id="rangeSuccess4">50</output>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label style="font-size: 10px;" class="control-label" >Min Salario</label>
+                    <div class="range range-success">
+                        <input type="range" name="range" min="1" max="100" value="50" ng-model="vm.offer.minSalary.value"  onchange="rangeSuccess5.value=value">
+                        <output id="rangeSuccess5">50</output>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label style="font-size: 10px;" class="control-label" >Fecha de publicación</label>
+                    <div class='input-group date' >
+                        <input type='date' class="form-control" ng-model="vm.offer.date" />
+
+
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="row" style="text-align: center;">
+            <button style="width:7%;text-align: center;" type="submit"
+                    class="btn btn-primary"
+                    data-translate="">Filtrar
+            </button>
+        </div>
+    </div>
+
+
+
+
+
+
+</form>
 
 
 

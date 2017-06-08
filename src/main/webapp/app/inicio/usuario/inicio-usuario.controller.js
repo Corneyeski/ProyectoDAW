@@ -20,7 +20,11 @@
         vm.ratingStarSend = ratingStarSend;
         //  initController();
         vm.abrirVentanaPhoto = abrirVentanaPhoto;
+        vm.abrirVentanaUser = abrirVentanaUser;
+        vm.abrirVentanaOffer = abrirVentanaOffer;
         vm.filtrosPhotos = filtrosPhotos;
+        vm.filtrosOffer = filtrosOffer;
+        vm.filtrosUser = filtrosUser;
         vm.scrolls = [];
         vm.loadPage = loadPage;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
@@ -131,15 +135,23 @@
 
         function filtrosPhotos() {
             console.log(vm.fotos.nombre);
+            console.log(vm.fotos.maxPoints);
+            console.log(vm.fotos.minPoints);
+            console.log(vm.fotos.tags);
+            console.log(vm.fotos.date);
 
             UserExt.filtroPhotos({
-                name: vm.fotos.nombre
+                name: vm.fotos.nombre,
+                time: vm.fotos.date,
+                tags : vm.fotos.tags,
+                maxPoints: vm.fotos.maxPoints,
+                minPoints: vm.fotos.minPoints
             }, onSuccess4, onError4);
 
             function onSuccess4(data, headers) {
                 console.log(data);
                 vm.filtrakosPhoto = data;
-                console
+
                 loadAll();
 
             }
@@ -149,38 +161,60 @@
             }
         }
         function filtrosUser() {
-            console.log(vm.fotos.nombre);
+            console.log(vm.user.city);
+            console.log(vm.user.tags);
+            console.log(vm.user.maxPoints);
+            console.log(vm.user.minPoints);
+            console.log(vm.user.maxAge);
+            console.log(vm.user.minAge);
 
-            UserExt.filtroPhotos({
-                parametro: vm.fotos.nombre
-            }, onSuccess4, onError4);
+            UserExt.filtroUser({
 
-            function onSuccess4(data, headers) {
+                city: vm.user.city,
+                tags: vm.user.tags,
+                maxPoints: vm.user.maxPoints,
+                minPoints: vm.user.minPoints,
+                maxAge: vm.user.maxAge,
+                minAge: vm.user.minAge
+
+            }, onSuccess5, onError5);
+
+            function onSuccess5(data, headers) {
 
                 vm.filtrakosUser = data;
-
+console.log(data);
 
             }
 
-            function onError4(error) {
+            function onError5(error) {
                 AlertService.error(error.data.message);
             }
         }
         function filtrosOffer() {
-            console.log(vm.fotos.nombre);
+            console.log(vm.offer.nombre);
+            console.log(vm.offer.tags);
+            console.log(vm.offer.city);
+            console.log(vm.offer.maxSalary);
+            console.log(vm.offer.minSalary);
+            console.log(vm.offer.date);
 
-            UserExt.filtroPhotos({
-                parametro: vm.fotos.nombre
-            }, onSuccess4, onError4);
+            UserExt.filtroOffer({
+                name: vm.offer.nombre,
+                tags: vm.offer.tags,
+                city: vm.offer.city,
+                maxSalary: vm.offer.maxSalary,
+                minSalary: vm.offer.minSalary,
+                data: vm.offer.date
+            }, onSuccess6, onError6);
 
-            function onSuccess4(data, headers) {
+            function onSuccess6(data, headers) {
 
                 vm.filtrakosOffer = data;
 
 
             }
 
-            function onError4(error) {
+            function onError6(error) {
                 AlertService.error(error.data.message);
             }
         }
@@ -208,7 +242,22 @@
 
         function abrirVentanaPhoto(data) {
 
-            $('.filtrosPhoto').show();
+            $('.filtrosPhoto').toggle();
+            $('.filtrosUser').hide();
+            $('.filtrosOffer').hide();
+
+        }
+        function abrirVentanaUser(data) {
+
+            $('.filtrosUser').toggle();
+            $('.filtrosPhoto').hide();
+            $('.filtrosOffer').hide();
+        }
+        function abrirVentanaOffer(data) {
+
+            $('.filtrosOffer').toggle();
+            $('.filtrosPhoto').hide();
+            $('.filtrosUser').hide();
         }
 
         function ratingStarEnter(data2) {
