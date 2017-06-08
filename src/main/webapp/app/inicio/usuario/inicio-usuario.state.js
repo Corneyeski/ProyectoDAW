@@ -43,8 +43,7 @@
 
                 }]
             }
-        })
-    .state('user-ext-detail2', {
+        }).state('user-ext-detail2', {
             parent: 'user-ext',
             url: '/user-ext/{id}',
             data: {

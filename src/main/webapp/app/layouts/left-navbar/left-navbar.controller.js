@@ -21,6 +21,7 @@
         console.log(vm.userExt);
         vm.login = login;
         vm.logout = logout;
+        vm.profile = profile;
         vm.toggleNavbar = toggleNavbar;
         vm.collapseNavbar = collapseNavbar;
         vm.$state = $state;
@@ -34,6 +35,11 @@
             collapseNavbar();
             Auth.logout();
             $state.go('home');
+        }
+
+        function profile(){
+            collapseNavbar();
+            $state.go('user-ext-detail');
         }
 
         function toggleNavbar() {

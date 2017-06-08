@@ -10,7 +10,7 @@
                 <div class="col-lg-4 img-usuario">
                     <div class="gp_1">
                         {{vm.userExt.user.image_url}}
-                        <img class="img-circle" src="../../../content/images/17125453_353353921724745_8088302319000616960_n.jpg"/>
+                        <img class="img-circle" src="../../../content/images/imgperfil.jpg"/>
                     </div>
                 </div>
                 <div class="col-lg-4"></div>
@@ -138,7 +138,7 @@
                 <div class="col-lg-4"></div>
                 <div class="col-lg-4 img-usuario">
                     <div class="gp_1">
-                        <img class="img-circle" src="../../../content/images/17125453_353353921724745_8088302319000616960_n.jpg"/>
+                        <img class="img-circle" src="../../../content/images/imgperfil.jpg"/>
                     </div>
                 </div>
                 <div class="col-lg-4"></div>
@@ -152,11 +152,12 @@
                                 <li id="slide1" >
                                     <h3  ng-if="vm.currentAccount.id==vm.userExt.user.id" class="icon-wolf">Mis seguidores</h3>
                                     <h3  ng-if="vm.currentAccount.id!==vm.userExt.user.id" class="icon-wolf">Seguidores de {{vm.userExt.user.login}}</h3>
-                                    <div>
+                                    <div class="row">
                                         <div class="cbp-content">
-                                            <button type="button" class="seguir" ng-click="vm.createBloqued(vm.userExt.user.id)" value="Bloquear Usuario">Bloquear Usuario</button>
-                                            <div><button  type="button" class="seguir" ng-click="vm.createFollowing(vm.userExt.user.id)" >{{vm.siguiendo}}</button></div>
-                                            <!--<div ng-switch-when-default><button type="button" class="seguir" ng-click="vm.eliminarFollowing(vm.userExt.user.id)" value="Siguiendo">Siguiendo</button></div>-->
+                                            <!--<button type="button" class="seguir" ng-click="vm.createBloqued(vm.userExt.user.id)">{{vm.bloqued}}</button>-->
+                                            <input type="submit" class="loginbutton" ng-click="vm.createBloqued(vm.userExt.user.id)" value="{{vm.bloqued}}">
+                                            <input type="submit" class="loginbutton" ng-click="vm.createFollowing(vm.userExt.user.id)" value="{{vm.siguiendo}}">
+                                            <!--<div><button  type="button" class="seguir" ng-click="vm.createFollowing(vm.userExt.user.id)" >{{vm.siguiendo}}</button></div>-->
                                             <div ng-repeat="follow in vm.Following track by $index">
                                                 <label>Nombre: </label>
                                                 {{follow.followed.firstName}}
@@ -209,20 +210,21 @@
                                                     {{vm.userExt.address}}
                                                 </div>
                                             </div>
-                                            <button ng-if="vm.currentAccount.id==vm.userExt.user.id" type="button" ui-sref="user-ext-detail.edit({id:vm.userExt.id})" class="btn btn-primary">
-                                                <span class="glyphicon glyphicon-pencil"></span>
-                                                <span class="hidden-sm-down" data-translate="entity.action.edit"> Editar perfil</span>
-                                            </button>
+                                            <input type="submit" class="loginbutton" ng-if="vm.currentAccount.id==vm.userExt.user.id" ui-sref="user-ext-detail.edit({id:vm.userExt.id})" value="Editar Perfil">
+                                            <!--<button ng-if="vm.currentAccount.id==vm.userExt.user.id" type="button" ui-sref="user-ext-detail.edit({id:vm.userExt.id})" class="btn btn-primary">-->
+                                                <!--<span class="glyphicon glyphicon-pencil"></span>-->
+                                                <!--<span class="hidden-sm-down" data-translate="entity.action.edit"> Editar perfil</span>-->
+                                            </input>
                                         </div>
                                     </div>
                                 </li>
                             </ul>
-                            <nav>
-                                <a href="#slide1" class="icon-wolf"><span>Seguidores</span></a>
+                            <nav class="hola">
+                                <a href="#slide1" class="icon-rabbit"><span>Seguidores</span></a>
 
-                                <a ng-if="vm.currentAccount.id==vm.userExt.user.id" href="#slide2" class="icon-rabbit"><span>Mis Fotos</span></a>
-                                <a ng-if="vm.currentAccount.id!==vm.userExt.user.id" href="#slide2" class="icon-rabbit"><span>Fotos</span></a>
-                                <a href="#slide3" class="icon-aligator"><span>Información</span></a>
+                                <a ng-if="vm.currentAccount.id==vm.userExt.user.id" href="#slide2" class="icon-rabbit "><span>Mis Fotos</span></a>
+                                <a ng-if="vm.currentAccount.id!==vm.userExt.user.id" href="#slide2" class="icon-rabbit "><span>Fotos</span></a>
+                                <a href="#slide3" class="icon-rabbit "><span>Información</span></a>
                             </nav>
                         </div>
                     </div>

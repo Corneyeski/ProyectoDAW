@@ -15,7 +15,8 @@
         vm.userExt = entity;
         vm.previousState = previousState.name;
 
-        vm.siguiendo = "seguir";
+        vm.siguiendo = "Seguir";
+        vm.bloqued = "Bloquear";
 
         console.log(vm.userExt);
         loadAll();
@@ -37,6 +38,10 @@
                 id: vm.userExt.user.id
             }, onSuccess3, onError3);
 
+            Bloqued.iscreateBloqued({
+                login: vm.userExt.user.id
+            },onSuccess4, onError4);
+
             function onSuccess(data, headers) {
                 vm.Photos = data;
             }
@@ -57,18 +62,30 @@
                 vm.PatataFollowing = data;
                 console.log(data);
                 if (data.id == null) {
-                    vm.siguiendo = "seguir";
-
+                    vm.siguiendo = "Seguir";
                 } else {
-                    vm.siguiendo = "siguiendo";
-
+                    vm.siguiendo = "Siguiendo";
                 }
-
             }
 
             function onError3(error) {
                 AlertService.error(error.data.message);
             }
+
+            function onSuccess4(data, headers){
+                vm.PatataBloqued = data;
+                console.log(data);
+                if(data.id == null){
+                    vm.bloqued= "Bloquear";
+                }else{
+                    vm.bloqued="Desbloquear";
+                }
+            }
+            function onError4(error) {
+                AlertService.error(error.data.message);
+            }
+
+
         }
         loadAll();
 

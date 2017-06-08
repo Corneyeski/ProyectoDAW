@@ -392,10 +392,18 @@ html, body, .container {
     color: #fff;
 }
 
-.cbp-contentslider nav a.rc-active {
+.cbp-contentslider nav a:active {
     background-color: #47a3da;
     color: #fff;
 }
+.hola a:active{
+    background-color: #47a3da;
+    color: #fff;
+}
+/*.cbp-contentslider nav a.rc-active {*/
+    /*background-color: #47a3da;*/
+    /*color: #fff;*/
+/*}*/
 
 /* Iconfont for navigation and headings */
 

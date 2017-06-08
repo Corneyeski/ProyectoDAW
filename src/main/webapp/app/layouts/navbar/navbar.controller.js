@@ -24,6 +24,7 @@ function change() {
 
         vm.login = login;
         vm.logout = logout;
+        vm.profile = profile;
         vm.toggleNavbar = toggleNavbar;
         vm.collapseNavbar = collapseNavbar;
         vm.$state = $state;
@@ -32,7 +33,20 @@ function change() {
         vm.upload = upload;
         vm.modal = modal;
         vm.modalOffert = modalOffert;
+        vm.userExt = entity;
+        loadAll();
 
+        function loadAll() {
+            UserExt.current({},onSuccess, onError);
+            function onSuccess(data, headers) {
+
+                vm.idUsu = data.id;
+                console.log(data);
+            }
+            function onError(error) {
+                AlertService.error(error.data.message);
+            }
+        }
         function login() {
             collapseNavbar();
             LoginService.open();
@@ -42,6 +56,10 @@ function change() {
             collapseNavbar();
             Auth.logout();
             $state.go('home');
+        }
+        function profile(id){
+            collapseNavbar();
+            $state.go('user-ext-detail({id:' + data.id + '})');
         }
 
         function toggleNavbar() {
