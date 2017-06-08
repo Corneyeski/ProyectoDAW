@@ -53,7 +53,7 @@
 
                 vm.disabled = data;
 
-                if(vm.filtrakosPhoto!=null){
+                if(vm.filtrakosPhoto!==null){
                     for (var i = 0; i < vm.filtrakosPhoto.length; i++) {
                         if (vm.filtrakosPhoto[i].points % 1 === 0) {
                         vm.scrolls.push(vm.filtrakosPhoto[i]);
@@ -67,28 +67,28 @@
                     vm.filtrakosPhoto=null;
 
                 }else{
-                    if(vm.filtrakosOffer!=null){
+                    if(vm.filtrakosOffer!==null){
                         for (var i = 0; i < vm.filtrakosOffer.length; i++) {
-                            if (filtrakosOffer[i].photo.points % 1 === 0) {
+                            if (vm.filtrakosOffer[i].photo.points % 1 === 0) {
                                 vm.scrolls.push(vm.filtrakosOffer[i]);
                             }else{
-                                var points = filtrakosOffer[i].photo.points;
-                                points = points.toFixed(2);
-                                filtrakosOffer[i].photo.points = points;
-                                vm.scrolls.push(filtrakosOffer[i]);
+                                 var points2 = vm.filtrakosOffer[i].photo.points;
+                                points2 = points2.toFixed(2);
+                                vm.filtrakosOffer[i].photo.points = points2;
+                                vm.scrolls.push(vm.filtrakosOffer[i]);
                             }
                         }
 
                     }else{
-                        if(vm.filtrakosUser!=null){
+                        if(vm.filtrakosUser!==null){
                             for (var i = 0; i < vm.filtrakosUser.length; i++) {
-                                if (filtrakosUser[i].photo.points % 1 === 0) {
+                                if (vm.filtrakosUser[i].photo.points % 1 === 0) {
                                     vm.scrolls.push(vm.filtrakosUser[i]);
                                 }else{
-                                    var points = filtrakosUser[i].photo.points;
-                                    points = points.toFixed(2);
-                                    filtrakosUser[i].photo.points = points;
-                                    vm.scrolls.push(filtrakosUser[i]);
+                                     var points3 = vm.filtrakosUser[i].photo.points;
+                                    points3 = points3.toFixed(2);
+                                    vm.filtrakosUser[i].photo.points = points3;
+                                    vm.scrolls.push(vm.filtrakosUser[i]);
                                 }
                             }
 
@@ -104,9 +104,9 @@
 
 
                                 } else {
-                                    var points = data[i].photo.points;
-                                    points = points.toFixed(2);
-                                    data[i].photo.points = points;
+                                     var points4 = data[i].photo.points;
+                                    points4 = points4.toFixed(2);
+                                    data[i].photo.points = points4;
                                     vm.scrolls.push(data[i]);
                                 }
                             }
@@ -182,7 +182,7 @@
             function onSuccess5(data, headers) {
 
                 vm.filtrakosUser = data;
-console.log(data);
+                console.log(data);
 
             }
 
